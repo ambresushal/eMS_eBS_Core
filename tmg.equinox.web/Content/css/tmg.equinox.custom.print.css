@@ -1,0 +1,199 @@
+﻿
+/*---------------------------html----------------------------*/
+
+body {
+    font-family: Calibri !important;
+    font-size: 12px !important;
+}
+
+select {
+    word-wrap: break-word !important;
+}
+
+textarea, select, input[type=text], button {
+    width: 100% !important;
+}
+
+button {
+    color: #555555 !important;
+    background-color: #FFFFFF !important;
+    word-wrap: break-word !important;
+    white-space: inherit !important;
+    font-family: Calibri !important;
+    font-size: 10px !important;
+    text-align: left !important;
+    float: left !important;
+}
+
+.form-control {
+    height: 20px !important;
+    padding: 0px !important;
+    color: #555555 !important;
+    float: left !important;
+}
+
+.form-title {
+    padding: 5px !important;
+    margin: 5px !important;
+    text-align: right !important;
+}
+
+.form-subtitle {
+    padding: 0 5px !important;
+    margin: 0 5px !important;
+    text-align: right !important;
+}
+
+.radio-pdf-text-align-middle {
+    vertical-align: bottom !important;
+    font-weight: normal !important;
+    display: inline !important;
+}
+
+.panel {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.panel-body {
+    padding: 3px !important;
+    margin: 0px !important;
+}
+
+.panel-default {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+    .panel-default > .panel-heading-gray {
+        padding: 4px 7px !important;
+        padding-bottom: 4px !important;
+        background-color: #DDDDDD !important;
+    }
+
+.panel-title {
+    font-size: 12px !important;
+    vertical-align: middle !important;
+    font-weight: bold !important;
+}
+
+.container-fluid {
+    min-height: inherit !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.radio-label-align-middle {
+    margin-top: 2px !important;
+}
+
+.label-align-middle {
+    margin-top: 2px !important;
+}
+
+/*-------------------------------------------------------------*/
+
+
+/*-------------------------------------------New css for pdf checkbox-----------------------------------------------*/
+
+
+input[type=checkbox].css-checkbox {
+    position: absolute !important;
+    clip: rect(0 0 0 0) !important;
+    display: inline-block !important;
+}
+
+    input[type=checkbox].css-checkbox + span.css-span {
+        padding-left: 20px !important;
+        display: inline-block !important;
+        float:left!important;
+        background-repeat: no-repeat !important;
+        background-position: 0 0 !important;
+        background-image: url(custom-theme/images/chrome-style-unchecked.png) !important;
+    }
+
+    input[type=checkbox].css-checkbox:checked + span.css-span {
+        padding-left: 20px !important;
+        display: inline-block !important;
+        background-repeat: no-repeat !important;
+        background-position: 0 0 !important;
+        background-image: url(custom-theme/images/chrome-style-checked.png) !important;
+    }
+
+input[type=checkbox].css-checkboxgrid {
+    position: absolute !important;
+    clip: rect(0 0 0 0) !important;
+    display: inline-block !important;
+}
+
+    input[type=checkbox].css-checkboxgrid + span.css-span {
+        padding: 7px !important;
+        padding-top: 12px !important;
+        display: inline-block !important;
+        background-repeat: no-repeat !important;
+        background-position: 0 0 !important;
+        vertical-align: middle !important;
+        line-height: 15px !important;
+        background-image: url(custom-theme/images/chrome-style-unchecked.png) !important;
+    }
+
+    input[type=checkbox].css-checkboxgrid:checked + span.css-span {
+        padding: 7px !important;
+        padding-top: 12px !important;
+        display: inline-block !important;
+        background-repeat: no-repeat !important;
+        line-height: 15px !important;
+        background-image: url(custom-theme/images/chrome-style-checked.png) !important;
+    }
+
+/*---------------------------------Ended-------------------------------------------*/
+
+/*-------------------------for table header repeat-----------------------------------*/
+
+@media print {
+    thead {
+        display: table-header-group !important;
+    }
+}
+
+
+.nobreak {
+    page-break-after: always !important;
+}
+
+.pageDiv {
+    height: 842px;
+    display: table;
+}
+
+/*------------------------------------------------------------*/
+
+
+
+/*-------------------------BOOTSTRAP---------------------------------*/
+button {
+    background-image: -webkit-linear-gradient(top, #FFFFFF, #FFFFFF) !Important;
+    background-image: -moz-linear-gradient(top, #FFFFFF, #FFFFFF) !Important;
+    background-image: -ms-linear-gradient(top, #FFFFFF, #FFFFFF) !Important;
+    background-image: -o-linear-gradient(top, #FFFFFF, #FFFFFF) !Important;
+    background-image: linear-gradient(to bottom, #FFFFFF, #FFFFFF) !Important;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF !Important;
+    -webkit-border-radius: 4;
+    -moz-border-radius: 4;
+    border-radius: 4px;
+    color: #555555 !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid #C8D1CE 1px;
+    text-decoration: none;
+}
+
+/*------------------------------------------------------------*/

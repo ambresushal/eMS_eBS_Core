@@ -1,0 +1,122 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <title>@ViewBag.ApplicationName Design</title>
+    @{
+        Random random = new Random();
+        string newVersion = "?v=" + random.Next().ToString();   
+    }
+     <link href='@Url.Content("~/Content/css/bootstrap.min.css" + newVersion )' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/jquery-ui-1.9.2.custom.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.print.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/ui.jqgrid.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/handsontable.full.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/custom.css" + newVersion)' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/demo.css")' rel="stylesheet" type="text/css" />
+    @*Script Files*@
+
+    @* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+    @Scripts.Render("~/bundles/jQueryBundle")
+    @Scripts.Render("~/bundles/JsRenderBundle")
+    @Scripts.Render("~/bundles/GridBundle")
+    @Scripts.Render("~/bundles/LayoutBundle")
+    @Scripts.Render("~/bundles/AjaxBundle")
+    @Scripts.Render("~/bundles/GlobalBundle")
+
+    @Scripts.Render("~/bundles/FolderVersionBundle")
+    @*TODO: Include following script to FolderVersionBundle later as BundleTable.EnableOptimizations=true doesn't work with PDF*@
+    @*<script src="~/Scripts/FolderVersion/ruleProcessor.js"></script>
+    <script src="~/Scripts/FolderVersion/repeaterRuleProcessor.js"></script>
+    <script src="~/Scripts/FolderVersion/createformdialog.js"></script>
+    <script src="~/Scripts/FolderVersion/errorManager.js"></script>
+    <script src="~/Scripts/FolderVersion/folderManager.js"></script>
+    <script src="~/Scripts/FolderVersion/folderstatus.js"></script>
+    <script src="~/Scripts/FolderVersion/folderMember.js"></script>
+    <script src="~/Scripts/FolderVersion/folderVersion.js"></script>
+    <script src="~/Scripts/FolderVersion/printPreview.js"></script>
+    <script src="~/Scripts/FolderVersion/folderVersionWorkflow.js"></script>
+    <script src="~/Scripts/FolderVersion/formvalidationmanager.js"></script>
+    <script src="~/Scripts/FolderVersion/formInstanceBuilder.js"></script>
+    <script src="~/Scripts/FolderVersion/majorMinorVersion.js"></script>
+    <script src="~/Scripts/FolderVersion/validationManager.js"></script>
+    <script src="~/Scripts/FolderVersion/versionHistory.js"></script>*@
+    @*<script src="~/Scripts/FolderVersion/productQHP.js"></script>*@
+    @*<script src="~/Scripts/FolderVersion/productFacetsQHP.js"></script>*@
+    @*<script src="~/Scripts/FolderVersion/masterlist.js"></script>
+    <script src="~/Scripts/FormDesign/previewformdesign.js"></script>
+    <script src="~/Scripts/FolderVersion/retroaccountdialog.js"></script>*@
+    @*<script src="~/Scripts/FolderVersion/facetsTranslationTransmission.js"></script>*@
+
+    @Scripts.Render("~/bundles/BootstrapBundle")
+    @Scripts.Render("~/bundles/LogOffBundle")
+    @Scripts.Render("~/bundles/DialogBundle")
+    @Scripts.Render("~/bundles/UtilsBundle")
+    @Scripts.Render("~/bundles/DashboardBundle")
+    @Scripts.Render("~/bundles/ActivityLoggerBundle")
+    @Scripts.Render("~/bundles/TinyMCEBundle")
+    <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/rangy-core.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/polyfills.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/ice.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/dom.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/icePlugin.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/icePluginManager.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/bookmark.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/selection.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/plugins/IceAddTitlePlugin.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/plugins/IceCopyPastePlugin.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/plugins/IceEmdashPlugin.js"></script>
+    <script src="~/Scripts/Framework/External/tinymce/src/plugins/IceSmartQuotesPlugin.js"></script>
+
+    <script type="text/javascript">
+        function setMenu(menuID) {
+            $("ul.list-sidebar > li > a").each(function (val, index) {
+                var childID = $(this).attr("ID").toLowerCase();
+                if (childID == menuID.toLowerCase()) {
+                    $(this).attr("class", "active");
+                }
+                else {
+                    $(this).removeAttr("class", "active");
+                }
+            });
+        }
+
+        if (GLOBAL.applicationName == "") {
+            var appName = '@ViewBag.ApplicationName';
+            if (appName != undefined)
+                GLOBAL.applicationName = appName;
+        }
+        if (GLOBAL.clientName == "") {
+            var clientName = '@ViewBag.clientName';
+            if (clientName != undefined)
+                GLOBAL.clientName = clientName;
+        }
+
+    </script>
+    <!-- BEGIN RESPONSE STYLES -->
+    <link href='@Url.Content("~/Content/css/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/yantramanav.css")' rel="stylesheet" type="text/css" />
+
+	 @*<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav:400,300,500' rel='stylesheet' type='text/css'>*@
+    <link href='@Url.Content("~/Content/css/response.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/skin-blue.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/stylesheet-new.css")' rel="stylesheet" type="text/css" />
+    <!-- END RESPONSE STYLES -->
+</head>
+<body>
+    <div style="clear: both"></div>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

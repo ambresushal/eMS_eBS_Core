@@ -1,0 +1,646 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="BenefitReview">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BenefitReviewGrid">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="ApplyCopay"/>
+                          <xs:element type="xs:string" name="ApplyCopayType"/>
+                          <xs:element type="xs:string" name="ApplyDedCoin"/>
+                          <xs:element type="xs:string" name="BenefitCat1"/>
+                          <xs:element type="xs:string" name="BenefitCat2"/>
+                          <xs:element type="xs:string" name="BenefitCat3"/>
+                          <xs:element type="xs:string" name="Coinsurance" minOccurs="0"/>
+                          <xs:element type="xs:string" name="Copay" minOccurs="0"/>
+                          <xs:element type="xs:string" name="FamilyDeductible" minOccurs="0"/>
+                          <xs:element type="xs:string" name="FamilyOutofPocketMax" minOccurs="0"/>
+                          <xs:element name="NetworkDS">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="Limit"/>
+                                      <xs:element type="xs:string" name="Message"/>
+                                      <xs:element type="xs:string" name="NetworkName"/>
+                                      <xs:element type="xs:string" name="NetworkType"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="POS"/>
+                          <xs:element type="xs:string" name="SingleDeductible" minOccurs="0"/>
+                          <xs:element type="xs:string" name="SingleOutofPocketMax" minOccurs="0"/>
+                          <xs:element type="xs:string" name="Treatas100" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CostShare">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Coinsurance">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="CoinsuranceAmountDS"/>
+                    <xs:element type="xs:string" name="CoinsuranceisalwaystakenafterthedeductibleissatisfieduntiltheOutofPock"/>
+                    <xs:element type="xs:string" name="Coinsurancewillnotapplytoservicessubjecttoaflatdollarcopay"/>
+                    <xs:element type="xs:string" name="SelectAllThatApply"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Copay">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="ArethereotherCopayTypes"/>
+                    <xs:element type="xs:string" name="BeginPrimaryCareCostSharingAfteraSetNumberofVisits"/>
+                    <xs:element name="CopayAmountDS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="CopayType"/>
+                                <xs:element name="NetworkDS">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="Amount"/>
+                                            <xs:element type="xs:string" name="NetworkName"/>
+                                            <xs:element type="xs:string" name="NetworkType"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="CopayRules">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="CopaydoescontributetoOutofPocketMax"/>
+                          <xs:element type="xs:string" name="CopaydoesnotcontributetoOutofPocketMax"/>
+                          <xs:element type="xs:string" name="Ifservicetakesacopaydeductibleandcoinsurancethenalwaysapplythecopayfir"/>
+                          <xs:element type="xs:string" name="SelectAllThatApply"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="IfyesenterCopayAmount"/>
+                    <xs:element type="xs:string" name="IfyesenterService"/>
+                    <xs:element type="xs:string" name="Isthereacopay"/>
+                    <xs:element type="xs:string" name="MaximumNumberofDaysforCharginganInpatientCopay"/>
+                    <xs:element name="PCPPhysicianseligibleforPCPOfficeVisitCopay">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="FamilyPractice"/>
+                          <xs:element type="xs:string" name="GeneralPractice"/>
+                          <xs:element type="xs:string" name="Geratrics"/>
+                          <xs:element type="xs:string" name="IfOtherListHere"/>
+                          <xs:element type="xs:string" name="InternalMedicine"/>
+                          <xs:element type="xs:string" name="OBGYN"/>
+                          <xs:element type="xs:string" name="Pediatrician"/>
+                          <xs:element type="xs:string" name="SelectAllThatApply"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Deductible">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DeductibleAmountDS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DeductibleAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="DeductibleType"/>
+                                      <xs:element name="NetworkDS">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="Amount"/>
+                                                  <xs:element type="xs:string" name="NetworkName"/>
+                                                  <xs:element type="xs:string" name="NetworkType"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="DrugDeductibleAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="DeductibleType"/>
+                                      <xs:element name="NetworkDS">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="Amount"/>
+                                                  <xs:element type="xs:string" name="NetworkName"/>
+                                                  <xs:element type="xs:string" name="NetworkType"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DeductibleCarryOverAmountforFacets">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="DeductibleCarryOverAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="Amount"/>
+                                      <xs:element type="xs:string" name="DeductibleType"/>
+                                      <xs:element name="NetworkDS">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="NetworkName"/>
+                                                  <xs:element type="xs:string" name="NetworkType"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DeductibleRules">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="AllowPriorDeductibleCreditPDCs"/>
+                          <xs:element type="xs:string" name="Alwaysapplydeductiblebeforecoinsurance"/>
+                          <xs:element type="xs:string" name="Apply4thQuarterCarryOver"/>
+                          <xs:element type="xs:string" name="BeginPrimaryCareDeductibleCoinsuranceAfteraSetNumberofCopays"/>
+                          <xs:element type="xs:string" name="COBMedicareOutofPocketIndicator"/>
+                          <xs:element type="xs:string" name="DeductibleFamilyAccumulation"/>
+                          <xs:element type="xs:string" name="DeductibleNetworkAccumulation"/>
+                          <xs:element type="xs:string" name="DeductibleRule"/>
+                          <xs:element type="xs:string" name="DeductibleRulesAccumulatorNumber"/>
+                          <xs:element type="xs:string" name="DeductibleRulesDescription"/>
+                          <xs:element type="xs:string" name="DeductibleStoplossAccumulation"/>
+                          <xs:element type="xs:string" name="FamilyDeductibleisSalaryBased"/>
+                          <xs:element type="xs:string" name="IfOtherSpecify"/>
+                          <xs:element type="xs:string" name="MemberDeductibleisSalaryBased"/>
+                          <xs:element type="xs:string" name="PlanYearorCalendarYear"/>
+                          <xs:element type="xs:string" name="RxandMedicaldeductibleisintegrated"/>
+                          <xs:element type="xs:string" name="SelectAllThatApply"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ServiceSpecificDeductible">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Aretheredeductiblesforspecificservices"/>
+                          <xs:element type="xs:string" name="Blank"/>
+                          <xs:element type="xs:string" name="FamilyAmount"/>
+                          <xs:element type="xs:string" name="IfYesListService"/>
+                          <xs:element type="xs:string" name="SingleAmount"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OutofPocketMaximum">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DrugOutofPocketMaxAmountDS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="DrugOutofPocketMaxType"/>
+                                <xs:element name="NetworkDS">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="Amount"/>
+                                            <xs:element type="xs:string" name="NetworkName"/>
+                                            <xs:element type="xs:string" name="NetworkType"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="OutofPocketMaxAccumulationRules">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="CoinsurancecontributestoOOPM"/>
+                          <xs:element type="xs:string" name="CopayscontributestoOOPM"/>
+                          <xs:element type="xs:string" name="DeductiblecontributestoOOPM"/>
+                          <xs:element type="xs:string" name="RxdeductiblecontributestoOOPM"/>
+                          <xs:element type="xs:string" name="SelectAllThatApply"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="OutofPocketMaxAmountDS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="NetworkDS">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="Amount"/>
+                                            <xs:element type="xs:string" name="NetworkName"/>
+                                            <xs:element type="xs:string" name="NetworkType"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="OutofPocketMaxType"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mandates">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MandateList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="MandateName"/>
+                          <xs:element name="ProductMandatesMasterList">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="BenefitCategory1"/>
+                                      <xs:element type="xs:string" name="BenefitCategory2"/>
+                                      <xs:element type="xs:string" name="BenefitCategory3"/>
+                                      <xs:element type="xs:string" name="PlaceofService"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="Region"/>
+                          <xs:element type="xs:string" name="Segment"/>
+                          <xs:element type="xs:string" name="SelectMandate"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MasterListServices">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="BenefitCategory1"/>
+                          <xs:element type="xs:string" name="BenefitCategory2"/>
+                          <xs:element type="xs:string" name="BenefitCategory3"/>
+                          <xs:element type="xs:string" name="PlaceofService"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NetworkDS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NetworkCoverage">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="FirstTierUtilization"/>
+                    <xs:element type="xs:string" name="NationalNetwork"/>
+                    <xs:element type="xs:string" name="NetworkID"/>
+                    <xs:element type="xs:string" name="OutofCountryCoverage"/>
+                    <xs:element type="xs:string" name="OutofCountryCoverageDescription"/>
+                    <xs:element type="xs:string" name="OutofServiceAreaCoverage"/>
+                    <xs:element type="xs:string" name="OutofServiceAreaCoverageDescription"/>
+                    <xs:element type="xs:string" name="SecondTierUtilization"/>
+                    <xs:element type="xs:string" name="ServiceAreaID"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="NetworkList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="CoinsuranceAmountDS"/>
+                          <xs:element type="xs:string" name="CopayAmountDS"/>
+                          <xs:element type="xs:string" name="DeductibleAmountDS"/>
+                          <xs:element type="xs:string" name="DrugOOPDeductible"/>
+                          <xs:element type="xs:string" name="FamilyDeductibleAmountDS"/>
+                          <xs:element type="xs:string" name="FamilyOutofPocketMaxAmount"/>
+                          <xs:element type="xs:string" name="Limit"/>
+                          <xs:element type="xs:string" name="Message"/>
+                          <xs:element type="xs:string" name="NetworkName"/>
+                          <xs:element type="xs:string" name="NetworkType"/>
+                          <xs:element type="xs:string" name="OutofPocketMaxAmount"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NonMandateService">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NonMandateServices">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="BenefitCategory1"/>
+                          <xs:element type="xs:string" name="BenefitCategory2"/>
+                          <xs:element type="xs:string" name="BenefitCategory3"/>
+                          <xs:element type="xs:string" name="PlaceofService"/>
+                          <xs:element type="xs:string" name="SelectService"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductRules">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CDHInformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Blank"/>
+                    <xs:element type="xs:string" name="CDHAdministrator"/>
+                    <xs:element type="xs:string" name="CDHContribution"/>
+                    <xs:element type="xs:string" name="CDHType"/>
+                    <xs:element type="xs:string" name="HSAHRAEmployerContributionAmount"/>
+                    <xs:element type="xs:string" name="ProductincludesCDH"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="FacetsProductInformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Blank"/>
+                    <xs:element type="xs:string" name="CapitationCategory"/>
+                    <xs:element type="xs:string" name="CapitationNewPayeeRetroactivityLimit"/>
+                    <xs:element type="xs:string" name="CapitationPercentofPremiumLevel"/>
+                    <xs:element type="xs:string" name="CapitationRiskAllocation"/>
+                    <xs:element type="xs:string" name="ClinicalEdits"/>
+                    <xs:element type="xs:string" name="DOFR"/>
+                    <xs:element type="xs:string" name="DentalClaimsProcessing"/>
+                    <xs:element type="xs:string" name="DentalPreDeterminations"/>
+                    <xs:element name="FacetProductComponentsPDBC">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PDBCPrefixList">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="CancelDate"/>
+                                      <xs:element type="xs:string" name="EffectiveDate"/>
+                                      <xs:element type="xs:string" name="PDBCPrefix"/>
+                                      <xs:element type="xs:string" name="PDBCType"/>
+                                      <xs:element type="xs:string" name="SelectPrefix"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="LineofBusinessSwitchIndicator"/>
+                    <xs:element type="xs:string" name="MedicalClaimsProcessing"/>
+                    <xs:element type="xs:string" name="POSOptout"/>
+                    <xs:element type="xs:string" name="PrePricing"/>
+                    <xs:element type="xs:string" name="PremiumIndicator"/>
+                    <xs:element type="xs:string" name="ProductAccumulatorSuffix"/>
+                    <xs:element type="xs:string" name="ProductAlternateLineofBusiness"/>
+                    <xs:element type="xs:string" name="ProductBusinessCategory"/>
+                    <xs:element type="xs:string" name="ProductID"/>
+                    <xs:element type="xs:string" name="ProductLineofBusiness"/>
+                    <xs:element type="xs:string" name="ProductValueCode1"/>
+                    <xs:element type="xs:string" name="ProductValueCode2"/>
+                    <xs:element type="xs:string" name="ReferralsPreauthorizations"/>
+                    <xs:element type="xs:string" name="StateDeterminationforClaimsInterest"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="GeneralInformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="ApplicationType"/>
+                    <xs:element type="xs:string" name="Blank"/>
+                    <xs:element type="xs:string" name="CSRVariationType"/>
+                    <xs:element type="xs:string" name="ChildOnlyOffering"/>
+                    <xs:element type="xs:string" name="ChildOnlyPlanID"/>
+                    <xs:element type="xs:string" name="ClaimsCancelDate"/>
+                    <xs:element type="xs:string" name="ClaimsEffectiveDate"/>
+                    <xs:element name="DiseaseManagementProgramsOffered">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Asthma"/>
+                          <xs:element type="xs:string" name="Depression"/>
+                          <xs:element type="xs:string" name="Diabetes"/>
+                          <xs:element type="xs:string" name="HeartDisease"/>
+                          <xs:element type="xs:string" name="HighBloodPressureHighCholesterol"/>
+                          <xs:element type="xs:string" name="LowBackPain"/>
+                          <xs:element type="xs:string" name="PainManagement"/>
+                          <xs:element type="xs:string" name="Pregnancy"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="FormularyID"/>
+                    <xs:element type="xs:string" name="HIOSPlanID"/>
+                    <xs:element type="xs:string" name="HIOSProductID"/>
+                    <xs:element type="xs:string" name="HPID"/>
+                    <xs:element type="xs:string" name="IssuerActuarialValue"/>
+                    <xs:element type="xs:string" name="LevelofCoverage"/>
+                    <xs:element type="xs:string" name="NewExistingPlan"/>
+                    <xs:element type="xs:string" name="PlanExpirationDate"/>
+                    <xs:element type="xs:string" name="PlanMarketingName"/>
+                    <xs:element type="xs:string" name="ProductContact"/>
+                    <xs:element type="xs:string" name="ProductName"/>
+                    <xs:element type="xs:string" name="ProductSegment"/>
+                    <xs:element type="xs:string" name="ProductType"/>
+                    <xs:element type="xs:string" name="QHPNonQHP"/>
+                    <xs:element type="xs:string" name="SalesEffectiveDate"/>
+                    <xs:element type="xs:string" name="TobaccoWellnessProgramOffered"/>
+                    <xs:element type="xs:string" name="UniquePlanDesign"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="GlobalProductRules">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Applya9monthwaitingperiodforpreexistingconditionsadultonly"/>
+                    <xs:element type="xs:string" name="DonotcoverservicesrenderedforAutoAccidents"/>
+                    <xs:element type="xs:string" name="DonotcoverservicesrenderedforWorkMansComp"/>
+                    <xs:element type="xs:string" name="IsaReferralRequiredforSpecialist"/>
+                    <xs:element type="xs:string" name="NoticeRequiredforPregnancy"/>
+                    <xs:element type="xs:string" name="Physicianofficeservicesmustbemedicallynecessary"/>
+                    <xs:element type="xs:string" name="PlanLevelExclusions"/>
+                    <xs:element type="xs:string" name="Pleasecheckallthatapply"/>
+                    <xs:element type="xs:string" name="Preexistingconditionwaitingperiodsdonotapplytomembersuptoage19"/>
+                    <xs:element type="xs:string" name="SpecialistsRequiringaReferral"/>
+                    <xs:element type="xs:string" name="WaiveOutofNetworkcostshareformedicalemergencyandaccidentalinjuryservic"/>
+                    <xs:element type="xs:string" name="WaiveOutofNetworkcostshareifamemberreceivesservicesfromaproviderforwhi"/>
+                    <xs:element type="xs:string" name="WaiveOutofNetworkcostshareifthememberhasbeenreferredtoanOutofNetworkph"/>
+                    <xs:element type="xs:string" name="WaiveOutofNetworkcostsharewhenamemberreceivesservicesfromanOutofNetwor"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Links">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="PlanBrochure"/>
+                    <xs:element type="xs:string" name="URLforEnrollmentPayment"/>
+                    <xs:element type="xs:string" name="URLforSummaryofBenefitsCoverage"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SBCScenario">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SBCScenarioCostSharing">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="element">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="CostSharingAmount"/>
+                                <xs:element type="xs:string" name="CostSharingType"/>
+                                <xs:element type="xs:string" name="Scenario"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="StandAloneDental">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="EHBApportionmentforPediatricDental"/>
+                    <xs:element type="xs:string" name="GuaranteedvsEstimatedRate"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SecurityAdministration">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="PortfolioDocument"/>
+              <xs:element type="xs:string" name="SharedDocument"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

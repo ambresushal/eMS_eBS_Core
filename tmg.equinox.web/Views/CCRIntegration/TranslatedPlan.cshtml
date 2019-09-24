@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Research WorkStation";
+    Layout = "~/Views/Shared/CCRIntegrationLayout.cshtml";
+}
+
+
+<link href='@Url.Content("~/Content/css/custom-ag-grid.css")' rel="stylesheet" type="text/css" />
+
+<style>
+    .ag-layout-normal .ag-body-viewport {
+        height: 315px !important;
+    }
+
+    .ag-layout-normal .ag-body-viewport-wrapper {
+        margin-left: 0px !important;
+    }
+
+    .fullscreen-grid .ag-layout-normal .ag-body-viewport {
+        height: 413px !important;
+    }
+</style>
+
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">CCR Integration</h1>
+    </div>
+</div>
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/CCRIntegration/TranslationQueue">Translation</a>
+        </li>
+        <li class="active">
+            <a href="~/CCRIntegration/TranslatedPlan">Research WorkStation</a>
+        </li>
+    </ul>
+</div>
+
+<di2v id="researchTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li class="active"><a href="" role="tab" data-toggle="tab">Translated Plan</a></li>        
+        <li><a href="#" id="tableDetaillink" role="tab">Table Details</a></li>
+        <li><a href="#" id="reportDetaillink" role="tab">Provisions</a></li>
+    </ul>
+
+    <div role="tabpanel" class="tab-content">
+        <div id="researchTab-1" class="tab-pane active">
+            <div class="panel panel-default ">               
+                <div class="panel-body">
+                    <div class="row" style="height:50px"></div>  
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">                                
+                                <div id="translatedListGrid" class="ag-theme-fresh"></div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>                
+            </div>
+        </div>            
+    </div>
+</di2v>
+
+<script type="text/javascript">
+
+
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    var data=    @Html.Raw(Json.Encode(ViewBag.data));
+
+    $(document).ready(function () {
+        var plans = new translatedPlan();
+    });
+
+
+</script>

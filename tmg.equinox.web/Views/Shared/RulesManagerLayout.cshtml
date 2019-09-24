@@ -1,0 +1,13 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Rules Manager Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid is-admin">
+    @RenderBody()
+</div>
+
+@Scripts.Render("~/bundles/RulesManagerBundle")
+<link href='@Url.Content("~/Content/css/Treant/treant.css")' rel="stylesheet" type="text/css" />
+<link href='@Url.Content("~/Content/css/Treant/perfect-scrollbar.css")' rel="stylesheet" type="text/css" />

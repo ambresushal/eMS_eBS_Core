@@ -1,0 +1,8 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\bin\Release\tmg.equinox.applicationservices.viewmodels.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\bin\Release\tmg.equinox.applicationservices.viewmodels.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\bin\Release\tmg.equinox.applicationservices.viewmodels.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\obj\Release\tmg.equinox.applicationservices.viewmodels.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\obj\Release\tmg.equinox.applicationservices.viewmodels.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.services.models\obj\Release\tmg.equinox.applicationservices.viewmodels.pdb

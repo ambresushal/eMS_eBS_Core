@@ -1,0 +1,76 @@
+{
+    "documentrule": {
+        "targetelement": "Product[ServiceGroup.ServiceGroupingDetail]",
+        "triggers": [
+            {
+                "source": "Product[ServiceGroup.ServiceGrouping]",
+                "event": "onselectdialog"
+            }
+        ],
+        "actions": [],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[ServiceGroup.ServiceGrouping]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "mappings": {
+                        "sourcefields": "BenefitSetName",
+                        "targetfields": "BenefitSetName"
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "MasterList[ServiceGroupDefinition.ServiceGroupingDetail][MasterListServices]",
+                    "mappings": {
+                        "sourcefields": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID",
+                        "targetfields": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "parent = source[A]"
+                            },
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "B",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": "A intersect B"
+                    }
+                }
+            ],
+            "sourcemergeaction": "B coljoin C"
+        }
+    }
+}

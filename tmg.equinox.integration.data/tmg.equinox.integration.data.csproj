@@ -1,0 +1,602 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80AD1A4A-50C5-4583-B70F-E5F51E3541AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.integration.data</RootNamespace>
+    <AssemblyName>tmg.equinox.integration.data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Common\IObjectState.cs" />
+    <Compile Include="Common\ObjectState.cs" />
+    <Compile Include="Models\ACCM481Arc.cs" />
+    <Compile Include="Models\ACCMREP.cs" />
+    <Compile Include="Models\ACCMSRC.cs" />
+    <Compile Include="Models\ACCMTRANS.cs" />
+    <Compile Include="Models\ACDE481Arc.cs" />
+    <Compile Include="Models\ACDEData.cs" />
+    <Compile Include="Models\ACDEREP.cs" />
+    <Compile Include="Models\ACDESRC.cs" />
+    <Compile Include="Models\ACDETRANS.cs" />
+    <Compile Include="Models\AdditionalServiceAltRuleData.cs" />
+    <Compile Include="Models\AdditionalServiceAltRuleDataSHDW.cs" />
+    <Compile Include="Models\AdditionalServiceData.cs" />
+    <Compile Include="Models\AdditionalServiceDataSHDW.cs" />
+    <Compile Include="Models\AllowedAMTData.cs" />
+    <Compile Include="Models\AllowedCTRData.cs" />
+    <Compile Include="Models\ATNDMaster.cs" />
+    <Compile Include="Models\ATNDSRC.cs" />
+    <Compile Include="Models\ATNTMaster.cs" />
+    <Compile Include="Models\ATNTSRC.cs" />
+    <Compile Include="Models\ATXRMaster.cs" />
+    <Compile Include="Models\ATXRSRC.cs" />
+    <Compile Include="Models\BenefitCategory1Data.cs" />
+    <Compile Include="Models\BenefitCategory2Data.cs" />
+    <Compile Include="Models\BenefitCategory3Data.cs" />
+    <Compile Include="Models\BenefitReviewAltRuleData.cs" />
+    <Compile Include="Models\BenefitReviewAltRuleDataSHDW.cs" />
+    <Compile Include="Models\BenefitReviewData.cs" />
+    <Compile Include="Models\BenefitReviewDataSHDW.cs" />
+    <Compile Include="Models\BenefitReviewDetails.cs" />
+    <Compile Include="Models\BenefitReviewSearch.cs" />
+    <Compile Include="Models\BenefitSet.cs" />
+    <Compile Include="Models\BenefitSummaryDetailsData.cs" />
+    <Compile Include="Models\BenefitSummaryInfoData.cs" />
+    <Compile Include="Models\BSBSMaster.cs" />
+    <Compile Include="Models\BSBSSRC.cs" />
+    <Compile Include="Models\BSDE481Stg.cs" />
+    <Compile Include="Models\BSDEData.cs" />
+    <Compile Include="Models\BSDESRC.cs" />
+    <Compile Include="Models\BSDLMaster.cs" />
+    <Compile Include="Models\BSDLSRC.cs" />
+    <Compile Include="Models\BSTXMaster.cs" />
+    <Compile Include="Models\BSTXSRC.cs" />
+    <Compile Include="Models\CBCNamingConventions.cs" />
+    <Compile Include="Models\CodeDescription.cs" />
+    <Compile Include="Models\CoinsPCTData.cs" />
+    <Compile Include="Models\CopayAMTData.cs" />
+    <Compile Include="Models\BenefitHash.cs" />
+    <Compile Include="Models\Mapping\SEDSDescriptionsMasterMap.cs" />
+    <Compile Include="Models\SEDSDescriptionsMaster.cs" />
+    <Compile Include="Models\Mapping\TOSModelSESEIDAssocMap.cs" />
+    <Compile Include="Models\PDPXData.cs" />
+    <Compile Include="Models\TOSModelSESEIDAssoc.cs" />
+    <Compile Include="Models\PDBCdbo.cs" />
+    <Compile Include="Models\Mapping\PDBCdboMap.cs" />
+    <Compile Include="Models\Mapping\ProductListdboMap.cs" />
+    <Compile Include="Models\ProductListdbo.cs" />
+    <Compile Include="Models\DisallowedMessagesSRC.cs" />
+    <Compile Include="Models\Mapping\DisallowedMessagesDataMap.cs" />
+    <Compile Include="Models\Mapping\DisallowedMessagesSRCMap.cs" />
+    <Compile Include="Models\Mapping\ACDEMasterMap.cs" />
+    <Compile Include="Models\Mapping\ServiceMasterMap.cs" />
+    <Compile Include="Models\ServiceGroupDetailListDataSRC.cs" />
+    <Compile Include="Models\FacetMLTransmissionSet.cs" />
+    <Compile Include="Models\FacetsMasterListTransmitter.cs" />
+    <Compile Include="Models\LTSEMasterListSRC.cs" />
+    <Compile Include="Models\Mapping\ACDEDataMap.cs" />
+    <Compile Include="Models\Mapping\ATNDMasterMap.cs" />
+    <Compile Include="Models\Mapping\ATNTMasterMap.cs" />
+    <Compile Include="Models\Mapping\ATNTSRCMap.cs" />
+    <Compile Include="Models\Mapping\ATXRMasterMap.cs" />
+    <Compile Include="Models\Mapping\BSDEDataMap.cs" />
+    <Compile Include="Models\Mapping\BSDESRCMap.cs" />
+    <Compile Include="Models\Mapping\ServiceGroupDetailListDataSRCMap.cs" />
+    <Compile Include="Models\Mapping\FacetMLTransmissionSetMap.cs" />
+    <Compile Include="Models\Mapping\FacetsMasterListTranslatorMap.cs" />
+    <Compile Include="Models\Mapping\FacetsMasterListTransmitterMap.cs" />
+    <Compile Include="Models\Mapping\LTSEMasterListSRCMap.cs" />
+    <Compile Include="Models\Mapping\PrefixDescriptionLogMap.cs" />
+    <Compile Include="Models\Mapping\ProductListSRCMap.cs" />
+    <Compile Include="Models\Mapping\ProductMigrationQueueMigMap.cs" />
+    <Compile Include="Models\Mapping\SEPYMasterListSRCMap.cs" />
+    <Compile Include="Models\Mapping\SERLDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceGroupDetailListDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceListDataMap.cs" />
+    <Compile Include="Models\Mapping\SESEIDListMap.cs" />
+    <Compile Include="Models\Mapping\SESEDataMap.cs" />
+    <Compile Include="Models\Mapping\SESERuleCategoryMap.cs" />
+    <Compile Include="Models\Mapping\SESRDataMap.cs" />
+    <Compile Include="Models\Mapping\TransmitterQueryMap.cs" />
+    <Compile Include="Models\FacetsMasterlistTranslator.cs" />
+    <Compile Include="Models\MLResult.cs" />
+    <Compile Include="Models\PrefixDescriptionLog.cs" />
+    <Compile Include="Models\ProductListSRC.cs" />
+    <Compile Include="Models\ProductMigrationQueueMig.cs" />
+    <Compile Include="Models\SEPYCompareResult.cs" />
+    <Compile Include="Models\ReturnSESR.cs" />
+    <Compile Include="Models\SEPYData.cs" />
+    <Compile Include="Models\SEPYMasterListSRC.cs" />
+    <Compile Include="Models\ServiceGroupDetailListData.cs" />
+    <Compile Include="Models\ServiceListData.cs" />
+    <Compile Include="Models\ServiceMaster.cs" />
+    <Compile Include="Models\SESEIDList.cs" />
+    <Compile Include="Models\SESEData.cs" />
+    <Compile Include="Models\SESERuleCategory.cs" />
+    <Compile Include="Models\ACDEMaster.cs" />
+    <Compile Include="Models\ShowNewServiceRulesConfiguration.cs" />
+    <Compile Include="Models\ShowNewServiceRulesSummary.cs" />
+    <Compile Include="Models\TranslationLogML.cs" />
+    <Compile Include="Models\TransmitterQuery.cs" />
+    <Compile Include="Models\FacetProductTransmissionSet.cs" />
+    <Compile Include="Models\Mapping\FacetProductTransmissionSetMap.cs" />
+    <Compile Include="Models\TransmissionLog.cs" />
+    <Compile Include="Models\Mapping\SEPYDataMap.cs" />
+    <Compile Include="Models\Mapping\SEPYMap.cs" />
+    <Compile Include="Models\SEPY.cs" />
+    <Compile Include="Models\Mapping\RemainingServicesMap.cs" />
+    <Compile Include="Models\RemainingServices.cs" />
+    <Compile Include="Models\Mapping\BenefitHashMap.cs" />
+    <Compile Include="Models\ShowActivitylog.cs" />
+    <Compile Include="Models\TranslationLog.cs" />
+    <Compile Include="Models\FacetTransmitterQueue.cs" />
+    <Compile Include="Models\Mapping\ATNDSRCMap.cs" />
+    <Compile Include="Models\Mapping\ATXRSRCMap.cs" />
+    <Compile Include="Models\Mapping\FacetTransmitterQueueMap.cs" />
+    <Compile Include="Models\Mapping\PDPXMap.cs" />
+    <Compile Include="Models\Mapping\PDVCHashDataMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Mapping\ProcessStatusMasterDataMap.cs" />
+    <Compile Include="Models\Mapping\SESERULEConfigMap.cs" />
+    <Compile Include="Models\Mapping\SESERuleConfigMasterMap.cs" />
+    <Compile Include="Models\PDPX.cs" />
+    <Compile Include="Models\ProcessStatusMaster.cs" />
+    <Compile Include="Models\Mapping\ProductLevelHashDataMap.cs" />
+    <Compile Include="Models\CustomRulesSettings.cs" />
+    <Compile Include="Models\ProductLevelHash.cs" />
+    <Compile Include="Models\PDVCHash.cs" />
+    <Compile Include="Models\DedAMTData.cs" />
+    <Compile Include="Models\DEDEData.cs" />
+    <Compile Include="Models\DEDEDataSHDW.cs" />
+    <Compile Include="Models\DisallowedMessagesData.cs" />
+    <Compile Include="Models\DisallowedMessagesServicesData.cs" />
+    <Compile Include="Models\EBCLData.cs" />
+    <Compile Include="Models\EBCLMaster.cs" />
+    <Compile Include="Models\EBCLSRC.cs" />
+    <Compile Include="Models\FacetMapping.cs" />
+    <Compile Include="Models\FacetTranslatorQueue.cs" />
+    <Compile Include="Models\GroupIDDetail.cs" />
+    <Compile Include="Models\LimitData.cs" />
+    <Compile Include="Models\LimitDataSHDW.cs" />
+    <Compile Include="Models\LimitDesc.cs" />
+    <Compile Include="Models\LimitDiagnosisData.cs" />
+    <Compile Include="Models\LimitDiagnosisDataSHDW.cs" />
+    <Compile Include="Models\LimitProcedureData.cs" />
+    <Compile Include="Models\LimitProcedureDataSHDW.cs" />
+    <Compile Include="Models\LimitProviderData.cs" />
+    <Compile Include="Models\LimitProviderDataSHDW.cs" />
+    <Compile Include="Models\LimitServiceData.cs" />
+    <Compile Include="Models\LimitServiceDataSHDW.cs" />
+    <Compile Include="Models\LogActivityDetail.cs" />
+    <Compile Include="Models\Mapping\AdditionalServiceAltDataMap.cs" />
+    <Compile Include="Models\Mapping\AdditionalServiceAltDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\BenefitSetDataMap.cs" />
+    <Compile Include="Models\Mapping\BenefitSummaryDetailsDataMap.cs" />
+    <Compile Include="Models\Mapping\BenefitSummaryInfoDataMap.cs" />
+    <Compile Include="Models\Mapping\BenefitReviewAltRuleDataMap.cs" />
+    <Compile Include="Models\Mapping\BSBSMasterMap.cs" />
+    <Compile Include="Models\Mapping\BSBSSRCMap.cs" />
+    <Compile Include="Models\Mapping\BSDLMasterMap.cs" />
+    <Compile Include="Models\Mapping\BSDLSRCMap.cs" />
+    <Compile Include="Models\Mapping\BSTXMasterMap.cs" />
+    <Compile Include="Models\Mapping\BSTXSRCMap.cs" />
+    <Compile Include="Models\Mapping\CBCNamingConventionsMap.cs" />
+    <Compile Include="Models\Mapping\DEDEDataMap.cs" />
+    <Compile Include="Models\Mapping\DEDEDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\EBCLDataMap.cs" />
+    <Compile Include="Models\Mapping\EBCLMasterMap.cs" />
+    <Compile Include="Models\Mapping\EBCLSRCMap.cs" />
+    <Compile Include="Models\Mapping\FacetTranslatorQueueMap.cs" />
+    <Compile Include="Models\Mapping\LimitDataMap.cs" />
+    <Compile Include="Models\Mapping\LimitDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\LimitDiagnosisDataMap.cs" />
+    <Compile Include="Models\Mapping\LimitDiagnosisDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\LimitProcedureDataMap.cs" />
+    <Compile Include="Models\Mapping\LimitProcedureDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\LimitProviderDataMap.cs" />
+    <Compile Include="Models\Mapping\LimitProviderDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\LimitServiceDataMap.cs" />
+    <Compile Include="Models\Mapping\LimitServiceDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\PDBCDataMap.cs" />
+    <Compile Include="Models\Mapping\PDDSDataMap.cs" />
+    <Compile Include="Models\Mapping\PDPDBatchMap.cs" />
+    <Compile Include="Models\Mapping\PDPDDataMap.cs" />
+    <Compile Include="Models\Mapping\ATNDDataMap.cs" />
+    <Compile Include="Models\Mapping\PDPXMasterMap.cs" />
+    <Compile Include="Models\Mapping\PDPXSRCMap.cs" />
+    <Compile Include="Models\Mapping\PDVCDataMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessorStatuMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessQueueMap1.cs" />
+    <Compile Include="Models\Mapping\ProcessGovernanceMap.cs" />
+    <Compile Include="Models\Mapping\ProductMigrationQueueMap.cs" />
+    <Compile Include="Models\Mapping\SEPYTESTREPMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRulePenaltyDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRulePenaltyDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleTier0DataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleTier0DataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleTierOtherDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceAltRuleTierOtherDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceGroupDataMap.cs" />
+    <Compile Include="Models\Mapping\ServicePenaltyDataMap.cs" />
+    <Compile Include="Models\Mapping\ServicePenaltyDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceTier0DataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceTier0DataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\ServiceTierOtherDataMap.cs" />
+    <Compile Include="Models\Mapping\ServiceTierOtherDataSHDWMap.cs" />
+    <Compile Include="Models\Mapping\AdditionalServiceDataMap.cs" />
+    <Compile Include="Models\Mapping\AdditionalServiceDataSHDWMap.cs" />
+    <Compile Include="Models\MigrationBenefitSets.cs" />
+    <Compile Include="Models\PDBCData.cs" />
+    <Compile Include="Models\PDDSData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\PDDSExtra.cs" />
+    <Compile Include="Models\PDPDBatch.cs" />
+    <Compile Include="Models\PDPDData.cs" />
+    <Compile Include="Models\ATNDData.cs" />
+    <Compile Include="Models\PDPXMaster.cs" />
+    <Compile Include="Models\PDPXSRC.cs" />
+    <Compile Include="Models\PDVCData.cs" />
+    <Compile Include="Models\PlaceOfServiceData.cs" />
+    <Compile Include="Models\PluginVersionProcessorStatu.cs" />
+    <Compile Include="Models\PluginVersionProcessQueue1.cs" />
+    <Compile Include="Models\ProcessGovernance.cs" />
+    <Compile Include="Models\ProductCategoryLOBData.cs" />
+    <Compile Include="Models\ProductIdGeneration.cs" />
+    <Compile Include="Models\ProductMigrationQueue.cs" />
+    <Compile Include="Models\ProductResult.cs" />
+    <Compile Include="Models\ProductShareData.cs" />
+    <Compile Include="Models\ReturnConfigData.cs" />
+    <Compile Include="Models\SEPYTESTREP.cs" />
+    <Compile Include="Models\DEDESRC.cs" />
+    <Compile Include="Models\LTIDSRC.cs" />
+    <Compile Include="Models\LTIPSRC.cs" />
+    <Compile Include="Models\LTLTSRC.cs" />
+    <Compile Include="Models\LTPRSRC.cs" />
+    <Compile Include="Models\LTSESRC.cs" />
+    <Compile Include="Models\Mapping\ACCMSRCMap.cs" />
+    <Compile Include="Models\Mapping\ACDESRCMap.cs" />
+    <Compile Include="Models\Mapping\DEDESRCMap.cs" />
+    <Compile Include="Models\Mapping\LTIDSRCMap.cs" />
+    <Compile Include="Models\Mapping\LTIPSRCMap.cs" />
+    <Compile Include="Models\Mapping\LTLTSRCMap.cs" />
+    <Compile Include="Models\Mapping\LTPRSRCMap.cs" />
+    <Compile Include="Models\Mapping\LTSESRCMap.cs" />
+    <Compile Include="Models\Mapping\PDBCJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\PDBCSRCMap.cs" />
+    <Compile Include="Models\Mapping\PDDSSRCMap.cs" />
+    <Compile Include="Models\Mapping\PDPDSRCMap.cs" />
+    <Compile Include="Models\Mapping\PDVCSRCMap.cs" />
+    <Compile Include="Models\Mapping\SEDFSRCMap.cs" />
+    <Compile Include="Models\Mapping\SEDSMasterMap.cs" />
+    <Compile Include="Models\Mapping\SEDSTRANSMap.cs" />
+    <Compile Include="Models\Mapping\SEPYSRCMap.cs" />
+    <Compile Include="Models\Mapping\SERLSRCMap.cs" />
+    <Compile Include="Models\Mapping\SESESRCMap.cs" />
+    <Compile Include="Models\Mapping\SESPSRCMap.cs" />
+    <Compile Include="Models\Mapping\SESRSRCMap.cs" />
+    <Compile Include="Models\Mapping\SETRSRCMap.cs" />
+    <Compile Include="Models\PDBCJsonData.cs" />
+    <Compile Include="Models\LTPRJsonData.cs" />
+    <Compile Include="Models\LTIDJsonData.cs" />
+    <Compile Include="Models\LTIPJsonData.cs" />
+    <Compile Include="Models\Mapping\LTPRJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\LTIDJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\LTIPJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\PDVCJsonDataMap.cs" />
+    <Compile Include="Models\PDBCSRC.cs" />
+    <Compile Include="Models\PDDSSRC.cs" />
+    <Compile Include="Models\PDPDSRC.cs" />
+    <Compile Include="Models\PDVCJsonData.cs" />
+    <Compile Include="Models\Mapping\SETRJsonDataMap.cs" />
+    <Compile Include="Models\PDVCSRC.cs" />
+    <Compile Include="Models\SEDFSRC.cs" />
+    <Compile Include="Models\SEDSMaster.cs" />
+    <Compile Include="Models\SEDSTRANS.cs" />
+    <Compile Include="Models\SEPYSRC.cs" />
+    <Compile Include="Models\SERLData.cs" />
+    <Compile Include="Models\SERLSRC.cs" />
+    <Compile Include="Models\ServiceAltRuleData.cs" />
+    <Compile Include="Models\ServiceAltRuleDataSHDW.cs" />
+    <Compile Include="Models\ServiceAltRulePenaltyData.cs" />
+    <Compile Include="Models\ServiceAltRulePenaltyDataSHDW.cs" />
+    <Compile Include="Models\ServiceAltRuleTier0Data.cs" />
+    <Compile Include="Models\ServiceAltRuleTier0DataSHDW.cs" />
+    <Compile Include="Models\ServiceAltRuleTierOtherData.cs" />
+    <Compile Include="Models\ServiceAltRuleTierOtherDataSHDW.cs" />
+    <Compile Include="Models\ServiceData.cs" />
+    <Compile Include="Models\ServiceDataSHDW.cs" />
+    <Compile Include="Models\ServiceGroupDetailData.cs" />
+    <Compile Include="Models\ServiceGroupModel.cs" />
+    <Compile Include="Models\ServicePenaltyData.cs" />
+    <Compile Include="Models\ServicePenaltyDataSHDW.cs" />
+    <Compile Include="Models\ServiceRuleDescription.cs" />
+    <Compile Include="Models\ServiceTier0Data.cs" />
+    <Compile Include="Models\ServiceTier0DataSHDW.cs" />
+    <Compile Include="Models\ServiceTierOtherData.cs" />
+    <Compile Include="Models\ServiceTierOtherDataSHDW.cs" />
+    <Compile Include="Models\SESERULEConfig.cs" />
+    <Compile Include="Models\SESERuleConfigMaster.cs" />
+    <Compile Include="Models\SESESRC.cs" />
+    <Compile Include="Models\SESPSRC.cs" />
+    <Compile Include="Models\SESRData.cs" />
+    <Compile Include="Models\SESRSRC.cs" />
+    <Compile Include="Models\SETRJsonData.cs" />
+    <Compile Include="Models\Mapping\SETRAltJsonDataMap.cs" />
+    <Compile Include="Models\SETRAltJsonData.cs" />
+    <Compile Include="Models\Mapping\SESPJsonDataMap.cs" />
+    <Compile Include="Models\SESPJsonData.cs" />
+    <Compile Include="Models\Mapping\SESPAltJsonDataMap.cs" />
+    <Compile Include="Models\SESPAltJsonData.cs" />
+    <Compile Include="Models\Mapping\ServiceJsonDataMap.cs" />
+    <Compile Include="Models\ServiceJsonData.cs" />
+    <Compile Include="Models\Mapping\PDPDJsonDataMap.cs" />
+    <Compile Include="Models\PDPDJsonData.cs" />
+    <Compile Include="Models\LTSEJsonData.cs" />
+    <Compile Include="Models\LTLTJsonData.cs" />
+    <Compile Include="Models\DEDEJsonData.cs" />
+    <Compile Include="Models\DEDE481Arc.cs" />
+    <Compile Include="Models\DEDETRANS.cs" />
+    <Compile Include="Models\DEDEMaster.cs" />
+    <Compile Include="Models\DocumentMap.cs" />
+    <Compile Include="Models\DocumentMapDetails.cs" />
+    <Compile Include="Models\ELMAH_Error.cs" />
+    <Compile Include="Models\Folder.cs" />
+    <Compile Include="Models\FolderVersion.cs" />
+    <Compile Include="Models\FormInstance.cs" />
+    <Compile Include="Models\FormInstanceDataMap.cs" />
+    <Compile Include="Models\HSQE481Stg.cs" />
+    <Compile Include="Models\IPMC481Arc.cs" />
+    <Compile Include="Models\IPMC481Stg.cs" />
+    <Compile Include="Models\LTID481Arc.cs" />
+    <Compile Include="Models\LTIDTRANS.cs" />
+    <Compile Include="Models\LTIDMaster.cs" />
+    <Compile Include="Models\LTIP481Arc.cs" />
+    <Compile Include="Models\LTIPTRANS.cs" />
+    <Compile Include="Models\LTIPMaster.cs" />
+    <Compile Include="Models\LTLT481Arc.cs" />
+    <Compile Include="Models\LTLTTRANS.cs" />
+    <Compile Include="Models\LTLTMaster.cs" />
+    <Compile Include="Models\LTPR481Arc.cs" />
+    <Compile Include="Models\LTPRTRANS.cs" />
+    <Compile Include="Models\LTPRMaster.cs" />
+    <Compile Include="Models\LTSE481Arc.cs" />
+    <Compile Include="Models\LTSETRANS.cs" />
+    <Compile Include="Models\LTSEMaster.cs" />
+    <Compile Include="Models\Mapping\ACCM481ArcMap.cs" />
+    <Compile Include="Models\Mapping\ACCMREPMap.cs" />
+    <Compile Include="Models\Mapping\ACCMTRANSMap.cs" />
+    <Compile Include="Models\Mapping\ACDE481ArcMap.cs" />
+    <Compile Include="Models\Mapping\ACDEREPMap.cs" />
+    <Compile Include="Models\Mapping\ACDETRANSMap.cs" />
+    <Compile Include="Models\Mapping\DEDE481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SETRMasterMap.cs" />
+    <Compile Include="Models\Mapping\SERLMasterMap.cs" />
+    <Compile Include="Models\Mapping\DEDEMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTSEJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\LTLTJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\DEDEJsonDataMap.cs" />
+    <Compile Include="Models\Mapping\DEDETRANSMap.cs" />
+    <Compile Include="Models\Mapping\DocumentMapDetailsMap.cs" />
+    <Compile Include="Models\Mapping\DocumentMapMap.cs" />
+    <Compile Include="Models\Mapping\ELMAH_ErrorMap.cs" />
+    <Compile Include="Models\Mapping\FolderMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceDataMapMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceMap.cs" />
+    <Compile Include="Models\Mapping\IPMC481ArcMap.cs" />
+    <Compile Include="Models\Mapping\IPMC481StgMap.cs" />
+    <Compile Include="Models\Mapping\LTID481ArcMap.cs" />
+    <Compile Include="Models\Mapping\LTIDMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTIDTRANSMap.cs" />
+    <Compile Include="Models\Mapping\LTIP481ArcMap.cs" />
+    <Compile Include="Models\Mapping\LTIPMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTIPTRANSMap.cs" />
+    <Compile Include="Models\Mapping\LTLT481ArcMap.cs" />
+    <Compile Include="Models\Mapping\LTLTMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTLTTRANSMap.cs" />
+    <Compile Include="Models\Mapping\LTPR481ArcMap.cs" />
+    <Compile Include="Models\Mapping\LTPRMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTPRTRANSMap.cs" />
+    <Compile Include="Models\Mapping\LTSE481ArcMap.cs" />
+    <Compile Include="Models\Mapping\LTSEMasterMap.cs" />
+    <Compile Include="Models\Mapping\LTSETRANSMap.cs" />
+    <Compile Include="Models\Mapping\PDBC481ArcMap.cs" />
+    <Compile Include="Models\Mapping\PDBCMasterMap.cs" />
+    <Compile Include="Models\Mapping\PDBCTRANSMap.cs" />
+    <Compile Include="Models\Mapping\PDDS481ArcMap.cs" />
+    <Compile Include="Models\Mapping\PDDSMasterMap.cs" />
+    <Compile Include="Models\Mapping\PDDSTRANSMap.cs" />
+    <Compile Include="Models\Mapping\PDPD481ArcMap.cs" />
+    <Compile Include="Models\Mapping\PDPDMasterMap.cs" />
+    <Compile Include="Models\Mapping\PDPDTRANSMap.cs" />
+    <Compile Include="Models\Mapping\PDPX481ArcMap.cs" />
+    <Compile Include="Models\Mapping\PDVC481ArcMap.cs" />
+    <Compile Include="Models\Mapping\PDVCMasterMap.cs" />
+    <Compile Include="Models\Mapping\PDVCTRANSMap.cs" />
+    <Compile Include="Models\Mapping\PluginMap.cs" />
+    <Compile Include="Models\Mapping\PluginProcessorErrorMap.cs" />
+    <Compile Include="Models\Mapping\PluginTransmissionProcessQueueMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessorMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessorStatusMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessQueueArcMap.cs" />
+    <Compile Include="Models\Mapping\PluginVersionProcessQueueCommonMap.cs" />
+    <Compile Include="Models\Mapping\PrefixCounterMap.cs" />
+    <Compile Include="Models\Mapping\SEDF481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SEDFREPMap.cs" />
+    <Compile Include="Models\Mapping\SEDFTRANSMap.cs" />
+    <Compile Include="Models\Mapping\SEPY481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SEPYMasterMap.cs" />
+    <Compile Include="Models\Mapping\SEPYTRANSMap.cs" />
+    <Compile Include="Models\Mapping\SERL481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SERLTransMap.cs" />
+    <Compile Include="Models\Mapping\SESE481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SESEMasterMap.cs" />
+    <Compile Include="Models\Mapping\SESETRANSMap.cs" />
+    <Compile Include="Models\Mapping\SESP481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SESPMasterMap.cs" />
+    <Compile Include="Models\Mapping\SESPTRANSMap.cs" />
+    <Compile Include="Models\Mapping\SESR481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SESRMasterMap.cs" />
+    <Compile Include="Models\Mapping\SESRTRANSMap.cs" />
+    <Compile Include="Models\Mapping\SETR481ArcMap.cs" />
+    <Compile Include="Models\Mapping\SETRMap.cs" />
+    <Compile Include="Models\Mapping\SETRTRANSMap.cs" />
+    <Compile Include="Models\PDBC481Arc.cs" />
+    <Compile Include="Models\PDBCTRANS.cs" />
+    <Compile Include="Models\PDBCMaster.cs" />
+    <Compile Include="Models\PDDS481Arc.cs" />
+    <Compile Include="Models\PDDSTRANS.cs" />
+    <Compile Include="Models\PDDSMaster.cs" />
+    <Compile Include="Models\PDPD481Arc.cs" />
+    <Compile Include="Models\PDPDTRANS.cs" />
+    <Compile Include="Models\PDPDMaster.cs" />
+    <Compile Include="Models\PDPX481Arc.cs" />
+    <Compile Include="Models\PDVC481Arc.cs" />
+    <Compile Include="Models\PDVCTRANS.cs" />
+    <Compile Include="Models\PDVCMaster.cs" />
+    <Compile Include="Models\Plugin.cs" />
+    <Compile Include="Models\PluginProcessorError.cs" />
+    <Compile Include="Models\PluginTransmissionProcessQueue.cs" />
+    <Compile Include="Models\PluginVersion.cs" />
+    <Compile Include="Models\PluginVersionProcessor.cs" />
+    <Compile Include="Models\PluginVersionProcessorStatus.cs" />
+    <Compile Include="Models\PluginVersionProcessQueueArc.cs" />
+    <Compile Include="Models\PluginVersionProcessQueueCommon.cs" />
+    <Compile Include="Models\PrefixCounter.cs" />
+    <Compile Include="Models\ReturnACDERecords.cs" />
+    <Compile Include="Models\ReturnAllowedAMTRecords.cs" />
+    <Compile Include="Models\ReturnAllowedCTRRecords.cs" />
+    <Compile Include="Models\ReturnBSDERecords.cs" />
+    <Compile Include="Models\ReturnCOInsurance.cs" />
+    <Compile Include="Models\ReturnColumnNames.cs" />
+    <Compile Include="Models\ReturnCOPAY.cs" />
+    <Compile Include="Models\ReturnDEDE.cs" />
+    <Compile Include="Models\ReturnDeductible.cs" />
+    <Compile Include="Models\ReturnDisallowedMessagesRecords.cs" />
+    <Compile Include="Models\ReturnFacetRules.cs" />
+    <Compile Include="Models\ReturnHSQERecords.cs" />
+    <Compile Include="Models\ReturnImportData.cs" />
+    <Compile Include="Models\ReturnIPMC.cs" />
+    <Compile Include="Models\ReturnLimitRecords.cs" />
+    <Compile Include="Models\ReturnLTLTRecords.cs" />
+    <Compile Include="Models\ReturnLTIDRecords.cs" />
+    <Compile Include="Models\ReturnLTIPRecords.cs" />
+    <Compile Include="Models\ReturnLTLT.cs" />
+    <Compile Include="Models\ReturnLTPRRecords.cs" />
+    <Compile Include="Models\ReturnLTSERecords.cs" />
+    <Compile Include="Models\ReturnNoCoInsuranceRecords.cs" />
+    <Compile Include="Models\ReturnNoDeductibleRecords.cs" />
+    <Compile Include="Models\ReturnPDBCTypeRecords.cs" />
+    <Compile Include="Models\ReturnPDDS.cs" />
+    <Compile Include="Models\ReturnPDVC.cs" />
+    <Compile Include="Models\ReturnProductType.cs" />
+    <Compile Include="Models\ReturnSEDS.cs" />
+    <Compile Include="Models\ReturnSepyPfxProductType.cs" />
+    <Compile Include="Models\ReturnSERLRecords.cs" />
+    <Compile Include="Models\ReturnSERVICEGROUPINGS.cs" />
+    <Compile Include="Models\ReturnServiceProductTypeAsoc.cs" />
+    <Compile Include="Models\ReturnSESPRecords.cs" />
+    <Compile Include="Models\ReturnSETRRecords.cs" />
+    <Compile Include="Models\SEDF481Arc.cs" />
+    <Compile Include="Models\SEDFREP.cs" />
+    <Compile Include="Models\SEDFTRANS.cs" />
+    <Compile Include="Models\SEPY481Arc.cs" />
+    <Compile Include="Models\SEPYTRANS.cs" />
+    <Compile Include="Models\SEPYMaster.cs" />
+    <Compile Include="Models\SERL481Arc.cs" />
+    <Compile Include="Models\SERLMaster.cs" />
+    <Compile Include="Models\SERLTRANS.cs" />
+    <Compile Include="Models\SESE481Arc.cs" />
+    <Compile Include="Models\SESETRANS.cs" />
+    <Compile Include="Models\SESEMaster.cs" />
+    <Compile Include="Models\SESP481Arc.cs" />
+    <Compile Include="Models\SESPTRANS.cs" />
+    <Compile Include="Models\SESPMaster.cs" />
+    <Compile Include="Models\SESR481Arc.cs" />
+    <Compile Include="Models\SESRTRANS.cs" />
+    <Compile Include="Models\SESRMaster.cs" />
+    <Compile Include="Models\SETR.cs" />
+    <Compile Include="Models\SETR481Arc.cs" />
+    <Compile Include="Models\SETRSRC.cs" />
+    <Compile Include="Models\SETRTRANS.cs" />
+    <Compile Include="Models\SETRMaster.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

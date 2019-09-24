@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Translation Queue";
+    Layout = "~/Views/Shared/CCRIntegrationLayout.cshtml";
+}
+
+<link href='@Url.Content("~/Content/css/custom-ag-grid.css")' rel="stylesheet" type="text/css" />
+
+<style>
+    .ag-layout-normal .ag-body-viewport {
+        height: 315px !important;
+    }
+
+    .ag-layout-normal .ag-body-viewport-wrapper {
+        margin-left: 0px !important;
+    }
+
+    .fullscreen-grid .ag-layout-normal .ag-body-viewport {
+        height: 413px !important;
+    }
+</style>
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">CCR Integration</h1>
+    </div>
+</div>
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/CCRIntegration/TranslationQueue">Translation</a>
+        </li>
+        <li>
+            <a href="~/CCRIntegration/TranslatedPlan">Research WorkStation</a>
+        </li>
+    </ul>
+</div>
+
+<div id="translationTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist" style="margin-bottom: 0px;">
+        <li><a href="#translationTab-1">Translation Queue</a></li>              
+    </ul>   
+    <div role="tabpanel" class="tab-content">
+        
+        <div id="translationTab-1" class="tab-pane active">
+            <div class="panel panel-default ">               
+                <div class="panel-body"> 
+                    <div class="row" style="height:50px"></div>                   
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <div id="translationQueueGrid" class="ag-theme-fresh">                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    var data=    @Html.Raw(Json.Encode(ViewBag.data));
+
+    $(document).ready(function () {
+        var queue = new translationQueue();
+    });
+</script>

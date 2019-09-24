@@ -1,0 +1,113 @@
+{
+    "rule": [
+        {
+            "id": "R1",
+            "type": "CustomRule",
+            "rules": [
+                {
+                    "id": "R2",
+                    "type": "CustomRule",
+                    "rules": [
+                        {
+                            "id": "R4",
+                            "type": "CustomRule",
+                            "rules": [
+                                {
+                                    "id": "R6",
+                                    "type": "CustomRule",
+                                    "rules": [ { } ]
+                                }
+                            ]
+
+                        }
+                    ]
+                },
+                {
+                    "id": "R3",
+                    "type": "CustomRule",
+                    "rules": [
+                        {
+                            "id": "R5",
+                            "type": "CustomRule",
+                            "rules": [
+                                {
+                                    "id": "R6",
+                                    "type": "CustomRule",
+                                    "rules": [ { } ]
+                                }
+                            ]
+                        }
+
+                    ]
+                },
+                {
+                    "id": "R6",
+                    "type": "CustomRule",
+                    "rules": [ { } ]
+
+                }
+            ]
+        },
+        {
+            "id": "R2",
+            "type": "CustomRule",
+            "rules": [
+                {
+                    "id": "R4",
+                    "type": "CustomRule",
+                    "rules": [
+                        {
+                            "id": "R6",
+                            "type": "CustomRule",
+                            "rules": [ { } ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "R3",
+            "type": "CustomRule",
+            "rules": [
+                {
+                    "id": "R5",
+                    "type": "CustomRule",
+                    "rules": [
+                        {
+                            "id": "R6",
+                            "type": "CustomRule",
+                            "rules": [ { } ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "R4",
+            "type": "CustomRule",
+            "rules": [
+                {
+                    "id": "R6",
+                    "type": "CustomRule",
+                    "rules": [ { } ]
+                }
+            ]
+        },
+        {
+            "id": "R5",
+            "type": "CustomRule",
+            "rules": [
+                {
+                    "id": "R6",
+                    "type": "CustomRule",
+                    "rules": [ { } ]
+                }
+            ]
+        },
+        {
+            "id": "R6",
+            "type": "CustomRule",
+            "rules": [ { } ]
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/ConsortiumLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<div class="panel-body">
+    <div class="row-fluid">
+        <div class="col-xs-12">
+            <table id="consortiumGrid"></table>
+        </div>
+    </div>
+</div>
+<div id ="consortiumDialog" style="display:none">
+    <div class="form-group">
+        <label>Consortium Name</label>    
+        <input type="text" id="consortiumName" maxlength="100"/>
+        <span class="help-block" id="consortiumNameSpan"></span>
+    </div>
+    <div>
+        <button id="btnsaveConsortium">Save</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims)); 
+    setMenu("account");	  
+</script>

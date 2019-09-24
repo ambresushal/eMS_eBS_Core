@@ -1,0 +1,70 @@
+﻿<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+
+    .grid-wrapper .ui-jqgrid .ui-jqgrid-htable tr:first-child th {
+        padding-left: 6px !important;
+    }
+
+        .grid-wrapper .ui-jqgrid .ui-jqgrid-htable tr:first-child th input[type="checkbox"] {
+            margin-top: 0px;
+        }
+
+    .right_side_checkbox label {
+        float: right;
+    }
+
+        .right_side_checkbox label input[type="checkbox"] {
+            margin-top: 2px;
+        }
+</style>
+
+<div id="selectDocumentsForQHP">
+    <div class="new-tab-design-bg">
+        <ul class="nav nav-tabs new-tab-design nav-pills nav-pills-child" role="tablist">
+            <li class="active">
+                <a href="#generateQHPReports" role="tab" data-toggle="tab" style="border: 0px solid #dddddd !important;">Generate QHP Reports</a>
+            </li>
+            <li>
+                <a href="#qhpReportQueue" role="tab" data-toggle="tab" style="border: 0px solid #dddddd !important;">QHP Report Queue</a>
+            </li>
+        </ul>
+        <!-- <div class="col-xs-12"> -->
+        <div class="timer">
+            <span>
+                <b>Auto-Refresh in</b>
+            </span>
+            <span id="spnTimer">
+                <b>30 seconds.</b>
+            </span>
+        </div>
+        <!-- </div> -->
+        <div class="clearfix"></div>
+    </div>
+    <div role="tabpanel" class="tab-content" style="background: #fff;margin-top: 0px; padding: 10px;">
+        <div id='generateQHPReports' class="tab-pane active col-xs-12 col-md-12 col-lg-12 col-sm-12" style="padding-left: 0px !important;padding-right: 0px !important;">
+            <div class="checkbox right_side_checkbox">
+                <label><input type="checkbox" id="chkOffExchangeOnly" value="true" title="Generate Off Exchange only" />Off Exchange only</label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="grid-wrapper new-grid-wrapper">
+                <table id="targetDocumentList"></table>
+            </div>
+        </div>
+        <div id='qhpReportQueue' class="tab-pane col-xs-12 col-md-12 col-lg-12 col-sm-12" style="padding-left: 0px !important;padding-right: 0px !important;">
+            <div class="grid-wrapper new-grid-wrapper">
+                <table id="reportQueue"></table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    @*<div class="row" style="margin-top:20px;">
+          <div class="grid-wrapper new-grid-wrapper">
+            <table id="targetDocumentSelectedList"></table>
+          </div>
+        </div>*@
+</div>

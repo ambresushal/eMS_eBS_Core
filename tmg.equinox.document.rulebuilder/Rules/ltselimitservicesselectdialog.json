@@ -1,0 +1,56 @@
+{
+    "documentrule": {
+        "targetelement": "Product[Limits.FacetsLimits.LimitServicesLTSE][MasterListServices]",
+        "ruletype": "datasource",
+        "targetelementtype": "repeater[selectdialog]",
+
+        "triggers": [
+            {
+                "source": "Product[Limits.FacetsLimits.LimitServicesLTSE][MasterListServices]",
+                "event": "addrow"
+            }
+        ],
+        "actions": [
+            {
+                "action": "selectdialog"
+            }
+        ],
+
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "MasterList[Services.ServiceList]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                }
+            ],
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "@A.BenefitCategory1,@A.BenefitCategory2,@A.BenefitCategory3,@A.PlaceofService,@A.SESEID,@A.WeightedCounter",
+                    "children": ""
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergetype": "none",
+                        "sourcemergeexpression": "",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

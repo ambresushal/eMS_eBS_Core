@@ -1,0 +1,4 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\CollateralWindowService\CollateralService\obj\Release\CollateralService.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\CollateralWindowService\CollateralService\obj\Release\CollateralService.CollateralService.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\CollateralWindowService\CollateralService\obj\Release\CollateralService.ProjectInstaller.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\CollateralWindowService\CollateralService\obj\Release\CollateralService.csproj.GenerateResource.Cache

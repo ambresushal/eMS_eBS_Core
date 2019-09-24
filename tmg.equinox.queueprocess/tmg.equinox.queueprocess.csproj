@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6FDA782-716C-4F30-ADB4-3B2F9367EC21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.reportingprocess</RootNamespace>
+    <AssemblyName>tmg.equinox.reportingprocess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\tmg.equinox.web\bin\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmailNotificationQueue\EmailNotificationQueue.cs" />
+    <Compile Include="EmailNotificationQueue\EmailNotificationQueueBackgroundJob.cs" />
+    <Compile Include="EmailNotificationQueue\EmailNotificationQueueInfo.cs" />
+    <Compile Include="EmailNotificationQueue\EmailNotificationQueueService.cs" />
+    <Compile Include="EmailNotificationQueue\IEmailNotificationQueue.cs" />
+    <Compile Include="EmailNotificationQueue\IEmailNotificationQueueService.cs" />
+    <Compile Include="EmailNotification\EmailBackgroundJob.cs" />
+    <Compile Include="EmailNotification\EmailEnqueue.cs" />
+    <Compile Include="EmailNotification\EmailEnqueueService.cs" />
+    <Compile Include="EmailNotification\EmailQueueInfo.cs" />
+    <Compile Include="EmailNotification\IEmailEnqueue.cs" />
+    <Compile Include="EmailNotification\IEmailEnqueueService.cs" />
+    <Compile Include="ExitValidate\ExitValidateBackgroundJob.cs" />
+    <Compile Include="ExitValidate\ExitValidateEnqueue.cs" />
+    <Compile Include="ExitValidate\ExitValidateEnqueueService.cs" />
+    <Compile Include="ExitValidate\ExitValidateQueueInfo.cs" />
+    <Compile Include="ExitValidate\ExitValidateQueueManager.cs" />
+    <Compile Include="ExitValidate\IExitValidateEnqueue.cs" />
+    <Compile Include="ExitValidate\IExitValidateEnqueueService.cs" />
+    <Compile Include="ExitValidate\IExitValidateManager.cs" />
+    <Compile Include="MasterListCascade\IMasterListCascadeEnqueue.cs" />
+    <Compile Include="MasterListCascade\IMasterListCascadeEnqueueService.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeBackgroundJob.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeEnqueue.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeEnqueueService.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeQueueInfo.cs" />
+    <Compile Include="MLCascadeReportingDBSaveQueue\ReportingDBBackgroundJob.cs" />
+    <Compile Include="MLCascadeReportingDBSaveQueue\ReportingDBQueueManager.cs" />
+    <Compile Include="MLCascadeReportingDBSaveQueue\ReportingDBSaveAfterMLCascadeService.cs" />
+    <Compile Include="NotifyTaskAssignment\INotifyTaskAssignment.cs" />
+    <Compile Include="NotifyTaskAssignment\INotifyTaskAssignmentService.cs" />
+    <Compile Include="NotifyTaskAssignment\NotifyTaskAssignment.cs" />
+    <Compile Include="NotifyTaskAssignment\NotifyTaskAssignmentInfo.cs" />
+    <Compile Include="NotifyTaskAssignment\NotifyTaskAssignmentJob.cs" />
+    <Compile Include="NotifyTaskAssignment\NotifyTaskAssignmentService.cs" />
+    <Compile Include="PBPExport\IPBPExportEnqueue.cs" />
+    <Compile Include="PBPExport\IPBPExportEnqueueService.cs" />
+    <Compile Include="PBPExport\PBPExportBackgroundJob.cs" />
+    <Compile Include="PBPExport\PBPExportEnqueue.cs" />
+    <Compile Include="PBPExport\PBPExportEnqueueService.cs" />
+    <Compile Include="PBPExport\PBPExportQueueManager.cs" />
+    <Compile Include="PBPImportEmailQueue\IPBPImportEmailNotificationQueue.cs" />
+    <Compile Include="PBPImportEmailQueue\IPBPImportEmailNotificationQueueService.cs" />
+    <Compile Include="PBPImportEmailQueue\PBPImportEmailNotificationQueue.cs" />
+    <Compile Include="PBPImportEmailQueue\PBPImportEmailNotificationQueueBackgroundJob.cs" />
+    <Compile Include="PBPImportEmailQueue\PBPImportEmailNotificationQueueInfo.cs" />
+    <Compile Include="PBPImportEmailQueue\PBPImportEmailNotificationQueueService.cs" />
+    <Compile Include="PBPImport\IPBPImportEnqueue.cs" />
+    <Compile Include="PBPImport\IPBPImportEnqueueService.cs" />
+    <Compile Include="PBPImport\PBPImportBackgroundJob.cs" />
+    <Compile Include="PBPImport\PBPImportEnqueue.cs" />
+    <Compile Include="PBPImport\PBPImportEnqueueService.cs" />
+    <Compile Include="PBPImport\PBPImportQueueManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QHPReportQueue\IQHPReportQueue.cs" />
+    <Compile Include="QHPReportQueue\IQHPReportQueueService.cs" />
+    <Compile Include="QHPReportQueue\QHPReportQueue.cs" />
+    <Compile Include="QHPReportQueue\QHPReportQueueBackgroundJob.cs" />
+    <Compile Include="QHPReportQueue\QHPReportQueueInfo.cs" />
+    <Compile Include="QHPReportQueue\QHPReportQueueService.cs" />
+    <Compile Include="Reporting\IReportEnqueue.cs" />
+    <Compile Include="Reporting\IReportEnqueueService.cs" />
+    <Compile Include="Reporting\ReportBackgroundJob.cs" />
+    <Compile Include="Reporting\ReportEnqueue.cs" />
+    <Compile Include="Reporting\ReportingEnqueueService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.core.masterlistcascade\tmg.equinox.core.masterlistcascade.csproj">
+      <Project>{EAC1812A-F6A8-4772-9D07-FD306A497428}</Project>
+      <Name>tmg.equinox.core.masterlistcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59F89076-58CC-49EF-ACD7-5FFCEFDBE8CE}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.qhplite\tmg.equinox.integration.qhplite.csproj">
+      <Project>{9F58CF58-E883-40E2-8902-B1CDE9B0748D}</Project>
+      <Name>tmg.equinox.integration.qhplite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.pbp.export\tmg.equinox.pbp.export.csproj">
+      <Project>{D67AE161-E53C-4B05-9547-0942E19AA217}</Project>
+      <Name>tmg.equinox.pbp.export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.pbpimport\tmg.equinox.pbp.import.csproj">
+      <Project>{1b9b2ac8-3128-4e9e-a81c-b9a0f90b1e86}</Project>
+      <Name>tmg.equinox.pbp.import</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.SaveToReportingDBAfterMLCascade\tmg.equinox.savetoreportingdbmlcascade.csproj">
+      <Project>{660fafa1-8de5-4235-b696-c64536a2392f}</Project>
+      <Name>tmg.equinox.savetoreportingdbmlcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.SaveToReportingDBAfterMLCascade\tmg.equinox.savetoreportingdbmlcascade.csproj">
+      <Project>{660fafa1-8de5-4235-b696-c64536a2392f}</Project>
+      <Name>tmg.equinox.savetoreportingdbmlcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19F18C6A-C503-41FD-8E63-E4BB2022D03F}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,94 @@
+{
+    "documentrule": {
+        "targetelement": "Product[Limits.LimitsList]",
+        "ruletype": "datasource",
+        "targetelementtype": "repeater",
+        "triggers": [
+            {
+                "source": "",
+                "event": ""
+            }
+        ],
+        "actions": [
+            {
+                "action": "selectdialog"
+            }
+        ],
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "outputcolumns": "",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[ProductDefinition.GeneralInformation.ProductPeriodIndicator]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "MasterList[Accumulators.AccumulatorList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@C.Type = L-Limits"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                }
+
+            ],
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "",
+                    "children": ""
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergetype": "expr",
+                        "keycolumns": "AccumNumber",
+                        "sourcemergeexpression": "((@C.PeriodIndicator =Plan Year) union (@C.PeriodIndicator=Both)) crossjoin @A.BenefitSetName",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
+   

@@ -1,0 +1,547 @@
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using Microsoft.AspNet.Identity;	
+@{
+    ViewBag.Title = "WorkFlowSettings";
+    Layout = "~/Views/Shared/SettingsLayout.cshtml";
+}
+@*@model tmg.equinox.applicationservices.viewmodels.Settings.WorkFlowAccountTypeModel*@
+@{
+    var authenticationSectionCollection = (NameValueCollection)ConfigurationManager.GetSection("authenticationSection");
+    ViewBag.UseAuthentication = Convert.ToBoolean(authenticationSectionCollection["UseAuthentication"]);
+    ViewBag.DummyAuthenticationEnabled = Convert.ToBoolean(authenticationSectionCollection["DummyAuthenticationEnabled"]);
+    var claims = (User.Identity as System.Security.Claims.ClaimsIdentity).Claims;
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Settings</h1>
+    </div>
+</div>
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/Settings/WorkFlowSettings">Settings</a>
+        </li>
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "USERMANAGEMENT"))
+            {
+            <li>
+                <a href="~/Settings/UserManagementSettings">User Management Settings</a>
+            </li>
+            }
+        }
+    </ul>
+</div>
+
+<div id="settingsTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="#settingsTab-1">Team Mapping</a></li>
+        <li><a href="#settingsTab-2" class="WFCATLIST">Category List</a></li>
+        <li><a href="#settingsTab-3" class="WFCATCONFIGMASTER">Workflow Configuration - Master</a></li>
+        <li><a href="#settingsTab-4" class="WFCATCONFIG">Category Workflow Configuration</a></li>
+        <li><a href="#settingsTab-5" class="TASKLIST">Task List</a></li>
+        <li><a href="#settingsTab-6" class="WORKFLOWTASKMAPPING">Workflow Task Mapping</a></li>
+    </ul>
+    <div role="tabpanel" class="tab-content">
+        <div id="settingsTab-1" class="tab-pane active">
+            <div class="panel panel-default ">
+                <div class="panel-heading-gray" style="background: #f2f2f2 !important; padding: 10px !important;">
+                    <p class="panel-title section-title" style="margin-bottom: 0px;">Configure Applicable Teams</p>
+                </div>
+
+                <div class="panel-body" style="margin-top: 0px;">
+                    <div class="form-inline" style="padding: 10px;">
+                        <div class="form-group">
+                            <label>Select Applicable Team</label>
+                            <span class="select-wrapper">
+                                <select class="form-control" id="applicableTeam">
+                                    <option value="0">Select Team</option>
+                                </select>
+                            </span>
+                            <button id="btnSaveApplicableTeamUsers" type="button" class="btn btn-md pull-right" style="margin-left:168px;">Save</button>
+                        </div>
+                    </div>
+                    <div class="">
+
+                        <div class="col-xs-5">
+                            <div>
+                                <label class="help-block">Non Selected User List</label>
+                            </div>
+                            <div class="grid-wrapper new-grid-wrapper grid-bold-text left-sidebar">
+                                <table id="tblUserList"></table>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 text-center">
+                            <div class="row" style="padding-top: 185px;">
+                                <button class="btn btn-xs" title="Add" id="addUser">
+                                    <i class="material-icons">&#xE5CC;</i>
+                                </button>
+                            </div>
+                            <div class="row" style="padding-top: 10px;">
+                                <button class="btn btn-xs" title="Remove" id="removeUser">
+                                    <i class="material-icons">&#xE5CB;</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <label class="help-block">Selected User List</label>
+                            <div>
+                                <div class="grid-wrapper new-grid-wrapper grid-bold-text right-sidebar">
+                                    <table id="selectedUserListGrid"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                            <div class="col-xs-12">
+                                    <div class="btn pull-right btn-padding">
+                                  <button id="btnSaveApplicableTeamUsers" type="button" class="btn">Save</button>
+                                    </div>
+                                </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsTab-2" class="tab-pane">
+            <div id="settings">
+                <div class="panel panel-default" style="margin-top: 15px; padding: 10px;">
+                    <div class="panel-heading-gray" style="">
+                        <p class="panel-title section-title">Auto Save</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Enable Auto Save</label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input type="checkbox" id="enableAutoSaveChk" />
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Duration</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="select-wrapper block">
+                                    <select class="form-control" id="duationDDLAutoSave"></select>
+                                </span>
+                                <span class="help-block" id="enableAutoSaveChkHelpBlock"></span>
+                                <span class="help-block" id="duationDDLAutoSaveHelpBlock"></span>
+                            </div>
+                            <div class="col-sm-3">
+                                <button id="btnSave" type="button" class="btn btn-md">Save</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label>Accelerate the assigned start date for task(s) </label>
+                            </div>
+                            <div class="col-sm-1">
+                                <input type="checkbox" id="accelerateStartDateForTask" />
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Unlock Timeout Duration</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="select-wrapper block">
+                                    <select class="form-control" id="duationDDLUnlockJQ"></select>
+                                </span>
+
+                            </div>
+                            </div>
+        
+                            <div class="clearfix">
+                                
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div id="category">
+                <div class="panel panel-default">
+                    <div class="panel-body" style="margin-top: 0px;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="grid-wrapper new-grid-wrapper">
+                                    <table id="categoryListGrid"></table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="grid-wrapper new-grid-wrapper">
+                                    <table id="groupListGrid"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="consortiumDialog" style="display: none">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Category Name</label><em>*</em>
+                            <input type="text" id="consortiumName" maxlength="100" />
+                        </div>
+                    </div>
+                    <span class="help-block" id="consortiumNameSpan"></span>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Select Group</label><em>*</em>
+                            <select id="groupDDL" style="width: 100%;"></select>
+                        </div>
+                    </div>
+                    <span class="help-block" id="groupNameSpan"></span>
+                </div>
+                <div>
+                    <button id="btnsaveConsortium" class="pull-right">Save</button>
+                </div>
+
+            </div>
+            <div id="groupDialog" style="display: none">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Group Name</label><em>*</em>
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" id="groupName" maxlength="100" />
+                        </div>
+                    </div>
+                    <span class="help-block" id="groupNameSpanGrpDialog"></span>
+                </div>
+                <div>
+                    <button id="btnsaveGroup" class="pull-right">Save</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="settingsTab-3" class="tab-pane">
+            <div class="panel panel-default ">
+                @*<div class="panel-heading-gray">
+                        <p class="panel-title section-title">Master WorkFlow Design</p>
+                    </div>*@
+                <div class="panel-body" style="margin-top: 0px;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper new-grid-wrapper">
+                                <table id="workFlowStateMasterGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper new-grid-wrapper">
+                                <table id="workFlowStateApprovalTypeMasterGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsTab-4" class="tab-pane">
+            <div class="panel panel-default ">
+                <div class="panel-heading-gray" style="background: #f2f2f2 !important; padding: 10px !important;">
+                    <p class="panel-title section-title" style="margin-bottom: 0px;">WorkFlow Design</p>
+                </div>
+                <div class="panel-body" style="margin-top: 0px; border-top: 1px solid #ccc;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper new-grid-wrapper">
+                                <table id="workflowCategoryMappingGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none" id="workflowStateMappingDiv">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="workflowStateMappingGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none" id="workflowStateAccessMappingDiv">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="workflowStateAccessMappingGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none" id="workflowStateApprovalStatusDiv">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="wfStateApprovalStatusGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none" id="workflowStateApprovalStatusActionsDiv">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="wfStateApprovalStatusActionsGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsTab-5" class="tab-pane">
+            <div class="panel panel-default ">
+                @*<div class="panel-heading-gray">
+                    <p class="panel-title section-title">Master WorkFlow Design</p>
+                </div>*@
+                <div class="panel-body" style="margin-top: 0px;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper new-grid-wrapper">
+                                <table id="TasklistGrid">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsTab-6" class="tab-pane active">
+            <div class="panel panel-default ">
+                <div class="panel-heading-gray" style="background: #f2f2f2 !important; padding: 10px !important;">
+                    <p class="panel-title section-title" style="margin-bottom: 0px;">Configure Applicable Task</p>
+                </div>
+
+                <div class="panel-body" style="margin-top: 0px;">
+                    <div class="form-inline" style="padding: 10px;">
+                        <div class="form-group">
+                            <label>Select WorkFlow State</label>
+                            <span class="select-wrapper">
+                                <select class="form-control" id="applicableWorkflowState">
+                                </select>
+                            </span>
+                            <button id="btnSaveApplicableTask" type="button" class="btn btn-md pull-right" style="margin-left:168px;">Save</button>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="col-xs-5">
+                            <div>
+                                <label class="help-block">Non Selected Task List</label>
+                            </div>
+                            <div class="grid-wrapper new-grid-wrapper left-sidebar">
+                                <table id="tblTaskList"></table>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 text-center">
+                            <div class="row" style="padding-top: 185px;">
+                                <button class="btn btn-xs" title="Add" id="addTask">
+                                    <i class="material-icons">&#xE5CC;</i>
+                                </button>
+                            </div>
+                            <div class="row" style="padding-top: 10px;">
+                                <button class="btn btn-xs" title="Remove" id="removeTask">
+                                    <i class="material-icons">&#xE5CB;</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <label class="help-block">Selected Task List</label>
+                            <div>
+                                <div class="grid-wrapper new-grid-wrapper right-sidebar">
+                                    <table id="selectedTaskListGrid"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <div class="col-xs-12">
+                                <div class="btn pull-right btn-padding">
+                              <button id="btnSaveApplicableTeamUsers" type="button" class="btn">Save</button>
+                                </div>
+                            </div>
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="workflowcategorydesigndialog">
+        <form>
+            <div class="form-group">
+                <div class="row form-group" id="categoryname">
+                    <div class="col-sm-12">
+                        <label class="control-label">Category Name</label><em>*</em>
+                        <select class="form-control" id="categorynamelist"></select>
+                        <span class="help-block" id="categorynameError"></span>
+                    </div>
+
+                </div>
+
+                <div class="row form-group" id="accountType" style="display: none">
+                    <div class="col-xs-12">
+                        <label class="control-label">Account Type</label><em>*</em>
+                        @Html.DropDownList("accounttypelist", new List<SelectListItem>
+                                        {
+                                          new SelectListItem{ Text = "PORTFOLIO", Value = "1" },
+                                          //new SelectListItem{ Text = "NONPORTFOLIO", Value = "2" }
+                                          new SelectListItem{ Text = "ACCOUNT", Value = "2" }//EQN-1816
+                                        }, new { @class = "form-control" })
+                        <span class="help-block" id="accounttypeError"></span>
+                    </div>
+
+                </div>
+                <div class="row form-group" id="workflowType" style="display: none">
+                    <div class="col-xs-12">
+                        <label class="control-label">Workflow Type</label><em>*</em>
+                        @Html.DropDownList("workflowtypelist", new List<SelectListItem>
+                                        {
+                                          new SelectListItem{ Text = "SEQUENTIAL", Value = "1" },
+                                          new SelectListItem{ Text = "HYBRID", Value = "2" }
+                                        }, new { @class = "form-control" })
+                        <span class="help-block" id="workflowtypeError"></span>
+                    </div>
+
+                </div>
+                @*<div class="row form-group">
+                        <div class="col-xs-12">
+                            <label class="control-label" for="wfCategoryEffectivedate">Effective Date</label><em>*</em>
+
+                            <input type="text" class="form-control" id="wfCategoryEffectivedate" placeholder="Enter Effective Date" maxlength="10" />
+                            <span id="wfCategoryEffectivedateHelpblock" class="help-block"></span>
+                    </div>*@
+
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="workflowstatesdesigndialog">
+        <form>
+            <div class="form-group">
+                <label for="wfstatenamelist">WorkFlow State Name</label><em>*</em>
+                <select class="form-control" id="wfstatenamelist"></select>
+                <span class="help-block"></span>
+                <div id="wfstatesequenceDiv" style="display: none">
+                    <label for="wfstatesequencelist">State Sequence</label><em>*</em>
+                    <select class="form-control" id="wfstatesequencelist"></select>
+                    <span class="help-block" id="wfstatesequenceError"></span>
+                </div>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="masterWorkflowDesignDialog">
+        <form>
+            <div class="form-group">
+                <label for="masterWorkflowData">WorkFlow State Name</label><em>*</em>
+                <input type="text" class="form-control" id="masterWorkflowData" />
+                <span class="help-block"></span>
+            </div>
+            <button type="button" class="pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="wfStateApprovalStatusDesignDialog">
+        <form>
+            <div class="form-group">
+                <label for="wfApprovalTypeList">State Approval Type</label><em>*</em>
+                <select class="form-control" id="wfApprovalTypeList"></select>
+                <span class="help-block" id="wfApprovalTypeError"></span>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="taskDialog">
+        <form>
+            <div class="form-group">
+                <label for="masterWorkflowData">Task Name</label><em>*</em>
+                <input type="text" class="form-control" id="taskname" />
+                <span class="help-block"></span>
+                <input type="checkbox" name="IsStandardCheck" id="IsStandardCheck" value="IsStandardCheck">   <b>  Is standard state</b><br>
+            </div>
+            <button type="button" class="pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="workflowStateAccessDesignDialog">
+        <form>
+            <div class="form-group">
+                <label for="userRolelist">User Role</label><em>*</em>
+                <select class="form-control" id="userRolelist"></select>
+                <span class="help-block" id="userRoleError"></span>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="wfStateApprovalStatusActionsDesignDialog">
+        <form>
+            <div class="form-group">
+                <div class="row form-group" id="actionEmail" style="display: none;">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="control-label">Email Notification</label><em>*</em>
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" id="actionEmailText" maxlength="100" placeholder="Enter Email ID" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-8">
+                            <span class="help-block" id="actionEmailError"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row form-group" id="actionStates" style="display: none;">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="control-label" id="actionStatesLabel">Move To State on Success</label><em>*</em>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <select class="form-control" id="actionStatesList"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-8">
+                            <span class="help-block" id="actionStatesError"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    setMenu("settings");
+</script>

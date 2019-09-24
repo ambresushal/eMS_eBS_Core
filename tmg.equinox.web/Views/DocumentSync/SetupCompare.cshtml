@@ -1,0 +1,67 @@
+﻿<h5>
+    <span style="padding-right:20px">Select a Macro</span>
+    <button id="cmdSelectMacro" class="btn-default btn">Select</button>
+</h5>
+
+<div id="dvSelectedMacro" style="display:none" class="grid-wrapper new-grid-wrapper">
+    <div class="basic-grid">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>Macro Name</th>
+                    <th id="tdMacroName"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Macro Notes</td>
+                    <td id="tdMacroNotes"></td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <a id="viewExistingMacro" href="#" style="display:none;" onclick="this.style.visibility='hidden';">View Macro</a>
+                        <a id="existingMacro" href="#">Edit Existing Macro</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="setupCompare-wrapper">
+    <div class="row">
+        <div class="col-md-8" style="padding-top: 0; padding-right: 0px;  border-right: 15px solid #ebebeb;">
+          <div class="grid-wrapper new-grid-wrapper">
+            <table id="elementList"></table>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding-top: 0;  padding-right: 0px;  border-left: 0px solid #ebebeb;">
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="grid-wrapper">
+                    <table id="childElementList"></table>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="grid-wrapper">
+                    <table id="repeaterKeyList"></table>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="selectMacroDialog" style="display:none">
+  <div class="grid-wrapper">
+    <table id="macroGrid"></table>
+  </div>
+</div>
+<script type="text/javascript">
+    var roleID = @ViewBag.RoleId
+</script>
+
+

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20055D5E-22DB-4DE3-A164-7A743E0F0205}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.repository</RootNamespace>
+    <AssemblyName>tmg.equinox.repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EFCache">
+      <HintPath>..\packages\EntityFramework.Cache.1.0.0-beta2\lib\net45\EFCache.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\EfConfiguration.cs" />
+    <Compile Include="Context\ReportingCenterContext.cs" />
+    <Compile Include="Context\UIFrameworkContext.cs" />
+    <Compile Include="Models\Mapping\AccountFolderCreationPermissionMap.cs" />
+    <Compile Include="Models\Mapping\AccessFilesMap.cs" />
+    <Compile Include="Models\Mapping\ApiActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\BenefitMappingMap.cs" />
+    <Compile Include="Models\Mapping\BenefitsDictionaryMap.cs" />
+    <Compile Include="Models\Mapping\CCRTranslatorQueueMap.cs" />
+    <Compile Include="Models\Mapping\CollateralImagesMap.cs" />
+    <Compile Include="Models\Mapping\CollateralProcessUploadMap.cs" />
+    <Compile Include="Models\Mapping\ConfigRulesTesterDataMap.cs" />
+    <Compile Include="Models\Mapping\DocumentUpdateTrackerMap.cs" />
+    <Compile Include="Models\Mapping\ExportPreQueueMap.cs" />
+    <Compile Include="Models\Mapping\ExportPreQueueLogMap.cs" />
+    <Compile Include="Models\Mapping\ExitValidateQueueMap.cs" />
+    <Compile Include="Models\Mapping\ExitValidateResultMap.cs" />
+    <Compile Include="Models\Mapping\ComplexOperatorMap.cs" />
+    <Compile Include="Models\Mapping\JsonMap.cs" />
+    <Compile Include="Models\Mapping\TargetRepeaterKeyFilterMap.cs" />
+    <Compile Include="Models\Mapping\RepeaterKeyFilterMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignUserSettingMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignVersionExtMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceComplianceValidationlogMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceCommentLogMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceRuleExecutionLogMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceRuleExecutionServerLogMap.cs" />
+    <Compile Include="Models\Mapping\ManualDataUpdatesMap.cs" />
+    <Compile Include="Models\Mapping\MessageDataMap.cs" />
+    <Compile Include="Models\Mapping\MigrationBatchsMap.cs" />
+    <Compile Include="Models\Mapping\MigrationBatchSectionMap.cs" />
+    <Compile Include="Models\Mapping\NotificationstatusMap.cs" />
+    <Compile Include="Models\Mapping\ProcessGovernanceMap.cs" />
+    <Compile Include="Models\Mapping\VBIDExportToMDBMappingMap.cs" />
+    <Compile Include="Models\Mapping\QHPReportingQueueDetailsMap.cs" />
+    <Compile Include="Models\Mapping\QHPReportingQueueMap.cs" />
+    <Compile Include="Models\Mapping\SchemaVersionActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\MigrationPlansMap.cs" />
+    <Compile Include="Models\Mapping\AccountFolderMapMap.cs" />
+    <Compile Include="Models\Mapping\AccountMap.cs" />
+    <Compile Include="Models\Mapping\AccountProductMapMap.cs" />
+    <Compile Include="Models\Mapping\AlternateUIElementLabelMap.cs" />
+    <Compile Include="Models\Mapping\ApplicableTeamMap.cs" />
+    <Compile Include="Models\Mapping\ApplicableTeamUserMapMap.cs" />
+    <Compile Include="Models\Mapping\ApplicationDataTypeMap.cs" />
+    <Compile Include="Models\Mapping\ApprovalStatusTypeMap.cs" />
+    <Compile Include="Models\Mapping\AttributeMap.cs" />
+    <Compile Include="Models\Mapping\AuditReportMap.cs" />
+    <Compile Include="Models\Mapping\AutoSaveSettingsMap.cs" />
+    <Compile Include="Models\Mapping\BatchExecutionMap.cs" />
+    <Compile Include="Models\Mapping\BatchExecutionStatusMap.cs" />
+    <Compile Include="Models\Mapping\BatchIASMapMap.cs" />
+    <Compile Include="Models\Mapping\BatchMap.cs" />
+    <Compile Include="Models\Mapping\CalendarUIElementMap.cs" />
+    <Compile Include="Models\Mapping\CheckBoxUIElementMap.cs" />
+    <Compile Include="Models\Mapping\CollateralProcessGovernanceMap.cs" />
+    <Compile Include="Models\Mapping\CollateralProcessQueueMap.cs" />
+    <Compile Include="Models\Mapping\CollateralProcessQueueStatusMap.cs" />
+    <Compile Include="Models\Mapping\ConsortiumMap.cs" />
+    <Compile Include="Models\Mapping\CopyFromAuditTrailMap.cs" />
+    <Compile Include="Models\Mapping\DataCopyModeMap.cs" />
+    <Compile Include="Models\Mapping\DataSourceElementDisplayModeMap.cs" />
+    <Compile Include="Models\Mapping\DataSourceMap.cs" />
+    <Compile Include="Models\Mapping\DataSourceMappingMap.cs" />
+    <Compile Include="Models\Mapping\DataSourceModeMap.cs" />
+    <Compile Include="Models\Mapping\DataSourceOperatorMappingMap.cs" />
+    <Compile Include="Models\Mapping\DateDataValueMap.cs" />
+    <Compile Include="Models\Mapping\DocumentDesignTypeMap.cs" />
+    <Compile Include="Models\Mapping\DocumentRuleEventMapMap.cs" />
+    <Compile Include="Models\Mapping\DocumentRuleEventTypeMap.cs" />
+    <Compile Include="Models\Mapping\DocumentRuleMap.cs" />
+    <Compile Include="Models\Mapping\DocumentRuleTargetTypeMap.cs" />
+    <Compile Include="Models\Mapping\DocumentRuleTypeMap.cs" />
+    <Compile Include="Models\Mapping\DPFPlanTaskUserMappingMap.cs" />
+    <Compile Include="Models\Mapping\DropDownElementItemMap.cs" />
+    <Compile Include="Models\Mapping\DropDownUIElementMap.cs" />
+    <Compile Include="Models\Mapping\ElementDocumentRuleMap.cs" />
+    <Compile Include="Models\Mapping\EmailLogMap.cs" />
+    <Compile Include="Models\Mapping\EmailNotificationQueueHistoryMap.cs" />
+    <Compile Include="Models\Mapping\EmailNotificationQueueMap.cs" />
+    <Compile Include="Models\Mapping\EmailTemplateMap.cs" />
+    <Compile Include="Models\Mapping\EmailTemplatePlaceHolderMap.cs" />
+    <Compile Include="Models\Mapping\EmailTemplatePlaceHolderMappingMap.cs" />
+    <Compile Include="Models\Mapping\ErrorLogMap.cs" />
+    <Compile Include="Models\Mapping\ExpressionGuMap.cs" />
+    <Compile Include="Models\Mapping\ExpressionMap.cs" />
+    <Compile Include="Models\Mapping\ExpressionTypeMap.cs" />
+    <Compile Include="Models\Mapping\FolderLockMap.cs" />
+    <Compile Include="Models\Mapping\FolderMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionBatchMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionCategoryMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionGroupMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionStateMap.cs" />
+    <Compile Include="Models\Mapping\FolderVersionWorkFlowStateMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignAccountPropertyMapMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignDataPathMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignElementValueMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignGroupMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignGroupMappingMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignHistoryMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignMappingMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignTypeMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignVersionMap.cs" />
+    <Compile Include="Models\Mapping\FormDesignVersionUIElementMapMap.cs" />
+    <Compile Include="Models\Mapping\FormGroupFolderMapMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceDataMapMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceHistoryMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceIDsQueueForReportingMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceProxyNumberMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceRepeaterDataMapMap.cs" />
+    <Compile Include="Models\Mapping\FormInstanceViewImpactLogMap.cs" />
+    <Compile Include="Models\Mapping\FormReferenceMapMap.cs" />
+    <Compile Include="Models\Mapping\FormReportMap.cs" />
+    <Compile Include="Models\Mapping\FormReportVersionMap.cs" />
+    <Compile Include="Models\Mapping\FormReportVersionMapMap.cs" />
+    <Compile Include="Models\Mapping\FormVersionObjectVersionMapMap.cs" />
+    <Compile Include="Models\Mapping\GlobalUpateExecutionLogMap.cs" />
+    <Compile Include="Models\Mapping\GlobalUpdateMap.cs" />
+    <Compile Include="Models\Mapping\GlobalUpdateStatusMap.cs" />
+    <Compile Include="Models\Mapping\IASElementExportMap.cs" />
+    <Compile Include="Models\Mapping\IASElementImportMap.cs" />
+    <Compile Include="Models\Mapping\IASFileUploadMap.cs" />
+    <Compile Include="Models\Mapping\IASFolderMapMap.cs" />
+    <Compile Include="Models\Mapping\IASWizardStepMap.cs" />
+    <Compile Include="Models\Mapping\InterestedFolderVersionMap.cs" />
+    <Compile Include="Models\Mapping\JournalActionMap.cs" />
+    <Compile Include="Models\Mapping\JournalMap.cs" />
+    <Compile Include="Models\Mapping\JournalResponseMap.cs" />
+    <Compile Include="Models\Mapping\KeyProductUIElementMapMap.cs" />
+    <Compile Include="Models\Mapping\LayoutTypeMap.cs" />
+    <Compile Include="Models\Mapping\LogicalOperatorTypeMap.cs" />
+    <Compile Include="Models\Mapping\MarketSegmentMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeBatchDetailMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeBatchMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeDocumentRuleMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeStatusMap.cs" />
+    <Compile Include="Models\Mapping\MasterListCascadeTargetDocumentTypeMap.cs" />
+    <Compile Include="Models\Mapping\MasterListImportMap.cs" />
+    <Compile Include="Models\Mapping\MasterListTempleteMap.cs" />
+    <Compile Include="Models\Mapping\NumericDataValueMap.cs" />
+    <Compile Include="Models\Mapping\ObjectDefinitionMap.cs" />
+    <Compile Include="Models\Mapping\ObjectInstanceMap.cs" />
+    <Compile Include="Models\Mapping\ObjectRelationMap.cs" />
+    <Compile Include="Models\Mapping\ObjectTreeMap.cs" />
+    <Compile Include="Models\Mapping\ObjectVersionAttribXrefMap.cs" />
+    <Compile Include="Models\Mapping\ObjectVersionMap.cs" />
+    <Compile Include="Models\Mapping\OONGroupEntryMap.cs" />
+    <Compile Include="Models\Mapping\OperatorTypeMap.cs" />
+    <Compile Include="Models\Mapping\PBPDatabaseNameMap.cs" />
+    <Compile Include="Models\Mapping\PBPDataMapMap.cs" />
+    <Compile Include="Models\Mapping\PBPExportActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\PBPExportQueueMap.cs" />
+    <Compile Include="Models\Mapping\PBPExportToMDBMappingMap.cs" />
+    <Compile Include="Models\Mapping\PBPImportActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\PBPImportDetailsMap.cs" />
+    <Compile Include="Models\Mapping\PBPImportEmailNotificationMap.cs" />
+    <Compile Include="Models\Mapping\PBPImportQueueMap.cs" />
+    <Compile Include="Models\Mapping\PBPImportTablesMap.cs" />
+    <Compile Include="Models\Mapping\PBPMatchConfigMap.cs" />
+    <Compile Include="Models\Mapping\PBPMedicareMapMap.cs" />
+    <Compile Include="Models\Mapping\PBPSoftwareVersionMap.cs" />
+    <Compile Include="Models\Mapping\PBPUserActionMap.cs" />
+    <Compile Include="Models\Mapping\PBPViewMapMap.cs" />
+    <Compile Include="Models\Mapping\ProcessStatusMasterMap.cs" />
+    <Compile Include="Models\Mapping\PropertyRuleMapMap.cs" />
+    <Compile Include="Models\Mapping\RadioButtonUIElementMap.cs" />
+    <Compile Include="Models\Mapping\RegexLibraryMap.cs" />
+    <Compile Include="Models\Mapping\RelationKeyMap.cs" />
+    <Compile Include="Models\Mapping\RepeaterKeyUIElementMap.cs" />
+    <Compile Include="Models\Mapping\RepeaterUIElementMap.cs" />
+    <Compile Include="Models\Mapping\RepeaterUIElementPropertyMap.cs" />
+    <Compile Include="Models\Mapping\ReportCoveredServicesMap.cs" />
+    <Compile Include="Models\Mapping\ReportDetailsMap.cs" />
+    <Compile Include="Models\Mapping\ReportFormatTypeMap.cs" />
+    <Compile Include="Models\Mapping\ReportingTableColumnInfoMap.cs" />
+    <Compile Include="Models\Mapping\ReportingTableInfoMap.cs" />
+    <Compile Include="Models\Mapping\ReportMap.cs" />
+    <Compile Include="Models\Mapping\ReportQueueDetailMap.cs" />
+    <Compile Include="Models\Mapping\ReportQueueMap.cs" />
+    <Compile Include="Models\Mapping\ReportSettingMap.cs" />
+    <Compile Include="Models\Mapping\ReportTypeMap.cs" />
+    <Compile Include="Models\Mapping\ResourceLockMap.cs" />
+    <Compile Include="Models\Mapping\RuleGuMap.cs" />
+    <Compile Include="Models\Mapping\RuleMap.cs" />
+    <Compile Include="Models\Mapping\RuleTargetTypeMap.cs" />
+    <Compile Include="Models\Mapping\SBCollateralProcessQueueMap.cs" />
+    <Compile Include="Models\Mapping\SBCReportServiceMasterMap.cs" />
+    <Compile Include="Models\Mapping\SectionUIElementMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDefinitionMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDesignMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDesignVersionMap.cs" />
+    <Compile Include="Models\Mapping\ServiceDesignVersionServiceDefinitionMapMap.cs" />
+    <Compile Include="Models\Mapping\ServiceParameterMap.cs" />
+    <Compile Include="Models\Mapping\SettingDefinitionMap.cs" />
+    <Compile Include="Models\Mapping\StatusMap.cs" />
+    <Compile Include="Models\Mapping\StringDataValueMap.cs" />
+    <Compile Include="Models\Mapping\SyncDocumentLogMap.cs" />
+    <Compile Include="Models\Mapping\SyncDocumentMacroMap.cs" />
+    <Compile Include="Models\Mapping\SyncGroupLogMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TabUIElementMap.cs" />
+    <Compile Include="Models\Mapping\TargetPropertyMap.cs" />
+    <Compile Include="Models\Mapping\TaskCommentsMap.cs" />
+    <Compile Include="Models\Mapping\TaskListMap.cs" />
+    <Compile Include="Models\Mapping\TemplateMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportActivityLogMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportFormDesignVersionMapMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportLocationMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportParameterMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportRoleAccessPermissionMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportVersionMap.cs" />
+    <Compile Include="Models\Mapping\TemplateReportVersionParameterMap.cs" />
+    <Compile Include="Models\Mapping\TemplateUIMapMap.cs" />
+    <Compile Include="Models\Mapping\TenantMap.cs" />
+    <Compile Include="Models\Mapping\TextBoxUIElementMap.cs" />
+    <Compile Include="Models\Mapping\UIElementMap.cs" />
+    <Compile Include="Models\Mapping\UIElementTypeMap.cs" />
+    <Compile Include="Models\Mapping\UploadTemplateMap.cs" />
+    <Compile Include="Models\Mapping\UserActivityMap.cs" />
+    <Compile Include="Models\Mapping\UserClaimMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Mapping\UserRoleAssocMap.cs" />
+    <Compile Include="Models\Mapping\UserRoleMap.cs" />
+    <Compile Include="Models\Mapping\ValidatorMap.cs" />
+    <Compile Include="Models\Mapping\VersionTypeMap.cs" />
+    <Compile Include="Models\Mapping\WFStatesApprovalTypeActionMap.cs" />
+    <Compile Include="Models\Mapping\WFVersionStatesApprovalTypeMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowActionMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowCategoryMappingMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateApprovalTypeMasterMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateFolderVersionMapMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateGroupMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateMasterMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowStateUserMapMap.cs" />
+    <Compile Include="Models\Mapping\WorkflowTaskMapMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowVersionStatesAccessMap.cs" />
+    <Compile Include="Models\Mapping\WorkFlowVersionStatesMap.cs" />
+    <Compile Include="Repository\DBContextExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RptUnitOfWork.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <None Include="Models\Mapping\UIElementMap.cs.bak" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

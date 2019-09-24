@@ -1,0 +1,57 @@
+Coding guidelines for Javascript:
+A. General:
+1. No javascript to be used in cshtml or html files. Javascript code should only be present in .js files.
+
+2. Use Camel Case to declare variables, functions and properties.
+	Example: 
+		var formDesign;
+		function loadFormDesignGrid
+
+3. DO NOT declare global variables or functions. Variables should be enclosed within a function / module.
+   Exceptions would be when we are declaring a module using a function or declaring a prototype with the function constructor.
+   This will reduce significantly the name clashes between variable and function names across different javascript files.
+   Also will help in maintaining reusable code.
+   
+   Example: For variables or functions that are used by different javascript modules:
+   /* INCORRECT  - NOT ALLOWED */
+   var numberOfDocuments; 
+   function saveDocument(){   
+   }
+   function readDocument(){   
+   }
+
+   /* CORRECT  - ALLOWED */
+   //only the documentManager variable is declared
+   //saveDocument and readDocument are functions returned when this is invoked
+   var documentManager = function(){			
+		var numberOfDocuments;
+		return {
+			saveDocument :  function(){
+			
+			},
+			readDocument :  function(){
+			
+			}
+		}
+   }(); //Invoke soon after declaration
+
+4. Declaring an object that will have multiple instances which will operate on peoperties specific to the instance:
+
+   - Use the constructor function and use prototype based inheritance
+   Example:
+   /* DECLARATION */
+   function personalInformation(firstName, lastName){
+		this.firstName = firstName;
+		this.lastName - lastName;
+	}
+	personalInformation.prototype.getFullName(){
+		return this.firstName + " " + this.lastName;
+	}
+
+	/* USAGE */
+	var personA = new personalInformation("Bill","Gates");
+	personA.getFullName(); // will return Bill Gates
+	var personB = new personalInformation("Steve","Jobs");
+    personB.getFullName(); // will return Steve Jobs
+
+5. 

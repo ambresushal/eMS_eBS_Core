@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "eBenefitSync Design";
+    Layout = "~/Views/Shared/JournalReportLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Journal Report</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="dropdown">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>
+        <li>
+            <a href="~/FolderVersionReport/ChangeSummaryReport">Change Summary</a>
+        </li>
+        <li class="active">
+            <a href="~/JournalReport/JournalEntryReport">Journal Collateral</a>
+        </li>
+        <li>
+            <a href="~/PrintTemplate/PDFConfiguration">Configuration</a>
+        </li>
+    </ul>
+</div>
+<!-- <ul class="nav nav-pills nav-pills-child">
+   <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+   <li><a href="~/DocumentCollateral/GenerateReports">General Collateral</a></li>
+   <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+   <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+</ul> -->
+<div class="layout-wrapper">
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="journalReportDiv">
+                    <div class="panel panel-default" style="display: block">
+                        <!-- <div class="panel-heading-gray">
+                            <p class="panel-title section-title">Journal Report</p>
+                        </div> -->
+                        <div class="panel-body">
+                            <div class="row selectChangeSummeryPanel">
+                                  <!--  <div class="col-md-3">
+                                        <div><label>Select an Account</label></div>
+                                        <select class="form-control" id="sourceAccountDDL" disabled="disabled">
+                                            <option value="0">--Select--</option>
+                                            <option value="1">Portfolio Folder</option>
+                                            <option value="2">Account Folder</option>
+                                        </select>
+                                        <span class="help-block" id="sourceAccountDDLHelpBlock"></span>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <div><label>Select a Folder</label></div>
+                                        <select class="form-control" id="sourceFolderNameDDL" disabled="disabled">
+                                            <option value="0">--Select--</option>
+                                        </select>
+                                        <span class="help-block" id="sourceFolderNameDDLHelpBlock"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div><label>Select a Folder Version</label></div>
+                                        <span class="select-wrapper block">
+                                        <select class="form-control" id="sourceFolderVersionDDL" disabled="disabled">
+                                            <option value="0">--Select--</option>
+                                        </select>
+                                        </span>
+                                        <span class="help-block" id="sourceFolderVersionDDLHelpBlock"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Select a Document</label>
+                                        <select class="form-control" id="sourceFormInstanceDDL" disabled="disabled">
+                                            <option value="0">--Select--</option>
+                                        </select>
+                                        <span class="help-block" id="sourceFormInstanceDDLHelpBlock"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div><label>Include Previous Version Entries</label></div>
+                                        <input type="checkbox" name="LoadVersion" id="isPreviousVersionCheck" />
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="grid-wrapper">
+                                      <table id="journalReportGrid"></table>
+                                    <div id="pjournalReportGrid">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="btn pull-right btn-padding" style="margin-top: 15px;">
+                                <button id="btnViewReportForm" type="button" class="btn btn-md">View Collateral</button>
+                                <button id="btnCancel" type="button" class="btn btn-md ">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+    setMenu("Reporting");
+</script>

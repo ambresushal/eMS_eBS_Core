@@ -1,0 +1,45 @@
+	{
+		"documentrule": {
+			"targetelement": "AnthemBusinessDesign[BenefitsReview.BenefitReviewGrid]",
+			"ruleconditions": {
+				"sources": [
+					{
+						"sourcename": "A",
+						"sourceelement": "AnthemBusinessDesign[StandardServices.StandardServiceList]"
+					},
+					{
+						"sourcename": "B",
+						"sourceelement": "AnthemBusinessDesign[Network.NetworkTierList]"
+					},
+					{
+						"sourcename": "C",
+						"sourceelement": "AnthemBusinessDesign[BenefitsReview.BenefitReviewGrid]"
+					},
+					{
+						"sourcename": "D",
+						"sourceelement": "StandardServices[StandardServiceDetails.StandardServiceDetailsList]"
+					},
+					{
+						"sourcename": "E",
+						"sourceelement": "AnthemBusinessDesign[AdditionalServices.AdditionalServicesList]"
+					},
+					{
+						"sourcename": "F",
+						"sourceelement": "AnthemBusinessDesign[CostShare.Coinsurance.CoinsuranceList]"
+					},
+					{
+						"sourcename": "G",
+						"sourceelement": "AnthemBusinessDesign[CostShare.Deductible.Selecttheapplicabletier]"
+					}
+				],
+				"sourcemergelist": {
+					"sourcemergeactions": [
+						{
+							"sourcemergetype": "script",
+							"sourcemergeexpression": "SETDEFAULTROW(target, \"{'BenefitCategory1':'','BenefitCategory2':'','BenefitCategory3':'','LimitsPlanOptions':'','NetworkTier':'','BenefitNotes':'','Covered':'','Copay':'','Coinsurance':'','Deductible':'','IndividualDeductible':'','FamilyDeductible':'','AdditionalCoverageLevel':'','RolltoMME':''}\");IF(COUNT(c)==0){SET(c, CREATETOKEN(\"{'BenefitCategory1':'','BenefitCategory2':'','BenefitCategory3':'','LimitsPlanOptions':'','NetworkTier':'','BenefitNotes':'','Covered':'','Copay':'','Coinsurance':'','Deductible':'','IndividualDeductible':'','FamilyDeductible':'','AdditionalCoverageLevel':'','RolltoMME':''}\"));}SET(namePart, FILTERLIST(a, 0, \"\", \"\", \"Name\"));SET(standardservices, FILTERLIST(a, 0, \"MLMedicalServicesList\", \"\", \"BenefitCategory1,BenefitCategory2,BenefitCategory3,Covered\"));SET(emptyStandardServiceList, EXCEPT(c, standardservices, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\")); IF(COUNT(namePart) > 0){SET(network, FILTERLIST(b, \"\", \"\", \"\", \"NetworkTier,Benefitnotes\")); SET(networkServices, CROSSJOIN(standardservices, network)); SET(copay, CREATETOKEN(\"{'Copay':'N/A'}\")); SET(brgservices, CROSSJOIN(networkServices, copay)); SET(servicestoadd, EXCEPT(brgservices, c, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\")); SET(servicestodelete, EXCEPT(c, brgservices, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\")); SET(brgpart, CREATETOKEN(\"{'LimitsPlanOptions':'','BenefitNotes':'','Coinsurance':'','Deductible':'','IndividualDeductible':'','FamilyDeductible':'','AdditionalCoverageLevel':'','RolltoMME':''}\")); SET(servicestoadd, CROSSJOIN(servicestoadd, brgpart)); SET(allservices, UNION(c, servicestoadd, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\")); SET(coinsurancelist, FILTERLIST(f, \"CoinsuranceType=[Plan]\", \"AnchorPlanNetwork\", \"\", \"NetworkTier,CoinsurancePercent\")); SET(filtercondition, \"NetworkTier=[value]\"); SET(index, 0); SET(dedcount, COUNT(g)); SET(noncoveredservices, \"{'Coinsurance':'N/A','Deductible':'N/A'}\"); SET(coinsurance, \"{'Coinsurance':'<percent>'}\"); SET(deductible, \"{'Deductible':'<val>'}\"); SET(benefitNotes, \"{'BenefitNotes':'<value>'}\"); SET(networkcount, COUNT(network)); WHILE(index < networkcount){SET(networkname, FILTERLIST(network, index, \"\", \"\", \"NetworkTier\")); SET(networkvalue, GETVAL(networkname, \"NetworkTier\")); SET(rowFilterBenNotes, REPLACE(filtercondition, \"value\", networkvalue)); SET(benNotesrow, FILTERLIST(network, rowFilterBenNotes, \"\", \"\", \"NetworkTier,Benefitnotes\")); SET(benNotesVal, GETVAL(benNotesrow, \"Benefitnotes\")); SET(updatebenNoteswith, REPLACE(benefitNotes, \"<value>\", benNotesVal)); SET(allservices, UPDATEARRAY(allservices, rowFilterBenNotes, updatebenNoteswith)); IF(dedcount > 0){SET(rowFilterDed, REPLACE(filtercondition, \"value\", networkvalue)); SET(rowFilterCoin, REPLACE(filtercondition, \"value\", networkvalue)); SET(deductibleRow, FILTERLIST(g, rowFilterDed, \"\", \"\", \"NetworkTier,Isdeductiblestandardlyappliedtononroutineservices\")); SET(deductibleVal, GETVAL(deductibleRow, \"Isdeductiblestandardlyappliedtononroutineservices\")); SET(updatedeductwith, REPLACE(deductible, \"<val>\", deductibleVal)); SET(updateFilterDed, APPEND(rowFilterDed, \"&Covered=[Yes]\")); SET(allservices, UPDATEARRAY(allservices, updateFilterDed, updatedeductwith)); SET(coinetpercent, FILTERLIST(coinsurancelist, rowFilterCoin, \"\", \"\", \"NetworkTier,CoinsurancePercent\")); SET(coinpercent, GETVAL(coinetpercent, \"CoinsurancePercent\")); SET(updatecoinwith, REPLACE(coinsurance, \"<percent>\", coinpercent)); SET(updateFilterCoin, APPEND(rowFilterCoin, \"&Covered=[Yes]\")); SET(allservices, UPDATEARRAY(allservices, updateFilterCoin, updatecoinwith));}ELSE{SET(rowFilter, REPLACE(filtercondition, \"value\", networkvalue)); SET(coinetpercent, FILTERLIST(coinsurancelist, rowFilter, \"\", \"\", \"NetworkTier,CoinsurancePercent\")); SET(coinpercent, GETVAL(coinetpercent, \"CoinsurancePercent\")); SET(updatecoinwith, REPLACE(coinsurance, \"<percent>\", coinpercent)); SET(updateFilter, APPEND(rowFilter, \"&Covered=[Yes]\")); SET(allservices, UPDATEARRAY(allservices, updateFilter, updatecoinwith));}SET(index, index + 1);}SET(allservices, UPDATEARRAY(allservices, \"Covered=[No]\", noncoveredservices)); SETARRAY(target, allservices); SLICEARRAY(target, servicestodelete, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\");}ELSE{SLICEARRAY(target, emptyStandardServiceList, \"BenefitCategory1,BenefitCategory2,BenefitCategory3,NetworkTier\");}"
+						}
+					]
+				}
+			}
+		}
+	}

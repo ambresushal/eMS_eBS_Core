@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "eBenefitSync Design";
+    Layout = "~/Views/Shared/FolderVersionReportLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Change Summary</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="dropdown">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>
+        <li class="active">
+            <a href="~/FolderVersionReport/ChangeSummaryReport">Change Summary</a>
+        </li>
+        <li>
+            <a href="~/JournalReport/JournalEntryReport">Journal Collateral</a>
+        </li>
+        <li>
+            <a href="~/PrintTemplate/PDFConfiguration">Configuration</a>
+        </li>
+    </ul>
+</div>
+<!-- <ul class="nav nav-pills nav-pills-child">
+   <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+   <li><a href="~/DocumentCollateral/GenerateReports">General Collateral</a></li>
+   <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+   <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+</ul> -->
+<div class="layout-wrapper">
+    <div class="panel-body">
+        <div class="panel panel-default">
+ <div class="panel-body">
+ <div id="changeSummaryDiv" >
+    <div class="panel panel-default" style="display:block">
+      <!-- <div class="panel-heading-gray"><p class="panel-title section-title"> Change Summary</p></div> -->
+        <div class="panel-body">
+                <div class="row selectChangeSummeryPanel">
+                    <div class="col-md-3">
+                        <div><label>Select a Folder</label></div>
+                          <select class="form-control" id="sourceFolderNameDDL" disabled="disabled">
+                        <option value="0">--Select--</option>
+                    </select>
+                        <span class="help-block" id="sourceFolderNameDDLHelpBlock"></span>
+                </div>
+                    <div class="col-md-3">
+                        <div><label>Select a Folder Version</label></div>
+                        <span class="select-wrapper block">
+                          <select class="form-control" id="sourceFolderVersionDDL" disabled="disabled">
+                          <option value="0">--Select--</option>
+                    </select>
+                        </span>
+                        <span class="help-block" id="sourceFolderVersionDDLHelpBlock"></span>
+                </div>
+                    <div class="col-md-3">
+                        <div><label>Select a Folder</label></div>
+                    <select  class="form-control" id="targetFolderNameDDL" disabled="disabled">
+                          <option value="0">--Select--</option>
+                    </select>
+                    <span class="help-block" id="targetFolderNameDDLHelpBlock"></span>
+                </div>
+                    <div class="col-md-3">
+                        <div><label>Select a Folder Version</label></div>
+                        <span class="select-wrapper block">
+                          <select  class="form-control" id="targetFolderVersionDDL" disabled="disabled">
+                          <option value="0">--Select--</option>
+                    </select>
+                        </span>
+                        <span class="help-block" id="targetFolderVersionDDLHelpBlock"></span>
+                </div>                
+                </div>
+                <div class="clearfix">
+                        <div class="btn pull-right btn-padding" style="padding-top:15px">
+                            <button id="btnViewReportForm" type="button" class="btn btn-md">View Collateral</button>
+                            <button id="btnCancel" type="button" class="btn btn-md">Clear</button>
+                </div>
+                    </div>
+                <div style="margin-top:20px">
+                        <!-- <label class="text-muted">
+                            Select the Documents to be included in the Change Summary
+                        </label> -->
+            </div>            
+            <div class="row">
+                        <div>
+                        <div class="grid-wrapper">
+                        <table id="documentChangeSummary">
+                        </table>
+                    </div>
+                </div>         
+                </div>
+                    <!-- <div class="col-sm-12">
+                        <div class="btn pull-left btn-padding">
+                        <button id="btnViewReportForm" type="button" class="btn btn-md">View Collateral</button>
+                        <button id="btnCancel" type="button" class="btn btn-md">Clear</button>
+                </div>        
+                    </div> -->
+            </div>
+        </div>
+    </div>
+     
+     </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+    setMenu("Reporting");
+</script>
+
+
+@*<div style="display: none;">
+    @Html.Partial("FolderDialog")
+</div>*@
+
+

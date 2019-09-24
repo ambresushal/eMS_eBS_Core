@@ -1,0 +1,8 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\bin\Release\NLog.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\bin\Release\tmg.equinox.pbp.logging.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\bin\Release\tmg.equinox.pbp.logging.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\bin\Release\NLog.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\bin\Release\NLog.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\obj\Release\tmg.equinox.pbp.logging.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\obj\Release\tmg.equinox.pbp.logging.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.logging\obj\Release\tmg.equinox.pbp.logging.pdb

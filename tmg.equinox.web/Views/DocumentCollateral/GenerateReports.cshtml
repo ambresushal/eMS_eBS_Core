@@ -1,0 +1,369 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Generate Collateral";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+<style>
+    #first_puploadedCollateralsGrid {
+        display: none;
+    }
+
+    #last_puploadedCollateralsGrid {
+        display: none;
+    }
+    div#pg_pqueuedCollateralsGrid {
+        padding-top:0px;
+    }
+    #pqueuedCollateralsGrid {
+        top: 0;
+    }
+</style>
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title"> Generate Collateral </h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    @*<ul class="nav nav-pills">
+        <li class="dropdown active">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>
+        <li>
+            <a href="~/FolderVersionReport/ChangeSummaryReport">Change Summary</a>
+        </li>
+        <li>
+            <a href="~/JournalReport/JournalEntryReport">Journal Collateral</a>
+        </li>
+        <li>
+            <a href="~/JournalReport/JournalEntryReport">Configuration</a>
+        </li>
+    </ul>*@
+</div>
+<div id="collateralEngine" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+        <li class="active"><a href="~/DocumentCollateral/GenerateReports">Generate Collateral</a></li>
+        <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+        <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+        <li><a href="~/DocumentCollateral/CollateralImages">Collateral Images</a></li>
+        <li><a href="~/DocumentCollateral/ViewUploadedCollaterals">Uploaded Collateral Log</a></li>
+    </ul>
+</div>
+<div id="reportGenerate" style="display: none;">
+    
+    <div id="formdesign-1">
+        <div>
+            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+              <div class="grid-wrapper left-sidebar">
+                <div class="grid-wrapper">
+                <table id="fdgReportgen"></table>
+            </div>
+              </div>
+            </div>
+            <div id="generateReportDiv" class="col-xs-9 col-md-9 col-lg-9 col-sm-9" style="display: normal">
+                <div id="divAccountDetails" style="display: none">
+                    <h5>
+                        <span style="padding-right: 20px">Select Account and Folder</span>
+                        <button id="cmdSelectAccountDetails">Select</button>
+                    </h5>
+                    <div id="accountDetailsDialog" style="display: none">
+                        <div class="grid-wrapper new-pagination-align">
+                            <table id="docSearch"></table>
+                        </div>
+                    </div>
+                    <div id="complianceErrorDialog" style="display: none">
+                        <div class="grid-wrapper">
+                            <div id="viewErrors" style="height: 300px;" class="ag-theme-fresh"></div>
+                        </div>
+                    </div>
+                    <div id="sourceDocument" style="display: none">
+                        <div class="container-wrap">
+                            <table class="table" style="width: 99%">
+                                <tbody>
+                                    @*<tr>
+                                <td>Account Name</td>
+                                <td id="tdAccountName"></td>
+                            </tr>*@
+                                    <tr>
+                                        <td>Folder Name</td>
+                                        <td id="tdFolderName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Folder Version Number</td>
+                                        <td id="tdFolderVersionNumber"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Effective Date</td>
+                                        <td id="tdEffectiveDate"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                @*
+        <table id="accountFolderOpt" style="margin-bottom: 20px; margin-top: 10px; display: none;">
+            <tr>
+                <td>
+                    <label for="accountDropDown" style="margin-top: 10px; margin-left: 15px;">Account: </label>
+                </td>
+                <td>
+                    <select id="accountDropDown" class="form-control hastooltip ddt-dropdown standard-optn" style="width: 170px; margin-left: 10px; margin-right: 30px; margin-top: 7px;">
+                        <option value="">Select</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="folderDropDown" style="margin-top: 10px; margin-left: 15px;">Folder: </label>
+                </td>
+                <td>
+                    <select id="folderDropDown" class="string form-control hastooltip false " style="width: 170px; margin-left: 10px; margin-top: 7px;">
+                        <option value="">Select</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="folderVersionDrpDown" style="margin-top: 10px; margin-left: 15px;">Effective Date: </label>
+                </td>
+                <td>
+                    <select id="folderVersionDrpDown" class="string form-control hastooltip false " style="width: 170px; margin-left: 10px; margin-top: 7px;">
+                        <option value="">Select</option>
+                    </select></td>
+            </tr>
+        </table>
+                *@
+                @*
+        <div>
+            <table id="selectDocumentOptTable" style="margin-bottom: 20px; margin-top: 10px; display: none;">
+                <tr>
+                    <td>
+                        <label id="selectDocumentLabel" for="selectDocumentDrpDown" style="margin-left: 15px;">Select Document: </label>
+                    </td>
+                    <td>
+                        <select id="selectDocumentDrpDown" class="string form-control hastooltip false " style="width: 170px; margin-left: -4px;">
+                            <option value="">Select</option>
+                        </select></td>
+                </tr>
+            </table>
+        </div>
+                *@
+                <div id="divCollateralOptions" style="display: none;">
+                    <div class="form-group row">
+                        <div class="col-xs-2">
+                            <label>Collateral Option : </label>
+                            @Html.Hidden("webConfigCollateralOption", Model)
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="checkbox" id="gemBox" name="collateralOption" value="GemBox" /><label style="margin-left: 5px;">GemBox</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="checkbox" id="interop" name="collateralOption" value="Interop" /><label style="margin-left: 5px;">Interop</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="grid-wrapper">
+                        <table id="documentsInFolder" style="display: none;"></table>
+                    </div>
+                    @*<br />*@
+                    <button type="button" id="UploadCollateralBtn" style="display: none;" class="pull-left">Upload</button>
+                    <button type="button" id="QueueCollateralBtn" style="display: none;" class="pull-right">Queue</button>
+                </div>
+                @*
+                <button type="button" id="generateReportbtn" style="display: none; margin-left: 15px;">Generate</button>*@
+                <button type="button" id="QueueCollateralBtn" style="display: none;" class="pull-right">Queue</button>
+            </div>
+            <div id="generateSBReportDiv" class="col-xs-9 col-md-9 col-lg-9 col-sm-9" style="display: none">
+                <div id="divSBReportDocuments">
+                    <div id="planFamilyDiv" class="row">
+
+                        <div style="height:50px;" class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                            <h5>Plan Family<h5>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6">
+                            <select style="margin-top:10px;" id="planFamily"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="grid-wrapper right-sidebar">
+                        <table id="sourceDocumentList"></table>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="grid-wrapper">
+                        <table id="selectedSourceDocumentList"></table>
+                    </div>
+                </div>
+                </div>
+                <div class="form-group row">
+                    <div id="divCollateralOptions" style="display: none; margin-left: 15px;">
+                        <div class="col-xs-2">
+                            <label>Collateral Option : </label>
+                            @Html.Hidden("webConfigCollateralOption", Model)
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="checkbox" id="gemBox" name="collateralOption" value="GemBox" /><label style="margin-left: 5px;">GemBox</label>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="checkbox" id="interop" name="collateralOption" value="Interop" /><label style="margin-left: 5px;">Interop</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" id="generateCollateralBtn" style="display: none; margin-left: 640px; right: initial">Generate</button>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" id="queueSBDesignCollateralBtn" style="display: none; margin-left: 580px; right: initial">Queue</button>
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" id="uploadSBDesignCollateralBtn" style="display: none; margin-left: -400px;">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+    <div id="collateralQueueDialog" style="display: none">
+        <form>
+            <div class="form-group">
+                <div class="row form-group" style="display: none">
+                    <div class="col-xs-4">
+                        <div style="padding-right: 5px; float: left;">
+                            <input type="radio" value="Real Time" id="collateralQueueType" checked="checked" name="collateralQueueType">
+                        </div>
+                        <label class="radio-label-align-middle">Real Time</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <div style="padding-right: 5px; float: left;">
+                            <input type="radio" value="Schedule" id="collateralQueueType" name="collateralQueueType">
+                        </div>
+                        <label class="radio-label-align-middle">Schedule</label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-6">
+                        <label id="lblAccountName" class="form-control"></label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label id="folderName"></label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-6">
+                        <label id="reportTemplateName"></label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label id="folderVersionEffDt"></label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label id="lblAccountID"></label>
+                    <label id="folderID"></label>
+                    <label id="folderVersionID"></label>
+                </div>
+                <div class="row form-group" id="divDatePicker" style="display: none">
+                    <div class="col-xs-6">
+                        <label for="lblCollateralQueueRunDate">Run Date</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="collateralQueueRunDate" maxlength="100" placeholder="Select Date" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div style="margin-left: 15px;">
+                    <div class="grid-wrapper">
+                    <table id="collaterlDialogDocumentsInFolder" style="display: none;"></table>
+                </div>
+            </div>
+            </div>
+            <button type="button" class="btn btn-default pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+@*       
+    <div class="col-xs-3 copyrights" style="float: left; font-size: 11px; display: none;">
+        <p style="float: left;">Powered by</p>
+        <div class="tmg-logo" style="float: left;">
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+*@
+<div id="comDialog" style="display: none">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Upload docx file</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input name="file" type="file" id="docFile" style="width:100%; cursor:pointer;" readonly />
+                </div>
+            </div>
+            <span class="help-block" id="uploadSpan"></span>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body" style="margin-top: 0px;">
+                <button id="btnUpload" class="pull-left">Convert</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="inkDownload"> </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="comDialog1" style="display: none">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <input id="alreadyConverted508" name="alreadyConverted508" type="checkbox" /> <label id="lblUploadDoc">Upload docx file</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input name="file" type="file" id="docFile1" style="width:100%; cursor:pointer;" readonly />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Upload PrintX file</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input name="file1" type="file" id="docFile2" style="width:100%; cursor:pointer;" readonly />
+                </div>
+            </div>
+            <span class="help-block" id="uploadSpan1"></span>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body" style="margin-top: 0px;">
+                <button id="btnUpload1" class="pull-left">Convert</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="inkDownload1"> </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var vbRole = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    setMenu("collateral");
+</script>

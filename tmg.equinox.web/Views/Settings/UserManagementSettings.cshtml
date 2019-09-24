@@ -1,0 +1,156 @@
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using Microsoft.AspNet.Identity;	
+@{
+    ViewBag.Title = "UserManagementSettings";
+    Layout = "~/Views/Shared/SettingsLayout.cshtml";
+}
+@{
+    var authenticationSectionCollection = (NameValueCollection)ConfigurationManager.GetSection("authenticationSection");
+    ViewBag.UseAuthentication = Convert.ToBoolean(authenticationSectionCollection["UseAuthentication"]);
+    ViewBag.DummyAuthenticationEnabled = Convert.ToBoolean(authenticationSectionCollection["DummyAuthenticationEnabled"]);
+    var claims = (User.Identity as System.Security.Claims.ClaimsIdentity).Claims;
+}
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">User Management Settings</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/Settings/WorkFlowSettings">Workflow Settings</a>
+        </li>
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "USERMANAGEMENT"))
+        {
+        <li class="active">
+            <a href="~/Settings/UserManagementSettings">User Management Settings</a>
+        </li>
+        }
+    }
+    </ul>
+</div>
+<div id="settingsTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    @*<ul>
+        <li><a href="#settingsTab-2">User Management Settings</a></li>
+    </ul>*@
+    <div id="settingsTab-2">
+        <div class="panel panel-default ">
+            <!-- <div class="panel-heading-gray">
+                <p class="panel-title section-title">User Management</p>
+            </div> -->
+
+            <div class="panel-body">
+                <div class="row" style="padding: 5px;"></div>
+                
+                <div>
+                    <div>
+                        <div>
+                          <div class="grid-wrapper" style="padding:10px;">
+                            <table id="userListGrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div id="userdialog">
+    <form>
+        <div class="form-group">
+
+            <div class="row form-group" id="accountname">
+                <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                    <label class="control-label">User Name</label><em>*</em>
+                    <input type="text" class="form-control" id="txtusername" maxlength="100" placeholder="Enter User Name" required />
+                 <span class="help-block" id="userNameError"></span>
+                </div>
+            </div>
+            <div class="row form-group" id="userRolename">
+                <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                <label class="control-label">User Role</label><em>*</em>
+                    <span class="select-wrapper block">
+                    <select class="form-control" id="userRoleName">
+                        <option value="0">Select UserRole</option>
+                    </select>
+                    </span>
+                    <span class="help-block" id="userRoleError"></span>
+                </div>
+            </div>
+            <div class="row form-group" id="userEmail">
+                <div class="col-xs-12">
+                    <label class="control-label">Email</label><em>*</em>
+                    <input type="text" class="form-control" id="email" maxlength="100" placeholder="Enter Email ID" />
+                <span class="help-block" id="userEmailError"></span>
+                </div>
+            </div>
+            <div class="row form-group" id="userRolename">
+                <div class="col-xs-12">
+                    <label class="control-label">First Name</label><em>*</em>
+                    <input type="text" class="form-control" id="firstName" maxlength="100" placeholder="Enter First Name" />
+                    <span class="help-block" id="userFirstNameError"></span>
+                </div>
+               
+            </div>
+
+            <div class="row form-group" id="userLastname">
+                <div class="col-xs-12">
+                    <label class="control-label">Last Name</label><em>*</em>
+                    <input type="text" class="form-control" id="lastName" maxlength="100" placeholder="Enter Last Name" />
+                    <span class="help-block" id="userLastNameError"></span>
+                  </div>
+            </div>
+        </div>
+        <button type="button" class="btn pull-right">Save</button>
+    </form>
+</div>
+
+<div id="changeRoledialog">
+    <form>
+        <div class="row" id="dvUserRole">
+            <div class="col-xs-12">
+            <label class="control-label">Selected User Name:</label>
+            </div>
+            <div class="col-xs-12">
+           <label class="control-label" id="lusername"></label>
+            </div>
+        </div>
+
+        <div class="row form-group" id="dvUserRole">
+            <div class="col-xs-12">
+            <label class="control-label">Current User Role:</label>
+          <label class="control-label" id="lcuserrole"></label>
+             </div>
+        </div>
+        <div class="row" id="dvUserRole">
+            <div class="col-xs-12">
+                <label class="control-label">Select New User Role:</label><em>*</em>
+                <span class="select-wrapper block">
+                <select class="form-control" id="cnuserrole">
+                    <option value="0">Select New UserRole</option>
+                </select>
+                </span>
+              <span class="help-block" id="newUserRoleError"></span>
+            </div>
+            <div class="row" id="dvUserRole">
+            <div class="col-xs-12">
+            <label class="control-label" hidden ="true" id="userIdForRole"></label>
+              </div>  
+        </div>
+        <div class="col-xs-12">
+          <button type="button" class="btn pull-right">Save</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    setMenu("settings");
+</script>

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "ExitValidate";
+    Layout = "~/Views/Shared/PBPImportLayout.cshtml";
+}
+<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+    .ui-pg-table {
+        margin-left: -20px !important;
+    }
+    #first_p_exportedExitValidateGrid, #last_p_exportedExitValidateGrid, #p_exportedExitValidateGrid_right{
+        display: none;
+    }
+    #p_exportedExitValidateGrid_left {
+        margin-right:10px;
+    }
+
+</style>
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">PBP Integration</h1>
+    </div>
+    <div class="col-xs-12">
+        <div class="timer">
+            <span>
+                <b></b>
+            </span>
+            <span id="spnTimer">
+                <b></b>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/PBPImport/PBPDataBase">Manage PBP Database</a>
+        </li>
+        <li>
+            <a href="~/PBPImport/Index">PBP Import</a>
+        </li>
+        <li>
+            <a href="~/PBPExport/Index">PBP Export</a>
+        </li>
+        <li>
+            <a href="~/ODM/ODM">ODM</a>
+        </li>
+        <li>
+            <a href="~/MDBComparer/MDBComparer">MDB Comparer</a>
+        </li>
+        <li class="active">
+            <a href="~/ExitValidate/ExitValidate">Exit Validate</a>
+        </li>
+    </ul>
+</div>
+<div id="exitValidateExportTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <div role="tabpanel" class="tab-content">
+        <div id="exitValidateTab-6" class="tab-pane active">
+            <div class="panel panel-default ">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="exportedExitValidateGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="errorLogDialog" style="margin: 10px;word-wrap: break-word;">
+        <div>
+            <p></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="25px" viewBox="0 0 44 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>list</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#57BD99" offset="0%"></stop>
+            <stop stop-color="#00A99A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="card/icon/ic2" fill="url(#linearGradient-1)">
+            <path d="M9.73893391,24.5267934 L44,24.5267934 L44,19.5982838 L9.73893391,19.5982838 L9.73893391,24.5267934 Z M9.73893391,14.6697742 L44,14.6697742 L44,9.85624239 L9.73893391,9.85624239 L9.73893391,14.6697742 Z M9.73893391,4.92773275 L44,4.92773275 L44,0 L9.73893391,0 L9.73893391,4.92773275 Z M0,24.5267934 L4.926179,24.5267934 L4.926179,19.5982838 L0,19.5982838 L0,24.5267934 Z M0,14.6697742 L4.926179,14.6697742 L4.926179,9.85624239 L0,9.85624239 L0,14.6697742 Z M0,4.92773275 L4.926179,4.92773275 L4.926179,0 L0,0 L0,4.92773275 Z" id="list"></path>
+        </g>
+    </g>
+</svg>

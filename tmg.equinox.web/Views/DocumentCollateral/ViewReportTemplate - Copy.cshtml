@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "View Report Template";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<div id="viewReportTemplate" style="display: none;">
+    <ul>
+        <li><a href="#reportNameTab">Report Templates</a></li>      
+    </ul>
+    <div id="reportNameTab">
+        <div class="row-fluid">
+            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                <table id="rptTmplNames"></table>
+            </div>
+
+            <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                <table id="rptTmplVersions"></table>
+            </div>
+
+            <div id="reportUploadMappedDoc" class="col-xs-9 col-md-9 col-lg-9 col-sm-9" style="display:none;">
+                <form id="uploadRptTmplt-##ID" method="post" runat="server" enctype='multipart/form-data'> <!-- action="@Url.Action("SaveReportTemplateVersion")" >   -->
+
+                    <input id="templateDocMappings-##ID" type="hidden" class="form-control" name="templateDocMappings" />
+                    <input id="templateProperties-##ID" type="hidden" class="form-control" name="templateProperties" />
+                    <input id="VersionNumber-##ID" type="hidden" class="form-control" name="VersionNumber" />
+                    <input id="uploadedFileName-##ID" type="hidden" class="form-control" name="uploadedFileName" />  
+                    <input id="statusMessage-##ID" type="hidden" value="@ViewData["StatusMessage"]"/>
+                    <input id="reportVersionTemplateID-##ID" type="hidden" class="form-control" name="reportVersionTemplateID" value="@ViewData["ReportTemplateID"]"/>
+                    <input id="reportTemplateName-##ID" type="hidden" name="reportTemplateName" />
+                    <input id="parameters-##ID" type="hidden" name="parameters" />
+                      
+                    <div id="tempDocMapdiv-##ID" style="margin-bottom:15px;max-width:1000px;">
+                        <table id="rptDocMap" style="max-width:1000px;"></table>
+                    </div>
+
+                    <table">
+                        <tr>
+                            <td><label aria-label="Upload" style="font-weight:bold;margin-left:10px;">Upload</label></td>
+                            <td><input id="uploadTemplateFile-##ID" name="uploadTemplateFile" class="form-control" type="file" style="margin-left:5px;margin-right:5px;background-color:white;max-width:200px;"/> </td>
+                        </tr>
+                    </table>
+                    <br />
+
+                    <button id="saveTemplateButton-##ID" class="form-control" type="button" style="margin-left:10px; max-width:50px;">Save</button>
+                </form>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+<<<<<<< .mine
+    <div style="display: none;">
+        <div id="reportTmplDialog">
+            <form>
+                <div class="form-group">
+                    <label for="reportTmplName">Report Template Name</label>
+                    <input type="text" class="form-control" id="reportTmplName" maxlength="100" placeholder="Enter Report Template Name" />
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn btn-default">Save</button>
+            </form>
+        </div>
+        <div id="reportTmplVrsnDialog">
+=======
+    
+    
+    <div style="display:none;">
+        @*Dialog to create Report Template.*@
+        <div id="reportTmplDialog">
+            <form>
+                <div class="form-group">
+                    <label for="reportTmplName">Report Template Name</label>
+                    <input type="text" class="form-control" id="reportTmplName" maxlength="100" placeholder="Enter Report Template Name" />
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn btn-default">Save</button>
+            </form>
+        </div>
+>>>>>>> .r6116
+
+<<<<<<< .mine
+            <form id="uploadRptTmplt" method="post" runat="server">
+=======
+        @*Dialog to create Report Template Version.*@
+        <div id="reportTmplVrsnDialog">
+            <form>
+                <div class="form-group">
+                    <label for="reportTmplVrsnEffDate">Effective Date</label>
+                    <input type="text" class="form-control" id="reportTmplVrsnEffDate" maxlength="100" placeholder="Enter Effective Date for Template Version" />
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn btn-default">Save</button>
+            </form>            
+        </div>
+>>>>>>> .r6116
+
+<<<<<<< .mine
+                <input id="jsonData" type="hidden" class="form-control" name="jsonData" />
+                <input id="uploadedFileName" type="hidden" class="form-control" name="uploadedFileName" />
+                <input id="statusMessage" type="hidden" value="@ViewData["StatusMessage"]"/>
+                <input id="reportTemplateID" type="hidden" class="form-control" name="reportTemplateID" value="@ViewData["ReportTemplateID"]"/>
+                <input id="reportTemplateName" type="hidden" class="form-control" name="reportTemplateName" value="@ViewData["ReportTemplateName"]"/>
+                @*<p id="statusMessage" style="display:none;height:0px;width:0px;">@ViewData["StatusMessage"]</p>*@
+                <div class="form-group" style="clear: both; margin-bottom: 10px;">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <label aria-label="Effective Date">Effective Date</label></td>
+                            <td>
+                                <input id="effDate" type="text" class="form-control" name="effDate" style="margin-left: 10px; margin-right: 5px; width: 130px;" /></td>
+
+                            <td>
+                                <label aria-label="Report Name">Cancel Date</label></td>
+                            <td>
+                                <input id="canDate" type="text" name="canDate" readonly="true" class="form-control" style="margin-left: 18px; margin-right: 5px; margin-top: 5px; width: 130px;" /></td>
+
+                            <td>
+                                <label style="font-weight: bold; margin-left: 20px; margin-top: 10px; margin-left: 10px;">Description</label></td>
+                            <td>
+                                <input id="desc" class="form-control" name="reportDesc" type="text" style="width: 200px; height: 80px; margin-left: 18px; margin-right: 5px; margin-top: 5px;" placeholder="Enter Description" /></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <br />
+
+                <div id="tempDocMapdiv" style="display: none; margin-top: 10px; max-width: 1000px;">
+                    <table id="tempDocMap" style="max-width: 1000px;"></table>
+                </div>
+                <table style="margin-top: 20px;">
+                    <tr>
+                        <td>
+                            <label aria-label="Upload" style="font-weight: bold; margin-left: 10px;">Upload</label></td>
+                        <td>
+                            <input id="uploadTemplate" name="uploadTemplate" class="form-control" type="file" style="margin-left: 5px; margin-right: 5px; background-color: white;" />
+                        </td>
+                    </tr>
+                </table>
+=======
+        <div id="parametersDialog">
+            <div class="panel-body">
+                <div>
+                    <div class="row-fluid">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <table id="parametersGrid"></table>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> .r6116
+<<<<<<< .mine
+                <br />
+=======
+            </div>
+        </div>
+>>>>>>> .r6116
+
+<<<<<<< .mine
+                <button id="saveTemplateButton" class="form-control" type="submit" style="margin-left: 10px; max-width: 50px;">Save</button>
+=======
+        <div id="roleaccesspermission">
+            <div class="panel-body">
+                <div>
+                    <div class="row-fluid">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <table id="roleaccesspermissiongrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> .r6116
+
+<<<<<<< .mine
+            </form>
+        </div>
+        <div id="someHiddenDiv" style="display: none;">Working...</div>
+=======
+>>>>>>> .r6116
+    </div>
+</div>

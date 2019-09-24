@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IntegrationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="IntegrationModelStoreContainer">
+          <EntitySet Name="Plugin" EntityType="IntegrationModel.Store.Plugin" store:Type="Tables" store:Schema="common" store:Name="Plugin">
+            <DefiningQuery>SELECT 
+      [Plugin].[PluginId] AS [PluginId], 
+      [Plugin].[Name] AS [Name], 
+      [Plugin].[Description] AS [Description], 
+      [Plugin].[IsActive] AS [IsActive], 
+      [Plugin].[CreatedBy] AS [CreatedBy], 
+      [Plugin].[CreatedDate] AS [CreatedDate], 
+      [Plugin].[UpdatedBy] AS [UpdatedBy], 
+      [Plugin].[UpdatedDate] AS [UpdatedDate]
+      FROM [common].[Plugin] AS [Plugin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PluginProcessorError" EntityType="IntegrationModel.Store.PluginProcessorError" store:Type="Tables" store:Schema="common" store:Name="PluginProcessorError">
+            <DefiningQuery>SELECT 
+      [PluginProcessorError].[ErrorId] AS [ErrorId], 
+      [PluginProcessorError].[ProcessQueueId] AS [ProcessQueueId], 
+      [PluginProcessorError].[BatchId] AS [BatchId], 
+      [PluginProcessorError].[ProductId] AS [ProductId], 
+      [PluginProcessorError].[ErrorDescription] AS [ErrorDescription], 
+      [PluginProcessorError].[ErrorLine] AS [ErrorLine], 
+      [PluginProcessorError].[CreatedBy] AS [CreatedBy], 
+      [PluginProcessorError].[CreatedDate] AS [CreatedDate], 
+      [PluginProcessorError].[UpdatedBy] AS [UpdatedBy], 
+      [PluginProcessorError].[UpdatedDate] AS [UpdatedDate]
+      FROM [common].[PluginProcessorError] AS [PluginProcessorError]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PluginTransmissionProcessQueue" EntityType="IntegrationModel.Store.PluginTransmissionProcessQueue" store:Type="Tables" Schema="common" />
+          <EntitySet Name="PluginVersion" EntityType="IntegrationModel.Store.PluginVersion" store:Type="Tables" store:Schema="common" store:Name="PluginVersion">
+            <DefiningQuery>SELECT 
+      [PluginVersion].[PluginVersionId] AS [PluginVersionId], 
+      [PluginVersion].[Description] AS [Description], 
+      [PluginVersion].[PluginId] AS [PluginId], 
+      [PluginVersion].[IsActive] AS [IsActive], 
+      [PluginVersion].[CreatedBy] AS [CreatedBy], 
+      [PluginVersion].[CreatedDate] AS [CreatedDate], 
+      [PluginVersion].[UpdatedBy] AS [UpdatedBy], 
+      [PluginVersion].[UpdatedDate] AS [UpdatedDate]
+      FROM [common].[PluginVersion] AS [PluginVersion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PluginVersionProcessor" EntityType="IntegrationModel.Store.PluginVersionProcessor" store:Type="Tables" store:Schema="common" store:Name="PluginVersionProcessor">
+            <DefiningQuery>SELECT 
+      [PluginVersionProcessor].[PluginVersionProcessorId] AS [PluginVersionProcessorId], 
+      [PluginVersionProcessor].[Name] AS [Name], 
+      [PluginVersionProcessor].[OutPutFormat] AS [OutPutFormat], 
+      [PluginVersionProcessor].[PluginVersionId] AS [PluginVersionId], 
+      [PluginVersionProcessor].[IsActive] AS [IsActive], 
+      [PluginVersionProcessor].[CreatedBy] AS [CreatedBy], 
+      [PluginVersionProcessor].[CreatedDate] AS [CreatedDate], 
+      [PluginVersionProcessor].[UpdatedBy] AS [UpdatedBy], 
+      [PluginVersionProcessor].[UpdatedDate] AS [UpdatedDate]
+      FROM [common].[PluginVersionProcessor] AS [PluginVersionProcessor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PluginVersionProcessorStatus" EntityType="IntegrationModel.Store.PluginVersionProcessorStatus" store:Type="Tables" store:Schema="common" store:Name="PluginVersionProcessorStatus">
+            <DefiningQuery>SELECT 
+      [PluginVersionProcessorStatus].[PluginVersionStatusId] AS [PluginVersionStatusId], 
+      [PluginVersionProcessorStatus].[Status] AS [Status], 
+      [PluginVersionProcessorStatus].[Description] AS [Description], 
+      [PluginVersionProcessorStatus].[IsActive] AS [IsActive], 
+      [PluginVersionProcessorStatus].[CreatedBy] AS [CreatedBy], 
+      [PluginVersionProcessorStatus].[CreatedDate] AS [CreatedDate], 
+      [PluginVersionProcessorStatus].[UpdatedBy] AS [UpdatedBy], 
+      [PluginVersionProcessorStatus].[UpdatedDate] AS [UpdatedDate]
+      FROM [common].[PluginVersionProcessorStatus] AS [PluginVersionProcessorStatus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PluginVersionProcessQueue" EntityType="IntegrationModel.Store.PluginVersionProcessQueue" store:Type="Tables" Schema="common" />
+          <EntitySet Name="ELMAH_Error" EntityType="IntegrationModel.Store.ELMAH_Error" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Integration.common.Plugin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Plugin">
+          <Key>
+            <PropertyRef Name="PluginId" />
+          </Key>
+          <Property Name="PluginId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Integration.common.PluginProcessorError' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PluginProcessorError">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessQueueId" Type="int" />
+          <Property Name="BatchId" Type="varchar" MaxLength="50" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ErrorDescription" Type="varchar" MaxLength="500" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PluginTransmissionProcessQueue">
+          <Key>
+            <PropertyRef Name="ProcessQueueId" />
+          </Key>
+          <Property Name="ProcessQueueId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PluginVersionProcessorId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="HasError" Type="bit" />
+          <Property Name="BatchId" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Integration.common.PluginVersion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PluginVersion">
+          <Key>
+            <PropertyRef Name="PluginVersionId" />
+          </Key>
+          <Property Name="PluginVersionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="PluginId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Integration.common.PluginVersionProcessor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PluginVersionProcessor">
+          <Key>
+            <PropertyRef Name="PluginVersionProcessorId" />
+          </Key>
+          <Property Name="PluginVersionProcessorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="OutPutFormat" Type="varchar" MaxLength="200" />
+          <Property Name="PluginVersionId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Integration.common.PluginVersionProcessorStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PluginVersionProcessorStatus">
+          <Key>
+            <PropertyRef Name="PluginVersionStatusId" />
+          </Key>
+          <Property Name="PluginVersionStatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PluginVersionProcessQueue">
+          <Key>
+            <PropertyRef Name="ProcessQueueId" />
+          </Key>
+          <Property Name="ProcessQueueId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PluginVersionProcessorId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="200" />
+          <Property Name="HasError" Type="bit" />
+          <Property Name="BatchId" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Application" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="Host" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Source" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="User" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+          <Property Name="TimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="ntext" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntegrationModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IntegrationEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Plugins" EntityType="IntegrationModel.Plugin" />
+          <EntitySet Name="PluginProcessorErrors" EntityType="IntegrationModel.PluginProcessorError" />
+          <EntitySet Name="PluginTransmissionProcessQueues" EntityType="IntegrationModel.PluginTransmissionProcessQueue" />
+          <EntitySet Name="PluginVersions" EntityType="IntegrationModel.PluginVersion" />
+          <EntitySet Name="PluginVersionProcessors" EntityType="IntegrationModel.PluginVersionProcessor" />
+          <EntitySet Name="PluginVersionProcessorStatus" EntityType="IntegrationModel.PluginVersionProcessorStatu" />
+          <EntitySet Name="PluginVersionProcessQueues" EntityType="IntegrationModel.PluginVersionProcessQueue" />
+          <EntitySet Name="ELMAH_Error" EntityType="IntegrationModel.ELMAH_Error" />
+        </EntityContainer>
+        <EntityType Name="Plugin">
+          <Key>
+            <PropertyRef Name="PluginId" />
+          </Key>
+          <Property Name="PluginId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginProcessorError">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessQueueId" Type="Int32" />
+          <Property Name="BatchId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ErrorDescription" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginTransmissionProcessQueue">
+          <Key>
+            <PropertyRef Name="ProcessQueueId" />
+          </Key>
+          <Property Name="ProcessQueueId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PluginVersionProcessorId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="HasError" Type="Boolean" />
+          <Property Name="BatchId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginVersion">
+          <Key>
+            <PropertyRef Name="PluginVersionId" />
+          </Key>
+          <Property Name="PluginVersionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PluginId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginVersionProcessor">
+          <Key>
+            <PropertyRef Name="PluginVersionProcessorId" />
+          </Key>
+          <Property Name="PluginVersionProcessorId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="OutPutFormat" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PluginVersionId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginVersionProcessorStatu">
+          <Key>
+            <PropertyRef Name="PluginVersionStatusId" />
+          </Key>
+          <Property Name="PluginVersionStatusId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PluginVersionProcessQueue">
+          <Key>
+            <PropertyRef Name="ProcessQueueId" />
+          </Key>
+          <Property Name="ProcessQueueId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PluginVersionProcessorId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="HasError" Type="Boolean" />
+          <Property Name="BatchId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Guid" Nullable="false" />
+          <Property Name="Application" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="Host" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <Property Name="TimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntegrationModelStoreContainer" CdmEntityContainer="IntegrationEntities">
+          <EntitySetMapping Name="Plugins">
+            <EntityTypeMapping TypeName="IntegrationModel.Plugin">
+              <MappingFragment StoreEntitySet="Plugin">
+                <ScalarProperty Name="PluginId" ColumnName="PluginId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginProcessorErrors">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginProcessorError">
+              <MappingFragment StoreEntitySet="PluginProcessorError">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="ProcessQueueId" ColumnName="ProcessQueueId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginTransmissionProcessQueues">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginTransmissionProcessQueue">
+              <MappingFragment StoreEntitySet="PluginTransmissionProcessQueue">
+                <ScalarProperty Name="ProcessQueueId" ColumnName="ProcessQueueId" />
+                <ScalarProperty Name="PluginVersionProcessorId" ColumnName="PluginVersionProcessorId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HasError" ColumnName="HasError" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginVersions">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginVersion">
+              <MappingFragment StoreEntitySet="PluginVersion">
+                <ScalarProperty Name="PluginVersionId" ColumnName="PluginVersionId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PluginId" ColumnName="PluginId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginVersionProcessors">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginVersionProcessor">
+              <MappingFragment StoreEntitySet="PluginVersionProcessor">
+                <ScalarProperty Name="PluginVersionProcessorId" ColumnName="PluginVersionProcessorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OutPutFormat" ColumnName="OutPutFormat" />
+                <ScalarProperty Name="PluginVersionId" ColumnName="PluginVersionId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginVersionProcessorStatus">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginVersionProcessorStatu">
+              <MappingFragment StoreEntitySet="PluginVersionProcessorStatus">
+                <ScalarProperty Name="PluginVersionStatusId" ColumnName="PluginVersionStatusId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PluginVersionProcessQueues">
+            <EntityTypeMapping TypeName="IntegrationModel.PluginVersionProcessQueue">
+              <MappingFragment StoreEntitySet="PluginVersionProcessQueue">
+                <ScalarProperty Name="ProcessQueueId" ColumnName="ProcessQueueId" />
+                <ScalarProperty Name="PluginVersionProcessorId" ColumnName="PluginVersionProcessorId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HasError" ColumnName="HasError" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ELMAH_Error">
+            <EntityTypeMapping TypeName="IntegrationModel.ELMAH_Error">
+              <MappingFragment StoreEntitySet="ELMAH_Error">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="TimeUtc" ColumnName="TimeUtc" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="AllXml" ColumnName="AllXml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "eBenefitSync Design";
+    Layout = "~/Views/Shared/FolderVersionReportLayout.cshtml";
+}
+<div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="auditChecklistDiv">
+                    <div class="panel panel-default" style="display: block">
+                        <div class="panel-heading-gray">
+                            <p class="panel-title section-title">Audit Checklist</p>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row form-group">
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                </div>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            </div>
+                            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <label>From Date</label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <input type="text" id="fromDate" style="width: 91%; padding-bottom: 4px;" maxlength="10" />
+                                    <span class="help-block" id="fromDateHelpBlock"></span>
+                                </div>
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <label>To Date</label>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                   <input type="text" id="toDate" style="width: 91%; padding-bottom: 4px;" maxlength="10" />
+                                    <span class="help-block" id="toDateHelpBlock"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div>
+                                <table id="documentAuditChecklist">
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="btn pull-right btn-padding">
+                                <button id="btnACViewReportForm" type="button" class="btn btn-xs">View Collateral</button>
+                                <button id="btnACCancel" type="button" class="btn btn-xs">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    setMenu("Reporting");
+</script>

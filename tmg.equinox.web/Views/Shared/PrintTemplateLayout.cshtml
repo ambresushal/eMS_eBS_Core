@@ -1,0 +1,18 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Export PDF";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    @RenderBody()
+</div>
+
+@* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+
+
+@Scripts.Render("~/bundles/PrintTemplateBundle")
+
+
+

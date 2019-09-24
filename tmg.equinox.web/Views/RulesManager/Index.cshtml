@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Rules Manager";
+    Layout = "~/Views/Shared/RulesManagerLayout.cshtml";
+}
+<style type="text/css">
+    .custom-error {
+        border: 1px solid red !important;
+    }
+
+    .new-grid-container {
+        margin: 10px 10px 15px 10px;
+        border: 1px solid #ccc;
+    }
+
+    #gbox_rulemasterlist {
+        margin-top: -5px;
+    }
+
+    #rulemasterlist .ui-jqgrid-bdiv {
+        margin-top: -1px;
+    }
+
+    #gbox_rulemasterlist .ui-jqgrid-titlebar {
+        border-bottom: 1px solid #ccc !important;
+    }
+
+    #cb_rulemasterlist,
+    #cb_grdtargetelement {
+        display: none;
+    }
+
+    .ui-icon {
+        cursor: pointer;
+    }
+
+    .grid-wrapper {
+        padding-top: 5px !important;
+    }
+
+    #pexpressionBuilderSearchGrid, #prulemasterlist, #pelementgrid {
+        top: 0;
+    }
+
+    .new-rightIcon {
+        list-style-type: none;
+        margin: 12px 0px 0px 0px;
+        padding: 0px;
+    }
+
+        .new-rightIcon li {
+            padding: 0px 5px;
+            display: inline-block;
+            border-left: 1px solid #ccc;
+        }
+
+            .new-rightIcon li:first-child {
+                border-left: 0px;
+            }
+
+    .comile-text {
+        float: right;
+        margin-top: 5px;
+    }
+
+        .comile-text i {
+            margin-left: 7px;
+        }
+    .form-inline select.form-control {
+        margin-left:10px !important;
+        min-width:230px !important;
+        width:230px !important;
+    }
+</style>
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Rules Manager</h1>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-inline" style="margin:10px;">
+            <div class="form-group">
+                <label class="control-label" for="Form Design">Document Design:</label>
+                <select class="select form-control" id="drpFormDesign" name="drpRuleType">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-left:10px;">
+                <label class="control-label" for="Form Design Version">Document Design Version:</label>
+                <select class="select form-control" id="drpFormDesignVersion" name="drpRuleType">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-left:10px;">
+                <label class="control-label" for="View By">View Type:</label>
+                <select class="select form-control" id="drpViewType" name="drpViewType" disabled>
+                    <option value="rule">By Rule</option>
+                    <option value="target" selected>By Target</option>
+                    <option value="source">By Source</option>
+                </select>
+            </div>
+            <div class="comile-text" id="divCompile">
+                Compile
+                <i class="material-icons" id="btnCompile"  title="Compile Design" style="cursor:pointer">verified_user</i>
+                <i class="material-icons" id="btnCollapse"  title="Collapse Design Panel" style="cursor:pointer;" data-toggle="collapse" href="#rulemanagertabs">remove_circle_outline</i>
+            </div>
+        </div>
+        <div id="rulemanagertabs" class="collapse">
+            <ul id="ruletabs" style="display:inline-block;">
+                <li><a href="#tabdesigner">Designer</a></li>
+                <li><a href="#tabtargets">Assign Targets</a></li>
+                <li><a href="#tabcomparer">Comparer</a></li>
+                <li><a href="#tabtester">Tester</a></li>
+                <li><a href="#tabanalyzer">Analyzer</a></li>
+            </ul>
+            <ul class="new-rightIcon pull-right">
+                <li id="btnSaveRule" title="Save" style="cursor:pointer"><i class="material-icons">save</i></li>
+                <li id="btnClearRule" title="Clear" style="cursor:pointer"><i class="material-icons">clear</i></li>
+            </ul>
+            <div id="tabdesigner" class="ui-tabs-panel ui-widget-content ui-corner-bottom collapse" aria-hidden="true" role="tabpanel" style="padding-top:5px;">
+                @Html.Partial("Designer")
+            </div>
+            <div id="tabtargets" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-hidden="true" role="tabpanel" style="padding-top:5px;">
+                @Html.Partial("AssignTargets")
+            </div>
+            <div id="tabcomparer" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-hidden="true" role="tabpanel" style="padding-top:5px;">
+                @Html.Partial("Comparer")
+            </div>
+            <div id="tabtester" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-hidden="true" role="tabpanel" style="padding-top:5px;">
+                @Html.Partial("Tester")
+            </div>
+            <div id="tabanalyzer" class="ui-tabs-panel ui-widget-content ui-corner-bottom" aria-hidden="true" role="tabpanel" style="padding-top:5px;">
+                @Html.Partial("Analyzer")
+            </div>
+        </div>
+        <div class="table-responsive grid-wrapper new-grid-container" id="ruleListContainer" style="display:none;">
+            <table class="table" id="rulemasterlist"></table>
+            <div id='prulemasterlist'></div>
+        </div>
+        <div id="table-responsive grid-wrapper" style="margin-top:10px;">
+            <div id="myGrid" style="height: 100%; overflow: hidden;" class="ag-theme-balham"></div>
+        </div>
+    </div>
+</div>
+<div id="repeaterKeydialog" style="display:none;">
+    <div class='row-fluid'>
+        <div class='col-xs-12 col-md-12 col-lg-12 col-sm-12'>
+            <div class='grid-wrapper'><table id='repeaterkeygrid'></table></div>
+        </div>
+    </div>
+</div>
+
+<div id="sourcetargetelementdialog" style="display:none;">
+    <div class='row-fluid'>
+        <div class='col-xs-12 col-md-12 col-lg-12 col-sm-12'>
+            <div class='grid-wrapper'><table id='elementgrid'></table></div>
+        </div>
+    </div>
+</div>
+
+<div id="copyruledialog" style="display:none;">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-8">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="chkRuleName" checked> Run Name</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="chkDescription" checked> Run Description</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="chkRuleType" checked> Run Type</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="chkSources" checked> Sources (including keys)</label>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group">
+                <div class="col-sm-8">
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="chkTargets"> Targets (including keys)</label>
+                    </div>
+                </div>
+            </div>*@
+        <button id="btnCopy" type="submit">Copy</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setMenu("rulesmanager");
+
+    $(document).ready(function () {
+        rulesmanager.init();
+    });
+</script>

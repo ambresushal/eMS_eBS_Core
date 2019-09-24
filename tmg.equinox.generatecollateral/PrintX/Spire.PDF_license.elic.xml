@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<License Key="UzevR+r5AQBdsJOwS5dMdugb9y2i6vSkJsBJpIRMlxt195afQALXWReD/fzLmlBSwb9uCp8WY/hQ8zHRStmMd4aa6jgBKcWWF9lA2tKELNgXDWG7ymDVH91SRZi7FZjTJ+wpc54yjeJicsToL2Hghs+Qh8vMgQ0ars0UeSmzcc5h1EePJoxVcAdd3BuXSq2zehHRZp63j3yvTqyo6wJhNfVHocewFxb2eZw4woqCErxjdpRRiEPUd+T+vTcGjDUjpLTnACGiPAvMGcyjjdKUN8L1Wg8kY+ahLB2yeriNOtEUJqIK3L4+nRoXG2e1CfL/eDcKzPedt3BhsIczQ2TcMLbPeEDAeXh+PoPOgXfGsgg30rgsmCtGI5ocPKPSJSGahXIJS6KTmspun7Rzq+Eo/dMCsdPoD822He2h0Oqdn4CzIMuhZ8nP5MtlGXxI7W0wOjhRUvUUenawX04rLzVDctPdlEfcJLyupz2CzG1QCv/qf6lk+7JQuOK6clLMryh0ngYa7856IUBZx6euzYl4y347Ew20q1m1L6R7jw+O5dtBvxc6HGhYAJZIxW7CXCBjcE0YGOXyBv58iZhNO4T3L37M/C5V/2BvyqpPIFfMoErhFT4ftLKRzqLLDi8gxI03N1AiU1GzsHirnKcTHmC1A7Ee0wr+geGnr6A5pbr7L/IvE0souClG4tsuXJX8BqymB4EKtDHoWuukI+1Oh/qUkK488H/8YebWoNB9YUyrxtJVtpdE/VE8avD9AAERgTncjWYIzx+vliz5BpTRjm6ekmwy2NJizMQ+VfrA+b9OOx44WAi/djvZeqWMimd/ynR2z6ISn2SDt39Nk0oA+n6+/EnvU3oauuu1HqarScOLwDqRJ21RMpeAP+YY0jh7+OYMqr/bP0GlXntoEuJ6E1ZH9wEQBLzUbxpd8HfjabFFmVho5X/DC7UKpPvMx83K21YcF9Bipbw26v0Fa2vq7mu2R4cr1lNvRkdjKpbcfsJBpTjoaUJsOEvM9quvRsnK3j1wbJNKi/xt/XPAl0gjZvrmF8Qo+OXES7cKkFdgL+6XNUCv2OZ+YnY1UUmU4vyt8qz6TLNKVepycbnj+SQH1oJNYKV806bFm0vEpl9825JJsfnlPQPRjVxnIJu1fzJp7dKI5mpzVGVhkwSa32l9Hh2Q7Ghg9jUIJxEolvwUmpx4HNg42prfOlqQHeNPpiW4HkGzlGSD+SxDU8xxQfnQ8WSHtqeswTpbG9jjwhDd0ef9DeqSGleTIELbmxvdDdHlUopXzEFH/QnWplyhB4B8u9obT9BlWRQbG+/X3n7pyomZQf/b8mXBuB6QsI+kTUmu8UvgAT3pAI9AWcq8KIUROpxdO0muuxTW/Z7gXKhl6QhgJ99iMYWDPMKecqXIXEwcmrSOGjmBEuUpfUtOnz8yBgx9QRP2N/H6/dGbWUw/deyWXCz1uA++oXZVHnbgp9w2jz/lFP5YUgNkCXU0r0sZwZZR7v9aoTJ+b0pE5FVVGIKWlYPI1x1zFKgqkBdq+pdj37IVIyTkjMa6+nJYcxlpCF5oIQ==" Version="1.3">
+    <Type>Runtime</Type>
+    <Username>Shrinivas Mane</Username>
+    <Email>shrinivas.mane@simplifyhealthcare.com</Email>
+    <Organization>Simplify Healthcare Technology</Organization>
+    <LicensedDate>2019-03-23T12:00:00Z</LicensedDate>
+    <ExpiredDate>2020-03-23T12:00:00Z</ExpiredDate>
+    <Products>
+        <Product>
+            <Name>Spire.PDF Pro Edition</Name>
+            <Version>5.2</Version>
+            <Subscription>
+                <NumberOfPermittedDeveloper>1</NumberOfPermittedDeveloper>
+                <NumberOfPermittedSite>1</NumberOfPermittedSite>
+            </Subscription>
+        </Product>
+    </Products>
+    <Issuer>
+        <Name>e-iceblue</Name>
+        <Email>sales@e-iceblue.com</Email>
+        <Url>http://www.e-iceblue.com</Url>
+    </Issuer>
+</License>

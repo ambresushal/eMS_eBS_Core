@@ -1,0 +1,82 @@
+﻿<div id="sotviewcontainer" class="ui-sotview ui-widget ui-widget-content ui-corner-all">
+    <div class="ui-sotview-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+        <span class="ui-sotview-title">
+            @Model.FolderName
+        </span>
+    </div>
+    <div id="documentheadercontainer" class="headercontainer ui-sotview-hdiv">
+        <div id="docdesignheader" class="docheader fixedcolumn ui-sotview-hbox">
+            <table class="ui-sotview-htable" cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr class="ui-sotview-labels">
+                        <th class="col-group-head">
+
+                        </th>
+                        <th>
+                            Fields
+                        </th>
+                    </tr>
+                    <tr class="ui-sotview-shead">
+                        <th class="ui-state-default col-group-head">
+
+                        </th>
+                        <th class="ui-state-default">
+                            <div style="position:relative;height:100%;padding-right:0.3em;padding-left:0.3em;">
+                                <input type="text" id="filterInput" class="form-control" placeholder="Search for fields.." />
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div id="documentContainer" class="doccontainer ui-sotview-ddiv panel-body">
+        <div id="documentDesignContainer" class="fixedcolumn doccontent ui-sotview-bdiv"></div>
+    </div>
+        <div id="sotviewpg" class="panel-body" style="display:none;">
+            <table cellspacing="0" cellpadding="0" border="0" class="ui-sotviewpg-table">
+                <tbody>
+                    <tr>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnRefreshSOTView" title="Refresh">
+                            <div class="ui-sotviewpg-div">
+                                <span class="ui-icon ui-icon-refresh">
+
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnSaveSOTView" title="Save">
+                            <div class="ui-sotviewpg-div">
+                                <span class="ui-icon ui-icon-disk">
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnOpenSOTView" title="Open">
+                            <div class="ui-sotviewpg-div">
+                                <span class="ui-icon ui-icon-folder-open">
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnAddSOTView" title="Add">
+                            <div class="ui-sotviewpg-div">
+                                <span class="ui-icon ui-icon-plus">
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnDownloadSOTView" title="Download">
+                            <div class="ui-sotviewpg-div">
+                                <span class="ui-icon ui-icon-arrowthickstop-1-s">
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ui-sotviewpg-button ui-corner-all" id="btnBaseLine" title="Baseline">
+                            <div class="ui-sotviewpg-div">
+                                <span class="" style="font-weight:bold;font-size:14px;">
+                                    b
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

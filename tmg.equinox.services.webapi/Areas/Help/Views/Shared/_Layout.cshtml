@@ -1,0 +1,51 @@
+@using tmg.equinox.services.webapi
+@{
+    var environment = System.Configuration.ConfigurationManager.AppSettings["Environment"] ?? "Development";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>eBenefitSync</title>
+    <meta name="description" content="To remain competitive, Health Plans must be equipped to respond quickly to the changing needs of their customers as well as support timely compliance with state and federal mandates.  eBenefitSync provides Health Plans with a framework that enables them to more efficiently accomplish their core business functions relating to sales, benefits, and benefit data administration. " />
+    <meta name="author" content="" />
+    <link href='@Url.AreaContent("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.AreaContent("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.AreaContent("~/Content/css/tmg.equinox.login.css")' rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div>
+        <header class="header" style="margin: 5px;">
+            <div>
+                <div class="logo">
+                    <a href="#" style="color: #b20838;" class="pull-left">
+                        <img src='@Url.AreaContent("~/Content/css/custom-theme/images/ebenefitsync-logo.png")' alt=""  />
+                    </a>
+                    <label style="color: #3693d0; font-style: italic; font-weight: normal;">@environment</label>
+                    <div class="pull-right" style="margin-top: 15px;">
+                        <a href="tel:+18445464254">+1 (844) 546-4254</a>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <hr class="menu-divider" />
+        </header>
+        <div style="min-height: 450px;">
+            @RenderBody()
+        </div>
+
+        <div class="navbar-bottom">
+            <div class="row-fluid">
+                <div class="col-xs-12 col-sm-12 col-lg-12 copyrights" style="font-size: 11px; text-align: center;">
+                    &copy; Copyright @DateTime.Now.Year The Most Group, Inc. All Rights Reserved. 
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>

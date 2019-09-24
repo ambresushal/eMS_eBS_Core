@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Document Design";
+    Layout = "~/Views/Shared/PrintTemplateLayout.cshtml";
+}
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="dropdown">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>
+        <li>
+            <a href="~/FolderVersionReport/ChangeSummaryReport">Change Summary</a>
+        </li>
+        <li>
+            <a href="~/JournalReport/JournalEntryReport">Journal Collateral</a>
+        </li>
+        <li class="active">
+          <a href="~/PrintTemplate/PDFConfiguration">Configuration</a>
+        </li>
+    </ul>
+</div>
+
+<ul class="nav nav-pills nav-pills-child">
+    <li class="active">
+      <a href="~/PrintTemplate/PDFConfiguration">PDF</a>
+    </li>
+</ul>
+
+<div id="designConfigtab">
+    <ul>
+        <li><a href="#documentDesignConfig-1">PDF Templates</a></li>
+    </ul>
+    <div id="documentDesignConfig-1">
+        <div class="row">
+            <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6">
+              <div class="grid-wrapper left-sidebar">
+                <!-- <div class="grid-page-wrapper">
+                    List Of Items
+                </div> -->
+                <table id="templateDesign"></table>
+            </div>
+            </div>
+            <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6">
+              <div class="grid-wrapper right-sidebar">
+                <!-- <div class="grid-page-wrapper">
+                    List Of Items
+                </div> -->
+                <table id="templateUIelementMapping"></table>
+            </div>
+        </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="pdfConfigurationDialog">
+        <form>
+            <div class="row form-group">
+                <div class="col-xs-12 col-md-12">
+                    <label for="formDesignName">Document Design</label>
+                    <div class="select-wrapper block">
+                    <select class="form-control" id="documentDesignDDL"></select>
+                    </div>
+                    <span class="help-block" id="documentDesignDDLHelpBlock"></span>
+                </div>
+
+                <div class="col-xs-12">
+                    <label for="designVersion">Document Design Version</label>
+                    <div class="select-wrapper block">
+                    <select class="form-control" id="designVersionDDL"></select>
+                    </div>
+                    <span class="help-block" id="designVersionDDLHelpBlock"></span>
+                </div>
+                <div class="col-xs-12">
+                    <label for="templete">Template Name</label>
+                    <input type="text" class="form-control" id="templateName" maxlength="200" />
+                    <span class="help-block" id="templateNameHelpBlock"></span>
+                </div>
+                <div class="col-xs-12">
+                    <label for="Description">Description (Optional)</label>
+                    <textarea class="form-control" id="description" style="height: 60px;" maxlength="1000"></textarea>
+                </div>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("pdf");	
+</script>

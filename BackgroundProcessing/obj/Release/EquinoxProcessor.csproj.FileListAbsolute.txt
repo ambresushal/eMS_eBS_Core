@@ -1,0 +1,3 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\BackgroundProcessing\obj\Release\EquinoxProcessor.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\BackgroundProcessing\obj\Release\EquinoxProcessor.ProjectInstaller.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\BackgroundProcessing\obj\Release\EquinoxProcessor.csproj.GenerateResource.Cache

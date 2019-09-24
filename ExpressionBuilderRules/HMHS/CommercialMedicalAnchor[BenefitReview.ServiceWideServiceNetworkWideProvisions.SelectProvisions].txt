@@ -1,0 +1,25 @@
+{
+  "documentrule": {
+    "targetelement": "CommercialMedicalAnchor[BenefitReview.ServiceWideServiceNetworkWideProvisions.SelectProvisions]",
+    "ruleconditions": {
+      "sources": [
+        {
+          "sourcename": "A",
+          "sourceelement": "CommercialMedicalAnchor[BenefitReview.ServiceWideServiceNetworkWideProvisions.AllowableProvisions]"
+        },
+        {
+          "sourcename": "B",
+          "sourceelement": "CommercialMedicalAnchor[BenefitReview.ServiceWideServiceNetworkWideProvisions.SelectProvisions]"
+        }
+      ],
+      "sourcemergelist": {
+        "sourcemergeactions": [
+          {
+            "sourcemergetype": "script",
+            "sourcemergeexpression": "SETDEFAULTROW(target, \"{'ProvisionNameSERVICEPROVISION':'','NetworkNameBNTNM':'','ServiceNameSVNM':'','ProvisionTextOptions':''}\");IF(COUNT(b)==0){SET(b, CREATETOKEN(\"{'ProvisionNameSERVICEPROVISION':'','NetworkNameBNTNM':'','ServiceNameSVNM':'','ProvisionTextOptions':''}\"));}SET(ProvisionTextOptions, \"{'ProvisionTextOptions':''}\");SET(ProvisionTextOptions, CREATETOKEN(ProvisionTextOptions));SET(services, FILTERLIST(a, \"Select=[Yes]\", \"\", \"\", \"Select,ProvisionNameSERVICEPROVISION,NetworkNameBNTNM,ServiceNameSVNM\"));SET(sourceOnly, EXCEPT(services, b, \"ProvisionNameSERVICEPROVISION,NetworkNameBNTNM,ServiceNameSVNM\"));SET(sourceOnly, CROSSJOIN(sourceOnly, ProvisionTextOptions));SET(common, INTERSECT(b, services, \"ProvisionNameSERVICEPROVISION,NetworkNameBNTNM,ServiceNameSVNM\"));SET(result, UNION(common, sourceOnly, \"ProvisionNameSERVICEPROVISION,NetworkNameBNTNM,ServiceNameSVNM\"));SETARRAY(target, result);"
+          }
+        ]
+      }
+    }
+  }
+}

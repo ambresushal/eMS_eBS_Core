@@ -1,0 +1,52 @@
+    {
+        "documentrule": {
+            "targetelement": "Product[AdditionalServices.AdditionalServicesDetails]",
+            "ruletype": "datasource",
+            "targetelementtype": "repeater",
+            
+            "ruleconditions": {
+                "sources": [
+                    {
+                        "sourcename": "A",
+                        "sourceelement": "MasterList[Services.ServiceList]",
+                        "sourceelementtype": "repeater",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        },
+                        "filter": {
+                            "filterlist": [
+                                {
+                                    "filtertype": "distinct",
+                                    "filtername": "A",
+                                    "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                                }
+                            ],
+                            "filtermergeaction": ""
+                        }
+                    },
+                    {
+                        "sourcename": "B",
+                        "sourceelement": "Product[ServiceGroup.ServiceGroupingDetails]",
+                        "sourceelementtype": "repeater",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        },
+                        "filter": {
+                            "filterlist": [
+                                {
+                                    "filtertype": "distinct",
+                                    "filtername": "A",
+                                    "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                                }
+                            ],
+                            "filtermergeaction": "",
+                            "filtermergetype" : ""
+                        }
+                    }
+                ],
+                "sourcemergeaction": "A except B"
+            }
+        }
+    }

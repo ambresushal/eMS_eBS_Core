@@ -1,0 +1,58 @@
+<#@ template hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude" #><#@
+ output extension=".cs" #><#
+
+    var efHost = (EfTextTemplateHost)Host;
+
+	List<string> ignoreEntityTypeList = new List<string>();
+	ignoreEntityTypeList.Add("ELMAH_Error");
+	ignoreEntityTypeList.Add("sysdiagram");
+
+    var code = new CodeGenerationTools(this);
+#>
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using <#= code.EscapeNamespace(efHost.MappingNamespace) #>;
+using tmg.equinox.domain.entities.Models;
+
+namespace <#= code.EscapeNamespace(efHost.Namespace) #>
+{
+    public partial class <#= efHost.EntityContainer.Name #> : DbContext
+    {
+        static <#= efHost.EntityContainer.Name #>()
+        {
+            Database.SetInitializer<<#= efHost.EntityContainer.Name #>>(null);
+        }
+
+        public <#= efHost.EntityContainer.Name #>()
+            : base("Name=<#= efHost.EntityContainer.Name #>")
+        {
+        }
+
+		public new IDbSet<T> Set<T>() where T : class
+		{
+			return base.Set<T>();
+		}
+
+		public override int SaveChanges()
+        {
+            this.ApplyStateChanges();
+            return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+<#
+    foreach (var set in efHost.EntityContainer.BaseEntitySets.OfType<EntitySet>())
+    {
+		if(!ignoreEntityTypeList.Where(c=> c == set.ElementType.Name).Any())
+		{
+#>
+            modelBuilder.Configurations.Add(new <#= set.ElementType.Name #>Map());
+<#
+		}
+    }
+#>
+        }
+    }
+}

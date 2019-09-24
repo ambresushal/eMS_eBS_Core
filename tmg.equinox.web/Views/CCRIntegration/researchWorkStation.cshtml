@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Research WorkStation";
+    Layout = "~/Views/Shared/CCRIntegrationLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">CCR Integration</h1>
+    </div>
+</div>
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/CCRIntegration/TranslationQueue">Translation Queue</a>
+        </li>
+        <li class="active">
+            <a href="~/CCRIntegration/ResearchWorkStation">Research WorkStation</a>
+        </li>
+    </ul>
+</div>
+
+<div id="researchTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li class="active"><a href="#researchTab-1" role="tab" data-toggle="tab">Translated Plan</a></li>
+        <li><a href="#researchTab-2" role="tab" data-toggle="tab">Table Details</a></li>
+        <li><a href="#researchTab-3" role="tab" data-toggle="tab">Provisions</a></li>
+    </ul>
+
+    <div role="tabpanel" class="tab-content">
+        <div id="researchTab-1" class="tab-pane active">
+            <div class="panel panel-default ">               
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="translatedListGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var research = new researchWorkStation();
+    });
+
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+
+</script>

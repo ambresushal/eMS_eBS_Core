@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAC1812A-F6A8-4772-9D07-FD306A497428}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.core.masterlistcascade</RootNamespace>
+    <AssemblyName>tmg.equinox.core.masterlistcascade</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DeepCloner, Version=0.10.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\DeepCloner.0.10.2\lib\net40\DeepCloner.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityLogger.cs" />
+    <Compile Include="Cache\CompiledDocumentCacheHandler.cs" />
+    <Compile Include="Cache\DataCacheHandlerFactory.cs" />
+    <Compile Include="Cache\ErrorGridCacheHandler.cs" />
+    <Compile Include="Cache\ExpressionBuilderEventMapCacheHandler.cs" />
+    <Compile Include="Cache\ExpressionBuilderTreeCacheHandler.cs" />
+    <Compile Include="Cache\FormDesignDataCacheHandler.cs" />
+    <Compile Include="Cache\FormInstanceCompressedDataCacheHandler.cs" />
+    <Compile Include="Cache\FormInstanceDataCacheHandler.cs" />
+    <Compile Include="Cache\FormInstanceSectionDataCacheHandler.cs" />
+    <Compile Include="Cache\IDataCacheHandler.cs" />
+    <Compile Include="Cache\MasterListCacheManager.cs" />
+    <Compile Include="Cache\MasterListSectionDataCacheHandler.cs" />
+    <Compile Include="DocumentSync\CompareExcelGeneratorUtils.cs" />
+    <Compile Include="DocumentSync\CompareExcelReportGenerator.cs" />
+    <Compile Include="DocumentSync\CompareResult.cs" />
+    <Compile Include="DocumentSync\DocumentComparer.cs" />
+    <Compile Include="DocumentSync\DocumentCompareResult.cs" />
+    <Compile Include="DocumentSync\DocumentDataHelper.cs" />
+    <Compile Include="DocumentSync\DocumentJSONReaderHelper.cs" />
+    <Compile Include="DocumentSync\DocumentMacroSync.cs" />
+    <Compile Include="DocumentSync\DocumentSynchronizer.cs" />
+    <Compile Include="DocumentSync\RepeaterComparer.cs" />
+    <Compile Include="DocumentSync\RepeaterCompareResult.cs" />
+    <Compile Include="DocumentSync\RepeaterCompareUtil.cs" />
+    <Compile Include="DocumentSync\RepeaterEqualityComparer.cs" />
+    <Compile Include="DocumentSync\RepeaterExcelReportGenerator.cs" />
+    <Compile Include="DocumentSync\SectionComparer.cs" />
+    <Compile Include="DocumentSync\SectionCompareResult.cs" />
+    <Compile Include="DocumentSync\SummaryExcelReportGenerator.cs" />
+    <Compile Include="ExpressionBuilder\ExpressionBuilderConstants.cs" />
+    <Compile Include="ExpressionBuilder\ExpressionBuilderEmptyObjects.cs" />
+    <Compile Include="ExpressionBuilder\ExpressionBuilderGetSetUtilities.cs" />
+    <Compile Include="ExpressionBuilder\ExpressionBuilderRuleFactory.cs" />
+    <Compile Include="ExpressionBuilder\Handlers\IAnchorRuleHandler.cs" />
+    <Compile Include="ExpressionBuilder\Handlers\IExpressionBuilderRuleHandler.cs" />
+    <Compile Include="ExpressionBuilder\Handlers\SectionARules.cs" />
+    <Compile Include="ExpressionBuilder\HasDataChanged.cs" />
+    <Compile Include="Filter\FilterExpressionProcessorFactory.cs" />
+    <Compile Include="Filter\DocumentFilter.cs" />
+    <Compile Include="Filter\FilterExpression.cs" />
+    <Compile Include="Filter\Filter.cs" />
+    <Compile Include="Filter\DefaultFilterExpressionProcessor.cs" />
+    <Compile Include="Filter\PlanCodeFilterExpressionProcessor.cs" />
+    <Compile Include="Filter\IFilterExpressionProcessor.cs" />
+    <Compile Include="FormDesignManager\FormDesignGroupMapManager.cs" />
+    <Compile Include="FormDesignManager\FormDesignsManager.cs" />
+    <Compile Include="FormDesignManager\FormDesignVersionDetailReadOnlyObjectCache.cs" />
+    <Compile Include="FormDesignManager\FormDesignVersionManager.cs" />
+    <Compile Include="FormInstanceManager\FormInstanceDataManager.cs" />
+    <Compile Include="FormInstanceManager\MasterListReader.cs" />
+    <Compile Include="FormInstanceProcessor\ConfigureRuleProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilderRuleProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\CurrentRequestContext.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\DocumentRuleConstant.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\DocumentSaveRuleOptimizer.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\EventTree.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionBuilderEventMapReader.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionBuilderTreeReader.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionRuleTreeProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ISectionSaveRuleOptimizer.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleEventCompiler.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleExecution.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleExecutionTreeSearch.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleTree.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\SectionSaveHashCheckOptimizer.cs" />
+    <Compile Include="FormInstanceProcessor\FormInstanceDataProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\FormInstanceParser.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\Enum\SourceType.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\IRuleSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\MasterListSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\NonMasterListSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleAliasResolver.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleSourceDataAdapter.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleSourceFactory.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleTargetDataAdapter.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\SourceGroupingWrapper.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\SourceHandlerDBManager.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\TargetSectionSyncManager.cs" />
+    <Compile Include="FormInstanceProcessor\VersionSyncProcessor.cs" />
+    <Compile Include="HashGenerator.cs" />
+    <Compile Include="MasterListCascadeQueueManager.cs" />
+    <Compile Include="MasterListCascadeManager.cs" />
+    <Compile Include="IMasterListCascadeManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleManager\ElementRuleProcessor.cs" />
+    <Compile Include="RuleManager\ExpressionHelper.cs" />
+    <Compile Include="RuleManager\RepeaterRowRuleProcessor.cs" />
+    <Compile Include="RuleManager\RepeaterRuleProcessor.cs" />
+    <Compile Include="RuleManager\RuleManager.cs" />
+    <Compile Include="RuleManager\RuleProcessor.cs" />
+    <Compile Include="Synchronizer\VersionDataSynchronizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter\tmg.equinox.ruleinterpreter.csproj">
+      <Project>{40B5C019-8FFA-4776-8DD8-B3AC1DA99CA7}</Project>
+      <Name>tmg.equinox.ruleinterpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.SaveToReportingDBAfterMLCascade\tmg.equinox.savetoreportingdbmlcascade.csproj">
+      <Project>{660fafa1-8de5-4235-b696-c64536a2392f}</Project>
+      <Name>tmg.equinox.savetoreportingdbmlcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19F18C6A-C503-41FD-8E63-E4BB2022D03F}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

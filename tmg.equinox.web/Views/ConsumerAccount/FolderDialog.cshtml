@@ -1,0 +1,99 @@
+﻿@*@{
+        Layout = null;
+    }*@
+
+<!DOCTYPE html>
+
+<div style="display: none;">
+
+    <div id="folderDialog" style="margin: 5px;">
+        <div class="row">
+            <div class="col-xs-7">
+                <label>Folder Name</label><em>*</em>
+                <input type="text" id="folderName" maxlength="100" />
+                <span class="help-block" id="folderNameSpan"></span>
+            </div>
+            <div class="col-xs-5" id="folder">
+                <label id="date ">Folder Effective Date</label><em>*</em>
+                <input type="text" id="effectiveDate" style="padding-bottom: 4px;" maxlength="10" />
+                <span class="help-block" id="effectiveDateSpan"></span>
+            </div>
+            <div class="col-xs-7" id="folderDialogSelectAccount">
+                <label>Select Account</label><em>*</em>
+                <select id="accountNames" class="form-control"></select>
+                <span class="help-block" id="accountNamesSpan"></span>
+            </div>
+            <div class="col-xs-7" id="divIsFoundationFolder">
+                <label>Is Foundation</label>
+                <span class="form-control" style="border: none !important;">
+                    <input type="checkbox" name="chkIsFoundationFolder" id="chkIsFoundationFolder">
+                    Yes / No
+                </span>
+                <span class="help-block" id="isFoundationFolderSpan"></span>
+            </div>
+            <div class="col-xs-5" id="divCategory">
+                <label>Select Category</label><em>*</em>
+                <select id="categoryDDL"></select>
+                <span class="help-block" id="categorySpan"></span>
+            </div>
+            <div class="col-xs-7">
+                <label>Select Folder View</label>
+                <div class="select-wrapper block">
+                    <select id="folderViewModeDDL"></select>
+                </div>
+                <span class="help-block " id="folderViewModeSpan"></span>
+            </div>
+        </div>
+        @*<div class="form-group row">
+                <div class="col-xs-6">
+                    <label>Select Folder View</label>
+                </div>
+                <div class="col-xs-6">
+                    <select id="folderViewModeDDL"></select>
+                    <span class="help-block " id="folderViewModeSpan"></span>
+                </div>
+            </div>*@
+        @*<div class="form-group row">
+                <div class="col-xs-6">
+                    <label>ID</label>
+                    <input type="text" id="catIDTXT" />
+                </div>
+            </div>*@
+        <div class="form-group row" style="display: none;">
+            <div class="col-xs-12">
+                <label>Market Segment</label>
+                <select id="marketSegment"></select>
+                <span class="help-block" id="marketSegmentSpan"></span>
+            </div>
+        </div>
+        <div class="form-group row" id="folderDialogApplicableTeams">
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label>Select the Applicable Teams</label>
+                </div>
+                <div class="col-xs-4">
+                    <label>Check All</label>
+                    <input type="checkbox" id="checkAll" checked="checked" disabled="disabled" />
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <input type="checkbox" id="1" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Product Build</label>
+            </div>
+            <div class="col-xs-4">
+                <input type="checkbox" id="2" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Audit</label>
+            </div>
+            <div class="col-xs-4">
+                <input type="checkbox" id="3" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">WF Specialist</label>
+            </div>
+        </div>
+
+        <input type="hidden" id="folderId" name="folderId" />
+        <input type="hidden" id="folderVersion" name="folderVersion" />
+        <button type="button" class="btn pull-right">Save</button>
+    </div>
+</div>
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+    setMenu("folderDialog");
+</script>

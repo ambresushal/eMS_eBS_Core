@@ -1,0 +1,1 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.applicationservices\obj\Release\tmg.equinox.applicationservices.csprojResolveAssemblyReference.cache

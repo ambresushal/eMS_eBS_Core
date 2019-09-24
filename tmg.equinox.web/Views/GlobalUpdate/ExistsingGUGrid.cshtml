@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "ExistsingGUGrid";
+    Layout = "~/Views/Shared/GlobalUpdateLayout.cshtml";
+}
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Global Update List</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper border-none">
+    <ul class="nav nav-pills border-none">
+        <li class="active">
+            <a href="~/GlobalUpdate/ExistsingGUGrid">Global Update List</a>
+        </li>
+        <li class="dropdown">
+            <a href="~/GlobalUpdate/BatchExecution" >Batch</a>
+        </li>
+    </ul>
+</div>
+<!-- <ul class="nav nav-pills nav-pills-child border-none">
+     <li><a href="~/GlobalUpdate/BatchExecution">Batch Generation</a></li>
+     <li><a href="~/GlobalUpdate/BatchExecutionStatus">Batch Execution</a></li>
+</ul> -->
+<div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body ">
+                <div id="existingUpdatesGridDiv">
+                  <div class="grid-wrapper">
+                    <!-- <div class="grid-page-wrapper">
+                      List Of Items
+                    </div> -->
+                    <table id="existingUpdatesGrid"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="importIASdialog">
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly="readOnly" id="uploadFileText">
+                    <span class="input-group-btn swfupload">
+                        <span class="btn btn-primary btn-xs btn-file swfupload" style="padding: 7px 5px;">
+                            Browse&hellip;
+                            <input id="uploadFile" class="swfupload" type="file">
+                        </span>
+                    </span>
+                </div>
+                <span class="help-block" id="uploadFileHelpBlock"></span>
+            </div>
+            <button id="btnUpload" type="button" class="btn btn-sm pull-right">Upload IAS</button>
+        </form>
+    </div>
+</div>
+
+<div id="executionStatusHelpDialog">
+  <div class="grid-wrapper">
+    <table id="ExecutionStatusHelp"></table>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("globalupdate");
+</script>

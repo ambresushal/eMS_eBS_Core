@@ -1,0 +1,17 @@
+Knowledge Base -  links/information regarding implementation
+Entity Framework:
+Fluent API : Configuring/Mapping Poperties and Types
+http://msdn.microsoft.com/en-us/data/jj591617.aspx#2.5
+http://msdn.microsoft.com/en-us/data/jj591620.aspx#RequiredToOptional
+
+Repository Pattern:
+Using Unit Of Work approach:
+http://www.asp.net/mvc/tutorials/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+
+Dependency Resolution:
+Unity : http://msdn.microsoft.com/en-us/library/dn178463(v=pandp.30).aspx
+
+Download Fiddler for debugging ajax:
+http://www.telerik.com/download/fiddler
+
+

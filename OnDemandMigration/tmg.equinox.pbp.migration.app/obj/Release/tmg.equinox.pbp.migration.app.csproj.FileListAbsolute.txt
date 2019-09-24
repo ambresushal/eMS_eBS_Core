@@ -1,0 +1,4 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.migration.app\obj\Release\tmg.equinox.pbp.migration.app.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.migration.app\obj\Release\tmg.equinox.pbp.migration.app.frmMain.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.migration.app\obj\Release\tmg.equinox.pbp.migration.app.Properties.Resources.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.migration.app\obj\Release\tmg.equinox.pbp.migration.app.csproj.GenerateResource.Cache

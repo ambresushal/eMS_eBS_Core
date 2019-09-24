@@ -1,0 +1,51 @@
+﻿<style type="text/css">
+    .tester-container {
+        border: 1px solid #ccc !important;
+    }
+
+    #gbox_rulestestergrid {
+        margin-top: -5px;
+        padding-bottom: 0px;
+    }
+
+        #gbox_rulestestergrid .ui-jqgrid-titlebar {
+            border-bottom: 1px solid #ccc !important;
+        }
+
+        #gbox_rulestestergrid .ui-jqgrid-title {
+            padding-bottom: 6px !important;
+        }
+
+    #gview_rulestestergrid .ui-jqgrid-hdiv {
+        border-bottom: 0px !important;
+    }
+
+    #rulestestergrid .jqgrow .editable {
+        height: 30px !important;
+    }
+</style>
+<div class="test-container" style="height:310px;">
+    <div class="form-horizontal" style="margin-bottom:6px;margin-top:-5px; display:none">
+        <div class="form-group" style="margin-bottom:0px;">
+            <div class="col-sm-12" style="padding-left:0px;">
+                <div class="radio-inline">
+                    <label class="radio-inline">
+                        <input type="radio" id="rdoType" name="optradio" value="manual" checked style="margin-top:3px;">Manual
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="rdoType" name="optradio" value="product" style="margin-top:3px;">Product
+                    </label>
+                </div>
+                <i class="material-icons" id="btnSelect" style="cursor:pointer;visibility:hidden;">add_circle</i>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive grid-wrapper tester-container" style="display:none;">
+        <table class="table" id="rulestestergrid"></table>
+    </div>
+</div>
+<div id="sourceDocumentDialog" style="display:none">
+    <div class="grid-wrapper">
+        <table id="docSearch"></table>
+    </div>
+</div>

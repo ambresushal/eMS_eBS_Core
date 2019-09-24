@@ -1,0 +1,112 @@
+﻿@model tmg.equinox.applicationservices.viewmodels.QueryManager.QueryManagerViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/QueryEditorLayout.cshtml";
+}
+
+<div class="panel-body">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div id="QTabs" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+                <ul class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+                    <li><a href="#tabQuery">Query Manager</a></li>
+                    @*<li><a href="#tabResult">ResultTab</a></li>*@
+                    <span class="pull-right">
+                        <div class="form-inline">
+                            <label class="control-label">Select Database: </label>
+                            @Html.DropDownList("ddSchemaName", new List<SelectListItem>
+                            {
+                              new SelectListItem{ Text = "FacetsIntegration_CBC", Value = "0" },
+                              new SelectListItem{ Text = "eBenefitSync", Value = "1" }
+                            }, new { @class = "form-control" })
+                        </div>
+                    </span>
+                </ul>
+                <div id="tabQuery">
+                    <div class="panel panel-default">                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3"> 
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row div-vertical-scroll">
+                                        <table id="tblquery">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <button id="btnNewQuery" class="btn btn-sm but-align clear-search-filter" aria-label="Left Align" type="button">
+                                                            <span aria-hidden="true">New Query</span>
+                                                        </button>
+                                                    </td>
+                                                    @*<td>
+                                                        <button id="btnParse" class="btn btn-sm but-align search" aria-label="Left Align" type="button">
+                                                            <span aria-hidden="true">Parse</span>
+                                                        </button>
+                                                    </td>*@
+                                                    <td>
+                                                        <button id="btnExecute" class="btn btn-sm but-align search" aria-label="Left Align" type="button">
+                                                            <span aria-hidden="true">Execute</span>
+                                                        </button>
+                                                    </td>
+                                                    @*<td>
+                                                        <button id="btnStop" class="btn btn-sm but-align search" aria-label="Left Align" type="button">
+                                                            <span aria-hidden="true">Stop</span>
+                                                        </button>
+                                                    </td>*@
+                                                    <td>
+                                                        <input type="checkbox" id="chkCommit"> Commit Transaction
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="panel-title section-title">Object Browser</p>
+                                    <br />
+                                    <div class="form-inline">
+                                        <label class="control-label">Object Type: </label>
+                                        @Html.DropDownList("ddObjectType", new List<SelectListItem>
+                                        {
+                                          new SelectListItem{ Text = "--Select Object Type--", Value = "0" },
+                                          new SelectListItem{ Text = "Tables", Value = "1" },
+                                          new SelectListItem{ Text = "Views", Value = "2" },
+                                          new SelectListItem{ Text = "Stored procedures", Value = "3" },
+                                          new SelectListItem{ Text = "Scalar functions", Value = "4" }
+                                        }, new { @class = "form-control", style = "width: 180px;" })
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <select id="lstSqlObjects" size="32" style="width: 233px;"></select>
+                                    </div>
+                                    @*<br />
+                                    <div>
+                                        <button id="btnExportScript" class="btn btn-sm but-align clear-search-filter" aria-label="Left Align" type="button">
+                                            <span aria-hidden="true">Export Script</span>
+                                        </button>
+                                    </div>*@
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="panel-title section-title">Query Editor</p>
+                                    <div>
+                                        @Html.TextAreaFor(model => model.UserQuery, new { id = "queryText", @rows = 20 })
+                                    </div>
+                                    <br />
+                                    <div>
+                                        @Html.TextAreaFor(model => model.ResultComments, new { id = "resultText", @rows = 3 })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+           </div>
+        </div>
+     </div>
+</div>
+
+<script type="text/javascript">
+    setMenu("qeditor");
+</script>

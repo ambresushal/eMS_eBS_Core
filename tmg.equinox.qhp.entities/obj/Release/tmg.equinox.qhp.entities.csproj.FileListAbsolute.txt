@@ -1,0 +1,12 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\tmg.equinox.qhp.entities.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\tmg.equinox.qhp.entities.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\tmg.equinox.qhp.entities.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\EntityFramework.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\EntityFramework.SqlServer.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\EntityFramework.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\EntityFramework.SqlServer.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\obj\Release\tmg.equinox.qhp.entities.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\obj\Release\tmg.equinox.qhp.entities.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.qhp.entities\obj\Release\tmg.equinox.qhp.entities.pdb

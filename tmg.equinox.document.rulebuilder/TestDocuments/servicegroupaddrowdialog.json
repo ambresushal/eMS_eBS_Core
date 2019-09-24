@@ -1,0 +1,45 @@
+﻿    {
+        "documentrule": {
+            "targetelement": "Product[AdditionalServices.AdditionalServicesDetails]",
+            "targetelementtype": "repeater",
+            "ruletype" :  "datasource",
+            "triggers": [
+                {
+                    "source": "Product[ServiceGroup.ServiceGroupingDetails]",
+                    "event": "addrow"
+                }
+            ],
+            "actions": [
+                {
+                    "action": "removerow"
+                }
+            ],
+            "ruleconditions": {
+                "sourcefiltertype" : "none",
+                "sources": [
+                    {
+                        "sourcename": "A",
+                        "sequencenumber": "1",
+                        "sourceelement": "Product[ServiceGroup.ServiceGroupingDetails]",
+                        "sourceelementtype": "Repeater",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        },
+                        "filter": {
+                            "filterlist": [
+                                {
+                                    "filtertype": "distinct",
+                                    "filtername": "A",
+                                    "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,POS,SESEID" // TO DO Confirmed
+                                }
+                            ],
+                            "filtermergetype" : "expr",
+                            "filtermergeexpression": "@A intersect target"
+                        }
+                    }
+                ],
+                "sourcemergeaction": "@A"
+            }
+        }
+    }

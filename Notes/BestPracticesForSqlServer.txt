@@ -1,0 +1,7 @@
+Best practices for better database performance:
+1.Create clustered index on every table to avoid failing of insert statements/Maintain primary keys for every tables.
+2.Use normalized tables in the database.
+3.Using JOIN is better for performance then using sub queries or nested queries
+4.Use comments for readability as well guidelines for next developer who comes to modify the same code.
+5.Store relevant and necessary information in the database instead of application structure.
+6.Proper indexing will improve the speed of operations in the database

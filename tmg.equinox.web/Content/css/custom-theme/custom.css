@@ -1,0 +1,887 @@
+﻿.sectionContainer {
+    border: 1px solid #a6c9e2;
+    /*border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;*/
+    padding: 5px;
+}
+
+table.sectionContainer td {
+    padding: 5px;
+}
+
+/*Override custom Tooltip*/
+.tooltipError {
+    display: inline-block !important;
+    position: absolute;
+    padding: 5px;
+    background-color: #ffebeb;
+    border: 3px #eb897d solid;
+    border-radius: 0.5em;
+    color: Red;
+    opacity: 0.85;
+    margin-left: 20px;
+    z-index: 2000;
+}
+
+.tooltipCustom {
+    display: inline-block !important;
+    position: absolute;
+    padding: 5px;
+    background-color: #c5dbec;
+    border: 2px #a6c9e2 solid;
+    border-radius: 0.5em;
+    color: Black;
+    opacity: 0.85;
+    margin-left: 20px;
+    z-index: 200;
+}
+/*End Override custom Tooltip*/
+
+/*jqGrid Related*/
+#errorGrid tr {
+    color: red;
+}
+
+.ui-widget-content jqgroup ui-row-ltr {
+    color: Black;
+}
+/*End jqGrid Related*/
+
+/*CSS only for scrollable tabs*/
+.allTabs {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    width: 200px;
+    right: 0px;
+    z-index: 9999;
+    color: #222222;
+    margin-top: 2px;
+}
+
+.stMainWrapper ul.ui-tabs-nav {
+    position: relative;
+    overflow: hidden;
+    padding-left: 36px;
+}
+
+    .stMainWrapper ul.ui-tabs-nav li {
+        position: static;
+        top: 3px; /*do not set 'left' should be done in the plugin after some calculations*/
+    }
+
+        .stMainWrapper ul.ui-tabs-nav li.stHasCloseBtn a {
+            padding-right: 5px;
+        }
+
+        .stMainWrapper ul.ui-tabs-nav li.stFirstTab {
+            margin-right: 3px;
+        }
+
+        .stMainWrapper ul.ui-tabs-nav li span.stCloseBtn {
+            float: left;
+            margin-top: 6px;
+            margin-right: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+.stNavMain {
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 1px 0 1px !important;
+    position: relative;
+    border: none !important;
+    width: 100%;
+}
+
+    .stNavMain > li {
+        position: absolute;
+        width: 16px;
+        border-top: none !important;
+        border-bottom: none !important;
+        cursor: pointer;
+        margin-top: -1px;
+    }
+
+        .stNavMain > li .ui-icon {
+            margin-top: 38%;
+        }
+
+        .stNavMain > li.stNavNextArrow, .stNavMain > li.stNavLastArrow {
+            border-right: none !important;
+            right: 3px;
+        }
+
+        .stNavMain > li.stNavDownArrow {
+            border-right: none !important;
+            right: -14px;
+        }
+
+        .stNavMain > li.stNavPrevArrow, .stNavMain li.stNavFirstArrow {
+            border-left: none !important;
+        }
+/*End of scrollable tabs css*/
+
+/*Left Side Menu Slider*/
+.sliderWrap {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.slider {
+    width: 220px;
+    position: fixed;
+    margin: 0px;
+    margin-left: -170px;
+    padding: 0px;
+    top: 30%;
+    left: 0px;
+    z-index: 999;
+}
+
+    .slider img {
+        border: 0;
+    }
+
+.sliderContent {
+    position: absolute;
+    height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #a6c9e2;
+    border-bottom: 1px solid #a6c9e2;
+    border-right: 1px solid #a6c9e2;
+}
+
+.openCloseWrap {
+    position: absolute;
+    margin: 99px 0 0 170px;
+    font-size: 12px;
+    font-weight: bold;
+}
+/*End Left Side Menu Slider*/
+
+/* Remove image outline*/
+:focus {
+    outline: none;
+}
+
+/*Table Layout Related CSS*/
+/*Three Column Layout*/
+.threeColumn {
+    width: 100%;
+}
+
+    .threeColumn .lbl {
+        width: 15%;
+        vertical-align: top;
+    }
+
+    .threeColumn .element {
+        width: 15%;
+        vertical-align: top;
+    }
+
+        .threeColumn .element .ui-multiselect {
+            width: 100%;
+            min-height: 25px;
+            height: auto;
+        }
+
+    .threeColumn .staticText {
+        width: 32%;
+        vertical-align: top;
+        color: Red;
+        font-weight: bold;
+    }
+
+    .threeColumn .empty {
+        width: 32%;
+        vertical-align: top;
+    }
+/*Two Column Layout*/
+.twoColumn {
+    width: 100%;
+}
+
+    .twoColumn .lbl {
+        width: 20%;
+        vertical-align: top;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-bottom: 8px;
+    }
+
+    .twoColumn .element {
+        width: 25%;
+    }
+
+        .twoColumn .element .ui-multiselect {
+            width: 100%;
+            min-height: 25px;
+            height: auto;
+        }
+
+    .twoColumn .staticText {
+        width: 47%;
+        vertical-align: top;
+        color: Red;
+        font-weight: bold;
+    }
+
+    .twoColumn .empty {
+        width: 47%;
+        vertical-align: top;
+    }
+/*One Column Layout*/
+.oneColumn {
+    width: 100%;
+}
+
+    .oneColumn .lbl {
+        width: 25%;
+        vertical-align: top;
+    }
+
+    .oneColumn .element {
+        width: 70%;
+    }
+
+        .oneColumn .element .ui-multiselect {
+            width: 100%;
+            min-height: 25px;
+            height: auto;
+        }
+
+    .oneColumn .staticText {
+        width: 97%;
+        vertical-align: top;
+        color: Red;
+        font-weight: bold;
+    }
+
+    .oneColumn .empty {
+        width: 97%;
+        vertical-align: top;
+    }
+    /*Three column in One Column Layout*/
+    .oneColumn .threeColumn .lbl {
+        width: 15%;
+        vertical-align: top;
+    }
+
+    .oneColumn .threeColumn .element {
+        width: 15%;
+    }
+
+        .oneColumn .threeColumn .element .ui-multiselect {
+            width: 100%;
+            min-height: 25px;
+            height: auto;
+        }
+
+    .oneColumn .threeColumn .staticText {
+        width: 32%;
+        vertical-align: top;
+        color: Red;
+        font-weight: bold;
+    }
+
+    .oneColumn .empty {
+        width: 32%;
+        vertical-align: top;
+    }
+/*bigLabel 1 Column Layout*/
+.bigLabelColumn {
+    width: 100%;
+}
+
+    .bigLabelColumn .lbl {
+        width: 70%;
+        vertical-align: top;
+    }
+
+    .bigLabelColumn .element {
+        width: 25%;
+    }
+
+        .bigLabelColumn .element .ui-multiselect {
+            width: 100%;
+            min-height: 25px;
+            height: auto;
+        }
+
+    .bigLabelColumn .staticText {
+        width: 97%;
+        vertical-align: top;
+        color: Red;
+        font-weight: bold;
+    }
+
+    .bigLabelColumn .empty {
+        width: 97%;
+        vertical-align: top;
+    }
+/*Grid Layout*/
+.gridLayout {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+    .gridLayout td {
+        height: 15px;
+        border: 1px solid #a6c9e2;
+    }
+
+    .gridLayout caption {
+        display: none;
+    }
+
+    .gridLayout .staticText {
+        color: black;
+        width: 10%;
+    }
+
+    .gridLayout th {
+        background-color: rgb(239, 239, 252);
+        font-size: 12px;
+        font-weight: bold;
+        color: #2e6e9e;
+        height: 25px;
+    }
+
+    .gridLayout tbody tr:nth-child(2n+1) {
+        background-color: rgb(249, 249, 249);
+    }
+/*End*/
+/*Table Layout*/
+.tableLayout {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+    .tableLayout th {
+        text-align: left;
+        background-color: rgb(239, 239, 252);
+        font-size: 12px;
+        font-weight: bold;
+        color: #2e6e9e;
+        padding: 5px;
+        border: 1px solid #a6c9e2;
+    }
+
+    .tableLayout td {
+        border: 1px solid #a6c9e2;
+    }
+
+    .tableLayout span {
+        position: relative;
+    }
+/*End*/
+
+.subSection {
+    width: 100%;
+    border: 1px solid #a6c9e2;
+    position: relative;
+}
+
+table.subSection td {
+    padding: 5px;
+}
+
+.errorDiv {
+    width: 2%;
+    position: static;
+    vertical-align: top;
+}
+
+fieldset {
+    border-width: 0px;
+}
+
+.repeaterRow {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.toggle {
+    position: absolute;
+    left: 0px;
+}
+
+.minus {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    cursor: pointer;
+}
+
+.plus {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #F5F5F5;
+    color: #005db0;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+textarea, select, input[type=text] {
+    width: 100%;
+}
+
+.ui-datepicker-trigger {
+    margin-left: 1px;
+    margin-top: -12px;
+}
+
+.anvi {
+    color: Black;
+}
+
+.printFooter {
+    padding: 5px;
+    width: 98%;
+    text-align: left;
+}
+
+.logo {
+    border-bottom: 5px solid #aeaeae;
+    width: 98%;
+}
+
+.pageBreak {
+    page-break-before: always;
+}
+
+.evenRow {
+    background-color: rgb(251, 250, 241);
+    color: Black;
+    font-weight: normal;
+    border-bottom: 1px solid #a6c9e2;
+}
+
+.oddRow {
+    background-color: White;
+    color: Black;
+    font-weight: normal;
+    border-bottom: 1px solid #a6c9e2;
+}
+
+.divText {
+    color: Red;
+    font-weight: bold;
+}
+
+.printalign {
+    vertical-align: middle;
+    text-align: center;
+}
+/*.printalign{ width:300px; height:200px; position:absolute; left:50%; top:50%; margin:-100px 0 0 -150px;}*/
+.tabDefaultColor {
+    color: #2e6e9e;
+}
+
+.blueBorder {
+    border: 1px solid #a6c9e2;
+}
+
+textarea[readonly] {
+    border-color: #808080;
+    color: #808080;
+}
+
+
+.wizard,
+.tabcontrol
+{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wizard a,
+.tabcontrol a
+{
+    outline: 0;
+}
+
+.wizard ul,
+.tabcontrol ul
+{
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.wizard ul > li,
+.tabcontrol ul > li
+{
+    display: block;
+    padding: 0;
+}
+
+/* Accessibility */
+.wizard > .steps .current-info,
+.tabcontrol > .steps .current-info
+{
+    position: absolute;
+    left: -999em;
+}
+
+.wizard > .content > .title,
+.tabcontrol > .content > .title
+{
+    position: absolute;
+    left: -999em;
+}
+
+
+
+/*
+    Wizard
+*/
+
+.wizard > .steps
+{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.wizard.vertical > .steps
+{
+    display: inline;
+    float: left;
+    width: 30%;
+}
+
+.wizard > .steps .number
+{
+    display: none;
+}
+
+/*.wizard > .steps > ul > li
+{
+    width: 15%;
+}*/
+
+.wizard > .steps > ul > li,
+.wizard > .actions > ul > li
+{
+    float: left;
+}
+
+.wizard.vertical > .steps > ul > li
+{
+    float: none;
+    width: 100%;
+}
+
+.wizard > .steps a,
+.wizard > .steps a:hover,
+.wizard > .steps a:active
+{
+    /* display: block;
+    width: auto;
+    margin: 0 0.5em 0.5em;
+    padding: 1em 1em;
+    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; */
+}
+
+.wizard > .steps .disabled a,
+.wizard > .steps .disabled a:hover,
+.wizard > .steps .disabled a:active
+{
+    /* background: #eee;
+    color: #aaa;
+    cursor: default; */
+}
+
+.wizard > .steps .current a,
+.wizard > .steps .current a:hover,
+.wizard > .steps .current a:active
+{
+    /* background: #2184be;
+    color: #fff;*/
+    cursor: default; 
+}
+
+.wizard > .steps .done a,
+.wizard > .steps .done a:hover,
+.wizard > .steps .done a:active
+{
+    /* background: #9dc8e2;
+    color: #fff; */
+}
+
+.wizard > .steps .error a,
+.wizard > .steps .error a:hover,
+.wizard > .steps .error a:active
+{
+    /* background: #ff3111;
+    color: #fff; */
+}
+
+.wizard > .content
+{
+    /* background: #eee;
+    display: block;
+    margin: 0.5em;
+    min-height: 35em;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; */
+}
+
+.wizard.vertical > .content
+{
+    /* display: inline;
+    float: left;
+    margin: 0 2.5% 0.5em 2.5%;
+    width: 65%; */
+}
+
+.wizard > .content > .body
+{
+    /* float: left;
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    padding: 2.5%; */
+}
+
+.wizard > .content > .body h5{
+    margin-bottom: 20px;
+}
+.wizard > .content > .body ul
+{
+    list-style: disc !important;
+}
+
+.wizard > .content > .body ul > li
+{
+    display: list-item;
+}
+
+.wizard > .content > .body > iframe
+{
+    border: 0 none;
+    width: 100%;
+    height: 100%;
+}
+
+.wizard > .content > .body input
+{
+    /*display: block;*/
+    border: 1px solid #ccc;
+}
+
+.wizard > .content > .body input[type="checkbox"]
+{
+    display: inline-block;
+}
+
+.wizard > .content > .body input.error
+{
+    background: rgb(251, 227, 228);
+    border: 1px solid #fbc2c4;
+    color: #8a1f11;
+}
+
+.wizard > .content > .body label
+{
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+.wizard > .content > .body label.error
+{
+    color: #8a1f11;
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+.wizard > .actions
+{
+    position: relative;
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+
+.wizard.vertical > .actions
+{
+    display: inline;
+    float: right;
+    margin: 0 2.5%;
+    width: 95%;
+}
+
+.wizard > .actions > ul
+{
+    display: inline-block;
+    text-align: right;
+}
+
+.wizard > .actions > ul > li
+{
+    margin: 0 0.5em;
+}
+
+.wizard.vertical > .actions > ul > li
+{
+    margin: 0 0 0 1em;
+}
+
+.wizard > .actions a,
+.wizard > .actions a:hover,
+.wizard > .actions a:active
+{
+    background: #5dbb98;
+    color: #fff;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard > .actions .disabled a,
+.wizard > .actions .disabled a:hover,
+.wizard > .actions .disabled a:active
+{
+    background: #eee;
+    color: #aaa;
+}
+
+.wizard > .loading
+{
+}
+
+.wizard > .loading .spinner
+{
+}
+
+
+
+/*
+    Tabcontrol
+*/
+
+.tabcontrol > .steps
+{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.tabcontrol > .steps > ul
+{
+    position: relative;
+    margin: 6px 0 0 0;
+    top: 1px;
+    z-index: 1;
+}
+
+.tabcontrol > .steps > ul > li
+{
+    float: left;
+    margin: 5px 2px 0 0;
+    padding: 1px;
+
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.tabcontrol > .steps > ul > li:hover
+{
+    background: #edecec;
+    border: 1px solid #bbb;
+    padding: 0;
+}
+
+.tabcontrol > .steps > ul > li.current
+{
+    background: #fff;
+    border: 1px solid #bbb;
+    border-bottom: 0 none;
+    padding: 0 0 1px 0;
+    margin-top: 0;
+}
+
+.tabcontrol > .steps > ul > li > a
+{
+    color: #5f5f5f;
+    display: inline-block;
+    border: 0 none;
+    margin: 0;
+    padding: 10px 30px;
+    text-decoration: none;
+}
+
+.tabcontrol > .steps > ul > li > a:hover
+{
+    text-decoration: none;
+}
+
+.tabcontrol > .steps > ul > li.current > a
+{
+    padding: 15px 30px 10px 30px;
+}
+
+.tabcontrol > .content
+{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 35em;
+    overflow: hidden;
+    border-top: 1px solid #bbb;
+    padding-top: 20px;
+}
+
+.tabcontrol > .content > .body
+{
+    float: left;
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    padding: 2.5%;
+}
+
+.tabcontrol > .content > .body ul
+{
+    list-style: disc !important;
+}
+
+.tabcontrol > .content > .body ul > li
+{
+    display: list-item;
+}

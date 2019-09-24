@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>tmg.equinox.database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{ade59f56-3617-4a4d-9560-b4bc976186d0}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>tmg.equinox.database</RootNamespace>
+    <AssemblyName>tmg.equinox.database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>100</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiNulls>False</AnsiNulls>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <QuotedIdentifier>False</QuotedIdentifier>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>FULL</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Pre-Deployment" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Schema Comparisons" />
+    <Folder Include="Scripts\Post-Deployment\SeedData" />
+    <Folder Include="Schemas" />
+    <Folder Include="Schemas\DM" />
+    <Folder Include="Schemas\DM\Tables" />
+    <Folder Include="Schemas\dbo" />
+    <Folder Include="Schemas\dbo\Stored Procedures" />
+    <Folder Include="Schemas\dbo\Tables" />
+    <Folder Include="Schemas\dbo\User Defined Types" />
+    <Folder Include="Schemas\Data" />
+    <Folder Include="Schemas\Data\Tables" />
+    <Folder Include="Schemas\Arc" />
+    <Folder Include="Schemas\Arc\Tables" />
+    <Folder Include="Schemas\Accn" />
+    <Folder Include="Schemas\Accn\Tables" />
+    <Folder Include="Schemas\Sec" />
+    <Folder Include="Schemas\Sec\Tables" />
+    <Folder Include="Schemas\Security" />
+    <Folder Include="Schemas\UI" />
+    <Folder Include="Schemas\UI\Tables" />
+    <Folder Include="Scripts\Post-Deployment\Demo" />
+    <Folder Include="Version" />
+    <Folder Include="Version\1.0.0.0" />
+    <Folder Include="Version\1.0.0.0\Post-Deployment" />
+    <Folder Include="Version\1.0.0.0\Pre-Deployment" />
+    <Folder Include="Version\1.0.0.0\Post-Deployment\SeedData" />
+    <Folder Include="Version\1.0.0.0\SchemaScripts" />
+    <Folder Include="Schemas\Ver" />
+    <Folder Include="Schemas\Ver\Tables" />
+    <Folder Include="Version\1.0.0.1" />
+    <Folder Include="Version\1.0.0.1\Scripts" />
+    <Folder Include="Version\1.0.0.2" />
+    <Folder Include="Version\1.0.0.2\Scripts" />
+    <Folder Include="Schemas\Fldr" />
+    <Folder Include="Schemas\Fldr\Tables" />
+    <Folder Include="Version\1.0.0.3" />
+    <Folder Include="Version\1.0.0.3\Scripts" />
+    <Folder Include="Version\1.0.0.4" />
+    <Folder Include="Version\1.0.0.4\Scripts" />
+    <Folder Include="Version\1.0.0.5" />
+    <Folder Include="Version\1.0.0.5\Scripts" />
+    <Folder Include="App_Readme" />
+    <Folder Include="Version\1.0.0.6" />
+    <Folder Include="Version\1.0.0.6\Scripts" />
+    <Folder Include="Version\1.0.0.7" />
+    <Folder Include="Version\1.0.0.7\Scripts" />
+    <Folder Include="Version\1.0.0.8" />
+    <Folder Include="Version\1.0.0.8\Scripts" />
+    <Folder Include="Version\1.0.0.9" />
+    <Folder Include="Version\1.0.0.9\Scripts" />
+    <Folder Include="Version\1.0.0.11" />
+    <Folder Include="Version\1.0.0.11\Scripts" />
+    <Folder Include="Version\1.0.0.12" />
+    <Folder Include="Version\1.0.0.12\Scripts" />
+    <Folder Include="Version\1.0.0.13" />
+    <Folder Include="Version\1.0.0.13\Scripts" />
+    <Folder Include="Version\1.0.0.14" />
+    <Folder Include="Version\1.0.0.14\Scripts" />
+    <Folder Include="Version\1.0.0.15" />
+    <Folder Include="Version\1.0.0.15\Scripts" />
+    <Folder Include="Version\1.0.0.16" />
+    <Folder Include="Version\1.0.0.16\Scripts" />
+    <Folder Include="Version\1.0.0.17" />
+    <Folder Include="Version\1.0.0.17\Scripts" />
+    <Folder Include="Version\1.0.0.18" />
+    <Folder Include="Version\1.0.0.18\Scripts" />
+    <Folder Include="Version\1.0.0.19" />
+    <Folder Include="Version\1.0.0.19\Scripts" />
+    <Folder Include="Version\1.0.0.20" />
+    <Folder Include="Version\1.0.0.20\Scripts" />
+    <Folder Include="Version\1.0.0.21" />
+    <Folder Include="Version\1.0.0.21\Scripts" />
+    <Folder Include="Version\1.0.0.22" />
+    <Folder Include="Version\1.0.0.22\Scripts" />
+    <Folder Include="Version\1.0.0.23" />
+    <Folder Include="Version\1.0.0.23\Scripts" />
+    <Folder Include="Version\1.0.0.24" />
+    <Folder Include="Version\1.0.0.24\Scripts" />
+    <Folder Include="Version\1.0.0.25" />
+    <Folder Include="Version\1.0.0.25\Scripts" />
+    <Folder Include="Version\1.0.0.26" />
+    <Folder Include="Version\1.0.0.26\Scripts" />
+    <Folder Include="Version\1.0.0.27" />
+    <Folder Include="Version\1.0.0.27\Scripts" />
+    <Folder Include="Version\1.0.0.28" />
+    <Folder Include="Version\1.0.0.28\Scripts" />
+    <Folder Include="Version\1.0.0.28\Stored Procedure" />
+    <Folder Include="Version\1.0.0.29" />
+    <Folder Include="Version\1.0.0.29\Scripts" />
+    <Folder Include="Version\1.0.0.30" />
+    <Folder Include="Version\1.0.0.30\Scripts" />
+    <Folder Include="Version\1.0.0.31" />
+    <Folder Include="Version\1.0.0.31\Scripts" />
+    <Folder Include="Version\1.0.0.32" />
+    <Folder Include="Version\1.0.0.32\Scripts" />
+    <Folder Include="Version\1.0.0.33" />
+    <Folder Include="Version\1.0.0.33\Scripts" />
+    <Folder Include="Version\1.0.0.34" />
+    <Folder Include="Version\1.0.0.34\Scripts" />
+    <Folder Include="Version\1.0.0.35" />
+    <Folder Include="Version\1.0.0.35\Scripts" />
+    <Folder Include="Version\1.0.0.36" />
+    <Folder Include="Version\1.0.0.36\Scripts" />
+    <Folder Include="Version\1.0.0.37" />
+    <Folder Include="Version\1.0.0.37\Scripts" />
+    <Folder Include="Version\1.0.0.38" />
+    <Folder Include="Version\1.0.0.38\Scripts" />
+    <Folder Include="Version\1.0.0.39" />
+    <Folder Include="Version\1.0.0.39\Scripts" />
+    <Folder Include="Version\1.0.0.40" />
+    <Folder Include="Version\1.0.0.40\Scripts" />
+    <Folder Include="Version\1.0.0.41" />
+    <Folder Include="Version\1.0.0.41\Scripts" />
+    <Folder Include="Version\1.0.0.42" />
+    <Folder Include="Version\1.0.0.42\Scripts" />
+    <Folder Include="Version\1.0.0.43" />
+    <Folder Include="Version\1.0.0.43\Scripts" />
+    <Folder Include="Version\1.0.0.44" />
+    <Folder Include="Version\1.0.0.44\Scripts" />
+    <Folder Include="Version\1.0.0.45" />
+    <Folder Include="Version\1.0.0.46" />
+    <Folder Include="Version\1.0.0.46\Scripts" />
+    <Folder Include="Version\1.0.0.50" />
+    <Folder Include="Version\1.0.0.50\Scripts" />
+    <Folder Include="Version\1.0.0.57" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\SeedData\InsertFolderData.sql" />
+    <None Include="Scripts\Post-Deployment\SeedData\InsertSecurityData.sql" />
+    <None Include="Scripts\Post-Deployment\SeedData\InsertTenantData.sql" />
+    <None Include="Scripts\Post-Deployment\SeedData\InsertUIData.sql" />
+    <Build Include="Schemas\DM\Tables\Attribute.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectDefinition.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectInstance.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectRelation.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectTree.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectVersion.sql" />
+    <Build Include="Schemas\DM\Tables\ObjectVersionAttribXref.sql" />
+    <Build Include="Schemas\DM\Tables\RelationKeys.sql" />
+    <Build Include="Schemas\dbo\Stored Procedures\ELMAH_GetErrorsXml.sql" />
+    <Build Include="Schemas\dbo\Stored Procedures\ELMAH_GetErrorXml.sql" />
+    <Build Include="Schemas\dbo\Stored Procedures\ELMAH_LogError.sql" />
+    <Build Include="Schemas\dbo\Tables\ELMAH_Error.sql" />
+    <Build Include="Schemas\dbo\User Defined Types\Email.sql" />
+    <Build Include="Schemas\dbo\User Defined Types\Flag.sql" />
+    <Build Include="Schemas\dbo\User Defined Types\Name.sql" />
+    <Build Include="Schemas\dbo\User Defined Types\Phone.sql" />
+    <Build Include="Schemas\Data\Tables\DateDataValue.sql" />
+    <Build Include="Schemas\Data\Tables\NumericDataValue.sql" />
+    <Build Include="Schemas\Data\Tables\StringDataValue.sql" />
+    <Build Include="Schemas\Arc\Tables\FormDesignHistory.sql" />
+    <Build Include="Schemas\Arc\Tables\FormInstanceHistory.sql" />
+    <Build Include="Schemas\Accn\Tables\Account.sql" />
+    <Build Include="Schemas\Accn\Tables\AccountProductMap.sql" />
+    <Build Include="Schemas\Sec\Tables\Tenant.sql" />
+    <Build Include="Schemas\Sec\Tables\User.sql" />
+    <Build Include="Schemas\Sec\Tables\UserActivity.sql" />
+    <Build Include="Schemas\Sec\Tables\UserClaim.sql" />
+    <Build Include="Schemas\Sec\Tables\UserLogin.sql" />
+    <Build Include="Schemas\Sec\Tables\UserRole.sql" />
+    <Build Include="Schemas\Sec\Tables\UserRoleAssoc.sql" />
+    <Build Include="Schemas\Security\Accn.sql" />
+    <Build Include="Schemas\Security\Arc.sql" />
+    <Build Include="Schemas\Security\Data.sql" />
+    <Build Include="Schemas\Security\DM.sql" />
+    <Build Include="Schemas\Security\Sec.sql" />
+    <Build Include="Schemas\Security\UI.sql" />
+    <Build Include="Schemas\UI\Tables\ApplicationDataType.sql" />
+    <Build Include="Schemas\UI\Tables\CalendarUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\CheckBoxUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\DataCopyMode.sql" />
+    <Build Include="Schemas\UI\Tables\DataSource.sql" />
+    <Build Include="Schemas\UI\Tables\DataSourceElementDisplayMode.sql" />
+    <Build Include="Schemas\UI\Tables\DataSourceMapping.sql" />
+    <Build Include="Schemas\UI\Tables\DropDownElementItem.sql" />
+    <Build Include="Schemas\UI\Tables\DropDownUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\Expression.sql" />
+    <Build Include="Schemas\UI\Tables\FormDesign.sql" />
+    <Build Include="Schemas\UI\Tables\FormDesignGroup.sql" />
+    <Build Include="Schemas\UI\Tables\FormDesignGroupMapping.sql" />
+    <Build Include="Schemas\UI\Tables\FormDesignVersion.sql" />
+    <Build Include="Schemas\UI\Tables\FormDesignVersionUIElementMap.sql" />
+    <Build Include="Schemas\UI\Tables\FormGroupFolderMap.sql" />
+    <Build Include="Schemas\UI\Tables\FormVersionObjectVersionMap.sql" />
+    <Build Include="Schemas\UI\Tables\KeyProductUIElementMap.sql" />
+    <Build Include="Schemas\UI\Tables\LayoutType.sql" />
+    <Build Include="Schemas\UI\Tables\LogicalOperatorType.sql" />
+    <Build Include="Schemas\UI\Tables\OperatorType.sql" />
+    <Build Include="Schemas\UI\Tables\PropertyRuleMap.sql" />
+    <Build Include="Schemas\UI\Tables\RadioButtonUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\RegexLibrary.sql" />
+    <Build Include="Schemas\UI\Tables\RepeaterUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\Rule.sql" />
+    <Build Include="Schemas\UI\Tables\RuleTargetType.sql" />
+    <Build Include="Schemas\UI\Tables\SectionUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\Status.sql" />
+    <Build Include="Schemas\UI\Tables\TabUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\TargetProperty.sql" />
+    <Build Include="Schemas\UI\Tables\TextBoxUIElement.sql" />
+    <Build Include="Schemas\UI\Tables\UIElement.sql" />
+    <Build Include="Schemas\UI\Tables\UIElementType.sql" />
+    <Build Include="Schemas\UI\Tables\Validator.sql" />
+    <None Include="Version\1.0.0.1\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.1\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.1\Scripts\UIFramework_1.0.0.1.sql" />
+    <None Include="Version\1.0.0.3\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.3\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.4\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.4\Scripts\DML.sql" />
+    <None Include="App_Readme\SeedDataList.txt" />
+    <None Include="Version\1.0.0.6\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.6\Scripts\DML.sql" />
+    <None Include="Scripts\Post-Deployment\SeedData\InsertReportData.sql" />
+    <None Include="Version\1.0.0.7\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.7\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.8\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.8\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.9\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.9\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.11\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.11\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.12\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.12\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.13\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.14\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.14\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.15\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.15\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.16\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.18\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.19\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.20\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.20\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.21\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.22\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.22\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.23\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.23\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.24\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.24\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.26\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.26\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.28\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.28\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.29\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.29\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.31\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.32\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.32\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.33\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.33\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.34\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.34\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.38\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.38\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.39\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.43\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.43\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.45\DML.sql" />
+    <None Include="Version\1.0.0.46\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.50\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.57\DML.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Post-Deployment\SeedData\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Demo\InsertAccountData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Demo\InsertSecurityData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Demo\InsertTenantData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Demo\InsertUIData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\Post-Deployment\SeedData\InsertAccountData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\Post-Deployment\SeedData\InsertSecurityData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\Post-Deployment\SeedData\InsertTenantData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\Post-Deployment\SeedData\InsertUIData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\SchemaScripts\UIFrameworkDatabase.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.0\Pre-Deployment\DCLscript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Version\1.0.0.2\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.2\Scripts\DML.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schemas\Accn\Tables\AccountFolderMap.sql" />
+    <Build Include="Schemas\Fldr\Tables\ApprovalStatusType.sql" />
+    <Build Include="Schemas\Fldr\Tables\Folder.sql" />
+    <Build Include="Schemas\Fldr\Tables\FolderVersion.sql" />
+    <Build Include="Schemas\Fldr\Tables\FolderVersionState.sql" />
+    <Build Include="Schemas\Fldr\Tables\FolderVersionWorkFlowState.sql" />
+    <Build Include="Schemas\Fldr\Tables\FormInstance.sql" />
+    <Build Include="Schemas\Fldr\Tables\FormInstanceDataMap.sql" />
+    <Build Include="Schemas\Fldr\Tables\MarketSegment.sql" />
+    <Build Include="Schemas\Fldr\Tables\VersionType.sql" />
+    <Build Include="Schemas\Fldr\Tables\WorkFlowState.sql" />
+    <Build Include="Schemas\Fldr\Tables\WorkFlowStateGroup.sql" />
+    <Build Include="Schemas\dbo\Stored Procedures\usp_DeleteContainerElements.sql" />
+    <Build Include="Schemas\Security\Ver.sql" />
+    <Build Include="Schemas\Security\Fldr.sql" />
+    <Build Include="Schemas\Ver\Tables\DbVersion.sql" />
+    <None Include="Version\1.0.0.5\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.5\Scripts\DML.sql" />
+    <Build Include="Version\1.0.0.13\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.16\Scripts\DDL.sql" />
+    <Build Include="Version\1.0.0.17\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.17\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.21\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.25\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.25\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.27\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.27\Scripts\DML.sql" />
+    <Build Include="Version\1.0.0.28\Stored Procedure\Product_Clone.sql" />
+    <None Include="Version\1.0.0.30\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.30\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.31\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.35\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.35\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.36\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.36\Scripts\DML.sql" />
+    <Build Include="Version\1.0.0.39\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.44\Scripts\DDL.sql" />
+    <None Include="Version\1.0.0.44\Scripts\DML.sql" />
+    <None Include="Version\1.0.0.45\DML.sql" />
+  </ItemGroup>
+</Project>

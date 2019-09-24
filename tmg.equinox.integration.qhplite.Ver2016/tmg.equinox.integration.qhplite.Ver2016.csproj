@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75C3215F-E981-4349-A89C-B87775843383}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.integration.qhplite.Ver2016</RootNamespace>
+    <AssemblyName>tmg.equinox.integration.qhplite.Ver2016</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.0\lib\net40\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.0\lib\net40\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DocumentBuilder\DocumentBuilder2016URRTTemplate.cs" />
+    <Compile Include="DocumentBuilder\DocumentBuilder2016BenefitPackageTemplate.cs" />
+    <Compile Include="DocumentBuilder\IDocumentBuilder.cs" />
+    <Compile Include="DocumentExporter\DocumentExporter2018BenefitPackageTemplate.cs" />
+    <Compile Include="DocumentExporter\DocumentExporter2016URRTTemplate.cs" />
+    <Compile Include="DocumentExporter\DocumentExporter2016BenefitPackageTemplate.cs" />
+    <Compile Include="DocumentExporter\DocumentExporter2020BenefitPackageTemplate.cs" />
+    <Compile Include="DocumentExporter\IDocumentExporter.cs" />
+    <Compile Include="DocumentExporter\Mappings\QhpCellFormat.cs" />
+    <Compile Include="DocumentExporter\Mappings\QhpCellFormattingBuilder.cs" />
+    <Compile Include="DocumentExporter\Mappings\QhpModelToExcelMappings.cs" />
+    <Compile Include="DocumentExporter\Mappings\QhpToExcelMap.cs" />
+    <Compile Include="DocumentExporter\Mappings\QhpToExcelMappingBuilder.cs" />
+    <Compile Include="DocumentExporter\PlanBenefitPackageMapper.cs" />
+    <Compile Include="DocumentMapping\ParentPropertyType.cs" />
+    <Compile Include="DocumentMapping\QHPObjectMap.cs" />
+    <Compile Include="DocumentMapping\QHPPropertyMap.cs" />
+    <Compile Include="Framework\IncrementDirection.cs" />
+    <Compile Include="Framework\QHPAttribute.cs" />
+    <Compile Include="Framework\QHPSheetType.cs" />
+    <Compile Include="Framework\URRTAttribute.cs" />
+    <Compile Include="Framework\URRTSheetType.cs" />
+    <Compile Include="IExcelFileReader.cs" />
+    <Compile Include="IQHPFileReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QhpDocumentViewModel.cs" />
+    <Compile Include="QHPModel\AVCalculatorAdditionalBenefitDesign.cs" />
+    <Compile Include="QHPModel\Benefit.cs" />
+    <Compile Include="QHPModel\BenefitInformation.cs" />
+    <Compile Include="QHPModel\ClaimsInformation.cs" />
+    <Compile Include="QHPModel\CombinedMedicalEHBDeductible.cs" />
+    <Compile Include="QHPModel\CostSharingBenefitService.cs" />
+    <Compile Include="QHPModel\HavingATreatment.cs" />
+    <Compile Include="QHPModel\HSAHRADetail.cs" />
+    <Compile Include="QHPModel\OutOfPocketExceptions.cs" />
+    <Compile Include="QHPModel\DeductibleSubGroup.cs" />
+    <Compile Include="QHPModel\DrugEHBDeductible.cs" />
+    <Compile Include="QHPModel\GeneralInformation.cs" />
+    <Compile Include="QHPModel\GeographicCoverage.cs" />
+    <Compile Include="QHPModel\HavingABaby.cs" />
+    <Compile Include="QHPModel\HavingDiabetes.cs" />
+    <Compile Include="QHPModel\MaximumOutOfPocketForDrugEHBBenefits.cs" />
+    <Compile Include="QHPModel\MaximumOutOfPocketForMedicalAndDrugEHBBenefits.cs" />
+    <Compile Include="QHPModel\MaximumOutOfPocketForMedicalEHBBenefits.cs" />
+    <Compile Include="QHPModel\MedicalEHBDeductible.cs" />
+    <Compile Include="QHPModel\PlanAttributes.cs" />
+    <Compile Include="QHPModel\PlanBenefitPackage.cs" />
+    <Compile Include="QHPModel\PlanCostSharingAttributes.cs" />
+    <Compile Include="QHPModel\PlanDates.cs" />
+    <Compile Include="QHPModel\PlanIdentifier.cs" />
+    <Compile Include="QHPModel\PlanVariantLevelURLs.cs" />
+    <Compile Include="QHPModel\PremiumInformation.cs" />
+    <Compile Include="QHPModel\SBCScenario.cs" />
+    <Compile Include="QHPModel\SectionIGeneralProductandPlanInformation.cs" />
+    <Compile Include="QHPModel\SectionIIComponentsofPremiumIncreasePMPMDollarAmountaboveCurrentAverag.cs" />
+    <Compile Include="QHPModel\SectionIIIExperiencePeriodInformation.cs" />
+    <Compile Include="QHPModel\SectionIVProjected12monthsfollowingeffectivedate.cs" />
+    <Compile Include="QHPModel\StandAloneDentalOnly.cs" />
+    <Compile Include="QHPModel\PlanLevelURLs.cs" />
+    <Compile Include="QHPModel\URRTPlanProductInfo.cs" />
+    <Compile Include="Reader\QHPModelToExcelMapper2018BenefitPackageTemplate.cs" />
+    <Compile Include="Reader\QHPModelToExcelMapper2016BenefitPackageTemplate.cs" />
+    <Compile Include="Reader\ExcelFileReader.cs" />
+    <Compile Include="Reader\ExcelToQHPModelMapper.cs" />
+    <Compile Include="Reader\QHPFileReader.cs" />
+    <Compile Include="Reader\QHPModelToExcelMapper2020BenefitPackageTemplate.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\MarketExperienceHeader.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ExperiencePeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\SectionI.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\SectionII.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\SectionIII.cs" />
+    <Compile Include="URRT\URRTModel\MarketExperience.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\ComponentOfPremiumIncrease.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\ExperiencePeriodInformation.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\PlanProductInfoHeader.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\ProductInfo.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\ProjectedExperiencePeriodInformation.cs" />
+    <Compile Include="URRT\URRTModel\PlanProductInfo.cs" />
+    <Compile Include="URRT\URRTModel\PlanURRTemplate.cs" />
+    <Compile Include="URRT\Reader\URRTJsonToModelMapper.cs" />
+    <Compile Include="URRT\Reader\URRTModelToExcelMapper2016URRTTemplate.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\AdministrativeExpenseLoad.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\IndexRateforProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\PaidtoAllowedAverageFactorinProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProfitAndRiskLoad.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedACAReinsuranceRecoveries.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedAllowedExperienceClaimsPMPM.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedIncurredClaims.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedIncurredClaimsBeforeACAAndRiskAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedIncurredClaimsBeforeReinsuranceRecoveries.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\ProjectedRiskAdjustmentsPMPM.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\SingleRiskPoolGrossPremiumAverageRate.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section III\TaxesAndFees.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\CapitationActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\InpatientHospitalActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\OnActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\OtherMedicalActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\OutpatientHospitalActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\PrescriptionDrugActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ActucalExperienceAllowed\ProfessionalActualExperienceAllowed.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\AdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\CapitationAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\InpatientHosipitalAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\OtherMedicalAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\OutpatientHosipitalAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\PrescriptionDrugAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AdjustmentfromExperiencetoProjectionPeriod\ProfessionalAdjustmentfromExperiencetoProjectionPeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\AnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\CapitationAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\InpatientHosipitalAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\OtherMedicalAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\OutpatientHosipitalAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\PrescriptionDrugAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\AnnualizedTrendFactors\ProfessionalAnnualizedTrendFactors.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\CapitationCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\CredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\InpatientHospitalCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\OtherMedicalCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\OutpatientHospitalCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\PrescriptionDrugCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\CredibilityManual\ProfessionalCredibilityManual.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\CapitationProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\InpatientHospitalProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\OtherMedicalProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\OutpatientHospitalProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\PrescriptionDrugProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\ProfessionalProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section II\ProjectionsBeforeCredibilityAdjustment\ProjectionsBeforeCredibilityAdjustment.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section I\AllowedClaim.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section I\ExperiencePeriodMemberMonths.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section I\IncurredClaimsInExperiencePeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section I\IndexRateofExperiencePeriod.cs" />
+    <Compile Include="URRT\URRTModel\Market Experience\Section I\PremiumsInExperiencePeriod.cs" />
+    <Compile Include="URRT\URRTModel\Plan Product Info\GeneralPlanAndProductInformation.cs" />
+    <Compile Include="Validation\DocumentValidator.cs" />
+    <Compile Include="Validation\DocumentValidator2016BenefitPackageTemplate.cs" />
+    <Compile Include="Validation\IQHPValidator.cs" />
+    <Compile Include="Validation\QHPBenefitPackage2016ErrorStrings.cs" />
+    <Compile Include="Validation\QHPBenefitPackage2016Validator.cs" />
+    <Compile Include="Validation\QHPBenefitPackage2016ValidatorBase.cs" />
+    <Compile Include="Validation\QHPNames2016.cs" />
+    <Compile Include="Validation\QHPValidationError.cs" />
+    <Compile Include="Validation\QHPValidationErrorListExtensions.cs" />
+    <Compile Include="XMLExport\IPlanBenefitXmlGenerator.cs" />
+    <Compile Include="XMLExport\PlanBenefit2016XmlGenerator.cs" />
+    <Compile Include="XMLExport\PlanBenefitTemplateVO.cs" />
+    <Compile Include="XMLExport\XmlExportWriter2016.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

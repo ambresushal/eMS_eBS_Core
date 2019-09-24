@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using tmg.equinox.integration.data;
+
+namespace tmg.equinox.integration.facet.data.Models
+{
+    public class PDDSData : Entity
+    {
+        public string PDPD_ID { get; set; }
+        public string PDDS_DESC { get; set; }
+        public string PDDS_PROD_TYPE { get; set; }
+        public string PDDS_APP_TYPE { get; set; }
+        public string PDDS_UM_IND { get; set; }
+        public string PDDS_MED_PRICE_IND { get; set; }
+        public string PDDS_MED_CLMS_IND { get; set; }
+        public string PDDS_DEN_PD_IND { get; set; }
+        public string PDDS_DEN_CLMS_IND { get; set; }
+        public string PDDS_CLED_IND { get; set; }
+        public string PDDS_CAP_IND { get; set; }
+        public string PDDS_DOFR_IND { get; set; }
+        public string PDDS_OPTOUT_IND { get; set; }
+        public string PDDS_PREM_IND { get; set; }
+        public string PDDS_INT_STATE_IND { get; set; }
+        public string PDDS_MCTR_BCAT { get; set; }
+        public string PDDS_MCTR_VAL1 { get; set; }
+        public string PDDS_DEN_UM_IND { get; set; }
+        public string PDDS_DEN_PRICE_IND { get; set; }
+        public int ProcessGovernance1up { get; set; }
+        public string PDDS_OON_IND { get; set; }
+        public string PDDS_ALT_DISP_IND { get; set; }
+        public string PDDS_DISP_IND { get; set; }
+        public string PDDS_ORD_SYS_IND { get; set; }
+        public string PDDS_OOA_IND { get; set; }
+        public string PDDS_MCTR_VAL2 { get; set; }
+        public string NotesTitle { get; set; }
+    }
+}

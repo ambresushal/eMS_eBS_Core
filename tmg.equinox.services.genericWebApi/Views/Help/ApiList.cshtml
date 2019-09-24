@@ -1,0 +1,44 @@
+﻿@*@model IList<tmg.equinox.services.genericWebApi.Areas.Help.Model.ApiDescriptor>*@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using tmg.equinox.services.genericWebApi.Areas.Help.Model
+@model Collection<ApiDescription>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Http Verb</th>
+                        <th>API</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>                           
+
+                    @foreach (var api in Model)
+                    {
+                        <tr>                         
+                           <td>
+                                @api.HttpMethod.Method
+                            </td>
+                            <td>   
+                              
+                                @Html.ActionLink(api.RelativePath, "Api", "Help",new{model=api.RelativePath.ToString()},null)     
+                                         
+                            </td>
+                            <td>
+                                <p>@api.Documentation</p>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

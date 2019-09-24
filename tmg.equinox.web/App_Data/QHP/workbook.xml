@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <fileVersion appName="xl" lastEdited="5" lowestEdited="5" rupBuild="9303" codeName="{8C4F1C90-05EB-6A55-5F09-09C24B55AC0B}"/>
+  <workbookPr codeName="ThisWorkbook" defaultThemeVersion="124226"/>
+  <bookViews>
+    <workbookView xWindow="5715" yWindow="480" windowWidth="8430" windowHeight="9240" firstSheet="1" activeTab="2"/>
+  </bookViews>
+  <sheets>
+    <sheet r:id="rId1" state="veryHidden" sheetId="4" name="EnableMacros"/>
+    <sheet r:id="rId2" sheetId="99" name="Benefits Package 1"/>
+    <sheet r:id="rId3" sheetId="102" name="Cost Share Variances 1"/>
+    <sheet r:id="rId4" sheetId="104" name="Benefits Package 2"/>
+    <sheet r:id="rId5" sheetId="106" name="Cost Share Variances 2"/>
+    <sheet r:id="rId6" sheetId="108" name="Benefits Package 3"/>
+    <sheet r:id="rId7" sheetId="110" name="Cost Share Variances 3"/>
+    <sheet r:id="rId8" sheetId="112" name="Benefits Package 4"/>
+    <sheet r:id="rId9" sheetId="114" name="Cost Share Variances 4"/>
+    <sheet r:id="rId10" sheetId="116" name="Benefits Package 5"/>
+    <sheet r:id="rId11" sheetId="118" name="Cost Share Variances 5"/>
+    <sheet r:id="rId12" state="veryHidden" sheetId="86" name="DefaultBP"/>
+    <sheet r:id="rId13" state="veryHidden" sheetId="88" name="DefaultCSV"/>
+    <sheet r:id="rId14" state="veryHidden" sheetId="60" name="Names"/>
+    
+  </sheets>
+  <functionGroups builtInGroupCount="17"/>
+  <definedNames>
+    <definedName name="Benefits">Names!$D$1:$D$75</definedName>
+    <definedName name="Child">Names!$A$19:$A$21</definedName>
+    <definedName name="Click">Names!$A$48</definedName>
+    <definedName name="Coinsurance">Names!$A$67:$A$70</definedName>
+    <definedName name="Copay">Names!$A$58:$A$62</definedName>
+    <definedName name="Coverage">Names!$A$4:$A$8</definedName>
+    <definedName name="Covered">Names!$A$38:$A$39</definedName>
+    <definedName name="CSR">Names!$A$41:$A$46</definedName>
+    <definedName name="DayOrStay">Names!$A$64:$A$65</definedName>
+    <definedName name="DentalBenefits">Names!$D$77:$D$131</definedName>
+    <definedName name="DentalMetal">Names!$A$109:$A$110</definedName>
+    <definedName name="Disease">Names!$A$72:$A$79</definedName>
+    <definedName name="Dollars">Names!$A$31:$A$32</definedName>
+    <definedName name="EHB">Names!$A$50:$A$56</definedName>
+    <definedName name="EstimatedRate">Names!$A$106:$A$107</definedName>
+    <definedName name="Formularies">Names!$F$1:$F$2</definedName>
+    <definedName name="Interval">Names!$A$92:$A$104</definedName>
+    <definedName name="Market">Names!$A$1:$A$2</definedName>
+    <definedName name="NA">Names!$A$26:$A$28</definedName>
+    <definedName name="NetworkIDs">Names!$E$1:$E$3</definedName>
+    <definedName name="New">Names!$A$23:$A$24</definedName>
+    <definedName name="PlanType">Names!$A$13:$A$17</definedName>
+    <definedName name="QHP">Names!$A$34:$A$36</definedName>
+    <definedName name="ServiceAreas">Names!$G$1:$G$3</definedName>
+    <definedName name="States">Names!$B$1:$B$59</definedName>
+    <definedName name="Units">Names!$A$81:$A$90</definedName>
+    <definedName name="YesNo">Names!$A$10:$A$11</definedName>
+  </definedNames>
+  <calcPr calcId="145621"/>
+</workbook>

@@ -1,0 +1,37 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+<div class="spacer">
+</div>
+<div class="" style="min-height: 400px; margin: 50px auto 40px; text-align: center;">
+    <p style="color: #55A8D5; line-height: 1.5; font-size: 45px; font-weight: bold;">
+        Something Broke!!
+    </p>
+    <p>
+        We are experiencing an internal server problem. Please try again later or contact
+        <a href="mailto:support@themostgroup.com">support@themostgroup.com</a> .
+    </p>
+    <hr />
+    <p>
+        <b>Please click here to go to @Html.ActionLink("Login", "LogOn", "Login", null, null) Page.</b>
+    </p>
+    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <div style="text-align:left;width:auto;">
+            <p>
+                <b>Exception:</b> @Model.Exception.Message<br />
+                <b>Controller:</b> @Model.ControllerName<br />
+                <b>Action:</b> @Model.ActionName
+            </p>
+            <div style="overflow: scroll">
+                <pre>
+                    @Model.Exception.StackTrace
+                </pre>
+            </div>
+        </div>
+    }
+</div>
+<div class="spacer">
+</div>

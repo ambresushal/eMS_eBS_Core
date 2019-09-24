@@ -1,0 +1,57 @@
+{
+    "documentrule": {
+        "targetelement": "Product[Limits.FacetsLimits.LimitServicesLTSE]",
+        "triggers": [
+            {
+                "source": "Product[Limits.FacetsLimits.LimitServicesLTSE]",
+                "event": "addrow|removerow"
+            }
+        ],
+        "actions": [
+            { 
+                "action":  "selectdialog"
+            }
+        ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "MasterList[Limits.LimitServicesLTSE]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                }
+            ],
+            "sourcemergeaction": "A coljoin B"
+        }
+    }
+}

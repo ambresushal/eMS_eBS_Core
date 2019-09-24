@@ -1,0 +1,58 @@
+A. To utilize the exception handling and error logging component
+1. Choose the option for ELMAH or LogToTextFile. In case if no option is specified, by default LogToTextFile would employed.
+2. The keys are as follows
+	<appSettings>
+	    <add key="EnableELMAH" value="true" />
+	    <add key="EnableLogToTextFile" value="true" />
+ </appSettings>
+3. ELMAH saves the errors, exceptions in database.
+4. LogToTextFile saves the errors, exceptions in the text file located at "C\Equinox" which can be changed through
+setting in "LoggingConfiguration.config"
+5. For using these components into the code, following specimen be referred.
+
+	 try
+	         {
+				// Add ur code here
+	         }
+		      catch (Exception ex)
+	         {
+				//For Asynchronous calling 
+	
+				bool rethrow = ExceptionPolicyWrapper.HandleExceptionAsync(ex, ExceptionPolicies.ExceptionShielding);
+	
+				//Or For Synchronous calling
+	
+				bool rethrow = ExceptionPolicyWrapper. HandleException (ex, ExceptionPolicies.ExceptionShielding);
+	
+	           if (rethrow) throw;
+	
+       }  
+       
+       Please note here that there are 2  mechanisms i.e. synchronous and asynchronous which are available and asynchronous mechanism is 
+       recommended to derive the benefits of asynchronous programming in turn improving the performance and avoiding race conditions.
+ For more details the design document need to be referred.
+
+ B: UserActivity logging
+ 1. For logging the useractivity one needs to follow
+	(i)A action filter attribute has to be framed. Sample is as below
+	[UserActivityLog(Priority = (int)Priority.Low, Category = (int)Category.Audit, TenantID = 1, Message = "Index Page on folder", 
+	Severity = (int)Severity.Emergency, ActivityEvent = (int)Event.LogOn)]
+	(ii) Apply this attribute to the action methods wherever the activity is to be logged. These entries can be checked in the database table for useractivity log.
+One more sample:- [UserActivityLog(Priority = (int)Priority.Low, Category = (int)Category.Audit, TenantID = 1, Message = "", 
+Severity = (int)Severity.Critical, ActivityEvent = (int)Event.LogOn)]
+
+----------------------------------------------------------------------------------------------------------
+For Bundling And Minification
+1. All the bundles are there in BundleConfig.cs file.
+2. Once Bundling has been done, it is not possible to debug the code.
+3. If developer wants to debug, then needs to change following setting as false in App_Start/BundleConfig.cs file
+   BundleTable.EnableOptimizations = false;
+
+
+----------------------------------------------------------------------------------------------------------
+
+For Logging of Client side Javascript Errors : 
+
+1. Added a javascript file errorhandler.js in GlobalBundle which handles javascript errors using window.onerror()function.
+2. window.onerror()function will catch the errorMessage and will send it to ErrorController's LogJavaScriptError() method which logs the error message in table dbo.ELMAH_Error.
+

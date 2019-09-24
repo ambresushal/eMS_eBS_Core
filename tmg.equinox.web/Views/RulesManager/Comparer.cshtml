@@ -1,0 +1,200 @@
+﻿<style type="text/css">
+    .clear-rule {
+        width: 40px !important;
+    }
+
+        .clear-rule span {
+            width: 16px !important;
+        }
+
+    .comp-container {
+        box-sizing: border-box;
+        width: 24%;
+        height: 240px;
+        float: left;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+    }
+
+    .addTitle {
+        opacity: .5;
+        color: #24272c;
+        text-align: center;
+        margin: 8px 0 26px;
+    }
+
+    .addCricle {
+        width: 72px;
+        height: 72px;
+        border: 1px dashed #24272c;
+        opacity: .5;
+        display: block;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        position: relative;
+        margin: 30px auto 8px;
+    }
+
+        .addCricle:before {
+            content: "";
+            position: absolute;
+            background-color: #24272c;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 18px;
+            margin-top: -8px;
+        }
+
+        .addCricle:after {
+            content: "";
+            position: absolute;
+            background-color: #24272c;
+            top: 50%;
+            left: 50%;
+            width: 18px;
+            height: 2px;
+            margin-left: -8px;
+        }
+
+    .basic-grid table {
+        table-layout: fixed;
+    }
+
+        .basic-grid table th:first-child {
+            width: 30%;
+        }
+
+    .desc-content {
+        height: 140px;
+    }
+
+    .ellipsis {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0px;
+        word-break: break-all;
+    }
+</style>
+
+<div id="comparecontainer" style="width:100%;height:250px;">
+    <div id="rulcontainer0" class="new-grid-wrapper comp-container" title='Select the rule from below list and click on compare button to add rule.'>
+        <div class="addCricle"></div>
+        <div class="addTitle">Add Rule</div>
+        <div class="basic-grid" style="display:none;">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Rule Code</th>
+                        <th id="thRuleCode0"></th>
+                        <th class="clear-rule" id="0"><span class="ui-icon ui-icon-circle-close"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rule Name</td>
+                        <td colspan="2" id="tdRuleName0"></td>
+                    </tr>
+                    <tr>
+                        <td>Rule Type</td>
+                        <td colspan="2" id="tdRuleType0"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td colspan="2" class="desc-content" id="tdDescription0">Display this field if Network Tier is INN Tier 2.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="rulcontainer1" class="new-grid-wrapper comp-container" title='Select the rule from below list and click on compare button to add rule.'>
+        <div class="addCricle"></div>
+        <div class="addTitle">Add Rule</div>
+        <div class="basic-grid" style="display:none;">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Rule Code</th>
+                        <th id="thRuleCode1"></th>
+                        <th class="clear-rule" id="1"><span class="ui-icon ui-icon-circle-close"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rule Name</td>
+                        <td colspan="2" id="tdRuleName1"></td>
+                    </tr>
+                    <tr>
+                        <td>Rule Type</td>
+                        <td colspan="2" id="tdRuleType1"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td colspan="2" class="desc-content" id="tdDescription1"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="rulcontainer2" class="new-grid-wrapper comp-container" title='Select the rule from below list and click on compare button to add rule.'>
+        <div class="addCricle"></div>
+        <div class="addTitle">Add Rule</div>
+        <div class="basic-grid" style="display:none;">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Rule Code</th>
+                        <th id="thRuleCode2"></th>
+                        <th class="clear-rule" id="2"><span class="ui-icon ui-icon-circle-close"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rule Name</td>
+                        <td colspan="2" id="tdRuleName2"></td>
+                    </tr>
+                    <tr>
+                        <td>Rule Type</td>
+                        <td colspan="2" id="tdRuleType2"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td colspan="2" class="desc-content" id="tdDescription2"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="rulcontainer3" class="new-grid-wrapper comp-container" title='Select the rule from below list and click on compare button to add rule.'>
+        <div class="addCricle"></div>
+        <div class="addTitle">Add Rule</div>
+        <div class="basic-grid" style="display:none;">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Rule Code</th>
+                        <th id="thRuleCode3"></th>
+                        <th class="clear-rule" id="3"><span class="ui-icon ui-icon-circle-close"></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rule Name</td>
+                        <td colspan="2" id="tdRuleName3"></td>
+                    </tr>
+                    <tr>
+                        <td>Rule Type</td>
+                        <td colspan="2" id="tdRuleType3"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td colspan="2" class="desc-content" id="tdDescription3"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

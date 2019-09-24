@@ -1,0 +1,14 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\tmg.equinox.applicationservices.pbp.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\tmg.equinox.applicationservices.pbp.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\tmg.equinox.applicationservices.pbp.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\EntityFramework.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\EntityFramework.SqlServer.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\tmg.equinox.pbp.dataaccess.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\tmg.equinox.pbp.dataaccess.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\EntityFramework.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\EntityFramework.SqlServer.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\obj\Release\tmg.equinox.applicationservices.pbp.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\obj\Release\tmg.equinox.applicationservices.pbp.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.applicationservices.mapping\obj\Release\tmg.equinox.applicationservices.pbp.pdb

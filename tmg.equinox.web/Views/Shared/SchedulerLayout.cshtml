@@ -1,0 +1,27 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Dashboard Design";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    @RenderBody()
+</div>
+
+@* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+@Scripts.Render("~/bundles/Import")
+@Scripts.Render("~/bundles/Scheduler")
+@Scripts.Render("~/bundles/Translator")
+@Scripts.Render("~/bundles/Transmitter")
+@Scripts.Render("~/bundles/Configuration")
+@*<script src="~/Scripts/Facets/Scheduler/scheduler.js"></script>
+<script src="~/Scripts/Facets/Translator/translator.js"></script>
+<script src="~/Scripts/Facets/Transmitter/transmitter.js"></script>
+<script src="~/Scripts/Facets/Translator/history.js"></script>
+<script src="~/Scripts/Facets/Import/import.js"></script>
+<script src="~/Scripts/Facets/Import/datacleanup.js"></script>
+<script src="~/Scripts/Facets/Import/createMasterList.js"></script>
+<script src="~/Scripts/Facets/Configuration/configuration.js"></script>
+<script src="~/Scripts/Facets/Import/createProduct.js"></script>*@

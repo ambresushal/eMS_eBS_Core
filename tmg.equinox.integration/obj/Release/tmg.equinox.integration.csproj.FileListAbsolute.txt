@@ -1,0 +1,9 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\tmg.equinox.integration.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\tmg.equinox.integration.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\RestSharp.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\bin\Release\RestSharp.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\obj\Release\tmg.equinox.integration.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\obj\Release\tmg.equinox.integration.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.integration\obj\Release\tmg.equinox.integration.pdb

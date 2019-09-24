@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Compare and Sync";
+    Layout = "~/Views/Shared/DocumentSyncLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Compare &amp; Sync</h1>
+  </div>
+</div>
+<div class="compare-sync-wizard">
+    <!-- <div class="tablelist-wrapper">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#1a" data-toggle="tab">Work Queue</a>
+            </li>
+            <li>
+                <a href="#2a" data-toggle="tab">Watch List</a>
+            </li>
+            <li>
+                <a href="#3a" data-toggle="tab">Notifications</a>
+            </li>
+            <li class="pull-right" id="pagination">
+                <div id="pworkQueue"></div>
+                <div id="pformUpdates"></div>
+                <div id="pwatch"></div>
+            </li>
+        </ul>
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1a">
+
+                <div class="table-responsive grid-wrapper">
+                    <table class="table" id="workQueue"></table>
+                </div>
+            </div>
+            <div class="tab-pane" id="2a">
+                <div class="table-responsive grid-wrapper">
+                    <table class="table" id="watch"></table>
+                </div>
+            </div>
+            <div class="tab-pane" id="3a">
+                <div class="table-responsive grid-wrapper">
+                    <table class="table" id="formUpdates"></table>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+
+
+  <div id="documentSync" style="display: none !important;">
+    <h1>Select Source Document</h1>
+    <div id="dsSelectSourceDocument">
+        @Html.Partial("SourceDocuments")
+    </div>
+    <h1>Setup Compare</h1>
+    <div id="dsSetupCompare">
+        @Html.Partial("SetupCompare")
+    </div>
+    <h1>Set Repeater Criteria</h1>
+    <div id="dsSetRepeaterCriteria">
+        @Html.Partial("CompareCriteria")
+    </div>
+    <h1>Select Target Documents</h1>
+    <div id="dsSelectTargetDocments">
+        @Html.Partial("TargetDocuments")
+    </div>
+    <h1>Compare Documents</h1>
+    <div id="dsCompareDocuments">
+        @Html.Partial("CompareDocuments")
+    </div>
+  
+    @if (ViewBag.RoleID == 21 || ViewBag.RoleID == 24 || ViewBag.RoleID == 22 )
+    {
+        <h1>Sync Documents</h1>
+    <div id="dsSyncDocuments">
+        @Html.Partial("SyncDocuments")
+    </div>
+    }
+  </div>
+</div>
+<script type="text/javascript">
+    var isMacroEditiable = false;
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var vbRole = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    setMenu("compareSync");
+    $(window).bind('resize', function () {
+        $("#elementList").setGridWidth($(window).width());
+        $("#childElementList").setGridWidth($(window).width());
+        $("#repeaterKeyList").setGridWidth($(window).width());
+    });
+
+</script>

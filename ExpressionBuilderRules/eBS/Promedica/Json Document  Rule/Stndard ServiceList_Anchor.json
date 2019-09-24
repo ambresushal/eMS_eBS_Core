@@ -1,0 +1,73 @@
+{
+  "documentrule": {   
+    "targetelement": "CommercialMedicalAnchor[StandardServices.StandardServiceList]",
+    "ruletype": "datasource",
+    "targetelementtype": "field",
+    "ruleconditions": {
+      "sources": [
+        {
+          "sourcename": "A",
+          "sourceelement": "StandardServices[StandardServiceGroupDetailRules.StandardServiceGroupDetailRuleList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },	
+		{
+          "sourcename": "B",
+          "sourceelement": "CommercialMedicalAnchor[ProductRules.PlanInformation.ServiceGroup]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },	
+		{
+          "sourcename": "C",
+          "sourceelement": "CommercialMedicalAnchor[StandardServices.StandardServiceList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },
+		{
+          "sourcename": "D",
+          "sourceelement": "CommercialMedicalAnchor[StandardServices.ServiceGroup]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        }
+		
+      ],
+      "sourcemergelist": {
+        "outputcolumns": {
+          "columns": "",
+          "children": ""
+        },
+        "sourcemergeactions": [
+          {
+            "sourcemergetype": "script",
+            "sourcemergeexpression": "SETDEFAULTROW(target, \"{'BenefitServiceCode':'','BenefitCategory1':'','BenefitCategory2':'','BenefitCategory3':'','BenefitCategory4':'','BenefitCategory5':'','PlaceofService':'','CostShareGroup':'','ServiceGroup':''}\");IF(COUNT(c)==0){SET(c, CREATETOKEN(\"{'BenefitServiceCode':'','BenefitCategory1':'','BenefitCategory2':'','BenefitCategory3':'','BenefitCategory4':'','BenefitCategory5':'','PlaceofService':'','CostShareGroup':'','ServiceGroup':''}\"));}SET(targetResult,c);SET(filterconditionValue, b);IF(EQUALS(filterconditionValue,\"\")<>TRUE()){SET(filter, \"ServiceGroup=[value]\");SET(filtercondition, REPLACE(filter, \"value\", filterconditionValue));SET(FILTERLISTResult, FILTERLIST(a, filtercondition, \"\", \"\", \"\"));SET(oldServiceGroup,d);IF(EQUALS(filterconditionValue,oldServiceGroup)==TRUE()){IF(COUNT(targetResult)>0){SET(StandardServAnchorIntersect,INTERSECT(targetResult,FILTERLISTResult,\"BenefitServiceCode\"));SET(StandardServMLExcept,EXCEPT(FILTERLISTResult,targetResult,\"BenefitServiceCode\"));SET(StandardServUnion,UNION(StandardServAnchorIntersect,StandardServMLExcept,\"BenefitServiceCode\"));SET(StandardServUnion,UNION(StandardServUnion,StandardServUnion,\"BenefitServiceCode\"));SET(FILTERLISTResult,StandardServUnion);}}SET(FILTERLISTResult, SORTARRAY(FILTERLISTResult, \"PlaceofService,BenefitCategory5,BenefitCategory4,BenefitCategory3,BenefitCategory2,BenefitCategory1,CostShareGroup,ServiceGroup\", \"asc\"));SETARRAY(target, FILTERLISTResult);}ELSE{SETARRAY(target, \"[]\")}",
+            "keycolumns": "",
+            "mappings": {
+              "sourcefields": "",
+              "targetfields": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}

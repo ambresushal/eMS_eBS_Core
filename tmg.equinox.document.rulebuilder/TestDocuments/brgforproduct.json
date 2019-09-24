@@ -1,0 +1,102 @@
+{
+    "documentrule": {
+        "targetelement": "Product[BenefitReview.BenefitReviewGrid]",
+        "triggers": [
+            {
+                "source": "Product[BenefitReview.BenefitReviewGrid]",
+                "event": "onselectdialog"
+            },
+            {
+                "source": "Product[AdditionalServices.AdditionalServicesDetails]",
+                "event": "onselectdialog"
+            },
+            {
+                "source": "Product[BenefitSetNetwork.NetworkList]",
+                "event": "add+remove"
+            }
+        ],
+        "actions": [ ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[ServiceGroup.ServiceGrouping]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "MasterList[ServiceGroupDefinition.ServiceGroupingDetail][MasterListServices]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",	
+                                "filtername": "A",
+                                "filterexpression": "parent = source[A]"
+                            },
+                        ],
+                        "filtermergeaction": "A intersection B"
+                    }
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "mappings": {
+                        "sourcefields": "BenefitSetName",
+                        "targetfields": "BenefitSetName"
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "D",
+                    "sourceelement": "Product[AdditionalServices.AdditionalServicesDetails]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "A",
+                                "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                            },
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "B",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": "A and B"
+                    }
+                }
+            ],
+            "sourcemergeaction": "[B + D][C]"
+        }
+    }
+}

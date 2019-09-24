@@ -1,0 +1,85 @@
+{
+    "documentrule": {
+        "targetelement": "Product[ServiceGroup.ServiceGroupingDetail]",
+        "ruletype": "datasource",
+        "targetelementtype": "repeater[selectdialog]",
+
+        "triggers": [
+            {
+                "source": "Product[ServiceGroup.ServiceGrouping]",
+                "event": "onselectdialog"
+            }
+        ],
+        "actions": [ ],
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[ServiceGroup.ServiceGrouping]",
+                    "outputcolumns": "",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "outputcolumns": "",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "MasterList[ServiceGroupDefinition.ServiceGroupingDetail]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                }
+            ],
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "",
+                    "children": ""
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergetype": "expr",
+                        "sourcemergeexpression": "(@C.ServiceGroupHeader = @A.ServiceGroupHeader)[MasterListServices] crossjoin @B.BenefitSetName",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

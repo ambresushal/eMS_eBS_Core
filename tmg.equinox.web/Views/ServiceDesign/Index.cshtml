@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Service Design";
+    Layout = "~/Views/Shared/ServiceVersionLayout.cshtml";
+}
+
+<div id="servicedesigntabs" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <li><a href="#servicedesign-1">Web API Designs</a></li>
+    </ul>
+    <div id="servicedesign-1" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all clearfix" >
+        <div class="row-fluid">
+            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                <table id="fdg"></table>
+            </div>
+            <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                <table id="fdvg"></table>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="servicedesigndialog">
+        <form>
+            <div class="form-group">
+                <label for="servicedesignname">Web API Design Name</label>
+                <input type="text" class="form-control" id="servicedesignname" maxlength="100" placeholder="Enter >Web API Design Name" />
+                <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+                <label for="servicemethodname">Web API Method Name</label>
+                <input type="text" class="form-control" id="servicemethodname" maxlength="100" placeholder="Enter >Web API Method Name" />
+                <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+                <label for="doesreturnalist">Does this Web API return a List</label>
+                <input type="checkbox" id="doesreturnalist" />
+                <span class="help-block"></span>
+            </div>
+            <button type="button" class="btn btn-default">Save</button>
+        </form>
+    </div>
+    <div id="servicedesignversiondialog">
+        <form>
+            <div class="col-xs-12 col-md-12">
+                <div class="form-group row">
+                    <label for="ServiceDesignVersionEffectivedate">Effective Date</label>
+                    <input type="text" class="form-control" id="sdveffectivedate" style="width: 85%;" placeholder="Enter Effective Date" maxlength="10" />
+                    <span id="sdveffectivedateHelpblock" class="help-block"></span>
+                </div>
+                <div class="form-group row">
+                    <label for="FormDesign">Document Design</label>
+                    <select class="form-control" id="sdvformdesignid" style="width: 85%;">
+                        <option value="0">--Select--</option>
+                    </select>
+                    <span id="sdvformdesignidHelpblock" class="help-block"></span>
+                </div>
+                <div class="form-group row">
+                    <label for="sdvformdesignversion">Document Design Version</label>
+                    <select class="form-control" id="sdvformdesignversion" style="width: 85%;">
+                        <option value="0">--Select--</option>
+                    </select>
+                    <span id="sdvformdesignversionHelpblock" class="help-block"></span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default">Save</button>
+        </form>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="serviceparameterdialog">
+        <table id="serviceparameterdialoggrid">
+        </table>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="selectuielementserviceparameterdialog">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group row" id="serviceparameteruielementgridcontainer">
+                <table id="serviceparameteruielementgrid">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="manageserviceparameterdialog">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group row">
+                <div class="input-group">
+                    <label for="parameteruielementfullpath">Element Path</label>
+                    <textarea id="parameteruielementfullpath" class="form-control disabled" maxlength="500" disabled></textarea>
+                    <span id="parameteruielementfullpathHelpblock" class="help-block"></span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-small btn-default" type="button" id="parameterselectelement">Select</button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="parametername">Name</label>
+                <input type="text" class="form-control" id="parametername" style="width: 100%;" placeholder="Enter Name" maxlength="500" />
+                <span id="parameternameHelpblock" class="help-block"></span>
+            </div>
+            <div class="form-group row">
+                <label for="paramterdatatype">Data Type</label>
+                <select class="form-control" id="paramterdatatype" style="width: 100%;">
+                    <option value="0">--Select--</option>
+                </select>
+                <span id="paramterdatatypeHelpblock" class="help-block"></span>
+            </div>
+            <div class="form-group row">
+                <label for="parameterisrequired">Required</label>
+                <input type="checkbox" id="parameterisrequired" />
+                <span id="parameterisrequiredHelpblock" class="help-block"></span>
+            </div>
+        </div>
+        <button type="button" class="btn btn-default" id="btnsaveserviceparameter">Save</button>
+    </div>
+</div>
+<div id="servicedesignversionoutputdialog" style="display: none;">
+    <div id="servicedesignversionoutputtabs" style="overflow:auto;">
+        <ul>
+            <li><a href="#servicedesignversionoutputtab-1">Json Output</a></li>
+            <li><a href="#servicedesignversionoutputtab-2">XML Output</a></li>
+        </ul>
+        <div>
+            <div id="servicedesignversionoutputtab-1">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="jsonoutput" rows="25" cols="50" disabled="disabled" class="disabled">
+                        Json
+                </textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="servicedesignversionoutputtab-2">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="xmloutput" rows="25" cols="150" disabled="disabled" class="disabled">
+                        xml
+                </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+    setMenu("Design");
+</script>

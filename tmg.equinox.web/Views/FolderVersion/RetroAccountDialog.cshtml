@@ -1,0 +1,46 @@
+﻿<div style="display: none;">
+    <div id="retroAccountDialog" style="margin: 10px">
+        <div class="form-group row" id="effectiveDateDiv">
+            <div class="col-xs-6 select-width-200px">
+                <label>Date in which change must be made  (Retro Effective Date)</label>
+            </div>
+            <div class="col-xs-6 select-width-200px ">
+                <input  type="text" id="retroEffectiveDate" style="width:90%" maxlength="10"/>
+                <span class="help-block" id="retroeffectiveDateSpan" ></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6 select-width-200px">
+                <label id="selectCatLabel">Select Category</label><em>*</em>
+            </div>
+            <div class="col-xs-6 select-width-200px ">
+                <select id="retro_CategoryDDL"></select>
+                <span class="help-block" id="retro_CategoryDDLSpan" ></span>
+            </div>
+        </div>
+       @* <div class="form-group row" id="category2Div">
+            <div class="col-xs-6 select-width-200px">
+                <label id="selectCategoryIDLabel">ID</label>
+            </div>
+            <div class="col-xs-6 select-width-200px ">
+                <input type="text" id="retro_CatIDTXT"/>
+            </div>
+        </div>*@
+        <div class="pull-right">
+          <button id="searchImpactedFolders" type="button" class="btn">Search</button>
+        <button id="cancelSearch" type="button" class="btn btn-default">Cancel</button>
+        </div>
+        <div class="row" id="impactedFoldersdiv">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+              <div class="grid-wrapper">
+                <table id="impactedFoldersGrid"></table>
+            </div>
+        </div>
+        </div>
+        <button id="backBtn" type="button" class="btn btn-default">Back</button>
+        <button id="saveBtn" type="button" class="btn btn-default">Save</button>
+        <span id="showRetroFoldersMsg">Impacted Grid shows only copy Retro Folder Versions</span>
+    </div>
+</div>
+
+

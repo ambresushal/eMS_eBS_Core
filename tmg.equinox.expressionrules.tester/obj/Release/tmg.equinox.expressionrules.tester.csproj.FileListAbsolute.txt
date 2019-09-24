@@ -1,0 +1,4 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.expressionrules.tester\obj\Release\tmg.equinox.expressionrules.tester.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.expressionrules.tester\obj\Release\tmg.equinox.expressionrules.tester.frmExprRules.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.expressionrules.tester\obj\Release\tmg.equinox.expressionrules.tester.Properties.Resources.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.expressionrules.tester\obj\Release\tmg.equinox.expressionrules.tester.csproj.GenerateResource.Cache

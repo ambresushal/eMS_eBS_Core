@@ -1,0 +1,30 @@
+﻿@using System.Configuration;
+@{
+    ViewBag.Title = "Page Not Found";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+<div class="spacer">
+</div>
+<div class="" style="min-height: 400px; margin: 50px auto 40px; text-align: center;">
+    <p style="color: #55A8D5; line-height: 1.5; font-size: 45px; font-weight: bold;">
+        Sorry!!! 
+        <br />
+        Invalid User...Try Again!!!!
+    </p>
+    @{
+        if (ConfigurationManager.AppSettings.AllKeys.Contains("SingleLandingPageUrl"))
+        {
+            string SingleLandingPageUrl = ConfigurationManager.AppSettings["SingleLandingPageUrl"].ToString() ?? string.Empty;
+            if (!string.IsNullOrEmpty(SingleLandingPageUrl))
+            {
+            <a href=@SingleLandingPageUrl>Login again</a>
+                }
+            }
+        }
+    <hr />
+    @*<p>
+        <b>Please click here to go to @Html.ActionLink("Login", "LogOn", "Account", null, null) Page.</b>
+    </p>*@
+</div>
+<div class="spacer">
+</div>

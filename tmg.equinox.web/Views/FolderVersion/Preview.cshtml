@@ -1,0 +1,480 @@
+﻿@model tmg.equinox.applicationservices.viewmodels.FolderVersion.FormInstanceExportPDF
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FormPreviewRenderLayout.cshtml";
+}
+
+
+<script id="FormTemplate" type="text/x-jsrender">
+    <div class="panel panel-default" style='page-break-after:always !important;'>
+        <div class="panel-heading-gray">
+            <h1 class="panel-title section-title">{{>FormDesignName}}</h1>
+        </div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div id="{{>FormName}}" class="row">
+                </div>
+            </div>
+        </div>
+        </div>
+</script>
+
+<script id="SectionTemplate" type="text/x-jsrender">
+    {{if ~isSectionVisible(Label) }}    
+     <div id="{{>Name}}{{:~getFormInstanceId()}}wrapper">    
+       <div class="panel panel-default" {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            <div class="panel-heading-gray">
+                <h2 class="panel-title section-title">{{>Label}}</h2>
+            </div>
+            <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    {{for Elements tmpl="#ElmentTemplate" ~cnt = ChildCount ~layout = LayoutColumn/}}
+                </div>
+            </div>
+            </div>
+        </div>    
+    </div>
+    <br />  
+     {{/if}} 
+</script>
+
+<script id="ElmentTemplate" type="text/x-jsrender">
+    {{if Type==="calendar"}}
+        {{include tmpl="#CalendarTemplate"/}}
+    {{else Type==="section"}}
+        {{include tmpl="#ElementSectionTemplate"/}}
+   {{else Type==="repeater"}}
+        {{include tmpl="#ElementRepeaterTemplate"/}}
+    {{else Type==="select"}}
+        {{include tmpl="#SelectTemplate"/}}
+    {{else Type==="radio"}}
+        {{include tmpl="#RadioButtonTemplate"/}}
+    {{else Type==="checkbox"}}
+        {{include tmpl="#CheckboxTemplate"/}}
+    {{else IsLabel === true}}
+        {{include tmpl="#LabelTemplate"/}}
+    {{else Multiline === true}}
+        {{include tmpl="#TextAreaTemplate"/}}
+    {{else IsDropDownTextBox === true}}
+        {{include tmpl="#SelectInputTemplate"/}}
+    {{else}}
+        {{include tmpl="#InputElementTemplate"/}}
+    {{/if}}
+    
+    {{if (#index+1) % ~layout === 0 && #index+1 !== ~cnt}}
+        </td>
+        <td class="unclosed div">
+    {{/if}}
+</script>
+
+<script id="SubSectionTemplate" type="text/x-jsrender">
+    {{if ~isSectionVisible(Label) }} 
+    <div class="panel panel-default subsection" id="{{>Name}}{{:~getFormInstanceId()}}wrapper" {{if Visible === true}} style ='display: block;' {{else}} style='display:none !important;' {{/if}}>
+        <div class="panel-heading-gray">
+            <h3 class="panel-title">{{>Label}}</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tbody>
+                    <tr class="row">
+                 {{if LayoutColumn === 4}} 
+                  {{:~renderCustomHtml(CustomHtml,ChildCount,SectionNameTemplate)}}
+                  {{include tmpl=SectionNameTemplate/}}
+                  {{else}}
+                  {{for Elements tmpl="#ElmentTemplate" ~cnt = ChildCount ~layout = LayoutColumn/}}
+                  {{/if}}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{/if}} 
+</script>
+
+<script id="RepeaterTemplate" type="text/x-jsrender">
+    
+    <td id='{{>Name}}{{:~getFormInstanceId()}}'  class="col-xs-2 col-md-2 col-lg-2 col-sm-2" style="width:100%;"></td>
+</script>
+
+<script id="ElementRepeaterTemplate" type="text/x-jsrender">
+      {{for [Repeater] tmpl="#RepeaterTemplate"/}}
+        {{:~repeaterCallback(#data)}}
+</script>
+
+<script id="SelectTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}">
+        <span class="radio-label-align-middle" for="{{>Name}}"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </span>
+    </div>    
+    <div class="{{>~getCssClass(~layout)}}">
+        <div class="btn-group"  {{if Visible === true}} style ='display:block;width:100% !important;' {{else}} style='display:none !important;' {{/if}}>
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button"> 
+                <span style="color:#555555 !important;font-family:Calibri !important;font-size:10px !important;" data-link='{{>FullName}}'>{{>ItemValue}}</span>
+                <span style='float:right !important;margin-top:5px !important;' class="caret"></span>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script id="ElementSectionTemplate" type="text/x-jsrender">
+    <td class="{{>~getCssClass(~layout, Type)}}">
+        {{for [Section] tmpl="#SubSectionTemplate"/}}
+    </td>
+</script>
+
+<script id="CalendarTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}" >
+        <span class="radio-label-align-middle" for="{{>Name}}"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </span>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <input  type="text" id='{{>Name}}' name='{{>Name}}' customrule='{{>HasCustomRule}}' maxlength='10' title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom"
+            {{if Visible === true}} style ='display:block;width:100%' class="datepicker date ignore form-control hastooltip  placeholder="MM/DD/YYYY" {{else}} style='display:none !important;' {{/if}}  
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            {{if Enabled === false}} disabled {{/if}}"
+            data-link='{{>FullName}}'/>
+    </div>
+</script>
+
+<script id="RadioButtonTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}">
+        <span class="radio-label-align-middle" for="{{>Name}}"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </span>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <input type="radio" id = '{{>Name}}' name='{{>Name}}' group = '{{>Name}}' customRule='{{>HasCustomRule}}'  title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" value="true"  
+            {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}}
+            class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+             data-link='{{>FullName}}' {{if DefaultValue == True }} checked="checked" {{/if}} {{if DefaultValue == true }} checked="checked" {{/if}}  > 
+            <span class="radio-pdf-text-align-middle"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>{{>OptionLabel}}</span>           
+        <input type="radio" id = '{{>Name}}' name='{{>Name}}' group = '{{>Name}}' customRule='{{>HasCustomRule}}'  title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" value="false"  
+            {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}}
+            class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}  
+            data-link='{{>FullName}}' {{if DefaultValue == False }} checked="checked" {{/if}} {{if DefaultValue == false }} checked="checked" {{/if}} >
+            <span class="radio-pdf-text-align-middle"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>{{>OptionLabelNo}}</span> 
+	</div>
+</script>
+
+<script id="CheckboxTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout, Type)}}" >
+            <input  type="checkbox" id='{{>Name}}' name='{{>Name}}' customrule='{{>HasCustomRule}}' value="true" title='{{>HelpText}}' 
+                {{if Visible === true}} style ='display:inline!important;' {{else}} style='display:none !important;' {{/if}}
+                data-toggle="tooltip" data-placement="bottom" class="css-checkbox" {{if Enabled === false}} disabled="disabled" {{/if}}
+                data-link='{{>FullName}}' {{if DefaultValue == true }} checked="checked" {{/if}} />
+            <span class="css-span" for="{{>Name}}" {{if Visible === true}} style ='display:inline!important;' {{else}} style='display:none !important;' {{/if}}>
+                {{>Label}}
+                {{if ~hasRequiredValidation(FullName) }}
+                        <em>*</em>
+                {{/if}}
+            </span>
+    </div>
+</script>
+
+
+<script id="LabelTemplate" type="text/x-jsrender">
+    {{if IsLabel === true && Label === 'Blank'}}
+        <div class="col-xs-12 col-md-12 col-lg-12" >
+        <span class='staticLabel' id='{{>Name}}' name='{{>Name}}' {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}></span>
+    </div>
+    {{else IsLabel === true && Label !== null}}
+        <div class="col-xs-12 col-md-12 col-lg-12" >
+        <span class='staticLabel' id='{{>Name}}' name='{{>Name}}' {{if Visible === true && ~getLabelsValueFromJSON(FullName) === '' }}  style ='display:block;' {{else  Visible !== true }} style='display:none !important;' {{/if}}  {{if Visible === true && ~getLabelsValueFromJSON(FullName) !== '' }}  style ='display:block;padding-left: 10px; margin-left: 25%;' {{else  Visible !== true }} style='display:none !important;' {{/if}} >
+            {{if ~getLabelsValueFromJSON(FullName) !== '' }}   {{>~getLabelsValueFromJSON(FullName)}}
+            {{else}} {{>Label}}
+            {{/if}}
+        </span>
+    </div>
+    {{else IsLabel === true && Label === null}} 
+        <div class="{{>~getCssClass(~layout)}}" > 
+		    <span {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}></span>
+	    </div>
+	    <div class='{{>~getCssClass(~layout)}}'>
+		    <span id='{{>Name}}' name='{{>Name}}' {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>{{>Label}}</span>
+	    </div>
+    {{/if}}
+</script>
+
+<script id="TextAreaTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}" >
+        <span class="label-align-middle" {{if Visible === true}} style ='display:block;clear:both;' {{else}} style='display:none !important;' {{/if}} for="{{>Name}}">
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </span>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}" style="border-style:regular;border-color:black;height:auto !important;padding:0px !important;margin-bottom:4px;" >
+                <pre {{if Visible === true}} style ='height:auto;background-color:white;border-color:lightgray;font-family:inherit;font-size:10px;padding-top:0px;padding-bottom:0px;padding-left:0px !important;margin:0px !important;' {{else}} style='display:none !important;' {{/if}}>
+           <div  id='{{>Name}}'   name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+            {{if Visible === true}} style ='display:block;border-color:lightgray;height:auto;' {{else}} style='display:none !important;' {{/if}} 
+            data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}' 
+            class='{{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+            data-link='{{>FullName}}'>{{>DefaultValue}}dummydd</div>
+        </pre>
+    </div>
+</script>
+
+<script id="InputElementTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}" >
+        <span class="label-align-middle" for="{{>Name}}" {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </span>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}" >
+        <input  type='{{>Type}}' id='{{>Name}}' name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}' 
+            {{if Visible === true}} style ='display:block;height:auto;' {{else}} style='display:none !important;' {{/if}}
+            class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+            value='{{>DefaultValue}}' data-link='{{>FullName}}'/>
+    </div>
+</script>
+
+<script id="SelectInputTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout)}}">
+        <label class="radio-label-align-middle" for="{{>Name}}"  {{if Visible === true}} style ='display:block;' {{else}} style='display:none !important;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+                    <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <div class="btn-group" {{if Visible === true}} style ='display:block;width:100% !important;' {{else}} style='display:none !important;' {{/if}}>
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button"> 
+                <div {{for ~sortDropDownItems(Items,IsSortRequired)}} {{if cssclass == 'highlight' }} style="background-color:yellow !important" {{/if}} {{/for}}><span style="color:#555555 !important; font-family:Calibri !important;font-size:10px !important; width:100% !important;" data-link='{{>FullName}}'>{{>ItemValue}}</span>
+                <span style='float:right !important;margin-top:5px !important;' class="caret"></span></div>
+            </button>
+        </div>
+    </div>    	
+</script>
+
+
+<script id="CustomElementTemplate" type="text/x-jsrender">       
+    {{if (#index+1) === ~cnt && Type==="calendar"}}
+        {{include tmpl="#CustomCalendarTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="radio"}}
+        {{include tmpl="#CustomRadioButtonTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="checkbox"}}
+        {{include tmpl="#CustomCheckboxTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='select'}}
+        {{include tmpl="#CustomSelectTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='SelectInput' && IsDropDownTextBox === true}}
+        {{include tmpl="#CustomSelectInputTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === 'label' && IsLabel === true}}
+        {{include tmpl="#CustomLabelTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === "text" && Multiline === true}}
+        {{include tmpl="#CustomTextAreaTemplate"/}}
+    {{else (#index+1) === ~cnt}}
+        {{include tmpl="#CustomInputElementTemplate"/}}
+
+    {{/if}}     
+</script>
+
+<script id="CustomInputElementTemplate" type="text/x-jsrender">
+        <input  type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}' 
+            {{if Visible === true}} style ='width:120px;margin-top:3px;width: auto !important;' {{else}} style='display:none;' {{/if}}
+            class='{{>DataType}} hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+            value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}'/>
+       
+</script>
+     
+<script id="CustomCheckboxTemplate" type="text/x-jsrender">
+            <input  type="checkbox" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' value="true" title='{{>HelpText}}' 
+                {{if Visible === true}} style ='display:inline;' {{else}} style='display:none;' {{/if}}
+                data-toggle="tooltip" data-placement="bottom"  class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+                {{if DefaultValue === true }} checked="checked" {{/if}} {{:~setCheckBoxDataLink(FullName)}} data-journal='{{>FullName}}'/>
+            
+</script>
+
+<script id="CustomCalendarTemplate" type="text/x-jsrender">
+    
+        <input  type="text" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' maxlength='10' title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" style="width:90%;max-width:120px;"
+            {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}}  
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            class="datepicker date ignore  hastooltip {{if Enabled === false}} disabled {{/if}}" 
+            style="width:90%" placeholder="MM/DD/YYYY" data-link='{{>FullName}}' data-min-date="{{>MinDate}}" data-max-date="{{>MaxDate}}" value='{{>DefaultValue}}' data-journal='{{>FullName}}'>
+    
+</script>
+
+
+<script id="CustomRadioButtonTemplate" type="text/x-jsrender">
+        <input type="radio" id = '{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group = '{{>Name}}{{:~getFormInstanceId()}}' customRule='{{>HasCustomRule}}'  title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" value="true"  
+            {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}} 
+            class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+             {{if DefaultValue === true }} checked="checked" {{/if}}  {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'> 
+            <label class="radio-text-align-middle" for="{{>OptionLabel}}" {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}}>{{>OptionLabel}}</label>     
+        <input type="radio" id = '{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group = '{{>Name}}{{:~getFormInstanceId()}}' customRule='{{>HasCustomRule}}'  title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" value="false"  
+            {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}}
+            class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}  
+            {{if DefaultValue === false }} checked="checked" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'>
+            <label class="radio-text-align-middle"for="{{>OptionLabelNo}}"  {{if Visible === true}} style ='display:inline;' {{else}} style='display:none !important;' {{/if}}>{{>OptionLabelNo}} </label>  
+</script>
+<script id="CustomLabelTemplate" type="text/x-jsrender">
+    {{if IsLabel === true && Label === 'Blank'}} 
+        <div class="row">
+            <div class="col-xs-9 col-md-9 col-lg-9" >
+                <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+                    {{if Visible === true}} style ='display:block;height:5px;' {{else}} style='display:none;height:5px;' {{/if}}></label>
+            </div>
+        </div>
+        <div class="row">
+    {{else IsLabel === true && Label !== null}} 
+        <div class="col-xs-9 col-md-9 col-lg-9" >
+            <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+                {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}}>{{>Label}}</label>
+        </div>
+    {{else IsLabel === true && Label === null}} 
+        <div class="{{>~getCssClass(~layout)}}" > 
+		    <label {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}}></label>
+	    </div>
+	    <div class='{{>~getCssClass(~layout)}}'>
+		    <label id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}}>{{>Label}}</label>
+	    </div>
+    {{/if}}
+</script>
+
+<script id="CustomSelectInputTemplate" type="text/x-jsrender">
+    
+    {{if IsMultiline === true}}
+        <select  id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+             class='form-control multi-select ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+            {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}} 
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+    {{else}}
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}' 
+            class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+            {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}} 
+            {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+      <!---->  <option value=""  class="standard-optn" selected>[Select One]</option>
+    {{/if}}
+
+    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+        {{if ~defaultValue === ItemValue}}
+            <option value="{{>ItemValue}}">{{>ItemValue}}</option>
+        {{else}}
+        {{if cssclass == 'non-standard-optn' }}
+            <option value="{{>ItemValue}}" class="non-standard-optn" >{{>ItemValue}}</option>
+        {{else}}
+            <option value="{{>ItemValue}}" class="standard-optn" >{{>ItemValue}}</option>
+        {{/if}}
+        {{/if}}	       
+    {{/for}}
+            <option value="newItem" class="standard-optn">Enter Unique Response</option>
+        </select>
+    <input  type='text' name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}' 
+            data-toggle="tooltip" data-placement="bottom" maxlength='100' class="ddt-textbox {{>DataType}}" data-link='{{>FullName}}' data-journal='{{>FullName}}' 
+            style ='display:none;' />
+    	
+</script>
+
+<script id="CustomTextAreaTemplate" type="text/x-jsrender">
+
+
+    <div class="{{>~getCssClass(~layout)}}" style="border-style:regular;border-color:black;height:auto !important;padding:0px !important;margin-bottom:4px;" >
+        <pre {{if Visible === true}} style ='height:auto;background-color:white;border-color:lightgray;font-family:inherit;font-size:10px;padding-left:0px !important;margin:0px !important;' {{else}} style='display:none !important;' {{/if}}>
+           <div  id='{{>Name}}'   name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+            {{if Visible === true}} style ='display:block;border-color:lightgray;height:auto;' {{else}} style='display:none !important;' {{/if}} 
+            data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}' 
+            class='{{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+            data-link='{{>FullName}}'>{{>DefaultValue}}</div>
+        </pre>
+    </div>
+    
+</script>
+
+<script id="CustomSelectTemplate" type="text/x-jsrender">
+    <div class="inline">
+    {{if IsMultiline === true}}
+        <select  id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+             class='form-control multi-select {{if Enabled === false}} disabled {{/if}}'
+            {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}} 
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+    {{else}}
+        <select  id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}' 
+            class='form-control hastooltip {{if Enabled === false}} disabled {{/if}}'
+            {{if Visible === true}} style ='display:block;' {{else}} style='display:none;' {{/if}} 
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+        <option value="">[Select One]</option>
+    {{/if}}
+
+@*    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+        {{if ~defaultValue === ItemValue}}
+            <option value="{{>ItemValue}}" selected>{{>ItemValue}}</option>
+        {{else}}
+            <option value="{{>ItemValue}}">{{>ItemValue}}</option>
+        {{/if}}	  
+    {{/for}}*@
+        </select>
+    </div>
+</script>
+
+
+<div id="coverPage" style="page-break-after: always !important;">
+    <div class="navbar-brand">
+        <img src="~/Content/css/custom-theme/images/ebenefitsync-logo.png" title="eBenefitSync" alt="eBenefitSync" style="height: 55px;width:55px" />
+    </div>
+    <div style="clear: both;"></div>
+    <div style="text-align: center !important; margin-top: 50px !important;">
+        <label style="line-height: 25px !important;">
+            <span style="font-size:25px !important; margin-top:20px !important;margin-bottom:10px !important">@Model.AccountName</span><br />
+           <span style="font-size:15px !important; margin-top:10px !important;margin-bottom:10px !important"> Folder: @Model.FolderName<br />
+            Effective Date: @Model.EffectiveDate.ToShortDateString()<br />
+            Version No.: @Model.FolderVersionNumber<br /><br />
+               @Model.FormName<br /></span><br />
+        </label>
+         <div style="clear: both;"></div>
+        <span>PDF Generation Date: @Model.GenerationDate.ToShortDateString() </span>
+    </div>
+</div>
+<div id="previewInstances"></div>
+
+<script type="text/javascript">
+    var previewFolderData = {
+        formInstanceId: '@Model.FormInstanceID',
+        formDesignVersionId: '@Model.FormDesignVersionID',
+        folderVersionId: '@Model.FolderVersionID',
+        folderId: '@Model.FolderId',
+        tenantId: '@Model.TenantID',
+        formName: '@Model.FormName',
+        accountName: '@Model.AccountName',
+        folderName: '@Model.FolderName',
+        folderVersionNumber: '@Model.FolderVersionNumber',
+        effectiveDate: '@Model.EffectiveDate',
+        templateId: '@Model.TemplateID',
+        roleID: '@Model.RoleID'
+    };
+
+    $(document).ready(function () {
+        //Get an instance for current folder version.
+        var preview = new printPreview();
+        
+        preview.loadFormInstance(previewFolderData.formInstanceId, previewFolderData.formDesignVersionId, previewFolderData.folderVersionId, previewFolderData.templateId, previewFolderData.roleID);
+    });
+
+</script>

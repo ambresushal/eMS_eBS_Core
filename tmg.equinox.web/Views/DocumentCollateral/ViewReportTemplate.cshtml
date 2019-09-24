@@ -1,0 +1,194 @@
+﻿@{
+    ViewBag.Title = "View Collateral Template";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Create Collateral Template</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Collateral Engine</a>
+        </li>
+    </ul>
+</div>
+<div id="collateralEngine" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li class="active"><a href="#collateralEngine-1">Create Collateral Template</a></li>
+        <li><a href="~/DocumentCollateral/GenerateReports">Generate Collateral</a></li>
+        <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+        <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+        <li><a href="~/DocumentCollateral/CollateralImages">Collateral Images</a></li>
+        <li><a href="~/DocumentCollateral/ViewUploadedCollaterals">Uploaded Collateral</a></li>
+    </ul>
+</div>
+<div id="viewReportTemplate" style="display: none;">
+    <ul>
+        <li><a href="#reportNameTab">Create Collateral Template</a></li>
+    </ul>
+    <div id="reportNameTab">
+        <div class="row">
+            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                <div class="grid-wrapper left-sidebar">
+                    <!-- <div class="grid-page-wrapper">
+                      List Of Items
+                    </div> -->
+                    <table id="rptTmplNames"></table>
+                </div>
+            </div>
+
+            <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                <div class="grid-wrapper">
+                    <!-- <div class="grid-page-wrapper right-sidebar">
+                      List Of Items
+                    </div> -->
+                    <table id="rptTmplVersions"></table>
+                </div>
+            </div>
+
+            <div id="reportUploadMappedDoc" class="col-xs-9 col-md-9 col-lg-9 col-sm-9" style="display:none;">
+                <form id="uploadRptTmplt-##ID" method="post" runat="server" enctype='multipart/form-data'>
+                    <!-- action="@Url.Action("UpdateReportTemplateVersion")" >   -->
+                    @*                  <input id="templateDocMappings-##ID" type="hidden" class="form-control" name="templateDocMappings" />
+                        <input id="templateProperties-##ID" type="hidden" class="form-control" name="templateProperties" />
+                        <input id="VersionNumber-##ID" type="hidden" class="form-control" name="VersionNumber" />
+                        <input id="statusMessage-##ID" type="hidden" value="@ViewData["StatusMessage"]"/>
+                        <input id="reportVersionTemplateID-##ID" type="hidden" class="form-control" name="reportVersionTemplateID" value="@ViewData["ReportTemplateID"]"/>
+                        <input id="reportTemplateName-##ID" type="hidden" name="reportTemplateName" />
+                        <input id="parameters-##ID" type="hidden" name="parameters" />*@
+                    <input id="uploadedFileName-##ID" type="hidden" class="form-control" name="uploadedFileName" />
+
+                    <div id="tempDocMapdiv-##ID" style="margin-bottom:15px;max-width:1000px;">
+                        <div class="grid-wrapper">
+                            <table id="rptDocMap-##ID" style="max-width:1000px;"></table>
+                        </div>
+                    </div>
+
+                    <table>
+                        <tr>
+                            @*<td><button id="uploadTemplateFileChangeLabel-##ID" aria-label="UploadChange" title="Template File" style="display:none;">Change Me</button></td>*@
+                            <td><label id="uploadTemplateFileChangeLabel-##ID" aria-label="UploadChange" title="Template File" style="display:none;font-weight:bold;vertical-align:middle;max-width:100%;float:left;margin-top:4px;border-style:solid;border-width:1px;border-radius:3px;padding:2px;padding-left:4px;padding-right:4px;">Change Me</label></td>
+                            <td><button id="uploadTemplateFileChange-##ID" name="uploadTemplateFileChange" class="form-control uploadTemplateFileChange-##ID" type="button" style="display:none;margin-left:5px;margin-right:5px;float:left;">Change Template</button></td>
+                            <td><label id="uploadTemplateFileLabel-##ID" class="uploadTmplFile-##ID" aria-label="Upload" style="margin-top:4px;font-weight:bold;float:left;">Upload Template</label></td>
+                            <td><input id="uploadTemplateFile-##ID" name="uploadTemplateFile" class="form-control uploadTmplFile-##ID" type="file" style="margin-left:5px;margin-right:5px;float:left;background-color:white;max-width:200px;" /></td>
+                            <td><button id="cancelTemplateFileChange-##ID" name="cancelTemplateFileChange" class="form-control cancelTemplateFileChange-##ID" type="button" style="display:none;margin-left:5px;margin-right:5px;float:left;max-width:120px;">Cancel</button></td>
+                        </tr>
+                    </table>
+                    <br />
+                </form>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+
+
+    <div style="display:none;">
+        @*Dialog to create Report Template.*@
+        <div id="reportTmplDialog">
+            <form>
+                <div class="form-group">
+                    <label for="reportTmplName">Collateral Template Name</label>
+                    <em>*</em>
+                    <input type="text" class="form-control" id="reportTmplName" maxlength="100" placeholder="Enter Collateral Template Name" />
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn btn-default pull-right">Save</button>
+            </form>
+        </div>
+
+        @*Dialog to create Report Template Version.*@
+        <div id="reportTmplVrsnDialog">
+            <form>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <label for="lblReportTmplVrsnEffDate">Effective Date</label>
+                        <em>*</em>
+                        <input type="text" class="form-control" id="reportTmplVrsnEffDate" maxlength="100" placeholder="Enter Effective Date" />
+                        <span id="collateralTemplateVersionEffectivedateHelpblock" class="help-block"></span>
+                    </div>
+                    <div id="divReportTmplVrsnAdd" style="display:none">
+                        <div class="col-xs-12">
+                            <label style="font-size: 14px;"><b>Optional Step</b></label><br />
+                            <br />
+                            <label>
+                                <input type="checkbox" name="createCollateralTemplateVersion" id="isCreateTemplateDesignVersion" style="height: 13px;" />
+                                &nbsp;  Copy Collateral Template Version
+                            </label>
+                            <span id="copyCollateralTemplateVersionCheckboxHelpblock" class="help-block"></span>
+                            <br />
+                            <label>Copy Version</label>
+                            <select class="form-control" id="copyPreviousTemplateVersion"></select>
+                            <span style="color: #737373;">Select a collateral Template Version to Copy</span>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default pull-right">Save</button>
+            </form>
+        </div>
+
+        <div id="parametersDialog">
+            <div class="panel-body">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="grid-wrapper">
+                                <table id="parametersGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="roleaccesspermission">
+            <div class="panel-body">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="grid-wrapper">
+                                <table id="roleaccesspermissiongrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none;">
+
+            <div id="commentsDialog">
+                <div class="form-group row" style="margin-top: 14px">
+                    <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4" style="margin-top: 14px">
+                        <label>Comments</label>
+                    </div>
+                    <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                        <textarea class="form-control" id="comments" maxlength="5000" placeholder="" rows="3"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" id="saveButton" class="btn btn-default pull-right">Save</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var vbRole = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    setMenu("collateral");
+</script>
+
+
+
+

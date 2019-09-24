@@ -1,0 +1,408 @@
+﻿<script id="SOTViewTemplate" type="text/x-jsrender">
+    <div>
+        <table id="mainsection{{:~getFormInstanceId()}}" class="ui-sotview-btable">
+            <tbody>
+                {{for Sections tmpl="#SOTSectionTemplate" /}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script id="SOTSectionTemplate" type="text/x-jsrender">
+    {{if Visible === true}}
+    {{if LayoutColumn === 4}}
+    <tr id="section{{>Name}}{{:~getFormInstanceId()}}" class="ui-widget-content custom-section" data-filter="{{>ID}}">
+        <td>
+            {{:~renderCustomHtml(CustomHtml,ChildCount,SectionNameTemplate)}}
+            {{include tmpl=SectionNameTemplate/}}
+        </td>
+    </tr>
+    {{else}}
+    <tr id="section{{>Name}}{{:~getFormInstanceId()}}" class="ui-widget-content sotview-ltr ui-state-highlight" data-filter="{{>ID}}">
+        <td style="text-align:right !important;"><i class="material-icons sec-validate" title="validate a section" style="cursor:pointer;" data-section="{{>FullName}}">&#xE877;</i></td>
+    </tr>
+    {{for Elements tmpl="#SOTElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn ~group=ID/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="SOTElementTemplate" type="text/x-jsrender">
+    {{if Layout === "SOT" || Layout === "Both"}}
+    {{if Type==="calendar"}}
+    {{include tmpl="#SOTCalendarTemplate"/}}
+    {{else Type==="section"}}
+    {{include tmpl="#SOTElementSectionTemplate"/}}
+    {{else Type==="repeater"}}
+    {{include tmpl="#SOTElementRepeaterTemplate"/}}
+    {{else Type==="select"}}
+    {{include tmpl="#SOTSelectTemplate"/}}
+    {{else Type==="radio"}}
+    {{include tmpl="#SOTRadioButtonTemplate"/}}
+    {{else Type==="checkbox"}}
+    {{include tmpl="#SOTCheckboxTemplate"/}}
+    {{else IsLabel === true}}
+    {{include tmpl="#SOTLabelTemplate"/}}
+    {{else Multiline === true}}
+    {{include tmpl="#SOTTextAreaTemplate"/}}
+    {{else IsRichTextBox === true}}
+    {{include tmpl="#SOTRichTextTemplate"/}}
+    {{else IsDropDownTextBox === true}}
+    {{include tmpl="#SOTSelectInputTemplate"/}}
+    {{else}}
+    {{include tmpl="#SOTInputElementTemplate"/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="SOTElementRepeaterTemplate" type="text/x-jsrender">
+
+</script>
+
+<script id="SOTSubSectionTemplate" type="text/x-jsrender">
+    {{if Visible === true}}
+    {{if LayoutColumn === 4}}
+    <tr class="ui-widget-content custom-section" data-group="{{>~group}}" data-filter="{{>ID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important; {{if MultiSelect === true}} height:68px !important;{{/if}}">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            {{:~renderCustomHtml(CustomHtml,ChildCount,SectionNameTemplate)}}
+            {{include tmpl=SectionNameTemplate/}}
+        </td>
+        {{/if}}
+    </tr>
+    {{else}}
+    <tr class="ui-widget-content sotview-ltr ui-state-highlight" data-filter="{{>ID}}">
+        <td id="section{{>Name}}{{:~getFormInstanceId()}}"><label style="visibility:hidden" class="elename" for="{{>Label}}">{{>Label}}</label></td>
+    </tr>
+    {{for Elements tmpl="#SOTElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn ~group=ID/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="SOTSelectTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important; {{if MultiSelect === true}} height:68px !important;{{/if}}">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td {{if MultiSelect === true}} style="height:68px !important;" {{/if}}>
+            <div></div>
+            <div {{if MultiSelect === false}} class="block select-wrapper" {{/if}}>
+                <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} class='form-control astooltip {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}' {{if MultiSelect === true}} multiple {{/if}}>
+                    {{if MultiSelect === false}}
+                    <option value="[Select One]">[Select One]</option> {{/if}}
+                    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                    {{if ~defaultValue === ItemValue}}
+                    <option value="{{>ItemValue}}" selected>{{>ItemText}}</option>
+                    {{else}}
+                    <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                    {{/if}}
+                    {{/for}}
+                </select>
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTElementSectionTemplate" type="text/x-jsrender">
+    {{for [Section] tmpl="#SOTSubSectionTemplate"/}}
+</script>
+
+<script id="SOTCalendarTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            <div></div>
+            <div>
+                <input type="text" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' maxlength='10' title='{{>HelpText}}'
+                       style="width:100%;float:left; {{if Visible === true}} display:block; {{else}} display:none; {{/if}}" class="datepicker date form-control ignore hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} placeholder="MM/DD/YYYY" data-link='{{>FullName}}'
+                       data-min-date="{{>MinDate}}" data-max-date="{{>MaxDate}}" value='{{>DefaultValue}}' data-journal='{{>FullName}}' />
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTRadioButtonTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}" style="height:34px;">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            <div></div>
+            <div {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+                <label class="radio-inline control-label" for="{{>OptionLabel}}">
+                    <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}'
+                           value="true" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}' />{{>OptionLabel}}
+                </label>
+                <label class="radio-inline control-label" for="{{>OptionLabelNo}}">
+                    <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}'
+                           value="false" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}' />
+                    {{>OptionLabelNo}}
+                </label>
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTCheckboxTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            <div></div>
+            <div>
+                <input type="checkbox" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' value="true" title='{{>HelpText}}'
+                       {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} class="form-control hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setCheckBoxDataLink(FullName)}} data-journal='{{>FullName}}' />
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTLabelTemplate" type="text/x-jsrender">
+
+</script>
+
+<script id="SOTTextAreaTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;height:70px !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td style="height:70px !important;">
+            <div></div>
+            <div>
+                <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="4" name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                          maxlength='{{>MaxLength}}' class='form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                    {{>DefaultValue}}
+                </textarea>
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTRichTextTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;height:117px !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td data-loader="editorLoader" style="height:117px !important;">
+            <div></div>
+            <div>
+                <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="10" name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                          maxlength='{{>MaxLength}}' class='richtext-editorformat form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                    {{>DefaultValue}}
+                </textarea>
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTInputElementTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            <div></div>
+            <div {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+                <input type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' maxlength='{{>MaxLength}}'
+                       class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}' style="float:left" {{if HasCustomRule===true}} readonly="readonly" {{/if}} />
+                {{if HasCustomRule===true}}
+                <span class="ui-search-trigger glyphicon glyphicon-search" style="left:-5px;margin-top:-20px;margin-right:-20px;float:right;"></span>
+                {{/if}}
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTSelectInputTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        {{if ~isElementApplicable(EffDt,Op) === false}}
+        <td style="color:#aeaeae;text-align:center !important;">
+            <i>Not Applicable</i>
+        </td>
+        {{else}}
+        <td>
+            <div></div>
+            <div class="block select-wrapper">
+                <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                        class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                    <option value="[Select One]" class="standard-optn" selected>[Select One]</option>
+                    <option value="newItem" class="standard-optn">Enter Unique Response</option>
+                    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                    {{if ~defaultValue === ItemValue}}
+                    <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                    {{else}}
+                    {{if cssclass == 'non-standard-optn' }}
+                    <option value="{{>ItemValue}}" class="non-standard-optn">{{>ItemValue}}</option>
+                    {{else}}
+                    <option value="{{>ItemValue}}" class="standard-optn">{{>ItemText}}</option>
+                    {{/if}}
+                    {{/if}}
+                    {{/for}}
+                    @*
+                        <option value="newItem" class="standard-optn">Enter Unique Response</option>*@
+                </select>
+                <input type='text' name='{{>Name}}' title='{{>HelpText}}' maxlength='100' class="ddt-textbox" data-link='{{>FullName}}' data-journal='{{>FullName}}' style='display:none;' />
+            </div>
+        </td>
+        {{/if}}
+    </tr>
+</script>
+
+<script id="SOTCustomElementTemplate" type="text/x-jsrender">
+    {{if (#index+1) === ~cnt && Type==="calendar"}}
+    {{include tmpl="#SOTCustomCalendarTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="radio"}}
+    {{include tmpl="#SOTCustomRadioButtonTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="checkbox"}}
+    {{include tmpl="#SOTCustomCheckboxTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='select'}}
+    {{include tmpl="#SOTCustomSelectTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='SelectInput' && IsDropDownTextBox === true}}
+    {{include tmpl="#SOTCustomSelectInputTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === 'label' && IsLabel === true}}
+    {{include tmpl="#SOTCustomLabelTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === "text" && Multiline === true}}
+    {{include tmpl="#SOTCustomTextAreaTemplate"/}}
+    {{else (#index+1) === ~cnt}}
+    {{include tmpl="#SOTCustomInputElementTemplate"/}}
+    {{/if}}
+</script>
+
+<script id="SOTCustomInputElementTemplate" type="text/x-jsrender">
+    <div></div>
+    <div>
+        <input type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' maxlength='{{>MaxLength}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+               class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}' style="float:left" />
+        {{if HasCustomRule===true}}
+        <span class="ui-search-trigger glyphicon glyphicon-search" style="left:-20px;margin-top:3px;"></span>
+        {{/if}}
+    </div>
+</script>
+
+<script id="SOTCustomCheckboxTemplate" type="text/x-jsrender">
+    <div></div>
+    <div>
+        <input type="checkbox" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' value="true" title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+               class="form-control hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setCheckBoxDataLink(FullName)}} data-journal='{{>FullName}}' />
+    </div>
+</script>
+
+<script id="SOTCustomCalendarTemplate" type="text/x-jsrender">
+    <div></div>
+    <div>
+        <input type="text" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' maxlength='10' title='{{>HelpText}}'
+               style="width:100%;float:left; {{if Visible === true}} display:block; {{else}} display:none; {{/if}}" class="datepicker date form-control ignore hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} placeholder="MM/DD/YYYY" data-link='{{>FullName}}'
+               data-min-date="{{>MinDate}}" data-max-date="{{>MaxDate}}" value='{{>DefaultValue}}' data-journal='{{>FullName}}' />
+    </div>
+</script>
+
+<script id="SOTCustomRadioButtonTemplate" type="text/x-jsrender">
+    <div></div>
+    <div {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+        <label class="radio-inline control-label" for="{{>OptionLabel}}">
+            <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}'
+                   value="true" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}' />{{>OptionLabel}}
+        </label>
+        <label class="radio-inline control-label" for="{{>OptionLabelNo}}">
+            <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}'
+                   value="false" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}' />
+            {{>OptionLabelNo}}
+        </label>
+    </div>
+</script>
+
+<script id="SOTCustomLabelTemplate" type="text/x-jsrender">
+
+</script>
+
+<script id="SOTCustomSelectInputTemplate" type="text/x-jsrender">
+    <div></div>
+    <div class="select-wrapper">
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            <option value="[Select One]" class="standard-optn" selected>[Select One]</option>
+            <option value="newItem" class="standard-optn">Enter Unique Response</option>
+            {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+            {{if ~defaultValue === ItemValue}}
+            <option value="{{>ItemValue}}">{{>ItemText}}</option>
+            {{else}}
+            {{if cssclass == 'non-standard-optn' }}
+            <option value="{{>ItemValue}}" class="non-standard-optn">{{>ItemValue}}</option>
+            {{else}}
+            <option value="{{>ItemValue}}" class="standard-optn">{{>ItemText}}</option>
+            {{/if}}
+            {{/if}}
+            {{/for}}
+            @*
+                <option value="newItem" class="standard-optn">Enter Unique Response</option>*@
+        </select>
+        <input type='text' name='{{>Name}}' title='{{>HelpText}}' maxlength='100' class="ddt-textbox" data-link='{{>FullName}}' data-journal='{{>FullName}}' style='display:none;' />
+    </div>
+</script>
+
+<script id="SOTCustomTextAreaTemplate" type="text/x-jsrender">
+    <div></div>
+    <div>
+        <div></div>
+        <div>
+            <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="4" name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                      maxlength='{{>MaxLength}}' class='form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                {{>DefaultValue}}
+            </textarea>
+        </div>
+    </div>
+</script>
+
+<script id="SOTCustomSelectTemplate" type="text/x-jsrender">
+    <div></div>
+    <div class="select-wrapper">
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' title='{{>HelpText}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            {{if MultiSelect === false}}
+            <option value="[Select One]" class="standard-optn" selected>[Select One]</option> {{/if}}
+            {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+            {{if ~defaultValue === ItemValue}}
+            <option value="{{>ItemValue}}">{{>ItemText}}</option>
+            {{else}}
+            {{if cssclass == 'non-standard-optn' }}
+            <option value="{{>ItemValue}}" class="non-standard-optn">{{>ItemValue}}</option>
+            {{else}}
+            <option value="{{>ItemValue}}" class="standard-optn">{{>ItemText}}</option>
+            {{/if}}
+            {{/if}}
+            {{/for}}
+            @*<option value="newItem" class="standard-optn">Enter Unique Response</option>*@
+        </select>
+        <input type='text' name='{{>Name}}' title='{{>HelpText}}' maxlength='100' class="ddt-textbox" data-link='{{>FullName}}' data-journal='{{>FullName}}' style='display:none;' />
+        {{if HasCustomRule===true}}
+        <span class="ui-search-trigger glyphicon glyphicon-search" style="position:relative;float:right;margin-top:-20px;left:15px;"></span>
+        {{/if}}
+    </div>
+</script>

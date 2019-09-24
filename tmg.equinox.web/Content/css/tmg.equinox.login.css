@@ -1,0 +1,249 @@
+﻿/*-------------------------------------------------------------------------------------------------------------------*/
+
+/*  */
+input.ebs-form-control {
+
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e5384c;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e5384c;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e5384c;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+hr.menu-divider {
+    height: 5px;
+    background-color: #428bca;
+}
+
+.strip {
+    height: 5px;
+    background-color: #257CD3;
+}
+
+.login-container {
+    max-width: 340px;
+    padding: 40px 40px;
+    /* background-color: #F7F7F7; */
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    /* margin-top: 50px; */
+    /* shadows and rounded borders */
+    /* -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.client-logo {
+    width: 290px;
+    /* height: 80px; */
+    margin: 0 auto 0px;
+    display: block;
+    padding: 0px 0px 50px 0px;
+    /* background-color: #FFFFFF; */
+    /* -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px; */
+    /* -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); */
+}
+.client-logo label{
+    font-family: 'latoregular';
+    font-size: 22px;
+    color: #000;
+    cursor: pointer;
+}
+
+/*
+ * Form styles
+ */
+ .form-wrapper{
+    height: 100%;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    background-image: url(custom-theme/images/bg-login.svg);
+    align-self: stretch;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    font-family: 'robotoregular';
+    font-size: 15px;
+ }
+
+ .form-signin .form-group{
+     position: relative;
+ }
+ .form-signin .forgot-password{
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    z-index: 1;
+}
+.form-signin .forgot-password:hover i{
+   color: #57BD98;
+}
+.forgot-password i{
+    font-style: initial;
+    /* background: #999999;
+    padding: 2px 6px; */
+    /* border-radius: 50%; */
+    color: #9AA6B2;
+}
+.client-name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 18px;
+}
+.form-signin .form-control{
+    min-height: 40px;
+    height: 100%;
+    padding: 10px;
+    font-size: 15px !important;
+    border-radius: 5px;
+    padding-left: 20px;
+    border: 1px solid #9AA6B2;
+    /* margin-bottom: 15px; */
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    /* margin-bottom: 15px; */
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'robotoregular';
+    font-size: 15px;
+}
+.form-signin button {
+    padding: 11px 0px;
+    border: transparent;
+    font-size: 15px;
+    margin-top: 25px;
+    background-color: #57BD98;
+}
+.form-signin button:hover{
+    background-color: #2db27f;
+}
+.form-signin button + a{
+    display: block;
+    margin-top: 15px;
+    color: #0074d6;
+}
+.form-signin button + a:hover{
+    color: #2db27f;
+}
+.form-signin .form-control:focus {
+    border-color: #57BC9A;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 1px #57BC9A ;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 1px #57BC9A;
+}
+input.input-validation-error{
+    border-color: #FF0000;
+}
+.form-signin input.input-validation-error{
+    border-color: #FF0000;
+}
+
+.navbar-bottom {
+    margin: 0px;
+    background-color: #3693d0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0px;
+}
+
+.copyrights {
+    float: left;
+    font-size: 11px;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+    .copyrights p {
+        float: left;
+        margin-right: 5px;
+    }
+
+a[href^="tel:"]:before {
+    content: "\260E";
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.help-block > ul {
+    padding-left:10px!important;
+}
+
+/* Tooltip Ovverirde */
+/* .tooltip.in{
+    opacity: 1;
+}
+.tooltip.top .tooltip-arrow{
+     border-top-color: #57BD98;
+}
+.tooltip-inner{
+    background-color: #57BD98;
+} */
+
+/* Hero image */
+.hero-img{
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    margin: 0px auto;
+  }
+  .hero-img img{
+    height: 100%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+  }

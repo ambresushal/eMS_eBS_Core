@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/ConsumerAccountLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Manage Account</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/ConsumerAccount/AccountSearch#">Account Search</a>
+        </li>
+        <li class="active">
+            <a href="~/ConsumerAccount/ManageAccount">Manage Account</a>
+        </li>
+    </ul>
+</div>
+<div id="accountmanageview" class="layout-wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div id="accountmanagetable" class="grid-wrapper">
+                <!-- <div class="grid-page-wrapper">
+                  List Of Items
+                </div> -->
+                        <table id="amg">
+                        </table>
+                    </div>
+        </div>
+    </div>
+
+    <div style="display: none;">
+
+        <div id="accountdialog">
+            <form>
+                <div class="form-group">
+                    <label for="accountname">Account Name</label>
+                    <input type="text" class="form-control" id="accountname" maxlength="100" placeholder="Enter Account Name" />
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+            </form>
+        </div>
+
+     
+
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId)); 
+    setMenu("account");	
+</script>
+

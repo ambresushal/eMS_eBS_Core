@@ -1,0 +1,53 @@
+{
+    "documentrule": {
+        "targetelement": "Product[AdditionalServices.AdditionalServicesDetails]",
+        "triggers": [
+            {
+                "source": "Product[AdditionalServices.AdditionalServicesDetails]",
+                "event": "onselectdialog"
+            }
+        ],
+        "actions": [ ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "selectdialog",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                }
+            ],
+            "sourcemergeaction": "A coljoin B"
+        }
+    }
+}

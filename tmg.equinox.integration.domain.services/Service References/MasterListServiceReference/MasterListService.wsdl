@@ -1,0 +1,2441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://equinox.tmg.com/services/vMasterList10/MasterList" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="MasterListService" targetNamespace="http://equinox.tmg.com/services/vMasterList10/MasterList" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:ns1="http://equinox.tmg.com/services/base" elementFormDefault="unqualified" targetNamespace="http://equinox.tmg.com/services/vMasterList10/MasterList" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://equinox.tmg.com/services/base" />
+      <xs:element name="AccumulatorList" type="tns:AccumulatorList" />
+      <xs:element name="Accumulators" type="tns:Accumulators" />
+      <xs:element name="AllowedAmount" type="tns:AllowedAmount" />
+      <xs:element name="AllowedAmountList" type="tns:AllowedAmountList" />
+      <xs:element name="AllowedCounter" type="tns:AllowedCounter" />
+      <xs:element name="AllowedCounterList" type="tns:AllowedCounterList" />
+      <xs:element name="BenefitCategory1" type="tns:BenefitCategory1" />
+      <xs:element name="BenefitCategory1List" type="tns:BenefitCategory1List" />
+      <xs:element name="BenefitCategory2" type="tns:BenefitCategory2" />
+      <xs:element name="BenefitCategory2List" type="tns:BenefitCategory2List" />
+      <xs:element name="BenefitCategory3" type="tns:BenefitCategory3" />
+      <xs:element name="BenefitCategory3List" type="tns:BenefitCategory3List" />
+      <xs:element name="Coinsurance" type="tns:Coinsurance" />
+      <xs:element name="CoinsuranceList" type="tns:CoinsuranceList" />
+      <xs:element name="Copay" type="tns:Copay" />
+      <xs:element name="CopayList" type="tns:CopayList" />
+      <xs:element name="CopayType" type="tns:CopayType" />
+      <xs:element name="CopayTypeList" type="tns:CopayTypeList" />
+      <xs:element name="CoverageLevel" type="tns:CoverageLevel" />
+      <xs:element name="CoverageLevelList" type="tns:CoverageLevelList" />
+      <xs:element name="Deductible" type="tns:Deductible" />
+      <xs:element name="DeductibleList" type="tns:DeductibleList" />
+      <xs:element name="DisallowedMessageList" type="tns:DisallowedMessageList" />
+      <xs:element name="ErouterRateTypes" type="tns:ErouterRateTypes" />
+      <xs:element name="GetAccumulatorListData" type="tns:GetAccumulatorListData" />
+      <xs:element name="GetAccumulatorListDataResponse" type="tns:GetAccumulatorListDataResponse" />
+      <xs:element name="GetAccumulatorsData" type="tns:GetAccumulatorsData" />
+      <xs:element name="GetAccumulatorsDataResponse" type="tns:GetAccumulatorsDataResponse" />
+      <xs:element name="GetAllMasterListIDs" type="tns:GetAllMasterListIDs" />
+      <xs:element name="GetAllMasterListIDsResponse" type="tns:GetAllMasterListIDsResponse" />
+      <xs:element name="GetAllowedAmountData" type="tns:GetAllowedAmountData" />
+      <xs:element name="GetAllowedAmountDataResponse" type="tns:GetAllowedAmountDataResponse" />
+      <xs:element name="GetAllowedAmountListData" type="tns:GetAllowedAmountListData" />
+      <xs:element name="GetAllowedAmountListDataResponse" type="tns:GetAllowedAmountListDataResponse" />
+      <xs:element name="GetAllowedCounterData" type="tns:GetAllowedCounterData" />
+      <xs:element name="GetAllowedCounterDataResponse" type="tns:GetAllowedCounterDataResponse" />
+      <xs:element name="GetAllowedCounterListData" type="tns:GetAllowedCounterListData" />
+      <xs:element name="GetAllowedCounterListDataResponse" type="tns:GetAllowedCounterListDataResponse" />
+      <xs:element name="GetBenefitCategory1Data" type="tns:GetBenefitCategory1Data" />
+      <xs:element name="GetBenefitCategory1DataResponse" type="tns:GetBenefitCategory1DataResponse" />
+      <xs:element name="GetBenefitCategory1ListData" type="tns:GetBenefitCategory1ListData" />
+      <xs:element name="GetBenefitCategory1ListDataResponse" type="tns:GetBenefitCategory1ListDataResponse" />
+      <xs:element name="GetBenefitCategory2Data" type="tns:GetBenefitCategory2Data" />
+      <xs:element name="GetBenefitCategory2DataResponse" type="tns:GetBenefitCategory2DataResponse" />
+      <xs:element name="GetBenefitCategory2ListData" type="tns:GetBenefitCategory2ListData" />
+      <xs:element name="GetBenefitCategory2ListDataResponse" type="tns:GetBenefitCategory2ListDataResponse" />
+      <xs:element name="GetBenefitCategory3Data" type="tns:GetBenefitCategory3Data" />
+      <xs:element name="GetBenefitCategory3DataResponse" type="tns:GetBenefitCategory3DataResponse" />
+      <xs:element name="GetBenefitCategory3ListData" type="tns:GetBenefitCategory3ListData" />
+      <xs:element name="GetBenefitCategory3ListDataResponse" type="tns:GetBenefitCategory3ListDataResponse" />
+      <xs:element name="GetCoinsuranceData" type="tns:GetCoinsuranceData" />
+      <xs:element name="GetCoinsuranceDataResponse" type="tns:GetCoinsuranceDataResponse" />
+      <xs:element name="GetCoinsuranceListData" type="tns:GetCoinsuranceListData" />
+      <xs:element name="GetCoinsuranceListDataResponse" type="tns:GetCoinsuranceListDataResponse" />
+      <xs:element name="GetCopayData" type="tns:GetCopayData" />
+      <xs:element name="GetCopayDataResponse" type="tns:GetCopayDataResponse" />
+      <xs:element name="GetCopayListData" type="tns:GetCopayListData" />
+      <xs:element name="GetCopayListDataResponse" type="tns:GetCopayListDataResponse" />
+      <xs:element name="GetCopayTypeData" type="tns:GetCopayTypeData" />
+      <xs:element name="GetCopayTypeDataResponse" type="tns:GetCopayTypeDataResponse" />
+      <xs:element name="GetCopayTypeListData" type="tns:GetCopayTypeListData" />
+      <xs:element name="GetCopayTypeListDataResponse" type="tns:GetCopayTypeListDataResponse" />
+      <xs:element name="GetCoverageLevelData" type="tns:GetCoverageLevelData" />
+      <xs:element name="GetCoverageLevelDataResponse" type="tns:GetCoverageLevelDataResponse" />
+      <xs:element name="GetCoverageLevelListData" type="tns:GetCoverageLevelListData" />
+      <xs:element name="GetCoverageLevelListDataResponse" type="tns:GetCoverageLevelListDataResponse" />
+      <xs:element name="GetDeductibleData" type="tns:GetDeductibleData" />
+      <xs:element name="GetDeductibleDataResponse" type="tns:GetDeductibleDataResponse" />
+      <xs:element name="GetDeductibleListData" type="tns:GetDeductibleListData" />
+      <xs:element name="GetDeductibleListDataResponse" type="tns:GetDeductibleListDataResponse" />
+      <xs:element name="GetDisallowedMessageListData" type="tns:GetDisallowedMessageListData" />
+      <xs:element name="GetDisallowedMessageListDataResponse" type="tns:GetDisallowedMessageListDataResponse" />
+      <xs:element name="GetErouterRateTypesData" type="tns:GetErouterRateTypesData" />
+      <xs:element name="GetErouterRateTypesDataResponse" type="tns:GetErouterRateTypesDataResponse" />
+      <xs:element name="GetLTIDListData" type="tns:GetLTIDListData" />
+      <xs:element name="GetLTIDListDataResponse" type="tns:GetLTIDListDataResponse" />
+      <xs:element name="GetLTIPListData" type="tns:GetLTIPListData" />
+      <xs:element name="GetLTIPListDataResponse" type="tns:GetLTIPListDataResponse" />
+      <xs:element name="GetLTLTListData" type="tns:GetLTLTListData" />
+      <xs:element name="GetLTLTListDataResponse" type="tns:GetLTLTListDataResponse" />
+      <xs:element name="GetLTPRListData" type="tns:GetLTPRListData" />
+      <xs:element name="GetLTPRListDataResponse" type="tns:GetLTPRListDataResponse" />
+      <xs:element name="GetLTSEListData" type="tns:GetLTSEListData" />
+      <xs:element name="GetLTSEListDataResponse" type="tns:GetLTSEListDataResponse" />
+      <xs:element name="GetLimitsData" type="tns:GetLimitsData" />
+      <xs:element name="GetLimitsDataResponse" type="tns:GetLimitsDataResponse" />
+      <xs:element name="GetMandateAssociationData" type="tns:GetMandateAssociationData" />
+      <xs:element name="GetMandateAssociationDataResponse" type="tns:GetMandateAssociationDataResponse" />
+      <xs:element name="GetMandateAssociationListData" type="tns:GetMandateAssociationListData" />
+      <xs:element name="GetMandateAssociationListDataResponse" type="tns:GetMandateAssociationListDataResponse" />
+      <xs:element name="GetMandateDetailData" type="tns:GetMandateDetailData" />
+      <xs:element name="GetMandateDetailDataResponse" type="tns:GetMandateDetailDataResponse" />
+      <xs:element name="GetMandateDetailListData" type="tns:GetMandateDetailListData" />
+      <xs:element name="GetMandateDetailListDataResponse" type="tns:GetMandateDetailListDataResponse" />
+      <xs:element name="GetMandateRegionData" type="tns:GetMandateRegionData" />
+      <xs:element name="GetMandateRegionDataResponse" type="tns:GetMandateRegionDataResponse" />
+      <xs:element name="GetMandateRegionListData" type="tns:GetMandateRegionListData" />
+      <xs:element name="GetMandateRegionListDataResponse" type="tns:GetMandateRegionListDataResponse" />
+      <xs:element name="GetMandateSegmentData" type="tns:GetMandateSegmentData" />
+      <xs:element name="GetMandateSegmentDataResponse" type="tns:GetMandateSegmentDataResponse" />
+      <xs:element name="GetMandateSegmentListData" type="tns:GetMandateSegmentListData" />
+      <xs:element name="GetMandateSegmentListDataResponse" type="tns:GetMandateSegmentListDataResponse" />
+      <xs:element name="GetMandateSummaryData" type="tns:GetMandateSummaryData" />
+      <xs:element name="GetMandateSummaryDataResponse" type="tns:GetMandateSummaryDataResponse" />
+      <xs:element name="GetMandateSummaryListData" type="tns:GetMandateSummaryListData" />
+      <xs:element name="GetMandateSummaryListDataResponse" type="tns:GetMandateSummaryListDataResponse" />
+      <xs:element name="GetMasterList" type="tns:GetMasterList" />
+      <xs:element name="GetMasterListResponse" type="tns:GetMasterListResponse" />
+      <xs:element name="GetMessagesData" type="tns:GetMessagesData" />
+      <xs:element name="GetMessagesDataResponse" type="tns:GetMessagesDataResponse" />
+      <xs:element name="GetOutofPocketMaxData" type="tns:GetOutofPocketMaxData" />
+      <xs:element name="GetOutofPocketMaxDataResponse" type="tns:GetOutofPocketMaxDataResponse" />
+      <xs:element name="GetOutofPocketMaxListData" type="tns:GetOutofPocketMaxListData" />
+      <xs:element name="GetOutofPocketMaxListDataResponse" type="tns:GetOutofPocketMaxListDataResponse" />
+      <xs:element name="GetPDBCPrefixData" type="tns:GetPDBCPrefixData" />
+      <xs:element name="GetPDBCPrefixDataResponse" type="tns:GetPDBCPrefixDataResponse" />
+      <xs:element name="GetPDBCPrefixListData" type="tns:GetPDBCPrefixListData" />
+      <xs:element name="GetPDBCPrefixListDataResponse" type="tns:GetPDBCPrefixListDataResponse" />
+      <xs:element name="GetPDBCTypeData" type="tns:GetPDBCTypeData" />
+      <xs:element name="GetPDBCTypeDataResponse" type="tns:GetPDBCTypeDataResponse" />
+      <xs:element name="GetPDBCTypeListData" type="tns:GetPDBCTypeListData" />
+      <xs:element name="GetPDBCTypeListDataResponse" type="tns:GetPDBCTypeListDataResponse" />
+      <xs:element name="GetPDVCRulesData" type="tns:GetPDVCRulesData" />
+      <xs:element name="GetPDVCRulesDataResponse" type="tns:GetPDVCRulesDataResponse" />
+      <xs:element name="GetPlaceofServiceData" type="tns:GetPlaceofServiceData" />
+      <xs:element name="GetPlaceofServiceDataResponse" type="tns:GetPlaceofServiceDataResponse" />
+      <xs:element name="GetPlaceofServiceListData" type="tns:GetPlaceofServiceListData" />
+      <xs:element name="GetPlaceofServiceListDataResponse" type="tns:GetPlaceofServiceListDataResponse" />
+      <xs:element name="GetRateTypeData" type="tns:GetRateTypeData" />
+      <xs:element name="GetRateTypeDataResponse" type="tns:GetRateTypeDataResponse" />
+      <xs:element name="GetSERLMessageListData" type="tns:GetSERLMessageListData" />
+      <xs:element name="GetSERLMessageListDataResponse" type="tns:GetSERLMessageListDataResponse" />
+      <xs:element name="GetServiceListData" type="tns:GetServiceListData" />
+      <xs:element name="GetServiceListDataResponse" type="tns:GetServiceListDataResponse" />
+      <xs:element name="GetServicesData" type="tns:GetServicesData" />
+      <xs:element name="GetServicesDataResponse" type="tns:GetServicesDataResponse" />
+      <xs:element name="LTIDList" type="tns:LTIDList" />
+      <xs:element name="LTIPList" type="tns:LTIPList" />
+      <xs:element name="LTLTList" type="tns:LTLTList" />
+      <xs:element name="LTPRList" type="tns:LTPRList" />
+      <xs:element name="LTSEList" type="tns:LTSEList" />
+      <xs:element name="Limits" type="tns:Limits" />
+      <xs:element name="MandateAssociation" type="tns:MandateAssociation" />
+      <xs:element name="MandateAssociationList" type="tns:MandateAssociationList" />
+      <xs:element name="MandateDetail" type="tns:MandateDetail" />
+      <xs:element name="MandateDetailList" type="tns:MandateDetailList" />
+      <xs:element name="MandateRegion" type="tns:MandateRegion" />
+      <xs:element name="MandateRegionList" type="tns:MandateRegionList" />
+      <xs:element name="MandateSegment" type="tns:MandateSegment" />
+      <xs:element name="MandateSegmentList" type="tns:MandateSegmentList" />
+      <xs:element name="MandateSummary" type="tns:MandateSummary" />
+      <xs:element name="MandateSummaryList" type="tns:MandateSummaryList" />
+      <xs:element name="MasterList" type="tns:MasterList" />
+      <xs:element name="Messages" type="tns:Messages" />
+      <xs:element name="OutofPocketMax" type="tns:OutofPocketMax" />
+      <xs:element name="OutofPocketMaxList" type="tns:OutofPocketMaxList" />
+      <xs:element name="PDBCPrefix" type="tns:PDBCPrefix" />
+      <xs:element name="PDBCPrefixList" type="tns:PDBCPrefixList" />
+      <xs:element name="PDBCType" type="tns:PDBCType" />
+      <xs:element name="PDBCTypeList" type="tns:PDBCTypeList" />
+      <xs:element name="PDVCRules" type="tns:PDVCRules" />
+      <xs:element name="PlaceofService" type="tns:PlaceofService" />
+      <xs:element name="PlaceofServiceList" type="tns:PlaceofServiceList" />
+      <xs:element name="RateType" type="tns:RateType" />
+      <xs:element name="SERLMessageList" type="tns:SERLMessageList" />
+      <xs:element name="SaveMasterList" type="tns:SaveMasterList" />
+      <xs:element name="SaveMasterListResponse" type="tns:SaveMasterListResponse" />
+      <xs:element name="ServiceList" type="tns:ServiceList" />
+      <xs:element name="Services" type="tns:Services" />
+      <xs:complexType name="GetBenefitCategory3Data">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory3ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory3DataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory3" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory3">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitCategory3ListData" type="tns:BenefitCategory3List" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory3List">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory3Name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateRegionData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateRegionID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateRegionDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateRegion" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateRegion">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateRegionListData" type="tns:MandateRegionList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MandateRegionList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MandateRegion" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSegmentData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateSegmentID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSegmentDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateSegment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateSegment">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateSegmentListData" type="tns:MandateSegmentList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MandateSegmentList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MandateSegment" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCTypeListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PDBCTypeListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCTypeListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PDBCTypeList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PDBCTypeList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PDBCType" type="xs:string" />
+              <xs:element minOccurs="0" name="PDBCTypeDescription" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DeductibleList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DeductibleList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateRegionListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateRegionListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateRegionListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateRegionList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CopayList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CopayList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OutofPocketMaxListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:OutofPocketMaxList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OutofPocketMaxList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateDetailListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateDetailListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateDetailListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateDetailList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateDetailList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MandateName" type="xs:string" />
+              <xs:element minOccurs="0" name="MandateDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectService" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSummaryData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateSummaryID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSummaryDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateSummary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateSummary">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateSummaryListData" type="tns:MandateSummaryList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MandateSummaryList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MandateName" type="xs:string" />
+              <xs:element minOccurs="0" name="MandateDescription" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedCounterData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowedCounterID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedCounterDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:AllowedCounter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AllowedCounter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowedCounterListData" type="tns:AllowedCounterList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AllowedCounterList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMandateDetailData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateDetailID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateDetailDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateDetail" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateDetail">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateDetailListData" type="tns:MandateDetailList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCoverageLevelListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoverageLevelListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoverageLevelListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CoverageLevelList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CoverageLevelList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCoverageLevelData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoverageLevelID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoverageLevelDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CoverageLevel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CoverageLevel">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CoverageLevelListData" type="tns:CoverageLevelList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLTLTListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LTLTListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTLTListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:LTLTList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LTLTList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LimitID" type="xs:string" />
+              <xs:element minOccurs="0" name="AccumulatorNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitValue" type="xs:string" />
+              <xs:element minOccurs="0" name="Description" type="xs:string" />
+              <xs:element minOccurs="0" name="Category" type="xs:string" />
+              <xs:element minOccurs="0" name="Level" type="xs:string" />
+              <xs:element minOccurs="0" name="Period" type="xs:string" />
+              <xs:element minOccurs="0" name="Rule" type="xs:string" />
+              <xs:element minOccurs="0" name="Relations" type="xs:string" />
+              <xs:element minOccurs="0" name="Subsection" type="xs:string" />
+              <xs:element minOccurs="0" name="ExplanationCode" type="xs:string" />
+              <xs:element minOccurs="0" name="SalaryBased" type="xs:string" />
+              <xs:element minOccurs="0" name="UserMessage" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetAccumulatorListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccumulatorListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAccumulatorListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:AccumulatorList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AccumulatorList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AccumNumber" type="xs:long" />
+              <xs:element minOccurs="0" name="Description" type="xs:string" />
+              <xs:element minOccurs="0" name="Type" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory3ListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory3ListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory3ListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory3List" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTIDListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LTIDListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTIDListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:LTIDList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LTIDList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LTIDAccumulator" type="xs:string" />
+              <xs:element minOccurs="0" name="DiagnosisID" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoinsuranceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Coinsurance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Coinsurance">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CoinsuranceListData" type="tns:CoinsuranceList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CoinsuranceList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetServicesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServicesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetServicesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Services" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Services">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceListData" type="tns:ServiceList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ServiceList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SEDF" type="xs:string" />
+              <xs:element minOccurs="0" name="SESEID" type="xs:string" />
+              <xs:element minOccurs="0" name="EligibleforFSAReimbursement" type="xs:boolean" />
+              <xs:element minOccurs="0" name="EligibleforHRAReimbursement" type="xs:string" />
+              <xs:element minOccurs="0" name="HRADeductibleApplies" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Warnwhencopaypercentageexceeds" type="xs:string" />
+              <xs:element minOccurs="0" name="CalculationIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="Gender" type="xs:string" />
+              <xs:element minOccurs="0" name="GenderExplanationCode" type="xs:string" />
+              <xs:element minOccurs="0" name="AgeFrom" type="xs:string" />
+              <xs:element minOccurs="0" name="AgeTo" type="xs:string" />
+              <xs:element minOccurs="0" name="AgeExplanationCode" type="xs:string" />
+              <xs:element minOccurs="0" name="CoveredMembers" type="xs:string" />
+              <xs:element minOccurs="0" name="CoveredMembersExplanationCode" type="xs:string" />
+              <xs:element minOccurs="0" name="DisplayCaseManagementWarningMessage" type="xs:boolean" />
+              <xs:element minOccurs="0" name="UserMessage" type="xs:string" />
+              <xs:element minOccurs="0" name="PreAuthChargeRequired" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PreAuthUnitsRequired" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PreAuthProcedureRequired" type="xs:boolean" />
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectService" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ApplyCopayType" type="xs:string" />
+              <xs:element minOccurs="0" name="ApplyCopay" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ApplyDedCoin" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMessagesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MessagesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMessagesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Messages" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Messages">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="SERLMessageListData" type="tns:SERLMessageList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DisallowedMessageListData" type="tns:DisallowedMessageList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SERLMessageList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MessageDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="Relationtype" type="xs:string" />
+              <xs:element minOccurs="0" name="Periodindicator" type="xs:string" />
+              <xs:element minOccurs="0" name="RelateServicebyDiagnosis" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="PreauthIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="ReferralIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="Period" type="xs:long" />
+              <xs:element minOccurs="0" name="RelateCopay" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DisallowedMessageList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Description" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCopayData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Copay" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Copay">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CopayListData" type="tns:CopayList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLTSEListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LTSEListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTSEListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:LTSEList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LTSEList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LTSEAccumulator" type="xs:string" />
+              <xs:element minOccurs="0" name="ServiceID" type="xs:string" />
+              <xs:element minOccurs="0" name="WeightedCounter" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetSERLMessageListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SERLMessageListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSERLMessageListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:SERLMessageList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayTypeListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayTypeListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayTypeListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CopayTypeList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CopayTypeList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Type" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedCounterListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowedCounterListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedCounterListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:AllowedCounterList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateAssociationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateAssociationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateAssociationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateAssociation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MandateAssociation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateAssociationListData" type="tns:MandateAssociationList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MandateAssociationList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Region" type="xs:string" />
+              <xs:element minOccurs="0" name="Segment" type="xs:string" />
+              <xs:element minOccurs="0" name="MandateName" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectMandate" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetAccumulatorsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccumulatorsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAccumulatorsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Accumulators" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Accumulators">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AccumulatorListData" type="tns:AccumulatorList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory1ListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory1ListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory1ListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory1List" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory1List">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory1Name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetAllMasterListIDs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" name="VersionNumber" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllMasterListIDsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Instance" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDVCRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PDVCRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDVCRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PDVCRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PDVCRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetMasterList">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MasterListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMasterListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MasterList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MasterList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AccumulatorsData" type="tns:Accumulators" />
+              <xs:element minOccurs="0" name="AllowedAmountData" type="tns:AllowedAmount" />
+              <xs:element minOccurs="0" name="AllowedCounterData" type="tns:AllowedCounter" />
+              <xs:element minOccurs="0" name="CopayData" type="tns:Copay" />
+              <xs:element minOccurs="0" name="CoinsuranceData" type="tns:Coinsurance" />
+              <xs:element minOccurs="0" name="DeductibleData" type="tns:Deductible" />
+              <xs:element minOccurs="0" name="CoverageLevelData" type="tns:CoverageLevel" />
+              <xs:element minOccurs="0" name="ServicesData" type="tns:Services" />
+              <xs:element minOccurs="0" name="LimitsData" type="tns:Limits" />
+              <xs:element minOccurs="0" name="MessagesData" type="tns:Messages" />
+              <xs:element minOccurs="0" name="BenefitCategory1Data" type="tns:BenefitCategory1" />
+              <xs:element minOccurs="0" name="OutofPocketMaxData" type="tns:OutofPocketMax" />
+              <xs:element minOccurs="0" name="PDBCTypeData" type="tns:PDBCType" />
+              <xs:element minOccurs="0" name="PDVCRulesData" type="tns:PDVCRules" />
+              <xs:element minOccurs="0" name="MandateRegionData" type="tns:MandateRegion" />
+              <xs:element minOccurs="0" name="MandateSegmentData" type="tns:MandateSegment" />
+              <xs:element minOccurs="0" name="MandateSummaryData" type="tns:MandateSummary" />
+              <xs:element minOccurs="0" name="MandateDetailData" type="tns:MandateDetail" />
+              <xs:element minOccurs="0" name="MandateAssociationData" type="tns:MandateAssociation" />
+              <xs:element minOccurs="0" name="BenefitCategory2Data" type="tns:BenefitCategory2" />
+              <xs:element minOccurs="0" name="BenefitCategory3Data" type="tns:BenefitCategory3" />
+              <xs:element minOccurs="0" name="PlaceofServiceData" type="tns:PlaceofService" />
+              <xs:element minOccurs="0" name="PDBCPrefixData" type="tns:PDBCPrefix" />
+              <xs:element minOccurs="0" name="CopayTypeData" type="tns:CopayType" />
+              <xs:element minOccurs="0" name="ErouterRateTypesData" type="tns:ErouterRateTypes" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AllowedAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AllowedAmountListData" type="tns:AllowedAmountList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AllowedAmountList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:double" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Deductible">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DeductibleListData" type="tns:DeductibleList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Limits">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LTLTListData" type="tns:LTLTList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LTIDListData" type="tns:LTIDList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LTIPListData" type="tns:LTIPList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LTPRListData" type="tns:LTPRList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LTSEListData" type="tns:LTSEList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LTIPList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LTIPAccumulator" type="xs:string" />
+              <xs:element minOccurs="0" name="ProcedureFrom" type="xs:string" />
+              <xs:element minOccurs="0" name="ProcedureTo" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LTPRList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LTPRAccumulator" type="xs:string" />
+              <xs:element minOccurs="0" name="ProviderType" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitID" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory1">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitCategory1ListData" type="tns:BenefitCategory1List" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OutofPocketMax">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="OutofPocketMaxListData" type="tns:OutofPocketMaxList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PDBCType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="PDBCTypeListData" type="tns:PDBCTypeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory2">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitCategory2ListData" type="tns:BenefitCategory2List" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitCategory2List">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory2Name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PlaceofService">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="PlaceofServiceListData" type="tns:PlaceofServiceList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PlaceofServiceList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PlaceofServiceName" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PDBCPrefix">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="PDBCPrefixListData" type="tns:PDBCPrefixList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PDBCPrefixList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PDBCType" type="xs:string" />
+              <xs:element minOccurs="0" name="PDBCPrefix" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CopayType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CopayTypeListData" type="tns:CopayTypeList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ErouterRateTypes">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="RateTypeData" type="tns:RateType" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RateType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Deductible" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory1Data">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory1ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory1DataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory1" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDisallowedMessageListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DisallowedMessageListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDisallowedMessageListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DisallowedMessageList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCPrefixListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PDBCPrefixListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCPrefixListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PDBCPrefixList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedAmountListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowedAmountListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedAmountListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:AllowedAmountList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory2Data">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory2ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory2DataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory2" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetServiceListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetServiceListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ServiceList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTIPListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LTIPListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTIPListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:LTIPList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateAssociationListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateAssociationListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateAssociationListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateAssociationList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCTypeData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PDBCTypeID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCTypeDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PDBCType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSummaryListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateSummaryListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSummaryListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateSummaryList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetErouterRateTypesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErouterRateTypesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetErouterRateTypesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ErouterRateTypes" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCPrefixData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PDBCPrefixID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPDBCPrefixDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PDBCPrefix" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoinsuranceListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CoinsuranceList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPlaceofServiceListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PlaceofServiceListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPlaceofServiceListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PlaceofServiceList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveMasterList">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MasterList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveMasterListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MasterList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetRateTypeData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RateTypeID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetRateTypeDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:RateType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTPRListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LTPRListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLTPRListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:LTPRList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayTypeData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayTypeID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayTypeDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CopayType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSegmentListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandateSegmentListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandateSegmentListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:MandateSegmentList" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLimitsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LimitsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLimitsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Limits" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPlaceofServiceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PlaceofServiceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPlaceofServiceDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PlaceofService" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedAmountData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowedAmountID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllowedAmountDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:AllowedAmount" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory2ListData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitCategory2ListID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitCategory2ListDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitCategory2List" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OutofPocketMaxID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:OutofPocketMax" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://equinox.tmg.com/services/base" targetNamespace="http://equinox.tmg.com/services/base" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="BaseData" type="tns:BaseData" />
+      <xs:complexType name="BaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InstanceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetBenefitCategory1ListData">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory1ListData" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory2DataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory2DataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetErouterRateTypesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetErouterRateTypesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedCounterListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAllowedCounterListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCTypeDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPDBCTypeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateRegionListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateRegionListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleListData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleListData" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayListData">
+    <wsdl:part name="parameters" element="tns:GetCopayListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesData">
+    <wsdl:part name="parameters" element="tns:GetMessagesData" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCTypeData">
+    <wsdl:part name="parameters" element="tns:GetPDBCTypeData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateAssociationData">
+    <wsdl:part name="parameters" element="tns:GetMandateAssociationData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSummaryListData">
+    <wsdl:part name="parameters" element="tns:GetMandateSummaryListData" />
+  </wsdl:message>
+  <wsdl:message name="GetSERLMessageListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetSERLMessageListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTSEListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLTSEListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory2Data">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory2Data" />
+  </wsdl:message>
+  <wsdl:message name="GetLTLTListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLTLTListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSegmentListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateSegmentListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedAmountListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAllowedAmountListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRateTypeData">
+    <wsdl:part name="parameters" element="tns:GetRateTypeData" />
+  </wsdl:message>
+  <wsdl:message name="GetAccumulatorsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAccumulatorsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetServicesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTPRListData">
+    <wsdl:part name="parameters" element="tns:GetLTPRListData" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory2ListData">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory2ListData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedAmountData">
+    <wsdl:part name="parameters" element="tns:GetAllowedAmountData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleData" />
+  </wsdl:message>
+  <wsdl:message name="GetPlaceofServiceListData">
+    <wsdl:part name="parameters" element="tns:GetPlaceofServiceListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSegmentDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateSegmentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMasterListResponse">
+    <wsdl:part name="parameters" element="tns:GetMasterListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlaceofServiceData">
+    <wsdl:part name="parameters" element="tns:GetPlaceofServiceData" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListData">
+    <wsdl:part name="parameters" element="tns:GetServiceListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSummaryData">
+    <wsdl:part name="parameters" element="tns:GetMandateSummaryData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedAmountListData">
+    <wsdl:part name="parameters" element="tns:GetAllowedAmountListData" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCPrefixData">
+    <wsdl:part name="parameters" element="tns:GetPDBCPrefixData" />
+  </wsdl:message>
+  <wsdl:message name="GetDisallowedMessageListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDisallowedMessageListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCPrefixDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPDBCPrefixDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateRegionDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateRegionDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTLTListData">
+    <wsdl:part name="parameters" element="tns:GetLTLTListData" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayTypeListData">
+    <wsdl:part name="parameters" element="tns:GetCopayTypeListData" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayTypeData">
+    <wsdl:part name="parameters" element="tns:GetCopayTypeData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSegmentListData">
+    <wsdl:part name="parameters" element="tns:GetMandateSegmentListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateAssociationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateAssociationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMasterListIDs">
+    <wsdl:part name="parameters" element="tns:GetAllMasterListIDs" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSummaryDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateSummaryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory1ListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory1ListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory3ListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory3ListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory3DataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory3DataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceData">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceData" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory1DataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory1DataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateDetailData">
+    <wsdl:part name="parameters" element="tns:GetMandateDetailData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateRegionData">
+    <wsdl:part name="parameters" element="tns:GetMandateRegionData" />
+  </wsdl:message>
+  <wsdl:message name="GetLTPRListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLTPRListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoverageLevelListData">
+    <wsdl:part name="parameters" element="tns:GetCoverageLevelListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateAssociationListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateAssociationListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDVCRulesData">
+    <wsdl:part name="parameters" element="tns:GetPDVCRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxDataResponse">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSERLMessageListData">
+    <wsdl:part name="parameters" element="tns:GetSERLMessageListData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedCounterDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAllowedCounterDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateDetailListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateDetailListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMasterListIDsResponse">
+    <wsdl:part name="parameters" element="tns:GetAllMasterListIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory3ListData">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory3ListData" />
+  </wsdl:message>
+  <wsdl:message name="GetPlaceofServiceListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPlaceofServiceListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTIPListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLTIPListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoverageLevelData">
+    <wsdl:part name="parameters" element="tns:GetCoverageLevelData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetServiceListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceListData">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceListData" />
+  </wsdl:message>
+  <wsdl:message name="SaveMasterListResponse">
+    <wsdl:part name="parameters" element="tns:SaveMasterListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateDetailListData">
+    <wsdl:part name="parameters" element="tns:GetMandateDetailListData" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCPrefixListData">
+    <wsdl:part name="parameters" element="tns:GetPDBCPrefixListData" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCPrefixListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPDBCPrefixListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayTypeListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayTypeListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedAmountDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAllowedAmountDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCTypeListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPDBCTypeListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccumulatorsData">
+    <wsdl:part name="parameters" element="tns:GetAccumulatorsData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedCounterListData">
+    <wsdl:part name="parameters" element="tns:GetAllowedCounterListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateDetailDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateDetailDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory1Data">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory1Data" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxData">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxData" />
+  </wsdl:message>
+  <wsdl:message name="GetLTIPListData">
+    <wsdl:part name="parameters" element="tns:GetLTIPListData" />
+  </wsdl:message>
+  <wsdl:message name="GetLTIDListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLTIDListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDisallowedMessageListData">
+    <wsdl:part name="parameters" element="tns:GetDisallowedMessageListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSummaryListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandateSummaryListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxListData">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateSegmentData">
+    <wsdl:part name="parameters" element="tns:GetMandateSegmentData" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayTypeDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayTypeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoverageLevelListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoverageLevelListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLimitsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLimitsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccumulatorListData">
+    <wsdl:part name="parameters" element="tns:GetAccumulatorListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMasterList">
+    <wsdl:part name="parameters" element="tns:GetMasterList" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory3Data">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory3Data" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMessagesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetErouterRateTypesData">
+    <wsdl:part name="parameters" element="tns:GetErouterRateTypesData" />
+  </wsdl:message>
+  <wsdl:message name="GetPlaceofServiceDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPlaceofServiceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveMasterList">
+    <wsdl:part name="parameters" element="tns:SaveMasterList" />
+  </wsdl:message>
+  <wsdl:message name="GetPDVCRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPDVCRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTIDListData">
+    <wsdl:part name="parameters" element="tns:GetLTIDListData" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitCategory2ListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitCategory2ListDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayData">
+    <wsdl:part name="parameters" element="tns:GetCopayData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllowedCounterData">
+    <wsdl:part name="parameters" element="tns:GetAllowedCounterData" />
+  </wsdl:message>
+  <wsdl:message name="GetLimitsData">
+    <wsdl:part name="parameters" element="tns:GetLimitsData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateAssociationListData">
+    <wsdl:part name="parameters" element="tns:GetMandateAssociationListData" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesData">
+    <wsdl:part name="parameters" element="tns:GetServicesData" />
+  </wsdl:message>
+  <wsdl:message name="GetCoverageLevelDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoverageLevelDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLTSEListData">
+    <wsdl:part name="parameters" element="tns:GetLTSEListData" />
+  </wsdl:message>
+  <wsdl:message name="GetRateTypeDataResponse">
+    <wsdl:part name="parameters" element="tns:GetRateTypeDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPDBCTypeListData">
+    <wsdl:part name="parameters" element="tns:GetPDBCTypeListData" />
+  </wsdl:message>
+  <wsdl:message name="GetMandateRegionListData">
+    <wsdl:part name="parameters" element="tns:GetMandateRegionListData" />
+  </wsdl:message>
+  <wsdl:message name="GetAccumulatorListDataResponse">
+    <wsdl:part name="parameters" element="tns:GetAccumulatorListDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MasterListService">
+    <wsdl:operation name="GetBenefitCategory3Data">
+      <wsdl:input name="GetBenefitCategory3Data" message="tns:GetBenefitCategory3Data" />
+      <wsdl:output name="GetBenefitCategory3DataResponse" message="tns:GetBenefitCategory3DataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateRegionData">
+      <wsdl:input name="GetMandateRegionData" message="tns:GetMandateRegionData" />
+      <wsdl:output name="GetMandateRegionDataResponse" message="tns:GetMandateRegionDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSegmentData">
+      <wsdl:input name="GetMandateSegmentData" message="tns:GetMandateSegmentData" />
+      <wsdl:output name="GetMandateSegmentDataResponse" message="tns:GetMandateSegmentDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCTypeListData">
+      <wsdl:input name="GetPDBCTypeListData" message="tns:GetPDBCTypeListData" />
+      <wsdl:output name="GetPDBCTypeListDataResponse" message="tns:GetPDBCTypeListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleListData">
+      <wsdl:input name="GetDeductibleListData" message="tns:GetDeductibleListData" />
+      <wsdl:output name="GetDeductibleListDataResponse" message="tns:GetDeductibleListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateRegionListData">
+      <wsdl:input name="GetMandateRegionListData" message="tns:GetMandateRegionListData" />
+      <wsdl:output name="GetMandateRegionListDataResponse" message="tns:GetMandateRegionListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayListData">
+      <wsdl:input name="GetCopayListData" message="tns:GetCopayListData" />
+      <wsdl:output name="GetCopayListDataResponse" message="tns:GetCopayListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxListData">
+      <wsdl:input name="GetOutofPocketMaxListData" message="tns:GetOutofPocketMaxListData" />
+      <wsdl:output name="GetOutofPocketMaxListDataResponse" message="tns:GetOutofPocketMaxListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateDetailListData">
+      <wsdl:input name="GetMandateDetailListData" message="tns:GetMandateDetailListData" />
+      <wsdl:output name="GetMandateDetailListDataResponse" message="tns:GetMandateDetailListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSummaryData">
+      <wsdl:input name="GetMandateSummaryData" message="tns:GetMandateSummaryData" />
+      <wsdl:output name="GetMandateSummaryDataResponse" message="tns:GetMandateSummaryDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedCounterData">
+      <wsdl:input name="GetAllowedCounterData" message="tns:GetAllowedCounterData" />
+      <wsdl:output name="GetAllowedCounterDataResponse" message="tns:GetAllowedCounterDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateDetailData">
+      <wsdl:input name="GetMandateDetailData" message="tns:GetMandateDetailData" />
+      <wsdl:output name="GetMandateDetailDataResponse" message="tns:GetMandateDetailDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoverageLevelListData">
+      <wsdl:input name="GetCoverageLevelListData" message="tns:GetCoverageLevelListData" />
+      <wsdl:output name="GetCoverageLevelListDataResponse" message="tns:GetCoverageLevelListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoverageLevelData">
+      <wsdl:input name="GetCoverageLevelData" message="tns:GetCoverageLevelData" />
+      <wsdl:output name="GetCoverageLevelDataResponse" message="tns:GetCoverageLevelDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLTLTListData">
+      <wsdl:input name="GetLTLTListData" message="tns:GetLTLTListData" />
+      <wsdl:output name="GetLTLTListDataResponse" message="tns:GetLTLTListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccumulatorListData">
+      <wsdl:input name="GetAccumulatorListData" message="tns:GetAccumulatorListData" />
+      <wsdl:output name="GetAccumulatorListDataResponse" message="tns:GetAccumulatorListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory3ListData">
+      <wsdl:input name="GetBenefitCategory3ListData" message="tns:GetBenefitCategory3ListData" />
+      <wsdl:output name="GetBenefitCategory3ListDataResponse" message="tns:GetBenefitCategory3ListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLTIDListData">
+      <wsdl:input name="GetLTIDListData" message="tns:GetLTIDListData" />
+      <wsdl:output name="GetLTIDListDataResponse" message="tns:GetLTIDListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceData">
+      <wsdl:input name="GetCoinsuranceData" message="tns:GetCoinsuranceData" />
+      <wsdl:output name="GetCoinsuranceDataResponse" message="tns:GetCoinsuranceDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServicesData">
+      <wsdl:input name="GetServicesData" message="tns:GetServicesData" />
+      <wsdl:output name="GetServicesDataResponse" message="tns:GetServicesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesData">
+      <wsdl:input name="GetMessagesData" message="tns:GetMessagesData" />
+      <wsdl:output name="GetMessagesDataResponse" message="tns:GetMessagesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayData">
+      <wsdl:input name="GetCopayData" message="tns:GetCopayData" />
+      <wsdl:output name="GetCopayDataResponse" message="tns:GetCopayDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLTSEListData">
+      <wsdl:input name="GetLTSEListData" message="tns:GetLTSEListData" />
+      <wsdl:output name="GetLTSEListDataResponse" message="tns:GetLTSEListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSERLMessageListData">
+      <wsdl:input name="GetSERLMessageListData" message="tns:GetSERLMessageListData" />
+      <wsdl:output name="GetSERLMessageListDataResponse" message="tns:GetSERLMessageListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayTypeListData">
+      <wsdl:input name="GetCopayTypeListData" message="tns:GetCopayTypeListData" />
+      <wsdl:output name="GetCopayTypeListDataResponse" message="tns:GetCopayTypeListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedCounterListData">
+      <wsdl:input name="GetAllowedCounterListData" message="tns:GetAllowedCounterListData" />
+      <wsdl:output name="GetAllowedCounterListDataResponse" message="tns:GetAllowedCounterListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateAssociationData">
+      <wsdl:input name="GetMandateAssociationData" message="tns:GetMandateAssociationData" />
+      <wsdl:output name="GetMandateAssociationDataResponse" message="tns:GetMandateAssociationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccumulatorsData">
+      <wsdl:input name="GetAccumulatorsData" message="tns:GetAccumulatorsData" />
+      <wsdl:output name="GetAccumulatorsDataResponse" message="tns:GetAccumulatorsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory1ListData">
+      <wsdl:input name="GetBenefitCategory1ListData" message="tns:GetBenefitCategory1ListData" />
+      <wsdl:output name="GetBenefitCategory1ListDataResponse" message="tns:GetBenefitCategory1ListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMasterListIDs">
+      <wsdl:input name="GetAllMasterListIDs" message="tns:GetAllMasterListIDs" />
+      <wsdl:output name="GetAllMasterListIDsResponse" message="tns:GetAllMasterListIDsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDVCRulesData">
+      <wsdl:input name="GetPDVCRulesData" message="tns:GetPDVCRulesData" />
+      <wsdl:output name="GetPDVCRulesDataResponse" message="tns:GetPDVCRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMasterList">
+      <wsdl:input name="GetMasterList" message="tns:GetMasterList" />
+      <wsdl:output name="GetMasterListResponse" message="tns:GetMasterListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleData">
+      <wsdl:input name="GetDeductibleData" message="tns:GetDeductibleData" />
+      <wsdl:output name="GetDeductibleDataResponse" message="tns:GetDeductibleDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory1Data">
+      <wsdl:input name="GetBenefitCategory1Data" message="tns:GetBenefitCategory1Data" />
+      <wsdl:output name="GetBenefitCategory1DataResponse" message="tns:GetBenefitCategory1DataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDisallowedMessageListData">
+      <wsdl:input name="GetDisallowedMessageListData" message="tns:GetDisallowedMessageListData" />
+      <wsdl:output name="GetDisallowedMessageListDataResponse" message="tns:GetDisallowedMessageListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCPrefixListData">
+      <wsdl:input name="GetPDBCPrefixListData" message="tns:GetPDBCPrefixListData" />
+      <wsdl:output name="GetPDBCPrefixListDataResponse" message="tns:GetPDBCPrefixListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedAmountListData">
+      <wsdl:input name="GetAllowedAmountListData" message="tns:GetAllowedAmountListData" />
+      <wsdl:output name="GetAllowedAmountListDataResponse" message="tns:GetAllowedAmountListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory2Data">
+      <wsdl:input name="GetBenefitCategory2Data" message="tns:GetBenefitCategory2Data" />
+      <wsdl:output name="GetBenefitCategory2DataResponse" message="tns:GetBenefitCategory2DataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceListData">
+      <wsdl:input name="GetServiceListData" message="tns:GetServiceListData" />
+      <wsdl:output name="GetServiceListDataResponse" message="tns:GetServiceListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLTIPListData">
+      <wsdl:input name="GetLTIPListData" message="tns:GetLTIPListData" />
+      <wsdl:output name="GetLTIPListDataResponse" message="tns:GetLTIPListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateAssociationListData">
+      <wsdl:input name="GetMandateAssociationListData" message="tns:GetMandateAssociationListData" />
+      <wsdl:output name="GetMandateAssociationListDataResponse" message="tns:GetMandateAssociationListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCTypeData">
+      <wsdl:input name="GetPDBCTypeData" message="tns:GetPDBCTypeData" />
+      <wsdl:output name="GetPDBCTypeDataResponse" message="tns:GetPDBCTypeDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSummaryListData">
+      <wsdl:input name="GetMandateSummaryListData" message="tns:GetMandateSummaryListData" />
+      <wsdl:output name="GetMandateSummaryListDataResponse" message="tns:GetMandateSummaryListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetErouterRateTypesData">
+      <wsdl:input name="GetErouterRateTypesData" message="tns:GetErouterRateTypesData" />
+      <wsdl:output name="GetErouterRateTypesDataResponse" message="tns:GetErouterRateTypesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCPrefixData">
+      <wsdl:input name="GetPDBCPrefixData" message="tns:GetPDBCPrefixData" />
+      <wsdl:output name="GetPDBCPrefixDataResponse" message="tns:GetPDBCPrefixDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceListData">
+      <wsdl:input name="GetCoinsuranceListData" message="tns:GetCoinsuranceListData" />
+      <wsdl:output name="GetCoinsuranceListDataResponse" message="tns:GetCoinsuranceListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlaceofServiceListData">
+      <wsdl:input name="GetPlaceofServiceListData" message="tns:GetPlaceofServiceListData" />
+      <wsdl:output name="GetPlaceofServiceListDataResponse" message="tns:GetPlaceofServiceListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveMasterList">
+      <wsdl:input name="SaveMasterList" message="tns:SaveMasterList" />
+      <wsdl:output name="SaveMasterListResponse" message="tns:SaveMasterListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRateTypeData">
+      <wsdl:input name="GetRateTypeData" message="tns:GetRateTypeData" />
+      <wsdl:output name="GetRateTypeDataResponse" message="tns:GetRateTypeDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLTPRListData">
+      <wsdl:input name="GetLTPRListData" message="tns:GetLTPRListData" />
+      <wsdl:output name="GetLTPRListDataResponse" message="tns:GetLTPRListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayTypeData">
+      <wsdl:input name="GetCopayTypeData" message="tns:GetCopayTypeData" />
+      <wsdl:output name="GetCopayTypeDataResponse" message="tns:GetCopayTypeDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSegmentListData">
+      <wsdl:input name="GetMandateSegmentListData" message="tns:GetMandateSegmentListData" />
+      <wsdl:output name="GetMandateSegmentListDataResponse" message="tns:GetMandateSegmentListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitsData">
+      <wsdl:input name="GetLimitsData" message="tns:GetLimitsData" />
+      <wsdl:output name="GetLimitsDataResponse" message="tns:GetLimitsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlaceofServiceData">
+      <wsdl:input name="GetPlaceofServiceData" message="tns:GetPlaceofServiceData" />
+      <wsdl:output name="GetPlaceofServiceDataResponse" message="tns:GetPlaceofServiceDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedAmountData">
+      <wsdl:input name="GetAllowedAmountData" message="tns:GetAllowedAmountData" />
+      <wsdl:output name="GetAllowedAmountDataResponse" message="tns:GetAllowedAmountDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory2ListData">
+      <wsdl:input name="GetBenefitCategory2ListData" message="tns:GetBenefitCategory2ListData" />
+      <wsdl:output name="GetBenefitCategory2ListDataResponse" message="tns:GetBenefitCategory2ListDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxData">
+      <wsdl:input name="GetOutofPocketMaxData" message="tns:GetOutofPocketMaxData" />
+      <wsdl:output name="GetOutofPocketMaxDataResponse" message="tns:GetOutofPocketMaxDataResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MasterListServiceSoapBinding" type="tns:MasterListService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBenefitCategory3Data">
+      <soap12:operation soapAction="GetBenefitCategory3Data" style="document" />
+      <wsdl:input name="GetBenefitCategory3Data">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory3DataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSegmentData">
+      <soap12:operation soapAction="GetMandateSegmentData" style="document" />
+      <wsdl:input name="GetMandateSegmentData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateSegmentDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateRegionData">
+      <soap12:operation soapAction="GetMandateRegionData" style="document" />
+      <wsdl:input name="GetMandateRegionData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateRegionDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCTypeListData">
+      <soap12:operation soapAction="GetPDBCTypeListData" style="document" />
+      <wsdl:input name="GetPDBCTypeListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPDBCTypeListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleListData">
+      <soap12:operation soapAction="GetDeductibleListData" style="document" />
+      <wsdl:input name="GetDeductibleListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateRegionListData">
+      <soap12:operation soapAction="GetMandateRegionListData" style="document" />
+      <wsdl:input name="GetMandateRegionListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateRegionListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayListData">
+      <soap12:operation soapAction="GetCopayListData" style="document" />
+      <wsdl:input name="GetCopayListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxListData">
+      <soap12:operation soapAction="GetOutofPocketMaxListData" style="document" />
+      <wsdl:input name="GetOutofPocketMaxListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetOutofPocketMaxListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateDetailListData">
+      <soap12:operation soapAction="GetMandateDetailListData" style="document" />
+      <wsdl:input name="GetMandateDetailListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateDetailListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSummaryData">
+      <soap12:operation soapAction="GetMandateSummaryData" style="document" />
+      <wsdl:input name="GetMandateSummaryData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateSummaryDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedCounterData">
+      <soap12:operation soapAction="GetAllowedCounterData" style="document" />
+      <wsdl:input name="GetAllowedCounterData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllowedCounterDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateDetailData">
+      <soap12:operation soapAction="GetMandateDetailData" style="document" />
+      <wsdl:input name="GetMandateDetailData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateDetailDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoverageLevelData">
+      <soap12:operation soapAction="GetCoverageLevelData" style="document" />
+      <wsdl:input name="GetCoverageLevelData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoverageLevelDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoverageLevelListData">
+      <soap12:operation soapAction="GetCoverageLevelListData" style="document" />
+      <wsdl:input name="GetCoverageLevelListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoverageLevelListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLTLTListData">
+      <soap12:operation soapAction="GetLTLTListData" style="document" />
+      <wsdl:input name="GetLTLTListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLTLTListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccumulatorListData">
+      <soap12:operation soapAction="GetAccumulatorListData" style="document" />
+      <wsdl:input name="GetAccumulatorListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAccumulatorListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory3ListData">
+      <soap12:operation soapAction="GetBenefitCategory3ListData" style="document" />
+      <wsdl:input name="GetBenefitCategory3ListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory3ListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLTIDListData">
+      <soap12:operation soapAction="GetLTIDListData" style="document" />
+      <wsdl:input name="GetLTIDListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLTIDListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceData">
+      <soap12:operation soapAction="GetCoinsuranceData" style="document" />
+      <wsdl:input name="GetCoinsuranceData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinsuranceDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayData">
+      <soap12:operation soapAction="GetCopayData" style="document" />
+      <wsdl:input name="GetCopayData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesData">
+      <soap12:operation soapAction="GetMessagesData" style="document" />
+      <wsdl:input name="GetMessagesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMessagesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicesData">
+      <soap12:operation soapAction="GetServicesData" style="document" />
+      <wsdl:input name="GetServicesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetServicesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLTSEListData">
+      <soap12:operation soapAction="GetLTSEListData" style="document" />
+      <wsdl:input name="GetLTSEListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLTSEListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSERLMessageListData">
+      <soap12:operation soapAction="GetSERLMessageListData" style="document" />
+      <wsdl:input name="GetSERLMessageListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetSERLMessageListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedCounterListData">
+      <soap12:operation soapAction="GetAllowedCounterListData" style="document" />
+      <wsdl:input name="GetAllowedCounterListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllowedCounterListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayTypeListData">
+      <soap12:operation soapAction="GetCopayTypeListData" style="document" />
+      <wsdl:input name="GetCopayTypeListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayTypeListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateAssociationData">
+      <soap12:operation soapAction="GetMandateAssociationData" style="document" />
+      <wsdl:input name="GetMandateAssociationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateAssociationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccumulatorsData">
+      <soap12:operation soapAction="GetAccumulatorsData" style="document" />
+      <wsdl:input name="GetAccumulatorsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAccumulatorsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory1ListData">
+      <soap12:operation soapAction="GetBenefitCategory1ListData" style="document" />
+      <wsdl:input name="GetBenefitCategory1ListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory1ListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMasterListIDs">
+      <soap12:operation soapAction="GetAllMasterListIDs" style="document" />
+      <wsdl:input name="GetAllMasterListIDs">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllMasterListIDsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMasterList">
+      <soap12:operation soapAction="GetMasterList" style="document" />
+      <wsdl:input name="GetMasterList">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMasterListResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDVCRulesData">
+      <soap12:operation soapAction="GetPDVCRulesData" style="document" />
+      <wsdl:input name="GetPDVCRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPDVCRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleData">
+      <soap12:operation soapAction="GetDeductibleData" style="document" />
+      <wsdl:input name="GetDeductibleData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory1Data">
+      <soap12:operation soapAction="GetBenefitCategory1Data" style="document" />
+      <wsdl:input name="GetBenefitCategory1Data">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory1DataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDisallowedMessageListData">
+      <soap12:operation soapAction="GetDisallowedMessageListData" style="document" />
+      <wsdl:input name="GetDisallowedMessageListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDisallowedMessageListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCPrefixListData">
+      <soap12:operation soapAction="GetPDBCPrefixListData" style="document" />
+      <wsdl:input name="GetPDBCPrefixListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPDBCPrefixListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedAmountListData">
+      <soap12:operation soapAction="GetAllowedAmountListData" style="document" />
+      <wsdl:input name="GetAllowedAmountListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllowedAmountListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory2Data">
+      <soap12:operation soapAction="GetBenefitCategory2Data" style="document" />
+      <wsdl:input name="GetBenefitCategory2Data">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory2DataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLTIPListData">
+      <soap12:operation soapAction="GetLTIPListData" style="document" />
+      <wsdl:input name="GetLTIPListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLTIPListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceListData">
+      <soap12:operation soapAction="GetServiceListData" style="document" />
+      <wsdl:input name="GetServiceListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetServiceListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateAssociationListData">
+      <soap12:operation soapAction="GetMandateAssociationListData" style="document" />
+      <wsdl:input name="GetMandateAssociationListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateAssociationListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCTypeData">
+      <soap12:operation soapAction="GetPDBCTypeData" style="document" />
+      <wsdl:input name="GetPDBCTypeData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPDBCTypeDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSummaryListData">
+      <soap12:operation soapAction="GetMandateSummaryListData" style="document" />
+      <wsdl:input name="GetMandateSummaryListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateSummaryListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErouterRateTypesData">
+      <soap12:operation soapAction="GetErouterRateTypesData" style="document" />
+      <wsdl:input name="GetErouterRateTypesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetErouterRateTypesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPDBCPrefixData">
+      <soap12:operation soapAction="GetPDBCPrefixData" style="document" />
+      <wsdl:input name="GetPDBCPrefixData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPDBCPrefixDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceListData">
+      <soap12:operation soapAction="GetCoinsuranceListData" style="document" />
+      <wsdl:input name="GetCoinsuranceListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinsuranceListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlaceofServiceListData">
+      <soap12:operation soapAction="GetPlaceofServiceListData" style="document" />
+      <wsdl:input name="GetPlaceofServiceListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPlaceofServiceListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveMasterList">
+      <soap12:operation soapAction="SaveMasterList" style="document" />
+      <wsdl:input name="SaveMasterList">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SaveMasterListResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRateTypeData">
+      <soap12:operation soapAction="GetRateTypeData" style="document" />
+      <wsdl:input name="GetRateTypeData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRateTypeDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayTypeData">
+      <soap12:operation soapAction="GetCopayTypeData" style="document" />
+      <wsdl:input name="GetCopayTypeData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayTypeDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLTPRListData">
+      <soap12:operation soapAction="GetLTPRListData" style="document" />
+      <wsdl:input name="GetLTPRListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLTPRListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandateSegmentListData">
+      <soap12:operation soapAction="GetMandateSegmentListData" style="document" />
+      <wsdl:input name="GetMandateSegmentListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandateSegmentListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitsData">
+      <soap12:operation soapAction="GetLimitsData" style="document" />
+      <wsdl:input name="GetLimitsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLimitsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlaceofServiceData">
+      <soap12:operation soapAction="GetPlaceofServiceData" style="document" />
+      <wsdl:input name="GetPlaceofServiceData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPlaceofServiceDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowedAmountData">
+      <soap12:operation soapAction="GetAllowedAmountData" style="document" />
+      <wsdl:input name="GetAllowedAmountData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllowedAmountDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitCategory2ListData">
+      <soap12:operation soapAction="GetBenefitCategory2ListData" style="document" />
+      <wsdl:input name="GetBenefitCategory2ListData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitCategory2ListDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxData">
+      <soap12:operation soapAction="GetOutofPocketMaxData" style="document" />
+      <wsdl:input name="GetOutofPocketMaxData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetOutofPocketMaxDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MasterListService">
+    <wsdl:port name="MasterListServicePort" binding="tns:MasterListServiceSoapBinding">
+      <soap12:address location="http://192.168.100.4:6060/ServiceEngine/services/MasterListService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

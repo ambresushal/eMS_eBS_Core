@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/SettingsLayout.cshtml";
+}
+
+@*<div id="settingsTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <li><a href="#settingsTab-1">Settings</a></li>
+    </ul>
+    
+</div>*@
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));    
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId));
+    var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId)); 
+    setMenu("settings");	
+</script>
+
+

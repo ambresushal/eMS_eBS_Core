@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "PBP Import";
+    Layout = "~/Views/Shared/PBPImportLayout.cshtml";
+}
+
+<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+</style>
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">PBP Integration</h1>
+    </div>
+    <div class="col-xs-12">
+        <div class="timer">
+            <span>
+                <b>Auto-Refresh in</b>
+            </span>
+            <span id="spnTimer">
+                <b>30 seconds.</b>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/PBPImport/PBPDataBase">Manage PBP Database</a>
+        </li>
+        <li class="active">
+            <a href="~/PBPImport/Index">PBP Import</a>
+        </li>
+        <li>
+            <a href="~/PBPExport/Index">PBP Export</a>
+        </li>
+        @*<li>
+            <a href="~/ODM/ODM">ODM</a>
+        </li>
+        <li>
+            <a href="~/MDBComparer/MDBComparer">MDB Comparer</a>
+        </li>*@
+    </ul>
+</div>
+<div id="pbpImportTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="#pbpImportTab-2">PBP Import-Audit</a></li>
+    </ul>
+
+    <div role="tabpanel" class="tab-content">
+        <button id="btnImport" type="button" class="btn pull-left">Import</button>
+        <div id="pbpImportTab-2" class="tab-pane active">
+            <div class="panel panel-default ">
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+
+                                <table id="queuedPBPImportGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="importPBPQueueDialog" style="display: none">
+                    <form>
+                        <div class="form-group">
+                            <div id="divPortfolioDetails">
+                                <div id="portfolioDetailsDialog" style="display: none">
+                                    <div class="alert alert-danger" id="portfolioalertmsg" style="display: none">
+                                        Please select a row..
+                                    </div>
+                                    <div class="grid-wrapper">
+                                        <table id="portfolioSearchGrid"></table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="description"><b>Description: </b></label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input id="description" type="text" class="form-control" name="description" maxlength="150" />
+                                </div>
+                            </div>
+                            <div style="margin-top:10px;"></div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="uploadpbpFile"><b>PBP File Name: </b></label><em>*</em>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input id="UploadPBPFileName" name="UploadPBPFileName" class="form-control uploadTmplFile" type="file" />
+                                    <span class="help-block" id="UploadPBPFileNameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="uploadpbpFile2"><b>PBP Plan Area File Name: </b></label><em>*</em>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input id="UploadPBPPlanAreaFileName" name="UploadPBPPlanAreaFileName" class="form-control uploadTmplFile" type="file" />
+                                    <span class="help-block" id="UploadPBPPlanAreaFileNameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="uploadpbpFile2"><b>Database Name: </b></label><em>*</em>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select id="databaseName" name="databaseName"></select>
+                                    <span class="help-block" id="databaseNameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                <div class="col-sm-4">
+                                    <label for="year"><b>Year: </b></label><em>*</em>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select id="year" name="year"></select>
+                                    <span class="help-block" id="yearSpan" style="color:red"></span>
+                                </div>
+                            </div>*@
+                        </div>
+                        <button id="btnPBPQueue" type="button" class="btn pull-right">Queue</button>
+                    </form>
+                </div>
+                <div id="pBPPlanMatchingConfigrationDialog" style="display: none">
+                    <div class="alert alert-danger" id="pBPPlanMatchingConfigrationDialogmsg" style="display: none">
+                        <span class="help-block" id="pBPPlanMatchingConfigrationDialogNameSpan" style="color:red"></span>
+                    </div>
+                    <div id="exTab1" class="container">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                Mismatch plans
+                            </li>
+                        </ul>
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane active" id="1a">
+                                <div class="grid-wrapper">
+                                    <table id="misMatchPlanGrid"></table>
+                                </div>
+                                @*<div id="pager"></div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div id="exTab2" class="container">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                Match plans
+                            </li>
+                        </ul>
+                        <div class="tab-content clearfix">
+                            <div class="grid-wrapper">
+                                <table id="matchPlanGrid"></table>
+                            </div>
+                            @*<div id="pager"></div>*@
+                            <button id="btnpBPPlanMatchingConfigrationDialogClose" type="button" class="btn pull-right">Close</button>
+                            <button id="btnPreviewImport" type="button" class="btn pull-right">Preview Import</button>
+                            <button id="pBPPlanMatchingConfigrationDialogbtnDiscard" type="button" class="btn pull-right">Cancel Import</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="previewPBPConfigrationDialog" style="display: none">
+                    <div id="exTab1" class="container">
+                        <ul class="nav nav-pills">
+                            <li class="active">
+                                Preview Import
+                            </li>
+                        </ul>
+                        <br />
+                        <div class="tab-content clearfix">
+                            <div class="tab-pane active" id="1a">
+                                <div class="grid-wrapper">
+                                    <table id="tblPreviewPBPConfigration" class="table"></table>
+                                </div>
+                                @*<div id="pager"></div>*@
+                            </div>
+                            <button id="btnPreviewClose" type="button" class="btn pull-right">Close</button>
+                            <button id="btnProcessWithImport" type="button" class="btn pull-right">Proceed With Import</button>
+                            <button id="btnDownloadExcel" type="button" class="btn pull-right">Download to Excel</button>
+                            <button id="previewPBPConfigrationDialogbtnDiscard" type="button" class="btn pull-right">Cancel Import</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sourceDocumentDialog" style="display: none">
+                    <div class="alert alert-danger" id="alertmsg" style="display: none">
+                        Please select a row..
+                    </div>
+                    <div class="grid-wrapper">
+                        <table id="docSearch" class="table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var queuedPBPImports = new viewQueuedPBPImports();
+    });
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+</script>
+
+
+
+

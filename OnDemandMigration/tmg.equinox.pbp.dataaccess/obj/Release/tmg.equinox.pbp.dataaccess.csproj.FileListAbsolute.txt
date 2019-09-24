@@ -1,0 +1,12 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\tmg.equinox.pbp.dataaccess.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\tmg.equinox.pbp.dataaccess.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\tmg.equinox.pbp.dataaccess.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\EntityFramework.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\EntityFramework.SqlServer.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\EntityFramework.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\EntityFramework.SqlServer.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\obj\Release\tmg.equinox.pbp.dataaccess.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\obj\Release\tmg.equinox.pbp.dataaccess.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\OnDemandMigration\tmg.equinox.pbp.dataaccess\obj\Release\tmg.equinox.pbp.dataaccess.pdb

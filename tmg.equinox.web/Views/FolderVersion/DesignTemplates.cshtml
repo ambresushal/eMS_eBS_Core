@@ -1,0 +1,148 @@
+﻿<script id="SOTTemplate" type="text/x-jsrender">
+    <div>
+        <table id="mainsection" class="design ui-sotview-btable">
+            <tbody>
+                {{for Sections tmpl="#DesignSectionTemplate" /}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script id="DesignSectionTemplate" type="text/x-jsrender">
+    {{if Visible === true}}
+    {{if LayoutColumn === 4}}
+    <tr id="section{{>Name}}{{:~getFormInstanceId()}}" class="ui-widget-content custom-section" data-filter="{{>ID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}</label></td>
+    </tr>
+    {{else}}
+    <tr id="section{{>Name}}" class="ui-widget-content sotview-ltr ui-state-highlight" data-filter="{{>ID}}">
+        <td class="ui-sotview-expanded sec-grp" id="{{>ID}}">
+            <a style="cursor:pointer">
+                <span class="ui-icon ui-icon-minus"></span>
+            </a>
+        </td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}</label></td>
+    </tr>
+    {{for Elements tmpl="#DesignElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn  ~group=ID/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="DesignElementTemplate" type="text/x-jsrender">
+    {{if Layout === "SOT" || Layout === "Both"}}
+    {{if Type==="calendar"}}
+    {{include tmpl="#DesignCalendarTemplate"/}}
+    {{else Type==="section"}}
+    {{include tmpl="#DesignElementSectionTemplate"/}}
+    {{else Type==="repeater"}}
+    {{include tmpl="#DesignElementRepeaterTemplate"/}}
+    {{else Type==="select"}}
+    {{include tmpl="#DesignSelectTemplate"/}}
+    {{else Type==="radio"}}
+    {{include tmpl="#DesignRadioButtonTemplate"/}}
+    {{else Type==="checkbox"}}
+    {{include tmpl="#DesignCheckboxTemplate"/}}
+    {{else IsLabel === true}}
+    {{include tmpl="#DesignLabelTemplate"/}}
+    {{else Multiline === true}}
+    {{include tmpl="#DesignTextAreaTemplate"/}}
+    {{else IsRichTextBox === true}}
+    {{include tmpl="#DesignRichTextTemplate"/}}
+    {{else IsDropDownTextBox === true}}
+    {{include tmpl="#DesignSelectInputTemplate"/}}
+    {{else}}
+    {{include tmpl="#DesignInputElementTemplate"/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="DesignElementRepeaterTemplate" type="text/x-jsrender">
+
+</script>
+
+<script id="DesignSubSectionTemplate" type="text/x-jsrender">
+    {{if Visible === true}}
+    {{if LayoutColumn === 4}}
+    <tr class="ui-widget-content sotview-ltr custom-section" data-group="{{>~group}}" data-filter="{{>ID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}</label></td>
+    </tr>
+    {{else}}
+    <tr class="ui-widget-content sotview-ltr ui-state-highlight" data-filter="{{>ID}}">
+        <td class="ui-sotview-expanded sec-grp" id="{{>ID}}">
+            <a style="cursor:pointer">
+                <span class="ui-icon ui-icon-minus"></span>
+            </a>
+        </td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}</label></td>
+    </tr>
+    {{for Elements tmpl="#DesignElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn  ~group=ID/}}
+    {{/if}}
+    {{/if}}
+</script>
+
+<script id="DesignSelectTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td {{if MultiSelect === true}} style="height:68px !important;" {{/if}}><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignElementSectionTemplate" type="text/x-jsrender">
+    {{for [Section] tmpl="#DesignSubSectionTemplate"/}}
+</script>
+
+<script id="DesignCalendarTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignRadioButtonTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignCheckboxTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignLabelTemplate" type="text/x-jsrender">
+
+</script>
+
+<script id="DesignTextAreaTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td style="height:70px !important;"><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignRichTextTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td style="height:117px !important;"><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignInputElementTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+
+<script id="DesignSelectInputTemplate" type="text/x-jsrender">
+    <tr class="ui-widget-content sotview-ltr" data-group="{{>~group}}" data-filter="{{>ElementID}}">
+        <td></td>
+        <td><label class="elename" for="{{>Label}}" title="{{>Label}}">{{>Label}}{{if ~hasRequiredValidation(FullName) }}<em>*</em>{{/if}}</label></td>
+    </tr>
+</script>
+

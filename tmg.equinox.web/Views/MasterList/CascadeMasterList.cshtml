@@ -1,0 +1,55 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "CascadeMasterList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    @Scripts.Render("~/bundles/MLCascadeBundle")
+    @*<script src="~/Scripts/MasterList/cascademasterList.js"></script>*@
+</head>
+<div class="container-fluid">
+  <div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Master List Cascade Status</h1>
+    </div>
+      
+  </div>
+    <div class="col-xs-12">
+        <div class="timer" style="margin-top:0px;color:#69AA8E; font-size:12px;  float:right;">
+            <span>
+                <b>Auto-Refresh in</b>
+            </span>
+            <span id="spnTimer">
+                <b>60 seconds.</b>
+            </span>
+        </div>
+        </div>
+        <br />
+        
+        <div class="panel panel-default clearfix">
+            <div class="panel-body cascade-wrap">
+                <div>
+                    <div>
+                        <div class="table-responsive grid-wrapper">
+                            <table class="table" id="mlcb"></table>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div>
+                    <div>
+                        <div class="table-responsive grid-wrapper">
+                            <table class="table" id="mlcbd"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    setMenu("masterList");
+</script>

@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "eBenefitSync Design";
+    Layout = "~/Views/Shared/JournalReportLayout.cshtml";
+}
+<div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="productShareReportDiv">
+                    <div class="panel panel-default" style="display: block">
+                        <div class="panel-heading-gray">
+                            <p class="panel-title section-title">Product Share Report</p>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row form-group">
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                </div>
+                               <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        <label>Enter Product ID</label>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <input class="form-control" id="productID" maxlength="8" />
+                                        <span class="help-block" id="productIDHelpBlock"></span>
+                                    </div>
+                                </div>
+                               <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                </div>
+                                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        <label>Enter SEPY</label>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <input class="form-control" id="SEPY" maxlength="4" />
+                                        <span class="help-block" id="SEPYHelpBlock"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                </div>
+                                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        <label>Enter DEDE</label>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <input class="form-control" id="DEDE" maxlength="4" />
+                                        <span class="help-block" id="DEDEHelpBlock"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                </div>
+                                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        <label>Enter LTLT</label>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <input class="form-control" id="LTLT" maxlength="4" />
+                                        <span class="help-block" id="LTLTHelpBlock"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn pull-right btn-padding">
+                                    <button id="btnDownloadProductShareReport" type="button" class="btn btn-xs" disabled="disabled">View Collateral</button>
+                                    <button id="btnReset" type="button" class="btn btn-xs">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setMenu("Reporting");
+</script>

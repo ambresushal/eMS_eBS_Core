@@ -1,0 +1,89 @@
+﻿@using DevTrends.MvcDonutCaching
+@using System.Web.Optimization
+@{
+    var environment = System.Configuration.ConfigurationManager.AppSettings["Environment"] ?? "Development";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    
+    <meta name="description" content="To remain competitive, Health Plans must be equipped to respond quickly to the changing needs of their customers as well as support timely compliance with state and federal mandates.  @ViewBag.ApplicationName provides Health Plans with a framework that enables them to more efficiently accomplish their core business functions relating to sales, benefits, and benefit data administration. " />
+    <meta name="author" content="" />
+    <link href='@Url.Content("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.login.css")' rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    @Scripts.Render("~/bundles/jQueryBundle")
+    @Scripts.Render("~/bundles/BootstrapBundle")
+
+    @Scripts.Render("~/bundles/GlobalBundle")
+
+
+    <script type="text/javascript">
+        if (GLOBAL.applicationName == "") {
+            var appName = '@ViewBag.ApplicationName';
+            if(appName != undefined)
+            GLOBAL.applicationName = appName;
+        }
+        if (GLOBAL.clientName == "") {
+            var clientName = '@ViewBag.clientName';
+            if (clientName != undefined)
+                GLOBAL.clientName = clientName;
+        }
+    </script>
+
+    <title>@ViewBag.ApplicationName</title>
+    <!-- BEGIN RESPONSE STYLES -->
+    @*<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>*@
+    
+    <link href='@Url.Content("~/Content/css/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    
+    <link href='@Url.Content("~/Content/css/response.custom.css")' rel="stylesheet" type="text/css" />
+    <!-- END RESPONSE STYLES -->
+</head>
+<body class="bodybg">
+    <div class="navbar navbar-top" role="banner">
+        <div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/">
+                    @*<img src="~/Content/css/custom-theme/images/ebenefitsync-logo-lg.png" title="eBenefitSync" alt="eBenefitSync" style="height: 55px;width:300px;padding-bottom:5px" />*@
+                    <img src="~/Content/css/custom-theme/images/ebenefitsync-logo.png" title="@ViewBag.ApplicationName" alt="@ViewBag.ApplicationName" />
+                    @*<label style="color: #000000; font-weight: normal;">Anthem</label>*@
+                    <!-- <label style="color: #3693d0;font-weight: normal;">eBenefitSync</label> -->
+                </a>
+            </div>
+            <!-- <div class="navbar-collapse collapse " role="navigation">
+                <div class="pull-right" style="line-height: 60px;">
+                    @*<a href="tel:+18445464254">+1 (844) 546-4254</a>*@
+                </div>
+            </div> -->
+            </div>
+        </div>
+
+    <div class="form-wrapper">
+        <div style="min-height: 450px;">
+            @RenderBody()
+        </div>
+
+<!--         <div class="navbar-bottom">
+            <div class="row-fluid">
+                <div class="col-xs-12 col-sm-12 col-lg-12 copyrights" style="font-size: 11px; text-align: center;">
+                    &copy; Copyright 2017 The Most Group, Inc. All Rights Reserved. 
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div> -->
+    </div>
+    <script type="text/javascript">
+        if ($.fn.button.noConflict) {
+            $.fn.btn = $.fn.button.noConflict();
+        }
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip({
+                placement : 'top'
+            });
+        });
+    </script>
+</body>
+</html>

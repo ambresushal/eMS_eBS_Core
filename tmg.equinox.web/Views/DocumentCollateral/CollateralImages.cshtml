@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Generate Collateral";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Collateral Images</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="dropdown active">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>      
+    </ul>
+</div>
+<ul class="nav nav-pills nav-pills-child">
+    <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+    <li><a href="~/DocumentCollateral/GenerateReports">Generate Collateral</a></li>
+    <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+    <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+    <li class="active"><a href="~/DocumentCollateral/CollateralImages">Collateral Images</a></li>
+    <li><a href="~/DocumentCollateral/ViewUploadedCollaterals">Uploaded Collateral Log</a></li>
+</ul>
+<div id="collateralImages">
+    <div id="collateralImages-1">
+        <div class="row-fluid">
+            <div class="grid-wrapper">
+              <!-- <div class="grid-page-wrapper">
+                List Of Items
+              </div> -->
+                <table id="collateralImageListGrid"></table>
+            </div>
+        </div>
+        <div class="row-fluid pt-15">
+            <div class="grid-wrapper">
+                <button id="btnUploadCom" class="pull-left">Convert into 508 and Print X ready</button>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+   </div>
+
+        
+</div>
+<div id="comDialog" style="display: none">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Upload docx file</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input name="file" type="file" id="docFile" style="width:100%; cursor:pointer;" readonly />
+                </div>
+            </div>
+            <span class="help-block" id="uploadSpan"></span>
+        </div>
+        
+         <div class="panel panel-default">
+                    <div class="panel-body" style="margin-top: 0px;">
+            <button id="btnUpload" class="pull-left">Convert</button>
+                        </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="inkDownload"> </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="imageDialog" style="display: none">
+    <form enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Name</label><em>*</em>
+                    <input id="imagName" name="imagName" type="text" value="" maxlength="100" >
+                </div>
+            </div>
+            <span class="help-block" id="imagNameSpan"></span>
+            <div class="row">                
+                <div class="col-xs-12">
+                    <label>Description</label><em>*</em>
+                    <input  id="imageDesp" name="imageDesp" type="text" value="" maxlength="500" multiple>
+                </div>
+            </div>
+            <span class="help-block" id="imageDespSpan"></span>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Upload Image</label><em>*</em>
+                    <input name="file" type="file" id="imageFile"  readonly />
+                </div>
+            </div>
+            <span class="help-block" id="uploadSpan"></span>
+            <a href="https://www.rgb2cmyk.org/" target="_blank" > <span class="help-block" >Please make sure that image is CMYK format. Click here for conversion</span> </a>
+            
+                       
+        </div>
+        <div>
+            <button id="btnsaveimage" class="pull-right">Save</button>            
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("collateral");	
+</script>

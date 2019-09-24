@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Generate Collateral";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">User Activity</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="dropdown active">
+            <a href="~/DocumentCollateral/ViewReportTemplate">Document Collateral</a>
+        </li>
+        @*<li>
+            <a href="~/FolderVersionReport/ChangeSummaryReport">Change Summary</a>
+        </li>
+        <li>
+            <a href="~/JournalReport/JournalEntryReport">Journal Collateral</a>
+        </li>
+        <li>
+            <a href="~/PrintTemplate/PDFConfiguration">Configuration</a>
+        </li>*@
+    </ul>
+</div>
+<ul class="nav nav-pills nav-pills-child">
+    <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+    <li><a href="~/DocumentCollateral/GenerateReports">Generate Collateral</a></li>
+    <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+    <li class="active"><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+    <li><a href="~/DocumentCollateral/CollateralImages">Collateral Images</a></li>
+    <li><a href="~/DocumentCollateral/ViewUploadedCollaterals">Uploaded Collateral Log</a></li>
+</ul>
+<div id="userActivity" style="display: none;">
+    <ul>
+        <li><a href="#userActivity-1">User Activity</a></li>
+    </ul>
+    <div id="userActivity-1">
+        <div class="row-fluid">
+            <div class="grid-wrapper">
+              <!-- <div class="grid-page-wrapper">
+                List Of Items
+              </div> -->
+                <table id="userActivityGrid"></table>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+@*        <div class="col-xs-3 copyrights" style="float: left; font-size: 11px;display:none;">
+        <p style="float: left;">Powered by</p>
+        <div class="tmg-logo" style="float: left; ">
+            <img src="@Url.Content("~/Content/css/custom-theme/images/tmg-logo.png")" title="The Most Group Inc." alt="The Most Group Inc." style="width: 60%; float: left;" />
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>*@
+
+
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("collateral");	
+</script>

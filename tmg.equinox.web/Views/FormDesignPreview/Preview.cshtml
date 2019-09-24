@@ -1,0 +1,37 @@
+﻿@model tmg.equinox.applicationservices.viewmodels.FormDesign.FormDesignVersionPreviewViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FormDesignPreviewLayout.cshtml";
+}
+@Html.Partial("~/Views/FolderVersion/Templates.cshtml")
+
+<div>
+    <div class="page-header">
+        <h3><b>@Model.FormName </b><small>Preview</small></h3>
+    </div>
+    <div id="foldertabs" style="min-height: 500px">
+        <ul id="formTabs">
+        </ul>
+        <div id="sectionMenuContainer" class="side-menu-left positionable">
+            <div class="side-menu-container-left side-menu-container-width">
+                <a id="side-menu-left">
+                    <div class="section-menu-text-270deg section-menu-margin">
+                        Section
+                    </div>
+                </a>
+            </div>
+            <div id="sectionMenu" class="section-menu-container">
+                <ul class="section-menu">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //instantiate the object of previewformDesign here.
+        var previewFormDesign = new formDesignPreview('@Model.FormDesignVersionID', '@Model.FormName', '@Model.TenantID');
+        previewFormDesign.loadPreview();
+    });
+</script>

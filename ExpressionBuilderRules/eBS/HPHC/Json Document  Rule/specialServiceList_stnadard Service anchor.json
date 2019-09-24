@@ -1,0 +1,83 @@
+{
+  "documentrule": {   
+    "targetelement": "CommercialMedicalAnchor[StandardServices.SpecialServiceList]",
+    "ruletype": "datasource",
+    "targetelementtype": "field",
+    "ruleconditions": {
+      "sources": [
+         {
+          "sourcename": "A",
+          "sourceelement": "StandardServices[SpecialServiceDetails.SpecialServiceGroupDetailRulesList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },
+        {
+          "sourcename": "B",
+          "sourceelement": "CommercialMedicalAnchor[ProductRules.SpecialServiceSelectionRepeater]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },
+		{
+          "sourcename": "C",
+          "sourceelement": "CommercialMedicalAnchor[StandardServices.SpecialServiceList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },	
+	{
+          "sourcename": "D",
+          "sourceelement": "CommercialMedicalAnchor[ProductRules.PlanInformation.ServiceGroup]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },		
+		{
+          "sourcename": "E",
+          "sourceelement": "CommercialMedicalAnchor[StandardServices.ServiceGroup]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        }
+	],
+      "sourcemergelist": {
+        "outputcolumns": {
+          "columns": "",
+          "children": ""
+        },
+        "sourcemergeactions": [
+          {
+            "sourcemergetype": "script",
+            "sourcemergeexpression": "SET(SpecialServiceMLList, a);SET(SpecialServiceSelectionRepeater, b);SET(selectedServiceGroup, d);SET(targetResult, c);IF(EQUALS(selectedServiceGroup, \"\") < > TRUE()){SET(ServiceGroupCodition, \"ServiceGroup=[<0>]\"); SET(ServiceGroupCodition, REPLACE(ServiceGroupCodition, \"<0>\", selectedServiceGroup)); SET(SepcialServiceMasterList, FILTERLIST(SpecialServiceMLList, ServiceGroupCodition, \"\", \"\", \"\"));SET(oldServiceGroup, e); SET(SpecialServiceRepeaterList, FILTERLIST(SpecialServiceSelectionRepeater, \"\", \"\", \"\", \"BenefitCategory1,BenefitCategory3\")); SET(SpecialServiceRepeaterList, FILTERLIST(SpecialServiceSelectionRepeater, \"\", \"\", \"\", \"BenefitCategory1,BenefitCategory3\")); IF(COUNT(SpecialServiceRepeaterList) > 0){SET(SpecialServiceRepeaterListCount, COUNT(SpecialServiceRepeaterList)); SET(SpecialServiceRepeaterListCounter, 0); SET(targetSpecialService, \"\"); WHILE(SpecialServiceRepeaterListCounter < SpecialServiceRepeaterListCount){SET(SpecialServiceRepeaterRow, FILTERLIST(SpecialServiceRepeaterList, SpecialServiceRepeaterListCounter, \"\", \"\", \"\")); SET(tempBC3, GETVAL(SpecialServiceRepeaterRow, \"BenefitCategory3\")); IF(EQUALS(tempBC3, \"\") < > TRUE()){SET(tempBC1, GETVAL(SpecialServiceRepeaterRow, \"BenefitCategory1\")); SET(tempBC1Codition, \"BenefitCategory1=[<0>]\"); SET(tempBC1Codition, REPLACE(tempBC1Codition, \"<0>\", tempBC1)); SET(SepcialServiceMasterListBC1, FILTERLIST(SepcialServiceMasterList, tempBC1Codition, \"\", \"\", \"\")); SET(SepcialServiceMasterListBC1COUNT, COUNT(SepcialServiceMasterListBC1)); SET(SepcialServiceMasterListCounter, 0); WHILE(SepcialServiceMasterListCounter < SepcialServiceMasterListBC1COUNT){SET(SepcialServiceMasterListRow, FILTERLIST(SepcialServiceMasterListBC1, SepcialServiceMasterListCounter, \"\", \"\", \"\")); SET(sourceBC3, GETVAL(SepcialServiceMasterListRow, \"BenefitCategory3\")); IF(EQUALS(sourceBC3, \"\")==TRUE()){SET(sourceBC3, \"Blank\")}IF(EQUALS(tempBC3, \"\") < > TRUE()){IF(CONTAINS(tempBC3, sourceBC3)==TRUE()){IF(EQUALS(targetSpecialService, \"\")==TRUE()){SET(targetSpecialService, SepcialServiceMasterListRow)}ELSE{SET(targetSpecialService, UNION(targetSpecialService, SepcialServiceMasterListRow, \"BenefitServiceCode\"))}}}SET(SepcialServiceMasterListCounter, SepcialServiceMasterListCounter + 1);}}SET(SpecialServiceRepeaterListCounter, SpecialServiceRepeaterListCounter + 1);}IF(EQUALS(selectedServiceGroup, oldServiceGroup)==TRUE()){IF(COUNT(targetResult) > 0){SET(SpecialServiceIntersect, INTERSECT(targetResult, targetSpecialService, \"BenefitServiceCode\"));SET(targetSpecialServiceExcept, EXCEPT(targetSpecialService, targetResult, \"BenefitServiceCode\"));SET(targetSpecialServiceUnion, UNION(SpecialServiceIntersect, targetSpecialServiceExcept, \"BenefitServiceCode\"));SET(targetSpecialServiceUnion, UNION(targetSpecialServiceUnion, targetSpecialServiceUnion, \"BenefitServiceCode\"));SET(targetSpecialService, targetSpecialServiceUnion);}}SET(targetSpecialService, SORTARRAY(targetSpecialService, \"PlaceofService,BenefitCategory5,BenefitCategory4,BenefitCategory3,BenefitCategory2,BenefitCategory1,CostShareGroup\", \"asc\")); IF(EQUALS(targetSpecialService, \"\")==TRUE()){SETARRAY(target, \"[{'BenefitServiceCode':'','BenefitCategory1':'','BenefitCategory2':'','BenefitCategory3':'','BenefitCategory4':'','BenefitCategory5':'','PlaceofService':''}]\");}ELSE{SETARRAY(target, targetSpecialService);}}ELSE{SETARRAY(target, \"[]\")}}ELSE{SETARRAY(target, \"[]\")}",
+            "keycolumns": "",
+            "mappings": {
+              "sourcefields": "",
+              "targetfields": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Installable and ionformation about how to use the nuget package
+
+https://github.com/NuGetPackageExplorer/NuGetPackageExplorer
+
+information1 -
+https://docs.microsoft.com/en-us/nuget/what-is-nuget

@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "Reporting Center Schema";
+    Layout = "~/Views/Shared/DatabaseUILayout.cshtml";
+}
+<div class="class=" container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class="title">Reporting Center Schema</h2>
+        </div>
+        <div class="col-md-2" style="text-align:right">
+            @using (Html.BeginForm("SchemaExport", "ReportingCenter", FormMethod.Post))
+            {
+                <input type="submit" id="btnExportToExcel" value="Export to Excel" class="btn btn-primary" />
+            }
+        </div>
+        <div class="col-md-1">
+            @using (Html.BeginForm("Index", "ReportingCenter", FormMethod.Get))
+            {
+                <input type="submit" id="btnBack" value="Back" class="btn btn-primary" />
+            }
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <span> Double click on node for Expand/Collapse</span>
+            <div id="treeContainer" style="min-width: 500px; background-color: white;overflow:auto;height:450px">
+                <span><input type="text" id="treeViewSearchInput" placeholder="--Select-- Double click on item to expand" /><input id="treeviewDropdownBtn" type="button" value="V" style="height:26px" /></span>
+                <div id="treeview" style="display: none;margin-top:20px">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5" style="text-align:left">
+            <div> <div class="table-responsive">  <label id="lblselected" style="width:550px"></label></div></div>
+        </div>
+    </div>
+</div>
+
+<script id="treeview-template" type="text/kendo-ui-template">
+    <itm class='actual-item' data-id='#: item.id #'>#: item.text #</itm>
+    # if (!item.items) { #
+    <a class='delete-link' href='\#'></a>
+    # } #
+</script>
+
+<script type="text/javascript">
+        function InitSearch(treeViewId, searchInputId, treeviewDropdownBtn) {
+            var tv = $(treeViewId).data('kendoTreeView');
+
+            $(searchInputId).on('keyup', function () {
+                $(treeViewId + ' li.k-item').show();
+
+                $('span.k-in > span.highlight').each(function () {
+                    $(this).parent().text($(this).parent().text());
+                });
+
+                // ignore if no search term
+                if ($.trim($(this).val()) === '') {
+                    tv.select() //gets currently selected <li> element
+                        .find("span.k-state-selected")
+                            .removeClass("k-state-selected"); //removes the highlight class
+
+                    $('#lblselected').html("");
+                    return;
+                }
+
+                var term = this.value.toUpperCase();
+                var tlen = term.length;
+
+                $(treeViewId + ' span.k-in').each(function (index) {
+                    var text = $(this).text();
+                    var html = '';
+                    var q = 0;
+                    var p;
+
+                    while ((p = text.toUpperCase().indexOf(term, q)) >= 0) {
+                        html += text.substring(q, p) + '<span class="highlight">' + text.substr(p, tlen) + '</span>';
+                        q = p + tlen;
+                    }
+
+                    if (q > 0) {
+                        html += text.substring(q);
+                        $(this).html(html);
+
+                        $(this).parentsUntil('.k-treeview').filter('.k-item').each(function (index, element) {
+                            tv.expand($(this));
+                            $(this).data('SearchTerm', term);
+                        });
+                    }
+                });
+
+                $(treeViewId + ' li.k-item:not(:has(".highlight"))').hide();
+            });
+
+
+            $(searchInputId).on('blur', function () {
+                if ($('#treeViewSearchInput').val() == '') {
+                    //$('#treeview').hide();
+                } else {
+                    $('#treeview').show();
+                }
+            });
+
+            $(searchInputId).on('focus', function () {
+                $('#treeview').show(); $('#treeViewSearchInput').keyup();
+            });
+
+            $(treeviewDropdownBtn).on('click', function () {
+                $('#treeview').toggle();
+            });
+
+
+        }
+
+        $(document).ready(function () {
+            var $tv = $("#treeview").kendoTreeView({
+                @{
+                    if(ViewBag.JsonData != null)
+                    {
+                        @Html.Raw(ViewBag.JsonData)<text>,</text>
+                    }
+                }
+               select: onSelect,
+                dragAndDrop: true
+            }).data("kendoTreeView")
+
+            InitSearch("#treeview", "#treeViewSearchInput", "#treeviewDropdownBtn");
+        });
+
+            function checkUndefined(myVariable)
+            {
+                if (typeof(myVariable)== "undefined" || myVariable=="")
+                {
+                    return "N/A";
+                }
+                else
+                {
+                    return myVariable;
+                }
+            }
+
+        function onSelect(e) {
+            var item = this.dataItem(e.node);
+           console.log(e);
+            //alert("Selecting: " + this.text(e.node) + "ID:" + item.id);
+            $('#lblselected').html("<table class='table table-bordered text-left' id='tableInfo'> <thead class='thead-dark'><tr><th class='tdFixedWidth'>Details </th><th><div class='wordwrap'>" + this.text(e.node) + "<div> </th></tr></thead><tbody><tr><td> DataType: </td><td>" + checkUndefined(item.ColType) + " </td></tr><tr><td> Length: </td><td>" + checkUndefined(item.Length) + " </td></tr><tr><td> IsPrimaryKey: </td><td>" + checkUndefined(item.IsPrimaryKey) + " </td></tr><tr><td> IsNullable: </td><td>" + checkUndefined(item.IsNullable) + " </td></tr><tr><td> IsUnique: </td><td>" + checkUndefined(item.IsUnique) + " </td></tr><tr><td> IsIdentity: </td><td>" + checkUndefined(item.IsIdentity) + " </td></tr><tr><td> Description: </td><td> <div class='wordwrap'>" + checkUndefined(item.Description) +"<div></td></tr><tr><td> ForiegnKeyTableName: </td><td>" + checkUndefined(item.ForiegnKeyTableName) +"</td></tr><tr><td> ForiegnKeyColumnName: </td><td>" + checkUndefined(item.ForiegnKeyColumnName) +"</td></tr><tr><td> valuePath: </td><td> <div class='wordwrap'>" + checkUndefined(item.valuePath) +"<div></td></tr><tr><td > ReferencePath: </td><td><div class='wordwrap'>" + checkUndefined(item.ReferenceTable) +"</div></td></tr><tr><td> CustomType: </td><td>" + checkUndefined(item.CustomType) +"</td></tr><tr><td> Label: </td><td class='wordwrap'>" + checkUndefined(item.Label) +"</td></tr><tbody></table>");
+
+        //    $('#treeview').hide();
+            $('#treeViewSearchInput').val(item.text);
+           // $('#treeview').hide();
+        }
+
+        function setTreeView() {
+            if ($('#treeViewSearchInput').val() == '') {
+                //$('#treeview').hide();
+            } else {
+                $('#treeview').show();
+            }
+        }
+</script>
+<style type="text/css" scoped>
+    span.k-in > span.highlight {
+        background: #7EA700;
+        color: #ffffff;
+        border: 1px solid green;
+        padding: 1px;
+    }
+
+    .tdFixedWidth {
+        width: 20px;
+    }
+
+    .wordwrap {
+        width: 400px;
+        word-wrap: break-word;
+    }
+</style>
+
+
+
+
+

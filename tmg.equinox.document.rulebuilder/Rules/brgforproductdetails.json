@@ -1,0 +1,104 @@
+{
+    "documentrule": {
+        "targetelement": "Medical[BenefitReview.BenefitReviewGrid]",
+        "targetelementtype": "Repeater",
+        "ruletype": "CustomRule",
+        "triggers": [
+            {
+                "source": "",
+                "event": ""
+            }
+        ],
+        "actions": [
+            {
+                "action": ""
+            }
+        ],
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Medical[StandardServices.StandardServiceList][MasterListMedicalServices]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "A",
+                                "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": ""
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Medical[AdditionalServices.AdditionalServicesList]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "A",
+                                "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": ""
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "Medical[Network.NetworkInformation.SelectthePlansCostShareTiers]",
+                    "outputcolumns": "",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                }
+            ],
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "@A.BenefitCategory1,@A.BenefitCategory2,@A.BenefitCategory3,@A.PlaceofService,@A.OfficeVisitCategory,@A.Category,@A.ServiceCode,@A.OfficeVisitChargeOnly,@A.ApplyCopayType,@A.ApplyDeductible,@A.ApplyCoinsurance",
+                    "children": [
+                        {
+                            "name": "IQMedicalPlanNetwork",
+                            "columns": "['Copay','IndividualDeductible','FamilyDeductible','Other1Deductible','Other2Deductible','EmployeePlusOneChildDeductible','Coinsurance','IndividualOOPM','FamilyOOPM','Other1OOPM','Other2OOPM','EmployeePlusOneChildOOPM']"
+                        }
+                    ]
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergetype": "expr",
+                        "keycolumns": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService",
+                        "sourcemergeexpression": "@A union @B",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    },
+                    {
+                        "sourcemergetype": "expr",
+                        "sourcemergeexpression": "@child[IQMedicalPlanNetwork] crossjoin @C.CostShareTier",
+                        "keycolumns": "",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "documentrule": {
+        "targetelement": "Product[Limits.LimitsList]",
+        "targettype": "repeater[selectdialog]",
+        "triggers": [
+            {
+                "source": "",
+                "event": ""
+            }
+        ],
+        "actions": [
+            {
+                "action": "selectdialog"
+            }
+        ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "MasterList[Limits.LimitList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[BenefitSetNetwork.NetworkList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "Product[ProductDefinition.GeneralInformation.ProductPeriodIndicator]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "none",
+                                "filtername": "A",
+                                "filterexpression": ""
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                },
+                {
+                    "sourcename": "D",
+                    "sourceelement": "MasterList[Accumulators.AccumulatorList]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@A.Type = 'Limits'"
+                            },
+                            {
+                                "filtertype": "none",
+                                "filtername": "B",
+                                "filterexpression": "@D != '' AND ( @C.PeriodIndicator=@D || @C.PeriodIndicator='Both')"
+                            }
+                        ],
+                        "filtermergeaction": "A union B"
+                    }
+                }
+                
+            ],
+            "sourcemergeaction": "(@A intersect @C) coljoin @B"
+        }
+    }
+}

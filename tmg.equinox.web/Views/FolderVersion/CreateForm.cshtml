@@ -1,0 +1,95 @@
+﻿<div id="createForm" style="display: none;">
+    <form id="frmCreateForm">
+        <div class="panel-body">
+            <div class="panel">
+                <div class="row form-group">
+                    <div class="col-xs-3">
+                        <div style="padding-right: 5px; float: left;">
+                            <input type="radio" value="copy" id="createType" checked="checked" name="createType">
+                        </div>
+                        <label class="radio-label-align-middle">Copy</label>
+                    </div>
+                    <div class="col-xs-3" id="referenceDiv">
+                        <div style="padding-right: 5px; float: left;">
+                            <input type="radio" value="reference" id="createType" name="createType">
+                        </div>
+                        <label class="radio-label-align-middle">Reference</label>
+                    </div>
+                    <div class="col-xs-4" id="createNew">
+                        <div style="padding-right: 5px; float: left;">
+                            <input type="radio" value="new" id="createType" name="createType">
+                        </div>
+                        <label class="radio-label-align-middle">Create</label>
+                    </div>
+                </div>
+                <div class="row form-group" id="dvDocumentName">
+                    <label class="control-label col-xs-12">Document Name:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control" id="txtDocumentName">
+                        <div id="dvDocumentNameError" class="messageContainer"></div>
+                    </div>
+
+                </div>
+                <div class="row form-group" id="dvFolderType">
+                    <label class="control-label col-xs-12">Select Folder Type:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <select class="form-control" id="drpFolderType"></select>
+                        <div id="dvFolderTypeError" class="messageContainer"></div>
+                    </div>
+                </div>
+                <div class="row form-group" id="dvDocumentType">
+                    <label class="control-label col-xs-12">Select Document Type:<em>*</em></label>
+                    <div class="col-xs-12">
+                      <div class="select-wrapper block">
+                        <select class="form-control" id="drpDocumentType">
+                            <option value="0">Select One</option>
+                        </select>
+                    </div>
+                        <div id="dvDocumentTypeError" class="messageContainer "></div>
+                </div>
+                </div>
+                <div class="row form-group" id="dvAccount">
+                    <label class="control-label col-xs-12">Select Account:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <select class="form-control" id="drpAccount">
+                            <option value="0">Select One</option>
+                        </select>
+                        <div id="dvAccountError" class="messageContainer"></div>
+                    </div>
+                </div>
+                <div class="row form-group" id="dvFolder">
+                    <label class="control-label col-xs-12">Select Folder:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <select class="form-control" id="drpFolder">
+                            <option value="0">Select One</option>
+                        </select>
+                        <div id="dvFolderError" class="messageContainer"></div>
+                    </div>
+                </div>
+                <div class="row form-group" id="dvFolderVersion">
+                    <label class="control-label col-xs-12">Select Folder Version:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <select class="form-control" id="drpFolderVersion">
+                            <option value="0">Select One</option>
+                        </select>
+                        <div id="dvFolderVersionError" class="messageContainer"></div>
+                    </div>
+                </div>
+                <div class="row form-group" id="dvDocument">
+                    <label class="control-label col-xs-12">Select Document:<em>*</em></label>
+                    <div class="col-xs-12">
+                        <select class="form-control" id="drpDocument">
+                            <option value="0">Select One</option>
+                        </select>
+                        <div id="dvDocumentError" class="messageContainer"></div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" id="btnSave" class="btn pull-right">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

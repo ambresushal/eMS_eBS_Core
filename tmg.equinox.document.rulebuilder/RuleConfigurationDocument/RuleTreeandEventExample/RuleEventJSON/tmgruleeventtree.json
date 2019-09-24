@@ -1,0 +1,192 @@
+{
+    "documentrules": {
+        "sourcesectionrules": [
+            {
+                "section": "Dev",
+                "rules": [
+                    {
+                        "id": "R1",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "BA",
+                "rules": [
+                    {
+                        "id": "R1",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "QA",
+                "rules": [
+                    {
+                        "id": "R1",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "TotalEmployeeList",
+                "rules": [
+                    {
+                        "id": "R2",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    },
+                    {
+                        "id": "R3",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    },
+                    {
+                        "id": "R6",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "CBCTeam",
+                "rules": [
+                    {
+                        "id": "R4",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "CoreSupportTeam",
+                "rules": [
+                    {
+                        "id": "R4",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    },
+                    {
+                        "id": "R5",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "HSBTeam",
+                "rules": [
+                    {
+                        "id": "R5",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "CBCTotalTeam",
+                "rules": [
+                    {
+                        "id": "R6",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "HSBTotalTeam",
+                "rules": [
+                    {
+                        "id": "R6",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            }
+        ],
+        "targetsectionrules": [
+            {
+                "section": "TotalEmployeeList",
+                "rules": [
+                    {
+                        "id": "R1",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "CBCTeam",
+                "rules": [
+                    {
+                        "id": "R2",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "HSBTeam",
+                "rules": [
+                    {
+                        "id": "R3",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "CBCTotalTeam",
+                "rules": [
+                    {
+                        "id": "R4",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "HSBTotalTeam",
+                "rules": [
+                    {
+                        "id": "R5",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            },
+            {
+                "section": "Resource",
+                "rules": [
+                    {
+                        "id": "R6",
+                        "type": "CustomRule",
+                        "events": [ "DocumentSave" ]
+
+                    }
+                ]
+            }
+        ]
+    },
+    "sourcedocuments": [ { } ]
+}

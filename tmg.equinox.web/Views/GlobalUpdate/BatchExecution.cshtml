@@ -1,0 +1,276 @@
+﻿@{
+    ViewBag.Title = "BatchExecution";
+    Layout = "~/Views/Shared/GlobalUpdateLayout.cshtml";
+}
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Batch List</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/GlobalUpdate/ExistsingGUGrid">Global Update List</a>
+        </li>
+        <li class="dropdown active">
+            <a href="~/GlobalUpdate/BatchExecution" data-toggle="dropdown">Batch</a>
+        </li>
+    </ul>
+</div>
+<ul class="nav nav-pills nav-pills-child border-none">
+     <li class="active"><a href="~/GlobalUpdate/BatchExecution">Batch Generation</a></li>
+     <li><a href="~/GlobalUpdate/BatchExecutionStatus">Batch Execution</a></li>
+</ul>
+<div id="existinBatchesDiv">
+    <div class="grid-wrapper">
+      <!-- <div class="grid-page-wrapper">
+        List Of Items
+      </div> -->
+        <table id="existinBatchesGrid"></table>
+    </div>
+</div>
+
+<div id="addBatchDialog" style="display:none">
+    <div class="row selectChangeSummeryPanel">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label for="BatchName">Batch Name</label>
+                    <span class="required" id="batchNamerequired"></span>
+                </div>
+                    <input type="text" class="form-control" id="batchName" maxlength="200" />
+                    <span class="required" id="batchNameHelpBlock"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <div>
+                    <label for="ExecutionType">Execution Type</label>
+                    <span class="required" id="executionTyperequired"></span>
+                </div>
+                    <select id="executionType" title="Please select something!">
+                        <option value="Realtime">Realtime</option>
+                        <option value="Scheduled">Scheduled</option>
+                    </select>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label id="scheduledDateLabel" for="ScheduledDate">Scheduled Date</label>
+                    <span class="required" id="scheduledDaterequired"></span>
+                </div>
+                    <input type="text" id="scheduledDate" style="width: 90%;" maxlength="10" placeholder="MM/DD/YYYY">
+                    <span class="help-block"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label id="scheduledTimeLabel" for="scheduledTime">Scheduled Time</label>
+                    <span class="required" id="scheduledTimerequired"></span>
+                </div>
+                    <input type="text" id="scheduledTime" style="width: 90%;" maxlength="10" />
+                    <span class="help-block"></span>
+                </div>
+            </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="grid-wrapper">
+          <table id="addBatchGrid"></table>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <button id="addBatch" class="btn pull-right" style="margin-top: 10px;">Save</button>
+    </div>
+    </div>
+</div>
+<div id="editBatchDialog" style="display:none">
+    <div class="row selectChangeSummeryPanel">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <div>
+                    <label for="BatchName">Batch Name</label>
+                    <span class="required" id="batchNamerequired"></span>
+                </div>
+                    <input type="text" class="form-control" id="editBatchName" maxlength="200" />
+                    <span class="required" id="batchNameHelpBlock"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label for="ExecutionType">Execution Type</label>
+                    <span class="required" id="executionTyperequired"></span>
+                </div>
+                    <select id="editExecutionType" title="Please select something!">
+                        <option value="Realtime">Realtime</option>
+                        <option value="Scheduled">Scheduled</option>
+                    </select>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <div>
+                    <label for="ScheduledDate">Scheduled Date</label>
+                    <span class="required" id="scheduledDaterequired"></span>
+                </div>
+                    <input type="text" id="editScheduledDate" style="width: 90%;" maxlength="10" placeholder="MM/DD/YYYY">
+                    <span class="help-block"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label for="scheduledTime">Scheduled Time</label>
+                    <span class="required" id="scheduledTimerequired"></span>
+                </div>
+                    <input type="text" id="editScheduledTime" style="width: 90%;" maxlength="10" />
+                    <span class="help-block"></span>
+                </div>
+            </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="grid-wrapper">
+          <table id="editBatchGrid"></table>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <button id="editBatchButton" class="btn pull-right" style="margin-top: 15px;">Save</button>
+    </div>
+    </div>
+</div>
+<div id="viewBatchDialog" style="display:none">
+    <div class="row selectChangeSummeryPanel">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div>
+                    <label for="BatchName">Batch Name</label>
+                    <span class="required" id="batchNamerequired"></span>
+                </div>
+                    <input type="text" class="form-control" id="viewBatchName" maxlength="200" />
+                    <span class="required" id="batchNameHelpBlock"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <label for="ExecutionType">Execution Type</label>
+              <div>
+                    <span class="required" id="executionTyperequired"></span>
+                </div>
+                    <select id="viewExecutionType" title="Please select something!">
+                        <option value="Realtime">Realtime</option>
+                        <option value="Scheduled">Scheduled</option>
+                    </select>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <div>
+                    <label for="ScheduledDate">Scheduled Date</label>
+                    <span class="required" id="scheduledDaterequired"></span>
+                </div>
+                    <input type="text" id="viewScheduledDate" style="width: 90%;" maxlength="10" placeholder="MM/DD/YYYY">
+                    <span class="help-block"></span>
+                </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <label for="scheduledTime">Scheduled Time</label>
+                    <span class="required" id="scheduledTimerequired"></span>
+                </div>
+                    <input type="text" id="viewScheduledTime" style="width: 90%;" maxlength="10" />
+                    <span class="help-block"></span>
+                </div>
+            </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="grid-wrapper">
+            <table id="viewBatchGrid"></table>
+        </div>
+    </div>
+    </div>
+</div>
+<div id="approveBatchDialog" style="display:none">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="BatchNameApr">Batch Name</label>
+                    <span class="required" id="batchNamerequiredApr"></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" class="form-control" id="batchNameApr" maxlength="200" />
+                    <span class="required" id="batchNameHelpBlockApr"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="ExecutionTypeApr">Execution Type</label>
+                    <span class="required" id="executionTyperequiredApr"></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <select id="executionTypeApr" title="Please select something!">
+                        <option value="Realtime">Realtime</option>
+                        <option value="Scheduled">Scheduled</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="ScheduledDateApr">Scheduled Date</label>
+                    <span class="required" id="scheduledDaterequiredApr"></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" id="scheduledDateApr" style="width: 90%;" maxlength="10" placeholder="MM/DD/YYYY">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="scheduledTimeApr">Scheduled Time</label>
+                    <span class="required" id="scheduledTimerequiredApr"></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" id="scheduledTimeApr" style="width: 90%;" maxlength="10" />
+                    <span class="help-block"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="approveBatchCheck">Approve Batch</label>
+                    <span class="required" id="approveBatchCheckrequired"></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input id="approveBatchCheck" type="checkbox" name="approveBatch"><br>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button id="approveBatchButton" class="btn btn-default pull-right">Approve</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="confirmGuBatchDeleteDialog" style="display: none;">
+    <div>
+        <p></p>
+    </div>
+</div>
+
+<style>
+    .required {
+        color: red;
+    }
+</style>
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("globalupdate");	
+</script>

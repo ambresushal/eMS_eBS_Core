@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "PBP Export";
+    Layout = "~/Views/Shared/PBPImportLayout.cshtml";
+}
+
+<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+</style>
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">PBP Integration</h1>
+    </div>
+    <div class="col-xs-12">
+        <div class="timer" style="margin-top:03px;margin-left:50px;">
+            <span>
+                <b>Auto-Refresh in</b>
+            </span>
+            <span id="spnTimer">
+                <b>60 seconds.</b>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/PBPImport/PBPDataBase">Manage PBP Database</a>
+        </li>
+        <li>
+            <a href="~/PBPImport/Index">PBP Import</a>
+        </li>
+        <li class="active">
+            <a href="~/PBPExport/Index">PBP Export</a>
+        </li>
+        @*<li>
+            <a href="~/ODM/ODM">ODM</a>
+        </li>
+        <li>
+            <a href="~/MDBComparer/MDBComparer">MDB Comparer</a>
+        </li>*@
+    </ul>
+</div>
+<div id="pbpExportTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="#pbpExportTab-3" class="WFCATLIST">PBP Export-Audit</a></li>
+    </ul>
+    <div role="tabpanel" class="tab-content">
+        <div id="pbpExportTab-3" class="tab-pane active">
+            <div class="panel panel-default ">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="queuedPBPExportGrid"></table>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <button type="button" id="btnExportPBP" class="btn pull-right">Export</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="exportPBPQueueDialog" style="display: none">
+                    <form>
+                        <div class="form-group">
+                            @*<div class="col-lg-12">*@
+                            <div class="grid-wrapper">
+                                <table id="PBPDatabaseNamesGrid"></table>
+                            </div>
+                            @*</div>*@
+                            <div class="form-group">
+                                <label for="exportName">Export Name : </label><em>*</em>
+                                <input id="exportName" type="text" class="form-control" name="exportName " />
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description : </label><em>*</em>
+                                <input id="description" type="text" class="form-control" name="description" />
+                            </div>
+                            <button id="btnPBPQueue" type="button" class="btn pull-right">Queue</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="exportPBPDatabaseDetailsDialog" style="display:none">
+                    <div class="tab-pane active" id="1a">
+                        <div class="grid-wrapper">
+                            <table id="PBPDatabaseDetailsGrid"></table>
+                            @*<div id="pager"></div>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*<div class="col-xs-12">
+                <table id="queuedPBPExportGrid"></table>
+                <div id="pager"></div>
+                <button type="button" id="btnExportPBP" style="display: inline-flexbox;">Export</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="errorLogDialog" style="margin: 10px;word-wrap: break-word;">
+        <div>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var queuedPBPExport = new viewQueuedPBPExports();
+    });
+</script>
+
+

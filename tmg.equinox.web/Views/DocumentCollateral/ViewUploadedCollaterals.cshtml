@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "View Uploaded Collaterals";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+
+}
+
+<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+</style>
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Uploaded Collateral</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/DocumentCollateral/ViewQueuedCollaterals">Collateral Engine</a>
+        </li>
+    </ul>
+</div>
+<ul class="nav nav-pills nav-pills-child">
+    <li><a href="~/DocumentCollateral/ViewReportTemplate">Create Collateral Template</a></li>
+    <li><a href="~/DocumentCollateral/GenerateReports">Generate Collateral</a></li>
+    <li><a href="~/DocumentCollateral/ViewQueuedCollaterals">Queued Collateral</a></li>
+    <li><a href="~/DocumentCollateral/UserActivity">User Activity</a></li>
+    <li><a href="~/DocumentCollateral/CollateralImages">Collateral Images</a></li>
+    <li class="active"><a href="~/DocumentCollateral/ViewUploadedCollaterals">Uploaded Collateral Log</a></li>
+</ul>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="grid-wrapper">
+                  <!-- <div class="grid-page-wrapper">
+                    List Of Items
+                  </div> -->
+                    <div id="complianceErrorDialog" style="display: none">
+                        <div class="grid-wrapper">
+                            <div id="viewErrors" style="height: 300px;" class="ag-theme-fresh"></div>
+                        </div>
+                    </div>
+                <table id="uploadedCollateralsGrid"></table>
+                </div>
+                <div id="pager"></div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var uploadedCollaterals = new viewUploadedCollaterals();
+    });
+   
+
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+</script>
+
+
+
+

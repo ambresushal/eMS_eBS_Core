@@ -1,0 +1,4 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.masterlistcascade.tester\obj\Release\tmg.equinox.masterlistcascade.tester.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.masterlistcascade.tester\obj\Release\tmg.equinox.masterlistcascade.tester.frmMasterListTester.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.masterlistcascade.tester\obj\Release\tmg.equinox.masterlistcascade.tester.Properties.Resources.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.masterlistcascade.tester\obj\Release\tmg.equinox.masterlistcascade.tester.csproj.GenerateResource.Cache

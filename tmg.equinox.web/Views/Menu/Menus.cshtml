@@ -1,0 +1,481 @@
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using Microsoft.AspNet.Identity;
+@using System.Security.Claims;
+@{
+    var authenticationSectionCollection = (NameValueCollection)ConfigurationManager.GetSection("authenticationSection");
+    ViewBag.UseAuthentication = Convert.ToBoolean(authenticationSectionCollection["UseAuthentication"]);
+    ViewBag.DummyAuthenticationEnabled = Convert.ToBoolean(authenticationSectionCollection["DummyAuthenticationEnabled"]);
+    var identity = (User.Identity as System.Security.Claims.ClaimsIdentity);
+    var claims = identity.Claims;
+    var claimPrinciple = (ClaimsPrincipal)User;
+    foreach (var claimIdentity in claimPrinciple.Identities)
+    {
+        if (!(claimIdentity is System.Security.Principal.WindowsIdentity))
+        {
+            if (claimIdentity is ClaimsIdentity)
+            {
+                claims = claimIdentity.Claims;
+                identity = claimIdentity;
+            }
+        }
+    }
+
+    string fullName = "";
+    if (identity != null)
+    {
+        System.Security.Claims.ClaimsIdentity claimsIdentity = (identity as System.Security.Claims.ClaimsIdentity);
+        var firstName = claimsIdentity.Claims.Where(x => x.Type.ToLower() == "firstname").FirstOrDefault();
+        var lastName = claimsIdentity.Claims.Where(x => x.Type.ToLower() == "lastname").FirstOrDefault();
+        if (firstName != null && lastName != null)
+        {
+            fullName = firstName.Value + " " + lastName.Value;
+        }
+    }
+}
+@{
+    var environment = ConfigurationManager.AppSettings["Environment"] ?? "Development";
+}
+
+
+<div id="notifications"></div>
+@*<script src="~/Scripts/Framework/External/Notification/Notify.js"></script>*@
+@*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />*@
+
+<div role="navigation" id="mainNavigation">
+    <ul id="menu" class="list-sidebar accordion-group">
+        <li class="sidebar-toggle">
+            <div type="button" class="navbar-toggle">
+                <span class="icon-bar top-bar"></span>
+                <span class="icon-bar middle-bar"></span>
+                <span class="icon-bar bottom-bar"></span>
+            </div>
+            <!-- <i class="material-icons">&#xE3C7;</i> -->
+            <span> Close Menu</span>
+            <span class="sr-only">Toggle navigation</span>
+            </a>
+        </li>
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "DASHBOARD"))
+            {
+                <li>
+                    <a id="dashBoard" href="/DashBoard/Index" data-toggle="tooltip" title="Dashboard" data-placement="right">
+                        <i class="material-icons">&#xE01B;</i>
+                        <span class="nav-label"> Dashboard </span>
+                    </a>
+                </li>
+
+            }
+        }
+
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "DESIGN"))
+            {
+                <li>
+                    <a id="design" href="~/FormDesign/Index" class="menugroup" data-toggle="collapse" data-target="#designMenu" data-parent="#mainNavigation"
+                       data-toggle="tooltip" title="Design" data-placement="right">
+                        <i class="material-icons">&#xE871;</i>
+                        <span class="nav-label">Design</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                    <!-- <ul class="sub-menu collapse" id="designMenu">
+                    <li class="submenu"><a href="/FormDesign/Index" id="formDesign">Document</a></li>
+                    <li class="submenu"><a href="/FormDesignGroup/Index" id="formGroups">Folder</a></li>
+                </ul> -->
+                </li>
+                <li>
+                    <a id="rulesmanager" href="~/RulesManager/Index" class="menugroup" data-target="#rulesManager" data-parent="#mainNavigation" data-toggle="tooltip" title="Rules Manager" data-placement="right">
+                        <i class="material-icons">chrome_reader_mode</i>
+                        <span class="nav-label">Rules Manager</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                </li>
+            }
+        }
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "MASTERLIST"))
+            {
+                <li>
+                    <a id="masterList" href="/FolderVersion/IndexML?tenantId=1" data-toggle="tooltip" title="Master List" data-placement="right">
+                        <i class="material-icons">&#xE896;</i>
+                        <span class="nav-label">Master List</span>
+                    </a>
+                </li>
+            }
+        }
+
+
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "PORTFOLIO"))
+            {
+                <li>
+                    <a id="PortfolioSearch" href="/ConsumerAccount/PortfolioSearch" data-toggle="tooltip" title="Portfolio" data-placement="right">
+                        <i class="material-icons">&#xEB3F;</i>
+                        <span class="nav-label">Portfolio</span>
+                    </a>
+                </li>
+            }
+        }
+
+        @if (claims != null)
+            {
+                if (claims.Any(c => c.Value.Trim().ToUpper() == "ACCOUNT"))
+                {
+                <li>
+                    <a id="account" href="/ConsumerAccount/AccountSearch" class="menugroup" 
+                       data-toggle="tooltip" title="Account" data-placement="right">
+                        <i class="material-icons">&#xE873;</i>
+                        <span class="nav-label">Account</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                    @*<ul class="sub-menu collapse" id="accountMenu">
+                        <li class="submenu"><a href="/ConsumerAccount/AccountSearch">Search</a></li>
+                        <li class="submenu"><a href="/ConsumerAccount/ManageAccount">Manage</a></li>
+                    </ul>*@
+                </li>
+            }
+        }
+
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "REPORT"))
+            {
+                <li>
+                    <a id="ReportingCenter" href="/ReportingCenter/Index" data-toggle="tooltip" title="Reporting Center" data-placement="right">
+                        <i class="material-icons">&#xE869;</i>
+                        <span class="nav-label">Reporting Center</span>
+                    </a>
+                </li>
+            }
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "COLLATERAL"))
+            {
+                <li>
+                    <a id="Reporting" href="/DocumentCollateral/ViewReportTemplate" data-toggle="tooltip" title="Collateral Engine" data-placement="right">
+                        <i class="material-icons">&#xE02F;</i>
+                        <span class="nav-label">Collateral Engine</span>
+                    </a>
+                </li>
+            }
+        }
+
+
+      
+        @*@if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "GLOBALUPDATE"))
+            {*@
+                <!--<li>
+                    <a id="globalupdate" href="/GlobalUpdate/ExistsingGUGrid" class="menugroup" data-toggle="collapse" data-target="#globalUpdateMenu" data-parent="#mainNavigation"
+                       data-toggle="tooltip" title="Global Update" data-placement="right">
+                        <i class="material-icons">&#xE80B;</i>
+                        <span class="nav-label">Global Update</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                     <ul class="sub-menu collapse" id="globalUpdateMenu">
+                                <li class="submenu"><a href="/GlobalUpdate/ExistsingGUGrid">Global Update List</a></li>
+                                <li class="submenu">
+                                    <a tabindex="-1" href="#" data-toggle="collapse" data-target="#batch-submenu">Batch</a>
+                                    <ul class="sub-menu collapse submenu" id="batch-submenu">
+                                        <li class="submenu"><a tabindex="-1" href="/GlobalUpdate/BatchExecution">Batch Generation</a></li>
+                                        <li class="submenu">
+                                            <a href="/GlobalUpdate/BatchExecutionStatus">Batch Execution</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                    </ul> 
+                </li>-->
+            @*}
+        }*@
+
+
+
+        @if (claims != null)
+            {
+                if (claims.Any(c => c.Value.Trim().ToUpper() == "SETTING"))
+                {
+
+                <li>
+                    <a id="settings" href="~/Settings/WorkFlowSettings" class="dropdown-toggle menugroup" data-toggle="collapse" data-target="#settingsMenu" data-parent="#mainNavigation"
+                       data-toggle="tooltip" title="Settings" data-placement="right">
+                        <i class="material-icons">&#xE8B8;</i>
+                        <span class="nav-label">Settings</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                    <!-- <ul class="sub-menu collapse" id="settingsMenu">
+                                @*@if (claims != null)
+                                    {
+                                        if (claims.Any(c => c.Value.Trim().ToUpper() == "GENERALSETTING"))
+                                        {
+                                    <li class="submenu">
+                                        <a href="/Settings/Index">General Settings</a>
+                                    </li>
+                                    }
+                                    }*@
+                                @if (claims != null)
+                                {
+                                    if (claims.Any(c => c.Value.Trim().ToUpper() == "WORKFLOWSETTING"))
+                                    {
+                                        <li class="submenu">
+                                            <a href="/Settings/WorkFlowSettings">WorkFlow Settings</a>
+                                        </li>
+                                    }
+                                }
+                                @if (claims != null)
+                                {
+                                    if (claims.Any(c => c.Value.Trim().ToUpper() == "USERMANAGEMENT"))
+                                    {
+                                        <li class="submenu">
+                                            <a href="/Settings/UserManagementSettings">User Management Settings</a>
+                                        </li>
+                                    }
+                                }
+
+                    </ul> -->
+
+                </li>
+            }
+        }
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "COMPAREANDSYNC"))
+            {
+                <li>
+                    <a id="compareSync" href="/DocumentSync/Index" data-toggle="tooltip" title="Compare &amp; Sync" data-placement="right">
+                        <i class="material-icons">&#xE8D5;</i>
+                        <span class="nav-label">Compare &amp; Sync</span>
+                    </a>
+                </li>
+            }
+        }
+        @if (claims != null  && @ViewBag.ApplicationName.ToLower() != "ebenefitsync" )
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "PBPINTEGRATION"))
+            {
+                <li >
+                    <a id="pbp" href="/PBPImport/PBPDataBase" class="menugroup" data-toggle="collapse" data-target="#pbpMenu" data-parent="#mainNavigation"
+                       data-toggle="tooltip" title="PBP Integration" data-placement="right">
+                        <i class="material-icons">&#xE873;</i>
+                        <span class="nav-label">PBP Integration</span>
+                        <span class="fa fa-angle-right pull-right"></span>
+                    </a>
+                    @*<ul class="sub-menu collapse" id="pbpMenu">
+                            <li class="submenu"><a href="/PBPImport/PBPDataBase">Manage PBP Database</a></li>
+                            <li class="submenu"><a href="/PBPImport/Index">PBP Import</a></li>
+                            <li class="submenu"><a href="/PBPExport/Index">PBP Export</a></li>
+                        </ul>*@
+                </li>
+            }
+        }
+
+        @if (claims.Any(c => c.Value.Trim().ToUpper() == "CCRINTEGRATION"))
+        {
+        <li>
+            <a id="CCRIntegration" href="/CCRIntegration/TranslationQueue" data-toggle="tooltip" title="CCR Integration" data-placement="right">
+                <i class="material-icons">donut_large</i>
+                <span class="nav-label">CCR Integration</span>
+            </a>
+        </li>
+        }
+
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "QHPEXPORT"))
+            {
+                <li>
+                    <a id="qhpExport" href="/QHPExport/Index" data-toggle="tooltip" title="QHP Plan & Benefit Generation" data-placement="right">
+                        <i class="material-icons">exit_to_app</i>
+                        <span class="nav-label">QHP Export</span>
+                    </a>
+                </li>
+
+            }
+        }
+
+        <li>
+            <a id="btnRoutingTask" class="dropdown-toggle menugroup" data-toggle="tooltip" title="My Tasks" data-placement="right">
+                <i class="glyphicon glyphicon-tasks" style="font-size:22px; width: auto;"></i>
+                <span class="nav-label">My Tasks</span>
+                <span class="fa fa-angle-right pull-right"></span>
+            </a>
+        </li>
+        <li>
+            <a id="btnSectionLockedPopPup" class="dropdown-toggle menugroup" data-toggle="tooltip" title="Current Lock Status" data-placement="right">
+                <i class="glyphicon glyphicon-lock" style="font-size:22px; width: auto;"></i>
+                
+                <span class="nav-label">Current Lock Status</span>
+                <span class="fa fa-angle-right pull-right"></span>
+            </a>
+        </li>
+        @*        <li>
+                <a id="pbpimport" href="/PBPImport/Index" data-placement=" bottom" data-toggle="tooltip" title="PBP Import" data-placement="right">
+              <span class="nav-label">PBP Import</span>
+                  <span class="fa fa-angle-right pull-right"></span>
+                </a>
+            </li>*@
+
+        @*<li>
+                <a id="productivityDashboard" href="/ProductivityDashboard/Index" data-placement=" bottom">Productivity Dashboard
+                </a>
+            </li>*@
+       
+    </ul>
+    <div class="user-panel">        
+        <div class="containermsg" id="NotificationStatusbtn" style="cursor: pointer;">            
+                <img src="~/Content/css/images/bell.png" title="Notification" alt="Notification" style="width:100%;" />
+                <span id="messages" class="centeredmsg"></span>
+        </div>
+
+        <div class="logoff">
+            <a href="#" data-toggle="collapse" data-target="#userMenu" data-parent="#mainNavigation">
+                <div class="hero-img img-circle pull-left">
+                    <img src="~/Content/css/images/user-bright.png" title="@ViewBag.ApplicationName" alt="@ViewBag.ApplicationName"  />
+                </div>
+                @if (ViewBag.UseAuthentication == true || ViewBag.DummyAuthenticationEnabled == true)
+                {
+                    if (User.Identity != null)
+                    {
+                        @User.Identity.GetUserName()
+                  <!-- <strong></strong> -->
+                    }
+                    else
+                    {
+                        <strong>Welcome</strong>
+                    }
+                    <span class="fa fa-caret-down"></span>
+
+                    <ul class="sub-menu collapse" id="userMenu">
+                        <li><a href="#">Environment: @environment</a></li>
+                        @if (claims != null)
+                        {
+                            if (claims.Any(c => c.Value.Trim().ToUpper() == "ALLOWSINGLELOGIN"))
+                            {
+                                string AppName = ViewBag.ApplicationName == "eBenefitSync" ? "eMedicareSync" : "eBenefitSync";
+
+                                string SingleLandingPageUrl = ConfigurationManager.AppSettings["SingleLandingPageUrl"] ?? string.Empty;
+
+                                <li><a href=@SingleLandingPageUrl class="logofflink" onclick="return false;" , id="confirm">Log off</a></li>
+
+                                string SwitchToApplication = "/Account/SwitchToApplication?appName=" + @AppName;
+                                <li><a href=@SwitchToApplication> Switch To: @AppName</a></li>
+
+
+
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Log off", "LogOff", "Account", null, new { @class = "logofflink", onclick = "return false;", id = "confirm" })</li>
+                            }
+
+                        }
+                    </ul>
+                }
+                </a>
+
+                <div style="clear: both"></div>
+        </div>
+    </div>
+</div>
+<div id="NotificationDialog" style="display: none;padding-left:0px;background-color:white;">
+    <div class="table-responsive grid-wrapper">
+        <table class="table" id="notificationstatusGrid"></table>
+    </div>
+    <label for="View All" id='radioViewall' style="height:30px;width:100%; padding:2px 2px" name="ViewAll">View All</label>
+</div>
+<div id="SectionLockNotificationPopUp" style="display: none;padding-left:0px;background-color:white;">
+    <div class="table-responsive grid-wrapper">
+        <table class="table" id="SectionLockPopUpID"></table>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#menu li a").tooltip();
+        var masterlisturl = "/MasterList/Index";
+        //$("#masterList").click(function () {
+        //    $(this).attr('href', "/MasterList/Index");
+        //});
+
+        $("#menu li a").tooltip();
+        var hsbmasterlisturl = "/FolderVersion/Index?tenantId=1&folderType=HSBMasterList&folderId=" + MasterList.MASTERLISTFOLDERID;
+        $("#hsbmasterList").click(function () {
+            $(this).attr('href', hsbmasterlisturl);
+        });
+        $("#btnRoutingTask").click(function () {
+
+            routingTaskDialog.show();
+        });
+
+        $("#NotificationStatusbtn").click(function () {
+
+            NotificationFunction.showNotification();
+        });
+        $("#btnSectionLockedPopPup").click(function () {
+            SectionLockPopUp.SectionLockshowNotification();
+
+        });
+
+      
+    });
+    //For main sidebar menu toogle
+    $(document).ready(function () {
+        $('.sidebar-toggle').click(function () {
+            $('.sidebar-left, .main-header').toggleClass('fliph');
+            $('.navbar-toggle').toggleClass('collapsed');
+            $('body').toggleClass('body-toggle');
+            setTimeout(function () {
+                $('.grid').masonry('layout');
+            }, 300);
+        });
+        var myGroup = $('#mainNavigation');
+        $('#mainNavigation').on('show', '.collapse', function () {
+            $('#mainNavigation').find('.sub-menu.in').collapse('hide');
+        });
+    });
+
+    $(document).ready(function () {
+
+        function setTotalNotification(totalNotif) {
+            console.log(totalNotif);
+            $("#messages").html(totalNotif.total);
+            if (totalNotif !== undefined) {
+                if (totalNotif.message !== undefined) {
+                    if (totalNotif.message != null) {
+                        Notify(totalNotif.message, null, null, "success");
+                    }
+                }
+            }
+        }
+
+        var hub = $.connection.notificationHub;
+
+        //Client Call
+        hub.client.broadcaastNotif = function (totalNotif) {
+            setTotalNotification(totalNotif)
+        };
+
+        hub.client.broadcastDocumentOverriddenBySuperUser = function (viewName, sectionName) {
+            var message = 'Your session has been overridden. You may continue working by reopening the (' + viewName + '-' + sectionName + ').';
+            //Notify(message, null, null, "success");
+            messageDialog.show(message);
+        };
+        //$.connection.hub.start().done(function () { });
+
+        $.connection.hub.start()
+            .done(function () {
+                console.log("Hub Connected!");
+
+                //Server Call
+                hub.server.getNotification();
+
+
+            })
+            .fail(function () {
+                console.log("Could not Connect!");
+            });
+    });
+</script>
+

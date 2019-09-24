@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "QHP Export";
+    Layout = "~/Views/Shared/QHPExportLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">QHP Export</h1>
+    </div>
+</div>
+<div>
+    @Html.Partial("TargetDocuments")
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var nextStep = new selectDocuments();
+        nextStep.process();
+    });
+</script>

@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="tmg.equinox.caching.client.Properties" GeneratedClassName="Caching">
+  <Profiles />
+  <Settings>
+    <Setting Name="ClaimsCacheEnabled" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ClaimsExpirationEnabled" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CacheForClaims" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">appfabric</Value>
+    </Setting>
+    <Setting Name="DefaultExpirationPolicy" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sliding</Value>
+    </Setting>
+    <Setting Name="ClaimsCacheExpirationTimeout" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">00:20:00</Value>
+    </Setting>
+    <Setting Name="AppfabricCacheName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EquinoxCache</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

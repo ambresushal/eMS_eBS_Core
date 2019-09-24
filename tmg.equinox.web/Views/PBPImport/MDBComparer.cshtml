@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "On Demeand Migration";
+    Layout = "~/Views/Shared/PBPImportLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">PBP Integration</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/PBPImport/PBPDataBase">Manage PBP Database</a>
+        </li>
+        <li>
+            <a href="~/PBPImport/Index">PBP Import</a>
+        </li>
+        <li>
+            <a href="~/PBPExport/Index">PBP Export</a>
+        </li>
+        <li>
+            <a href="~/ODM/ODM">ODM</a>
+        </li>
+        <li class="active">
+            <a href="~/MDBComparer/MDBComparer">MDB Comparer</a>
+        </li>
+        <li>
+            <a href="~/ExitValidate/ExitValidate">Exit Validate</a>
+        </li>
+    </ul>
+</div>
+<div id="mdbComparerTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <div role="tabpanel" class="tab-content">
+        <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+            <li><a href="#mdbComparerTab-1">MDB Comparer</a></li>
+        </ul>
+        <div id="mdbComparerTab-1" class="tab-pane active">
+
+            <div class="panel panel-default ">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div class="row">
+                                <div style="margin-top:10px;"></div>
+                                <div class="col-sm-4">
+                                    <label for="importMDBFile"><b>Imported File: </b></label><em>*</em>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="importMDBFileName" name="importMDBFileName" class="form-control uploadTmplFile" type="file" />
+                                    <span class="help-block" id="importMDBFileNameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <div class="row">
+                                <div style="margin-top:20px;"></div>
+                                <div class="col-sm-4">
+                                    <label for="exportMDBFile"><b>Exported File: </b></label><em>*</em>
+                                </div>
+                                <div class="col-xs-8">
+                                    <input id="exportMDBFileName" name="exportMDBFileName" class="form-control uploadTmplFile" type="file" />
+                                    <span class="help-block" id="exportMDBFileNameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2" style="padding-left: 70px;">
+                            <div style="margin-top:20px;"></div>
+                            <button id="btnMDBCompare" class="btn pull-left" type="button">Compare</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var mdbComparer1 = new mdbComparer();
+    });
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+
+</script>

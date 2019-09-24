@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Document Design for Report";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+<div id="formdesigntabs" style="display: none;">
+    <input id="downloadStatus" type="hidden" value="@ViewData["downloadStatus"]"/>
+    <ul>
+        <li><a href="#formdesign-1">Download Data Source</a></li>
+    </ul>
+    <div id="formdesign-1">
+        <div class="row-fluid">
+            <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                <table id="fdgReport"></table>
+            </div>
+            <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                <table id="fdvgReport"></table>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+
+<div style="display: none;">    
+    
+    </div>
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("collateral");	
+</script>

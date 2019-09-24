@@ -1,0 +1,54 @@
+﻿@model tmg.equinox.applicationservices.viewmodels.Account.LoginViewModel
+@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+<div class="container">
+    <div class="login-container">
+        <p id="client-name" class="client-name"></p>
+        @using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "help-block" })
+            @Html.AntiForgeryToken()
+            <div class="text-center client-logo">
+                @if (@ViewBag.ApplicationName.ToLower() == "ebenefitsync")
+                {
+                    <a href="~/">
+                        <img src="~/Content/css/custom-theme/images/eBS-logo-vertical.png" title="eBenefitSync" alt="@ViewBag.ApplicationName" />
+                    </a>
+                }
+                else
+                {
+                    <a href="~/">
+                        <img src="~/Content/css/custom-theme/images/eMS-logo-vertical.png" title="eMedicareSync" alt="@ViewBag.ApplicationName" />
+                    </a>
+                }
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(c => c.UserName, new { @class = "form-control ebs-form-contol login-form-control", @placeholder = "Email Id/ User name", tabindex = 1 })
+                <span class="help-block">
+                    @Html.ValidationMessageFor(c => c.UserName, null, new { @class = "help-inline" })
+                </span>
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control ebs-form-contol login-form-control", @placeholder = "Password", tabindex = 2 })
+                <span class="help-block">
+                    @Html.ValidationMessageFor(c => c.Password, null, new { @class = "help-inline" })
+                </span>
+                <a href="@Url.Action("ChangePassword", "Account")" class="forgot-password pull-right">
+                    <i data-toggle="tooltip" class="material-icons" data-original-title="Change Password"> help </i>
+                </a>
+            </div>
+            <div class="form-group">
+                <div class="select-wrapper block">
+                    @Html.DropDownListFor(c => c.StartIN, new SelectList(tmg.equinox.applicationservices.viewmodels.Account.LandingPage.StartUpList),
+                      new { @class = "form-control ebs-form-contol login-form-control", @placeholder = "Landing Page", tabindex = 3 })
+                    <span class="help-block">
+                        @Html.ValidationMessageFor(c => c.StartIN, null, new { @class = "help-inline" })
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" tabindex="3">Get Started</button>
+        }
+    </div>
+</div>

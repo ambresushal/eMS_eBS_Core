@@ -1,0 +1,63 @@
+{
+    "documentrule": {
+        "targetelement": "Product[AdditionalServices.AdditionalServicesDetails]",
+        "ruletype": "datasource",
+        "targetelementtype": "repeater",
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "MasterList[Services.ServiceList]",
+                    "sourceelementtype": "repeater",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "A",
+                                "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                            }
+
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Product[ServiceGroup.ServiceGroupingDetails]",
+                    "sourceelementtype": "repeater",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "distinct",
+                                "filtername": "A",
+                                "filterexpression": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    }
+                }
+            ],
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "@A.BenefitCategory1,@A.BenefitCategory2,@A.BenefitCategory3,@A.PlaceofService",
+                    "children": ""
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergeexpression": "@A except @B",
+                        "sourcemergetype": "expr",
+                        "keycolumns": "BenefitCategory1,BenefitCategory2,BenefitCategory3,PlaceofService,SESEID",
+                        "mappings": {
+                            "sourcefields": "@A.BenefitCategory1,@A.BenefitCategory2,@A.BenefitCategory3,@A.PlaceofService,@A.SESEID",
+                            "targetfields": "@Target.BenefitCategory1,@Target.BenefitCategory2,@Target.BenefitCategory3,@Target.PlaceofService,@Target.SESEID"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

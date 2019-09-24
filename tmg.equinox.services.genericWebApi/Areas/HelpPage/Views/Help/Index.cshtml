@@ -1,0 +1,42 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using tmg.equinox.services.genericWebApi.Areas.Help.Model
+@model Collection<ApiDescription>
+@{
+   @*  ViewBag.Title = "eBenefitSync Web API Help Page";*@
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+@using tmg.equinox.services.genericWebApi
+@{
+    var environment = System.Configuration.ConfigurationManager.AppSettings["Environment"] ?? "Development";
+}
+@*@model IList<tmg.equinox.services.genericWebApi.Areas.Help.Model.ApiDescriptor>*@
+  <link type="text/css" href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Content/css/tmg.equinox.custom.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Content/css/tmg.equinox.login.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<div class="container">
+<div class="panel panel-default">   
+ <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+    <div class="panel-body">           
+             <div class="col-xs-12 col-md-12">
+                <h3>Introduction</h3>
+                <h4>Provides a general description of your APIs here.</h4>
+            </div>        
+        <div class="row-fluid">
+            <div class="col-sm-12 col-xs-12 col-lg-12">
+               @Html.Partial("ApiList", Model)    
+            </div>
+        </div>
+   
+    </div>
+</div>
+</div>

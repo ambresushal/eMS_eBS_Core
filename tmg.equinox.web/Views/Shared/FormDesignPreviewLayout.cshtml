@@ -1,0 +1,57 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBenefit Sync - Document Preview</title>
+    @* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+    @Scripts.Render("~/bundles/jQueryBundle")
+    @Scripts.Render("~/bundles/GridBundle")
+    @Scripts.Render("~/bundles/LayoutBundle")
+    @Scripts.Render("~/bundles/AjaxBundle")
+    @Scripts.Render("~/bundles/GlobalBundle")
+    @Scripts.Render("~/bundles/DialogBundle")
+    @Scripts.Render("~/bundles/BootstrapBundle")
+    @Scripts.Render("~/bundles/LogOffBundle")
+    @Scripts.Render("~/bundles/JsRenderBundle")
+    @Scripts.Render("~/bundles/FormDesignBundle")
+    @Scripts.Render("~/bundles/UtilsBundle")
+    @Scripts.Render("~/bundles/FolderVersionBundle")
+    @Scripts.Render("~/bundles/ActivityLoggerBundle")
+    @Scripts.Render("~/bundles/TinyMCEBundle")
+
+    <link href='@Url.Content("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/jquery-ui-1.9.2.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/Content/css/ui.jqgrid.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/handsontable.full.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/custom.css")' rel="stylesheet" type="text/css" />
+    <!-- BEGIN RESPONSE STYLES -->
+    @*<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav:400,300,500' rel='stylesheet' type='text/css'>*@
+    <link href='@Url.Content("~/Content/css/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/yantramanav.css")' rel="stylesheet" type="text/css" />
+
+    <link href='@Url.Content("~/Content/css/response.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/skin-blue.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/stylesheet-new.css")' rel="stylesheet" type="text/css" />
+    <!-- END RESPONSE STYLES -->
+    <script type="text/javascript">
+        if (GLOBAL.applicationName == '') {
+            GLOBAL.applicationName = @ViewBag.ApplicationName + '';
+        }
+        if (GLOBAL.clientName == '') {
+            GLOBAL.clientName = @ViewBag.clientName + '';
+        }
+    </script>
+</head>
+<body>
+    @RenderBody()
+    @Html.Partial("AjaxNotifier")
+</body>
+</html>

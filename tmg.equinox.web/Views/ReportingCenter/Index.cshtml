@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Reporting Center";
+    Layout = "~/Views/Shared/ReportingCenterLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Reporting Center</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/ReportingCenter/Index">Reporting Center</a>
+        </li>
+        <li class="pull-right">
+            @Html.ActionLink("View Schema", "Schema")
+        </li>
+    </ul>
+</div> 
+<div id="reportingCentTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li class="active"><a href="#reportingCentTab-1">Generate Report</a></li>
+        <li><a href="/ReportingCenter/ReportQueue">Queued Report</a></li>
+        <li><a href="/ReportingCenter/ReportingSync">Reporting Sync Logs</a></li>
+    </ul>
+    <div role="tabpanel" class="tab-content">
+        <div id="reportingCentTab-1" class="tab-pane active">
+            <div class="panel panel-default ">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="grid-wrapper left-sidebar">
+                                <span id="errorReport" class="divText"></span>
+                                <table id="reportList"></table>
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="grid-wrapper right-sidebar">
+                                <span id="errorFolder" class="divText"></span>
+                                <table id="folderList"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4">
+                            
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            
+                        </div>
+                        <div class="col-xs-4 col-md-4">
+                            <div>
+                                <button type="button" id="btnGenerateReport" class="btn btn-md pull-right">Generate Report</button>
+                                <button type="button" id="btnGenerateSchema" class="btn btn-md pull-right" style="display:None !important;">Generate Schame</button>
+                                <button type="button" id="btnPopulateData" class="btn btn-md pull-right" style="display:None !important;">Populate Reporting Data</button>
+                                <button type="button" id="btnExecuteODMBatch" class="btn btn-md pull-right" style="display:None !important;">Execute ODM Batch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<div style="display: none;">
+    <div id="errorLogDialog" style="margin: 10px;word-wrap: break-word;">
+        <div>
+            <p></p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    setMenu("ReportingCenter");
+</script>
+

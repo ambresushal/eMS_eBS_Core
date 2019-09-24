@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6532573B-06D3-411E-AD21-74915FBFED68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.applicationservices.viewmodels</RootNamespace>
+    <AssemblyName>tmg.equinox.applicationservices.viewmodels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\LoginViewModel.cs" />
+    <Compile Include="CCRIntegration\TranslationQueueViewModel.cs" />
+    <Compile Include="CollateralWindowService\CollateralProcessGovernanceViewModel.cs" />
+    <Compile Include="CollateralWindowService\CollateralProcessQueueViewModel.cs" />
+    <Compile Include="CollateralWindowService\SBCollateralProcessQueueViewModel.cs" />
+    <Compile Include="Collateral\UploadReportViewModel.cs" />
+    <Compile Include="Collateral\CollateralImageView.cs" />
+    <Compile Include="Collateral\UploadReportModel.cs" />
+    <Compile Include="Collateral\QueuedReportModel.cs" />
+    <Compile Include="ComapreSync\DocumentElementBaseModel.cs" />
+    <Compile Include="ComapreSync\DocumentElementViewModel.cs" />
+    <Compile Include="ComapreSync\DocumentSyncResultViewModel.cs" />
+    <Compile Include="ComapreSync\SyncDocumentLogViewModel.cs" />
+    <Compile Include="ComapreSync\SyncDocumentMacroViewModel.cs" />
+    <Compile Include="ComapreSync\SyncGroupLogViewModel.cs" />
+    <Compile Include="Consortium\ConsortiumViewModel.cs" />
+    <Compile Include="ConsumerAccount\AccountViewModel.cs" />
+    <Compile Include="ConsumerAccount\ConsumerAccountViewModel.cs" />
+    <Compile Include="ConsumerAccount\MarketSegmentViewModel.cs" />
+    <Compile Include="Account\UserActivityViewModel.cs" />
+    <Compile Include="ConsumerAccount\UserViewModel.cs" />
+    <Compile Include="Authentication\LogOnViewModel.cs" />
+    <Compile Include="CustomerCareDocument\CustomerCareDocument.cs" />
+    <Compile Include="DashBoard\CommentViewModel.cs" />
+    <Compile Include="DashBoard\FormUpdatesViewModel.cs" />
+    <Compile Include="DashBoard\MessageDataViewModel.cs" />
+    <Compile Include="DashBoard\NotificationstatusViewModel.cs" />
+    <Compile Include="DashBoard\UserRoleAssignmentViewModel.cs" />
+    <Compile Include="DashBoard\ViewModelForProofingTasks.cs" />
+    <Compile Include="DashBoard\WatchListViewModel.cs" />
+    <Compile Include="DashBoard\WorkQueueViewModel.cs" />
+    <Compile Include="DataValueViewModel.cs" />
+    <Compile Include="DataValue\TargetPropertyViewModel.cs" />
+    <Compile Include="DataValue\OperatorTypeViewModel.cs" />
+    <Compile Include="DocumentCollateral\DocumentCollateralViewModel.cs" />
+    <Compile Include="DocumentRule\ParentDesignDetails.cs" />
+    <Compile Include="DPF\DPFPlanTaskUserMappingViewModel.cs" />
+    <Compile Include="DPF\DPFTaskStatusViewModel.cs" />
+    <Compile Include="ElementTypes.cs" />
+    <Compile Include="EmailNotitication\EmailLogger.cs" />
+    <Compile Include="ExitValidate\ExitValidateExportedList.cs" />
+    <Compile Include="ExitValidate\ExitValidateMapModel.cs" />
+    <Compile Include="ExitValidate\ExitValidateResultViewModel.cs" />
+    <Compile Include="ExitValidate\ExitValidateViewModel.cs" />
+    <Compile Include="FolderVersionReport\JournalActionViewModel.cs" />
+    <Compile Include="FolderVersionReport\JournalResponseViewModel.cs" />
+    <Compile Include="FolderVersionReport\JournalViewModel.cs" />
+    <Compile Include="FolderVersion\CopyFromAuditTrailViewModel.cs" />
+    <Compile Include="FolderVersion\ExpressionBuilderViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionModel.cs" />
+    <Compile Include="FolderVersion\FolderViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionPropertiesViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionTypeViewModel.cs" />
+    <Compile Include="FolderVersion\FormInstanceRuleExecutionLogViewModel.cs" />
+    <Compile Include="FolderVersion\FormInstanceRuleExecutionServerLogViewModel.cs" />
+    <Compile Include="FormDesignVersion\ActivityLog.cs" />
+    <Compile Include="FormDesign\ElementListViewModel.cs" />
+    <Compile Include="FormDesign\ExcelConfiguration.cs" />
+    <Compile Include="JsonFieldMapping\JsonFieldMappingViewModel.cs" />
+    <Compile Include="MasterList\MasterListAliasViewModel.cs" />
+    <Compile Include="PBPImport\ExportPreQueueLogViewModel.cs" />
+    <Compile Include="PBPImport\ExportPreQueueViewModel.cs" />
+    <Compile Include="PBPImport\ODMConfigrationViewModel.cs" />
+    <Compile Include="PBPImport\ODMMigrationQueueViewModel.cs" />
+    <Compile Include="PBPImport\PBPExportLogViewModel.cs" />
+    <Compile Include="PBPImport\ODMParentSectionDeatilsViewModel.cs" />
+    <Compile Include="PBPImport\ODMPlanConfigViewModel.cs" />
+    <Compile Include="PBPImport\VBIDExportToMDBMappingViewModel.cs" />
+    <Compile Include="Qhp\QHPFormInstanceViewModel.cs" />
+    <Compile Include="Qhp\QhpPackageViewModel.cs" />
+    <Compile Include="Qhp\QHPReportQueueViewModel.cs" />
+    <Compile Include="Qhp\QhpUploadTemplateViewModel.cs" />
+    <Compile Include="Qhp\QHPValidationError.cs" />
+    <Compile Include="ReportingCenter\ReportingCenterDataSyncViewModel.cs" />
+    <Compile Include="ReportingCenter\ReportQueueDetailsViewModel.cs" />
+    <Compile Include="RulesManager\ElementRowModel.cs" />
+    <Compile Include="RulesManager\FormDesignViewModel.cs" />
+    <Compile Include="RulesManager\ProductTestDataModel.cs" />
+    <Compile Include="RulesManager\RuleHierarchyViewModel.cs" />
+    <Compile Include="RulesManager\RuleRowViewModel.cs" />
+    <Compile Include="Settings\FormDesignUserSettingModel.cs" />
+    <Compile Include="FolderVersion\FormInstanceExportPDF.cs" />
+    <Compile Include="FolderVersion\OpenDocumentViewModel.cs" />
+    <Compile Include="FolderVersion\MasterListDocuments.cs" />
+    <Compile Include="FolderVersion\ProductState.cs" />
+    <Compile Include="FolderVersion\ReportingFolderVersionViewModel.cs" />
+    <Compile Include="FolderVersion\ReportingFolderViewModel.cs" />
+    <Compile Include="FolderVersion\RetroChangeViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionHistoryViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionViewModel.cs" />
+    <Compile Include="FolderVersion\FolderVersionWorkFlowViewModel.cs" />
+    <Compile Include="ConsumerAccount\FormDesignAccountViewModel.cs" />
+    <Compile Include="FolderVersion\FormInstanceViewModel.cs" />
+    <Compile Include="FolderVersion\FormTypeViewModel.cs" />
+    <Compile Include="FolderVersion\WorkFlowStateFolderVersionMapViewModel.cs" />
+    <Compile Include="FolderVersion\WorkFlowViewModel.cs" />
+    <Compile Include="DataValue\DataValueExpando.cs" />
+    <Compile Include="FormDesignVersion\DesignDocumentMapViewModel.cs" />
+    <Compile Include="FormDesignVersion\DocumentMacroSyncConfig.cs" />
+    <Compile Include="FormDesignVersion\DuplicationDesign.cs" />
+    <Compile Include="FormDesign\DataSourceModeViewModel.cs" />
+    <Compile Include="FormDesign\DocumentDesignTypeRowModel.cs" />
+    <Compile Include="FormDesign\FormDesignGroupMapModel.cs" />
+    <Compile Include="FormDesign\FormDesignGroupRowMapModel.cs" />
+    <Compile Include="FormDesign\FormDesignVersionPreviewViewModel.cs" />
+    <Compile Include="FormDesign\ElementAccessViewModel.cs" />
+    <Compile Include="FormDesign\FormDesignVersionRuleModel.cs" />
+    <Compile Include="GlobalUpdateConstants.cs" />
+    <Compile Include="GlobalUpdate\AuditReportViewModel.cs" />
+    <Compile Include="GlobalUpdate\BaselineDataViewModel.cs" />
+    <Compile Include="GlobalUpdate\BatchExecutionViewModel.cs" />
+    <Compile Include="GlobalUpdate\BatchIASMapViewModel.cs" />
+    <Compile Include="GlobalUpdate\BatchViewModel.cs" />
+    <Compile Include="GlobalUpdate\DocumentVersionUIElementRowModel.cs" />
+    <Compile Include="GlobalUpdate\ElementHeaderViewModel.cs" />
+    <Compile Include="GlobalUpdate\ErrorLogViewModel.cs" />
+    <Compile Include="GlobalUpdate\ExpressionViewModel.cs" />
+    <Compile Include="GlobalUpdate\FormDesignElementValueVeiwModel.cs" />
+    <Compile Include="GlobalUpdate\GlobalUpateExecutionLogViewModel.cs" />
+    <Compile Include="GlobalUpdate\GlobalUpdateComputedStatus.cs" />
+    <Compile Include="GlobalUpdate\GlobalUpdateViewModel.cs" />
+    <Compile Include="GlobalUpdate\GuRuleRowModel.cs" />
+    <Compile Include="GlobalUpdate\GuUpdateUIElementValueViewModel.cs" />
+    <Compile Include="GlobalUpdate\IASElementExportDataModel.cs" />
+    <Compile Include="GlobalUpdate\IASElementImportViewModel.cs" />
+    <Compile Include="GlobalUpdate\IASFileUploadViewModel.cs" />
+    <Compile Include="GlobalUpdate\IASFolderDataModel.cs" />
+    <Compile Include="GlobalUpdate\IASWizardStepViewModel.cs" />
+    <Compile Include="GlobalUpdate\RuleViewModel.cs" />
+    <Compile Include="GlobalUpdate\UpdatedDocumentVersionsRowModel.cs" />
+    <Compile Include="Helper\ComparableAttribute.cs" />
+    <Compile Include="Helper\HtmlContentHelper.cs" />
+    <Compile Include="MasterListCascade\ElementDocumentRuleInputViewModel.cs" />
+    <Compile Include="MasterListCascade\ElementDocumentRuleViewModel.cs" />
+    <Compile Include="MasterListCascade\ElementDocumentRuleViewModelResult.cs" />
+    <Compile Include="MasterListCascade\DocumentFilterResult.cs" />
+    <Compile Include="MasterListCascade\OONGroupEntryModel.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeDocumentRuleViewModel.cs" />
+    <Compile Include="MasterListCascade\MLPlanCode.cs" />
+    <Compile Include="MasterListCascade\OONGroupTargetModel.cs" />
+    <Compile Include="MasterList\MasterListFormDesignViewModel.cs" />
+    <Compile Include="MasterList\MasterListTempleteViewModel.cs" />
+    <Compile Include="MasterList\MasterListVersions.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeViewModel.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeBatchViewModel.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeBatchDetailViewModel.cs" />
+    <Compile Include="MasterList\Item.cs" />
+    <Compile Include="DataValue\LogicalOperatorTypeViewModel.cs" />
+    <Compile Include="DataValue\ObjectAttributeXrefViewModel..cs" />
+    <Compile Include="FormDesignGroup\FormDesignGroupRowModel.cs" />
+    <Compile Include="FormDesignGroup\FormGroupFormRowModel.cs" />
+    <Compile Include="FormDesignVersion\ElementRuleMap.cs" />
+    <Compile Include="FormDesignVersion\DataSourceDesign.cs" />
+    <Compile Include="FormDesignVersion\ExpressionDesign.cs" />
+    <Compile Include="FormDesignVersion\RuleDesign.cs" />
+    <Compile Include="FormDesignVersion\ElementDesign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormDesignVersion\FormDesignVersionDetail.cs" />
+    <Compile Include="FormDesignVersion\Item.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormDesignVersion\RepeaterDesign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormDesignVersion\RepeaterRowDesign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormDesignVersion\SectionDesign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormDesignVersion\ValidationDesign.cs" />
+    <Compile Include="FormDesign\DataCopyModeViewModel.cs" />
+    <Compile Include="FormDesign\DataSourceElementDisplayModeModel.cs" />
+    <Compile Include="FormDesign\DataSourceUiElementMappingModel.cs" />
+    <Compile Include="FormDesign\FormDesignVersionRowModel.cs" />
+    <Compile Include="FormDesign\FormDesignRowModel.cs" />
+    <Compile Include="FormDesign\DataSourceRowModel.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\ElementDesignFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\FormDesignVersionDetailFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\RepeaterDesignFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\SectionDesignFromDM.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="MasterList\KeyValue.cs" />
+    <Compile Include="MasterList\MasterListImportViewModel.cs" />
+    <Compile Include="MileStoneChecklistReport\MilestoneChecklistReportViewModel.cs" />
+    <Compile Include="MileStoneChecklistReport\MilestoneChecklistSearchViewModel.cs" />
+    <Compile Include="PagedGridViewModel.cs" />
+    <Compile Include="PBPImport\AddPBPDBNameViewModel.cs" />
+    <Compile Include="PBPImport\PBPDatabaseViewModel.cs" />
+    <Compile Include="PBPImport\PBPDatabseDetailViewModel.cs" />
+    <Compile Include="PBPImport\PBPDataMapViewModel.cs" />
+    <Compile Include="PBPImport\PBPExportQueueViewModel.cs" />
+    <Compile Include="PBPImport\PBPExportToMDBMappingViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportActivityLogViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportDetailsViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportEmailNotificationViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportQueueViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportTableColumnsViewModel.cs" />
+    <Compile Include="PBPImport\PBPImportTablesViewModel.cs" />
+    <Compile Include="PBPImport\PBPMatchConfigViewModel.cs" />
+    <Compile Include="PBPImport\PBPPlanConfigViewModel.cs" />
+    <Compile Include="PBPImport\PBPServiceResultViewModel.cs" />
+    <Compile Include="PBPImport\PBPMappingViewModel.cs" />
+    <Compile Include="PBPImport\PlanConfigrationViewModel.cs" />
+    <Compile Include="PBPImport\PlanMatchingConfigrationViewModel.cs" />
+    <Compile Include="PBPImport\PBPTableViewModel.cs" />
+    <Compile Include="PBPImport\UpdatePBPDBNameViewModel.cs" />
+    <Compile Include="PBPImport\UserActionViewModel.cs" />
+    <Compile Include="PlanContactReport\PlanContactReport.cs" />
+    <Compile Include="Portfolio\PortfolioViewModel.cs" />
+    <Compile Include="PrintTemplate\TemplateViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FolderVersionReport\ReportingViewModel.cs" />
+    <Compile Include="QueryManager\QueryManagerViewModel.cs" />
+    <Compile Include="ReportingCenter\JqGridViewModel.cs" />
+    <Compile Include="ReportingCenter\RCSchemaViewModel.cs" />
+    <Compile Include="ReportingCenter\RCTableDetailsViewModel.cs" />
+    <Compile Include="ReportingCenter\RCTablesViewModel.cs" />
+    <Compile Include="ReportingCenter\ReportingSchemaJsonModel.cs" />
+    <Compile Include="ReportingCenter\ReportSettingViewModel.cs" />
+    <Compile Include="Report\AuditChecklistReportViewModel.cs" />
+    <Compile Include="Report\BenefitAdministrationMatrixData.cs" />
+    <Compile Include="Report\BenefitMatrixReportData.cs" />
+    <Compile Include="Report\DentalMatrixReportData.cs" />
+    <Compile Include="Report\FaxBackReportData.cs" />
+    <Compile Include="Report\ReportErrorMessage.cs" />
+    <Compile Include="Report\ReportServiceViewModel.cs" />
+    <Compile Include="Report\SBCReportHeaderViewModel.cs" />
+    <Compile Include="Report\SBCReportServiceViewModel.cs" />
+    <Compile Include="Report\SPDData.cs" />
+    <Compile Include="Report\STDMatrixReportData.cs" />
+    <Compile Include="Report\VisionFaxBackReportData.cs" />
+    <Compile Include="Report\VisionMatrixReportData.cs" />
+    <Compile Include="ServiceDesign\ResponseType.cs" />
+    <Compile Include="ServiceDesign\ServiceDefinitionRowModel.cs" />
+    <Compile Include="ServiceDesign\ServiceDefinitionViewModel.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignPreviewViewModel.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignRowModel.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersionRowModel.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersion\DataSourceDesign.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersion\ElementDesign.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersion\RepeaterDesign.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersion\SectionDesign.cs" />
+    <Compile Include="ServiceDesign\ServiceDesignVersion\ServiceDesignVersionDetail.cs" />
+    <Compile Include="ServiceDesign\ServiceParameterRowModel.cs" />
+    <Compile Include="ServiceDesign\ServiceRouteParameterViewModel.cs" />
+    <Compile Include="ServiceDesign\ServiceRouteViewModel.cs" />
+    <Compile Include="ServiceDesign\UIElementModel.cs" />
+    <Compile Include="Settings\AutoSaveSettingsViewModel.cs" />
+    <Compile Include="Settings\FolderLockViewModel.cs" />
+    <Compile Include="Settings\FolderVersionCategoryViewModel.cs" />
+    <Compile Include="Settings\FolderVersionGroupViewModel.cs" />
+    <Compile Include="Settings\TaskListViewModel.cs" />
+    <Compile Include="Settings\UserManagementSettingsViewModel.cs" />
+    <Compile Include="Settings\WFStatesApprovalTypeActionViewModel.cs" />
+    <Compile Include="Settings\WFVersionStatesApprovalTypeViewModel.cs" />
+    <Compile Include="Settings\WorkFlowCategoryMappingViewModel.cs" />
+    <Compile Include="Settings\WorkFlowSettingsViewModel.cs" />
+    <Compile Include="Settings\WorkFlowStateApprovalTypeMasterViewModel.cs" />
+    <Compile Include="Settings\WorkFlowStateMasterViewModel.cs" />
+    <Compile Include="Settings\WorkflowTaskMappingViewModel.cs" />
+    <Compile Include="Settings\WorkFlowVersionStatesAccessViewModel.cs" />
+    <Compile Include="Settings\WorkFlowVersionStatesViewModel.cs" />
+    <Compile Include="SourceFieldResult.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="UIElement\CalendarElementModel.cs" />
+    <Compile Include="UIElement\CheckBoxElementModel.cs" />
+    <Compile Include="UIElement\DocumentRuleEventMapModel.cs" />
+    <Compile Include="UIElement\DocumentRuleEventTypeModel.cs" />
+    <Compile Include="UIElement\DocumentRuleModel.cs" />
+    <Compile Include="UIElement\DocumentRuleTypeModel.cs" />
+    <Compile Include="UIElement\RepeaterUIElementPropertyModel.cs" />
+    <Compile Include="UIElement\TabElementModel.cs" />
+    <Compile Include="UIElement\UIElementSummaryModel.cs" />
+    <Compile Include="UIElement\UIElementRowViewModel.cs" />
+    <Compile Include="UIElement\UIElementConfigUpdateModel.cs" />
+    <Compile Include="UIElement\UIElementUpdateModel.cs" />
+    <Compile Include="UIElement\UIElementAddModel.cs" />
+    <Compile Include="UIElement\UIElementSeqModel.cs" />
+    <Compile Include="UIElement\RepeaterElementModel.cs" />
+    <Compile Include="UIElement\RadioButtonElementModel.cs" />
+    <Compile Include="UIElement\DropDownElementModel.cs" />
+    <Compile Include="UIElement\TextBoxElementModel.cs" />
+    <Compile Include="UIElement\ExpressionRowModel.cs" />
+    <Compile Include="UIElement\RuleRowModel.cs" />
+    <Compile Include="UIElement\ValidatorModel.cs" />
+    <Compile Include="UIElement\SectionElementModel.cs" />
+    <Compile Include="UIElement\UIElementRowModel.cs" />
+    <Compile Include="VBID\AddVBIDPackageModel.cs" />
+    <Compile Include="VBID\VBIDPackageModel.cs" />
+    <Compile Include="VBID\VBIDFolderVersionValuesViewModel.cs" />
+    <Compile Include="VendorFeedReport\VendorFeedReportViewModel.cs" />
+    <Compile Include="VendorFeedReport\VendorFeedViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="Collateral\ParameterViewModel.cs" />
+    <Compile Include="Collateral\ReportDataSource.cs" />
+    <Compile Include="Collateral\ReportDesignViewModel.cs" />
+    <Compile Include="Collateral\ReportDocumentModel.cs" />
+    <Compile Include="Collateral\ReportPropertiesViewModel.cs" />
+    <Compile Include="Collateral\ReportTemplateModel.cs" />
+    <Compile Include="Collateral\ReportTemplateVersionModel.cs" />
+    <Compile Include="Collateral\RoleViewModel.cs" />
+    <Compile Include="Collateral\ReportUserActivityViewModel.cs" />
+    <Compile Include="ReportingCenter\ReportDetailsViewModel.cs" />
+    <Compile Include="ReportingCenter\ReportQueueViewModel.cs" />
+    <Compile Include="ReportingCenter\ReportViewModel.cs" />
+    <Compile Include="WebApi\ActivityLogViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Report\MileStoneChecklistReport\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,10 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\tmg.equinox.iasexcelbuilder.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\tmg.equinox.iasexcelbuilder.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\tmg.equinox.iasexcelbuilder.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\EPPlus.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\tmg.equinox.applicationservices.viewmodels.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\tmg.equinox.applicationservices.viewmodels.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\bin\Release\EPPlus.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\obj\Release\tmg.equinox.iasexcelbuilder.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\obj\Release\tmg.equinox.iasexcelbuilder.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasexcelbuilder\obj\Release\tmg.equinox.iasexcelbuilder.pdb

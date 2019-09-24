@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Generate Document";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="grid-wrapper">
+                <table id="grdDocument"></table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">  
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("collateral");	
+</script>

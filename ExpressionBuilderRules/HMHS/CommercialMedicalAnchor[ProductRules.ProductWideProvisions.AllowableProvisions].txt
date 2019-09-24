@@ -1,0 +1,25 @@
+{
+  "documentrule": {
+    "targetelement": "CommercialMedicalAnchor[ProductRules.ProductWideProvisions.AllowableProvisions]",
+    "ruleconditions": {
+      "sources": [
+        {
+          "sourcename": "A",
+          "sourceelement": "Provisions[ProductWide.ProvisionOptions]"
+        },
+        {
+          "sourcename": "B",
+          "sourceelement": "CommercialMedicalAnchor[ProductRules.ProductWideProvisions.AllowableProvisions]"
+        }
+      ],
+      "sourcemergelist": {
+        "sourcemergeactions": [
+          {
+            "sourcemergetype": "script",
+            "sourcemergeexpression": "SETDEFAULTROW(target, \"{'Select':'','ProvisionNameSERVICEPROVISION':'','ProvisionTextOptions':''}\");IF(COUNT(b)==0){SET(b, CREATETOKEN(\"{'Select':'','ProvisionNameSERVICEPROVISION':'','ProvisionTextOptions':''}\"));}SET(select,\"{'Select':'No'}\");SET(select,CREATETOKEN(select));SET(criteria,\"ProductType=[Medical]\");SET(provisions,FILTERLIST(a,criteria,\"\",\"\",\"ProvisionNameSERVICEPROVISION,ProvisionTextOptions\"));SET(sourceOnly, EXCEPT(provisions, b, \"ProvisionNameSERVICEPROVISION,ProvisionTextOptions\"));SET(sourceOnly, CROSSJOIN(sourceOnly,select));SET(common, INTERSECT(b, provisions, \"ProvisionNameSERVICEPROVISION,ProvisionTextOptions\"));SET(result, UNION(common, sourceOnly, \"ProvisionNameSERVICEPROVISION,ProvisionTextOptions\"));SETARRAY(target, result);"
+          }
+        ]
+      }
+    }
+  }
+}

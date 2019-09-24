@@ -1,0 +1,2 @@
+Set target platform as x64 for the Projects /Solution - since the Microsoft Access OleDB driver does not operate
+with target set to Any CPU

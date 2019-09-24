@@ -1,0 +1,34 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Master List";
+    Layout = "~/Views/Shared/FormRenderLayout.cshtml";
+}
+
+
+<head>
+    @Scripts.Render("~/bundles/MLBundle")
+    @*<script src="~/Scripts/MasterList/masterList.js"></script>*@
+</head>
+<div>
+    <form>
+        <div class="form-group" id="masterListDialog">
+            <label for="sel1">Select Master List:</label>
+            <select class="form-control" id="dopMasterList" style="width: 40%;">
+                <option value="0">Select</option>
+            </select>
+            <span class="help-block" id="dopMasterList-help-block"></span>
+        </div>
+        <button type="button" id="btnsubmit" class="btn btn-default" style="height:30px !important; width:50px !important;font-size:x-small;">Show</button>
+    </form>
+</div>
+</div>
+
+
+
+@*<script type="text/javascript">
+      var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+      setMenu("design");
+</script>*@
+
+
+ 

@@ -1,0 +1,39 @@
+{
+    "documentrule": {
+        "targetelement": "Product[BenefitReview.BenefitReviewGrid][MasterListServices]",
+        "triggers": [
+            {
+                "source": "Product[BenefitReview.BenefitReviewGrid][MasterListServices]",
+                "event": "viewdialog"
+            }
+        ],
+        "actions": [
+            {
+                "action": "viewdialog"
+            }
+        ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[Limits.FacetsLimits.LimitServicesLTSE]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "source[child] contains target[parent]"
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                }
+            ],
+            "sourcemergeaction": ""
+        }
+    }
+}

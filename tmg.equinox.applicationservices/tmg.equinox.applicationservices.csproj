@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{354C2E89-A4F7-4503-AF2B-9E0F65724EBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.applicationservices</RootNamespace>
+    <AssemblyName>tmg.equinox.applicationservices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SendGrid.SmtpApi">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="tmg.equinox.schema.Base">
+      <HintPath>..\tmg.equinox.schema.base\obj\Debug\tmg.equinox.schema.Base.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountService.cs" />
+    <Compile Include="ApiActivityLogService.cs" />
+    <Compile Include="ApplicationServiceConstant.cs" />
+    <Compile Include="AutoSaveSettingsService.cs" />
+    <Compile Include="CollateralWindowService.cs" />
+    <Compile Include="CommaSeparatedProductItems.cs" />
+    <Compile Include="Compression.cs" />
+    <Compile Include="AuditRequestService.cs" />
+    <Compile Include="ConsortiumService.cs" />
+    <Compile Include="ConsumerAccountService.cs" />
+    <Compile Include="DocumentRuleServices.cs" />
+    <Compile Include="EmailNotificationService.cs" />
+    <Compile Include="ExitValidate\ExitValidateCustomQueue.cs" />
+    <Compile Include="ExitValidate\ExitValidateErrorComparer.cs" />
+    <Compile Include="ExitValidate\ExitValidatePlanAreaFileMapping.cs" />
+    <Compile Include="ExitValidate\ExitValidateResultComparer.cs" />
+    <Compile Include="ExitValidate\ExitValidateService.cs" />
+    <Compile Include="FolderService.cs" />
+    <Compile Include="FormDesignDetail\FormDesignUIElementMap.cs" />
+    <Compile Include="FormInstanceRuleExecutionLogService.cs" />
+    <Compile Include="FormInstanceViewImpactLogService.cs" />
+    <Compile Include="PBPExport\ExportPreQueueService.cs" />
+    <Compile Include="Locking\BaseResourceLock.cs" />
+    <Compile Include="Locking\ResourceLockHolder.cs" />
+    <Compile Include="PBPExport\VBIDExportService.cs" />
+    <Compile Include="PlanTaskUserMappingService.cs" />
+    <Compile Include="QhpDataAdapterService.cs" />
+    <Compile Include="QhpIntegrationService.cs" />
+    <Compile Include="QhpService.cs" />
+    <Compile Include="Locking\ResourceLockService.cs" />
+    <Compile Include="FolderLockService.cs" />
+    <Compile Include="FormInstanceDataServices.cs" />
+    <Compile Include="CustomRuleServices.cs" />
+    <Compile Include="DocumentCollateralService.cs" />
+    <Compile Include="FolderVersionDetail\VersionNumberBuilder.cs" />
+    <Compile Include="FolderVersionReportService.cs" />
+    <Compile Include="FormDesignDetail\DuplicationDesignBuilder.cs" />
+    <Compile Include="FormInstanceDetail\FormInstanceRepeaterParcer.cs" />
+    <Compile Include="FormInstanceDetail\JsonParser.cs" />
+    <Compile Include="FormInstanceRepeaterService.cs" />
+    <Compile Include="FormInstanceDetail\FormInstanceRepeaterDataBuilder.cs" />
+    <Compile Include="FormInstanceService.cs" />
+    <Compile Include="GenerateSchemaService.cs" />
+    <Compile Include="GlobalUpdateBatchService.cs" />
+    <Compile Include="GlobalUpdateService.cs" />
+    <Compile Include="IASDocumentService.cs" />
+    <Compile Include="IASWizardSteps.cs" />
+    <Compile Include="JournalReportService.cs" />
+    <Compile Include="JqGridHelper.cs" />
+    <Compile Include="MasterListCascade\MasterListCascadeService.cs" />
+    <Compile Include="MLImport\BaselineMasterListService.cs" />
+    <Compile Include="MLImport\Tiers.cs" />
+    <Compile Include="PBPExport\PBPExportCustomQueue.cs" />
+    <Compile Include="PBPImport\PBPImportCustomQueue.cs" />
+    <Compile Include="MLImport\MLImportHelperService.cs" />
+    <Compile Include="MLImport\Prescription.cs" />
+    <Compile Include="MLImport\ProcessMLExcelFile.cs" />
+    <Compile Include="PBPImport\PBPimportEmailNotificationService.cs" />
+    <Compile Include="ReportingCenter\DateConverter.cs" />
+    <Compile Include="ReportingCenter\MDMSyncDataService.cs" />
+    <Compile Include="ReportingCenter\CCRTranslatorService.cs" />
+    <Compile Include="ReportingCenter\ReportingCenterSchemaService.cs" />
+    <Compile Include="ReportingDataService.cs" />
+    <Compile Include="PBPExport\PBPExportService.cs" />
+    <Compile Include="PBPImport\PBPImportHelperServices.cs" />
+    <Compile Include="PBPImport\PBPImportService.cs" />
+    <Compile Include="PBPImport\AccessDbContext.cs" />
+    <Compile Include="PBPImport\AccessDBTableService.cs" />
+    <Compile Include="PBPImport\OleDbHelper.cs" />
+    <Compile Include="PBPImport\PBPImportActivityLogServices.cs" />
+    <Compile Include="PBPImport\SqlImportOperations.cs" />
+    <Compile Include="PBPImport\ValueFormatterHelper.cs" />
+    <Compile Include="PBPImport\PBPMappingServices.cs" />
+    <Compile Include="ReportingCenter\ReportCustomQueue.cs" />
+    <Compile Include="ReportingCenter\ReportQueueServices.cs" />
+    <Compile Include="ReportService.cs" />
+    <Compile Include="ReportingCenter\ReportMasterService.cs" />
+    <Compile Include="Locking\SectionLockService.cs" />
+    <Compile Include="RulesManagerService.cs" />
+    <Compile Include="ServiceDefinitionService.cs" />
+    <Compile Include="ServiceDesignDetail\DataSourceDesignBuilder.cs" />
+    <Compile Include="ServiceDesignDetail\RepeaterDesignBuilder.cs" />
+    <Compile Include="ServiceDesignDetail\SectionDesignBuilder.cs" />
+    <Compile Include="ServiceDesignDetail\ServiceDesignBuilder.cs" />
+    <Compile Include="ServiceDesignDetail\UIElementDesignBuilder.cs" />
+    <Compile Include="ServiceDesignService.cs" />
+    <Compile Include="ServiceRequestHandlerService.cs" />
+    <Compile Include="SyncDocumentService.cs" />
+    <Compile Include="TaskListService.cs" />
+    <Compile Include="TemplateReportService.cs" />
+    <Compile Include="OdmService.cs" />
+    <Compile Include="UserManagementSettings.cs" />
+    <Compile Include="WFVersionStatesApprovalTypeService.cs" />
+    <Compile Include="CollateralService.cs" />
+    <Compile Include="WorkFlowCategoryMappingService.cs" />
+    <Compile Include="WorkFlowMasterService.cs" />
+    <Compile Include="WorkFlowSettingsService.cs" />
+    <Compile Include="WorkFlowStateServices.cs" />
+    <Compile Include="DataValueService.cs" />
+    <Compile Include="FormDesignDetail\MasterLists.cs" />
+    <Compile Include="FormDesignDetail\RuleDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\DataSourceDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\UIElementDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\FormDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\RepeaterDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\SectionDesignBuilder.cs" />
+    <Compile Include="FormDesignDetail\ValidationDesignBuilder.cs" />
+    <Compile Include="FormDesignVersionCompare\UIElementRuleComparer.cs" />
+    <Compile Include="FormDesignVersionCompare\UIElementPropertyComparer.cs" />
+    <Compile Include="FormDesignVersionCompare\VersionComparer.cs" />
+    <Compile Include="FormDesignVersionCompare\UIElementDetailComparer.cs" />
+    <Compile Include="FormDesignVersionCompare\UIElementListComparer.cs" />
+    <Compile Include="FormDesignVersionDetailService.cs" />
+    <Compile Include="DashboardService.cs" />
+    <Compile Include="DataSourceService.cs" />
+    <Compile Include="FolderVersionServices.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\FormDesignBuilderFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\RepeaterDesignBuilderFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\SectionDesignBuilderFromDM.cs" />
+    <Compile Include="FormDesignBuilderFromDomainModel\UIELementDesignBuilderFromDM.cs" />
+    <Compile Include="FormDesignVersionCompare\VersionTypeEvaluator.cs" />
+    <Compile Include="LoggingService.cs" />
+    <Compile Include="PortfolioService.cs" />
+    <Compile Include="UIElementServiceForCalendar.cs" />
+    <Compile Include="UIElementServiceForCheckBox.cs" />
+    <Compile Include="UIElementServiceForTab.cs" />
+    <Compile Include="UIElementServiceForRepeater.cs" />
+    <Compile Include="UIElementServiceForRadioButton.cs" />
+    <Compile Include="UIElementServiceForDropDown.cs" />
+    <Compile Include="UIElementServiceForTextBox.cs" />
+    <Compile Include="UIElementServiceForExpression.cs" />
+    <Compile Include="UIElementServiceForRules.cs" />
+    <Compile Include="UIElementServiceForValidator.cs" />
+    <Compile Include="FormDesignGroupService.cs" />
+    <Compile Include="DomainModelService.cs" />
+    <Compile Include="MasterListService.cs" />
+    <Compile Include="UIElementServiceForSection.cs" />
+    <Compile Include="UIElementServiceControls.cs" />
+    <Compile Include="FormDesignService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElementService.cs" />
+    <Compile Include="WorkFlowTaskMappingService.cs" />
+    <Compile Include="WorkFlowUsageService.cs" />
+    <Compile Include="WorkFlowVersionStatesAccessService.cs" />
+    <Compile Include="WorkFlowVersionStatesService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.core.masterlistcascade\tmg.equinox.core.masterlistcascade.csproj">
+      <Project>{eac1812a-f6a8-4772-9d07-fd306a497428}</Project>
+      <Name>tmg.equinox.core.masterlistcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.iasbuilder\tmg.equinox.iasbuilder.csproj">
+      <Project>{52be2b01-c3d2-439b-bc45-f078fffe9b08}</Project>
+      <Name>tmg.equinox.iasbuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.iasexcelbuilder\tmg.equinox.iasexcelbuilder.csproj">
+      <Project>{0f92b4b9-3357-49ab-ba5e-b8865065b2a9}</Project>
+      <Name>tmg.equinox.iasexcelbuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.identitymanagement\tmg.equinox.identitymanagement.csproj">
+      <Project>{4C365FC5-94CF-44D3-94E0-5C2D44D1C320}</Project>
+      <Name>tmg.equinox.identitymanagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.qhplite\tmg.equinox.integration.qhplite.csproj">
+      <Project>{9F58CF58-E883-40E2-8902-B1CDE9B0748D}</Project>
+      <Name>tmg.equinox.integration.qhplite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.mapper\tmg.equinox.mapper.csproj">
+      <Project>{27466C48-7D68-4A5D-BB4F-820A120B2EA3}</Project>
+      <Name>tmg.equinox.mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.notification\tmg.equinox.notification.csproj">
+      <Project>{73e0eb2d-b032-457a-a9fe-8286e1fe1c12}</Project>
+      <Name>tmg.equinox.notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.pbp.export\tmg.equinox.pbp.export.csproj">
+      <Project>{D67AE161-E53C-4B05-9547-0942E19AA217}</Project>
+      <Name>tmg.equinox.pbp.export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.pbpimport\tmg.equinox.pbp.import.csproj">
+      <Project>{1b9b2ac8-3128-4e9e-a81c-b9a0f90b1e86}</Project>
+      <Name>tmg.equinox.pbp.import</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.queueprocess\tmg.equinox.queueprocess.csproj">
+      <Project>{b6fda782-716c-4f30-adb4-3b2f9367ec21}</Project>
+      <Name>tmg.equinox.queueprocess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.repository.extensions\tmg.equinox.repository.extensions.csproj">
+      <Project>{53e20421-c000-455d-a89f-590c47750805}</Project>
+      <Name>tmg.equinox.repository.extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.repository\tmg.equinox.repository.csproj">
+      <Project>{20055d5e-22db-4de3-a164-7a743e0f0205}</Project>
+      <Name>tmg.equinox.repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter\tmg.equinox.ruleinterpreter.csproj">
+      <Project>{40B5C019-8FFA-4776-8DD8-B3AC1DA99CA7}</Project>
+      <Name>tmg.equinox.ruleinterpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.schema.sql\tmg.equinox.schema.sql.csproj">
+      <Project>{BF51A2F7-1F87-4EC2-9FE8-125CDD896956}</Project>
+      <Name>tmg.equinox.schema.sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19f18c6a-c503-41fd-8e63-e4bb2022d03f}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

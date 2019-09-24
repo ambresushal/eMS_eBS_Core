@@ -1,0 +1,72 @@
+{
+  "documentrule": {   
+    "targetelement": "CommercialMedicalAnchor[CascadingCostShare.CostShareGroup.CostShareGroupList]",
+    "ruletype": "datasource",
+    "targetelementtype": "field",
+    "ruleconditions": {
+      "sources": [
+        {
+          "sourcename": "A",
+          "sourceelement": "CommercialMedicalAnchor[Network.NetworkTierList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },
+        {
+          "sourcename": "B",
+          "sourceelement": "CommercialMedicalAnchor[StandardServices.StandardServiceList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },    
+        {
+          "sourcename": "C",
+          "sourceelement": "CommercialMedicalAnchor[CascadingCostShare.CostShareGroup.CostShareGroupList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        },    
+        {
+          "sourcename": "D",
+          "sourceelement": "CommercialMedicalAnchor[GeneralCostShare.Coinsurance.CoinsuranceList]",
+          "sourceelementtype": "repeater",
+          "filter": {
+            "filterlist": [],
+            "filtermergetype": "none",
+            "filtermergeexpression": "",
+            "keycolumns": ""
+          }
+        }        
+      ],
+      "sourcemergelist": {
+        "outputcolumns": {
+          "columns": "",
+          "children": ""
+        },
+        "sourcemergeactions": [
+          {
+            "sourcemergetype": "script",
+            "sourcemergeexpression": "SET(StandarServiceData, b);SET(CountCost, COUNT(StandarServiceData));IF(CountCost > 0){SET(NetworkTierResult, \"\"); SETDEFAULTROW(target, \"{'CostShareGroup':'','NetworkTier':'','NetworkName':'','CostShareType':'','CopayValue':'','GuardrailLowCopayValue':'$0.00','GuardrailHighCopayValue':'$500.00','CoinsuranceAmount':'','GuardrailLowCoinsuranceAmount':'0%','GuardrailHighCoinsuranceAmount':'100%','EnableUpdate':'Yes','RefreshCoinsurance':'Yes','SameAsNetworkTier':'Not Applicable','SameAsCostShare':'','CopayFrequency':'','CopayType':'','CopaySupplement':''}\"); IF(COUNT(c)==0){SET(c, CREATETOKEN(\"{'CostShareGroup':'','NetworkTier':'','NetworkName':'','CostShareType':'','CopayValue':'','GuardrailLowCopayValue':'$0.00','GuardrailHighCopayValue':'$500.00','CoinsuranceAmount':'','GuardrailLowCoinsuranceAmount':'0%','GuardrailHighCoinsuranceAmount':'100%','EnableUpdate':'Yes','RefreshCoinsurance':'Yes','SameAsNetworkTier':'Not Applicable','SameAsCostShare':'','CopayFrequency':'','CopayType':'','CopaySupplement':''}\"));}SET(i, 0); SET(OldcostSharedData, c); SET(allTieredGroupResult, \"\"); SET(costSharedFinalResult, \"\"); SET(NoOfNetworks, COUNT(a)); SET(CostShareGroupList, StandarServiceData); SET(CostShareGroups, UNION(CostShareGroupList, CostShareGroupList, \"CostShareGroup\")); SET(emptyCostShareGroup, FILTERLIST(CostShareGroups, \"CostShareGroup=[]\", \"\", \"\", \"\")); SET(distinctCSGroupToProcess, EXCEPT(CostShareGroups, emptyCostShareGroup, \"CostShareGroup\")); WHILE(i < NoOfNetworks){SET(existingNetworkConvrageList, FILTERLIST(a, i, \"\", \"\", \"\")); SET(NetworkTierValue, GETVAL(existingNetworkConvrageList, \"NetworkTier\")); SET(NetworkNamevalue, GETVAL(existingNetworkConvrageList, \"NetworkName\")); SET(defaultPropToMerge, \"{'NetworkTier':'nTier','NetworkName':'nName','CostShareType':'','CopayValue':'','GuardrailLowCopayValue':'$0.00','GuardrailHighCopayValue':'$500.00','CoinsuranceAmount':'','GuardrailLowCoinsuranceAmount':'0%','GuardrailHighCoinsuranceAmount':'100%','EnableUpdate':'Yes','RefreshCoinsurance':'Yes','SameAsNetworkTier':'Not Applicable','SameAsCostShare':'','CopayFrequency':'','CopayType':''}\"); SET(defaultPropToMerge, REPLACE(defaultPropToMerge, \"nTier\", NetworkTierValue)); SET(defaultPropToMerge, REPLACE(defaultPropToMerge, \"nName\", NetworkNamevalue)); SET(propertyToMerge, CREATETOKEN(defaultPropToMerge)); SET(tieredCSGroup, CROSSJOIN(distinctCSGroupToProcess, propertyToMerge)); APPEND(allTieredGroupResult, tieredCSGroup); SET(NetworkNameCondation, \"NetworkTier=[<0>]\"); SET(NetworkNameCondation, REPLACE(NetworkNameCondation, \"<0>\", NetworkTierValue)); SET(NetworkNameToken, \"{'NetworkName':'<0>'}\"); SET(NetworkNameToken, REPLACE(NetworkNameToken, \"<0>\", NetworkNamevalue)); SET(OldcostSharedData, UPDATEARRAY(OldcostSharedData, NetworkNameCondation, NetworkNameToken)); SET(i, i + 1);}SET(allTieredGroupResult, REPLACE(allTieredGroupResult, \"][\", \",\")); SET(allTieredGroupResult, REPLACE(allTieredGroupResult, \"[\", \"\")); SET(allTieredGroupResult, REPLACE(allTieredGroupResult, \"]\", \"\")); SET(openBrace, \"[\"); SET(allTieredGroupResult, APPEND(openBrace, allTieredGroupResult)); SET(allTieredGroupResult, APPEND(allTieredGroupResult, \"]\")); SET(allTieredGroupResult, CREATETOKEN(allTieredGroupResult)); IF(COUNT(allTieredGroupResult) > 0){IF(COUNT(OldcostSharedData) > 0){SET(csGroupToKeep, INTERSECT(OldcostSharedData, allTieredGroupResult, \"CostShareGroup,NetworkTier\")); SET(csGroupToAdd, EXCEPT(allTieredGroupResult, OldcostSharedData, \"CostShareGroup,NetworkTier\")); SET(costSharedFinalResult, UNION(csGroupToKeep, csGroupToAdd, \"CostShareGroup,NetworkTier\"));}ELSE{SET(costSharedFinalResult, allTieredGroupResult);}SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"RefreshCoinsurance=[]\", \"{'RefreshCoinsurance':'Yes'}\")); SET(RefreshCoinsuranceList, FILTERLIST(costSharedFinalResult, \"RefreshCoinsurance=[Yes]\", \"\", \"\", \"\")); IF(COUNT(RefreshCoinsuranceList) > 0){SET(i, 0); WHILE(i < NoOfNetworks){SET(NetworkToken, FILTERLIST(a, i, \"\", \"\", \"\")); SET(Condition, \"NetworkTier=[<0>]\"); SET(NetworkValue, GETVAL(NetworkToken, \"NetworkTier\")); SET(Condition, REPLACE(Condition, \"<0>\", NetworkValue)); SET(copayCoins, Condition); SET(copayDedCoins, Condition); SET(coinsOnly, Condition); SET(dedCoins, Condition);SET(dedCopayCoins, Condition); SET(defaultCoins, Condition); SET(copayCoins, APPEND(copayCoins, \"&CostShareType=[Copay then Coinsurance]\")); SET(copayDedCoins, APPEND(copayDedCoins, \"&CostShareType=[Copay, Deductible, then Coinsurance]\")); SET(coinsOnly, APPEND(coinsOnly, \"&CostShareType=[Coinsurance Only]\")); SET(dedCoins, APPEND(dedCoins, \"&CostShareType=[Deductible then Coinsurance]\")); SET(defaultCoins, APPEND(defaultCoins, \"&CostShareType=[]\"));SET(dedCopayCoins, APPEND(dedCopayCoins, \"&CostShareType=[Deductible, Copay, then Coinsurance]\")); SET(CoinsToken, FILTERLIST(d, Condition, \"\", \"\", \"\")); SET(CoinsValue, GETVAL(CoinsToken, \"CoinsuranceAmount\")); SET(PropCoins, \"{'CoinsuranceAmount':'<0>'}\"); SET(PropCoins, REPLACE(PropCoins, \"<0>\", CoinsValue)); SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, defaultCoins, PropCoins)); SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, copayCoins, PropCoins)); SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, copayDedCoins, PropCoins)); SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, coinsOnly, PropCoins)); SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, dedCoins, PropCoins));SET(RefreshCoinsuranceList, UPDATEARRAY(RefreshCoinsuranceList, dedCopayCoins, PropCoins)); SET(i, i + 1);}SET(costSharedFinalResult, UNION(RefreshCoinsuranceList, costSharedFinalResult, \"CostShareGroup,NetworkTier\"));}SET(CoinsuranceCount, COUNT(costSharedFinalResult)); SET(CoinsuranceCounter, 0); WHILE(CoinsuranceCounter < CoinsuranceCount){SET(CoinsuranceToken, FILTERLIST(costSharedFinalResult, CoinsuranceCounter, \"\", \"\", \"\")); SET(SameAsNetworkTier, GETVAL(CoinsuranceToken, \"SameAsNetworkTier\")); SET(SameAsCostShare, GETVAL(CoinsuranceToken, \"SameAsCostShare\")); SET(tierCondition, \"NetworkTier=[<0>]\"); SET(NetworkTier, \"\"); SET(SameAsNetworkTierApply, 0); IF(EQUALS(SameAsNetworkTier, \"\") < > TRUE()){IF(EQUALS(SameAsNetworkTier, \"Not Applicable\") < > TRUE()){IF(CONTAINS(SameAsCostShare, \"CoinsuranceAmount\")==TRUE()){SET(SameAsNetworkTierApply, 1);}}}IF(EQUALS(SameAsNetworkTierApply, 1)==TRUE()){SET(NetworkTier, GETVAL(CoinsuranceToken, \"SameAsNetworkTier\"));}ELSE{SET(NetworkTier, GETVAL(CoinsuranceToken, \"NetworkTier\"));}SET(tierCondition, REPLACE(tierCondition, \"<0>\", NetworkTier)); SET(CoinsToken, FILTERLIST(d, tierCondition, \"\", \"\", \"\")); SET(CoinsValue, GETVAL(CoinsToken, \"CoinsuranceAmount\")); SET(PropCoins, \"{'CoinsuranceAmount':'<0>'}\"); SET(PropCoins, REPLACE(PropCoins, \"<0>\", CoinsValue)); SET(SameAsCostShareCondation, \"\"); IF(EQUALS(SameAsNetworkTierApply, 1)==TRUE()){SET(SameAsCostShareCondation, \"CostShareGroup=[<0>]&NetworkTier=[<1>]&SameAsNetworkTier=[<2>]&SameAsCostShare=[<3>]&RefreshCoinsurance=[No]\");}ELSE{SET(SameAsCostShareCondation, \"CostShareGroup=[<0>]&NetworkTier=[<1>]&SameAsNetworkTier=[<2>]&SameAsCostShare=[<3>]&RefreshCoinsurance=[Yes]\");}SET(SameAsCostShareCondation, REPLACE(SameAsCostShareCondation, \"<0>\", GETVAL(CoinsuranceToken, \"CostShareGroup\"))); SET(SameAsCostShareCondation, REPLACE(SameAsCostShareCondation, \"<1>\", GETVAL(CoinsuranceToken, \"NetworkTier\"))); SET(SameAsCostShareCondation, REPLACE(SameAsCostShareCondation, \"<2>\", SameAsNetworkTier)); SET(SameAsCostShareCondation, REPLACE(SameAsCostShareCondation, \"<3>\", SameAsCostShare)); SET(RefreshCoinsuranceList, UPDATEARRAY(costSharedFinalResult, SameAsCostShareCondation, PropCoins)); SET(CoinsuranceCounter, CoinsuranceCounter + 1);}SET(CopayOnly, \"CostShareType=[Copay Only]\"); SET(DedOnly, \"CostShareType=[Deductible Only]\"); SET(NoCost, \"CostShareType=[No Cost]\"); SET(NotCovered, \"CostShareType=[Not Covered]\"); SET(DedThenCopay, \"CostShareType=[Deductible then Copay]\");SET(CopayThenDed, \"CostShareType=[Copay then Deductible]\"); SET(NAPropCoins, \"{'CoinsuranceAmount':'Not Applicable'}\"); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, CopayOnly, NAPropCoins)); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, DedOnly, NAPropCoins)); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, NoCost, NAPropCoins)); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, NotCovered, \"{'CoinsuranceAmount':'Not Covered'}\")); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, DedThenCopay, NAPropCoins));SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, CopayThenDed, NAPropCoins)); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"GuardrailLowCopayValue=[]\", \"{'GuardrailLowCopayValue':'$0.00'}\")); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"GuardrailHighCopayValue=[]\", \"{'GuardrailHighCopayValue':'$500.00'}\")); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"GuardrailLowCoinsuranceAmount=[]\", \"{'GuardrailLowCoinsuranceAmount':'0%'}\")); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"GuardrailHighCoinsuranceAmount=[]\", \"{'GuardrailHighCoinsuranceAmount':'100%'}\")); SET(costSharedFinalResult, UPDATEARRAY(costSharedFinalResult, \"CostShareType=[]\", \"{'CoinsuranceAmount':'Not Applicable'}\")); SET(costSharedFinalResult, SORTARRAY(costSharedFinalResult, \"NetworkTier,CostShareGroup\", \"asc\")); SETARRAY(target, costSharedFinalResult);}}ELSE{SETARRAY(target, \"[]\");}",
+            "keycolumns": "",
+            "mappings": {
+              "sourcefields": "",
+              "targetfields": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+} 

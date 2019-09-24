@@ -1,0 +1,85 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+
+    @* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+        Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+    @Scripts.Render("~/bundles/jQueryBundle")
+    @Scripts.Render("~/bundles/JsRenderBundle")
+    @Scripts.Render("~/bundles/GridBundle")
+    @Scripts.Render("~/bundles/LayoutBundle")
+    @Scripts.Render("~/bundles/AjaxBundle")
+    @Scripts.Render("~/bundles/GlobalBundle")
+    @Scripts.Render("~/bundles/DialogBundle")
+    @Scripts.Render("~/bundles/BootstrapBundle")
+    @Scripts.Render("~/bundles/LogOffBundle")
+    @Scripts.Render("~/bundles/ActivityLoggerBundle")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/CodeMirrorBundle")
+    @Scripts.Render("~/bundles/beautifyBundle")
+    @*@Scripts.Render("~/Scripts/layout/tmg-layout.js")*@
+    @RenderSection("scripts", required: false)
+    @*<script src="~/Scripts/Framework/External/Notification/jquery.signalR-2.2.2.min.js"></script>*@
+    <script src="~/signalr/hubs"></script>
+    <link href='@Url.Content("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/jquery-ui-1.9.2.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/Content/css/ui.jqgrid.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg-layout.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/skin-blue.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/stylesheet-new.css")' rel="stylesheet" type="text/css" />
+    @*<link href='@Url.Content("~/Content/css/demo.css")' rel="stylesheet" type="text/css" />*@
+    <!-- BEGIN RESPONSE STYLES -->
+    <link href='@Url.Content("~/Content/css/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/yantramanav.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/roboto.css")' rel="stylesheet" type="text/css" />
+    @*<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav:400,300,500' rel='stylesheet' type='text/css'>*@
+    <link href='@Url.Content("~/Content/css/response.custom.css")' rel="stylesheet" type="text/css" />
+    <!-- END RESPONSE STYLES -->
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">*@
+    <link href='@Url.Content("~/Content/css/query-builder.default.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/handsontable.full.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/codemirror.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/show-hint.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/fullscreen.css")' rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+
+        if (GLOBAL.applicationName == "") {
+            var appName = '@ViewBag.ApplicationName';
+            if (appName != undefined)
+                GLOBAL.applicationName = appName;
+        }
+        if (GLOBAL.clientName == "") {
+            var clientName = '@ViewBag.clientName';
+            if (clientName != undefined)
+                GLOBAL.clientName = clientName;
+        }
+
+    </script>
+    <title>@ViewBag.ApplicationName</title>
+</head>
+<body class="skin-blue sidebar-mini hold-transition fliph body-toggle">
+    @Html.Partial("Header")
+    @RenderBody()
+    @Html.Partial("Footer")
+    <div class="ebs-loader">
+        @Html.Partial("AjaxNotifier")
+    </div>
+    @Html.Partial("Dialogs")
+    <div style="display: none;">
+        @Html.Partial("~/Views/RoutingTask/RoutingTaskView.cshtml")
+    </div>
+    @*@Html.Partial("FontResizer")*@
+</body>
+</html>

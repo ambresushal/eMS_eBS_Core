@@ -1,0 +1,1552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{85E02E2B-D56B-43EA-8B07-F7D8373BB774}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.web</RootNamespace>
+    <AssemblyName>tmg.equinox.web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core">
+      <HintPath>..\packages\BundleTransformer.Core.1.9.13\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.UglifyJs">
+      <HintPath>..\packages\BundleTransformer.UglifyJs.1.9.17\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.1.1.12\lib\net40\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching">
+      <HintPath>..\packages\MvcDonutCaching.1.2.3\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\tmg.equinox.generatecollateral\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EFCache">
+      <HintPath>..\packages\EntityFramework.Cache.1.0.0-beta2\lib\net45\EFCache.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.5.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.8.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Core">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Core.1.1.3\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Msie">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.1.1.11\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.V8">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.1.1.12\lib\net40\JavaScriptEngineSwitcher.V8.dll</HintPath>
+    </Reference>
+    <Reference Include="Kentor.AuthServices, Version=0.21.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentor.AuthServices.0.21.2\lib\net45\Kentor.AuthServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kentor.AuthServices.HttpModule, Version=0.21.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentor.AuthServices.HttpModule.0.21.2\lib\net45\Kentor.AuthServices.HttpModule.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kentor.AuthServices.Mvc, Version=0.21.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentor.AuthServices.Mvc.0.21.2\lib\net45\Kentor.AuthServices.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Membase, Version=2.14.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Membase.2.14\lib\net35\Membase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.3.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.3.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.WebHooks.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHooks.Common.1.2.0\lib\net45\Microsoft.AspNet.WebHooks.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.WebHooks.Receivers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHooks.Receivers.1.2.0\lib\net45\Microsoft.AspNet.WebHooks.Receivers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.WebHooks.Receivers.Salesforce, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHooks.Receivers.Salesforce.1.2.0\lib\net45\Microsoft.AspNet.WebHooks.Receivers.Salesforce.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.ReportViewer.2012.Runtime.11.0.3452.0\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MsieJavaScriptEngine">
+      <HintPath>..\packages\MsieJavaScriptEngine.1.4.4\lib\net40\MsieJavaScriptEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.0.371\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TuesPechkin">
+      <HintPath>..\packages\TuesPechkin.1.0.3.0\lib\net20\TuesPechkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.1.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.Mvc5.1.1\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\css\Treant\perfect-scrollbar.css" />
+    <Content Include="Content\css\Treant\treant.css" />
+    <Content Include="Scripts\Framework\External\Treant\jquery.easing.js" />
+    <Content Include="Scripts\Framework\External\Treant\jquery.mousewheel.js" />
+    <Content Include="Scripts\Framework\External\Treant\perfect-scrollbar.js" />
+    <Content Include="Scripts\Framework\External\Treant\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Scripts\Framework\External\Treant\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Scripts\Framework\External\Treant\raphael.js" />
+    <Content Include="Scripts\Framework\External\Treant\treant.js" />
+    <Content Include="Scripts\RulesManager\analyzer.js" />
+    <Content Include="Scripts\RulesManager\assigntarget.js" />
+    <Content Include="Scripts\RulesManager\assigntemplate.js" />
+    <Content Include="Scripts\RulesManager\comparer.js" />
+    <Content Include="Scripts\RulesManager\designer.js" />
+    <Content Include="Scripts\RulesManager\expressionbuilder.js" />
+    <Content Include="Scripts\RulesManager\gridbuilder.js" />
+    <Content Include="Scripts\RulesManager\rulesmanager.js" />
+    <Content Include="Scripts\RulesManager\tester.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Spire.Doc_license.elic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Spire.PDF_license.elic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Content\CollateralImages\user.png" />
+    <Content Include="Content\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\codemirror.css" />
+    <Content Include="Content\css\custom-ag-grid.css" />
+    <Content Include="Content\css\custom-theme\custom.css" />
+    <Content Include="Content\css\custom-theme\images\1px_advSearchBg.jpg" />
+    <Content Include="Content\css\custom-theme\images\1px_brandHeaderBg.gif" />
+    <Content Include="Content\css\custom-theme\images\1px_dashboardBg.gif" />
+    <Content Include="Content\css\custom-theme\images\1px_navigationBg.gif" />
+    <Content Include="Content\css\custom-theme\images\5px_advSearchLeft.jpg" />
+    <Content Include="Content\css\custom-theme\images\5px_advSearchRight.jpg" />
+    <Content Include="Content\css\custom-theme\images\account-active.png" />
+    <Content Include="Content\css\custom-theme\images\account.png" />
+    <Content Include="Content\css\custom-theme\images\ajax-loader.gif" />
+    <Content Include="Content\css\custom-theme\images\Anthem_logo.png" />
+    <Content Include="Content\css\custom-theme\images\back_to_top_dark.png" />
+    <Content Include="Content\css\custom-theme\images\back_to_top_faint.png" />
+    <Content Include="Content\css\custom-theme\images\bg-login.png" />
+    <Content Include="Content\css\custom-theme\images\bg-login.svg" />
+    <Content Include="Content\css\custom-theme\images\calendar.gif" />
+    <Content Include="Content\css\custom-theme\images\calender-icon.svg" />
+    <Content Include="Content\css\custom-theme\images\check.png" />
+    <Content Include="Content\css\custom-theme\images\chrome-style-checked.png" />
+    <Content Include="Content\css\custom-theme\images\chrome-style-unchecked.png" />
+    <Content Include="Content\css\custom-theme\images\chrome-style.png" />
+    <Content Include="Content\css\custom-theme\images\close-btn-dark.png" />
+    <Content Include="Content\css\custom-theme\images\close-btn.png" />
+    <Content Include="Content\css\custom-theme\images\colum1.jfif" />
+    <Content Include="Content\css\custom-theme\images\dbSchema1.jfif" />
+    <Content Include="Content\css\custom-theme\images\document-design-active.png" />
+    <Content Include="Content\css\custom-theme\images\document-design.png" />
+    <Content Include="Content\css\custom-theme\images\document-folder-active.png" />
+    <Content Include="Content\css\custom-theme\images\document-folder.png" />
+    <Content Include="Content\css\custom-theme\images\document-render-active.png" />
+    <Content Include="Content\css\custom-theme\images\document-render.png" />
+    <Content Include="Content\css\custom-theme\images\ebenefitsync-logo-lg.png" />
+    <Content Include="Content\css\custom-theme\images\ebenefitsync-logo.png" />
+    <Content Include="Content\css\custom-theme\images\ebenefitsync_logo.png" />
+    <Content Include="Content\css\custom-theme\images\ebs-design-logo-2.png" />
+    <Content Include="Content\css\custom-theme\images\ebs-design-logo.png" />
+    <Content Include="Content\css\custom-theme\images\eBS-logo-vertical.png" />
+    <Content Include="Content\css\custom-theme\images\eMedicareSync-logo.png" />
+    <Content Include="Content\css\custom-theme\images\eMS-logo-vertical.png" />
+    <Content Include="Content\css\custom-theme\images\error.png" />
+    <Content Include="Content\css\custom-theme\images\excel.png" />
+    <Content Include="Content\css\custom-theme\images\folder-version-menu-icons.png" />
+    <Content Include="Content\css\custom-theme\images\form-back.png" />
+    <Content Include="Content\css\custom-theme\images\header-background.jpg" />
+    <Content Include="Content\css\custom-theme\images\hero-background.jpg" />
+    <Content Include="Content\css\custom-theme\images\hero-img.jpg" />
+    <Content Include="Content\css\custom-theme\images\hero.jpg" />
+    <Content Include="Content\css\custom-theme\images\hero2.png" />
+    <Content Include="Content\css\custom-theme\images\home-active.png" />
+    <Content Include="Content\css\custom-theme\images\home.png" />
+    <Content Include="Content\css\custom-theme\images\icon-blue.png" />
+    <Content Include="Content\css\custom-theme\images\icon-green.png" />
+    <Content Include="Content\css\custom-theme\images\icon-red.png" />
+    <Content Include="Content\css\custom-theme\images\icon_navAdministrationNew.png" />
+    <Content Include="Content\css\custom-theme\images\icon_saveBlack.gif" />
+    <Content Include="Content\css\custom-theme\images\icon_showHideNav.png" />
+    <Content Include="Content\css\custom-theme\images\icon_showHideNavover.png" />
+    <Content Include="Content\css\custom-theme\images\icon_showNav.png" />
+    <Content Include="Content\css\custom-theme\images\icon_showNavOver.png" />
+    <Content Include="Content\css\custom-theme\images\klaus.png" />
+    <Content Include="Content\css\custom-theme\images\loader.gif" />
+    <Content Include="Content\css\custom-theme\images\login-back.png" />
+    <Content Include="Content\css\custom-theme\images\logout.png" />
+    <Content Include="Content\css\custom-theme\images\master-list-active.png" />
+    <Content Include="Content\css\custom-theme\images\master-list.png" />
+    <Content Include="Content\css\custom-theme\images\pdf-printer-icon.png" />
+    <Content Include="Content\css\custom-theme\images\pdf.png" />
+    <Content Include="Content\css\custom-theme\images\pdf_icon.png" />
+    <Content Include="Content\css\custom-theme\images\Pkey2.jfif" />
+    <Content Include="Content\css\custom-theme\images\portfolio-active.png" />
+    <Content Include="Content\css\custom-theme\images\portfolio.png" />
+    <Content Include="Content\css\custom-theme\images\primarykey.gif" />
+    <Content Include="Content\css\custom-theme\images\refresh-button.png" />
+    <Content Include="Content\css\custom-theme\images\repeat-background-hero.jpg" />
+    <Content Include="Content\css\custom-theme\images\reporting.png" />
+    <Content Include="Content\css\custom-theme\images\settings-icon.png" />
+    <Content Include="Content\css\custom-theme\images\tab-bg.png" />
+    <Content Include="Content\css\custom-theme\images\tab-seperator-bg.png" />
+    <Content Include="Content\css\custom-theme\images\table.jfif" />
+    <Content Include="Content\css\custom-theme\images\tmg-logo.png" />
+    <Content Include="Content\css\custom-theme\images\tmg-ui-icons_222222_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\topHeaderLeft.gif" />
+    <Content Include="Content\css\custom-theme\images\topHeaderRight.gif" />
+    <Content Include="Content\css\custom-theme\images\translator-icon.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_glass_75_ffffff_1x400.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\css\custom-theme\images\ui-bg_inset-soft_95_fef1ec_1x100.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_55A8D5_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_f6cf3b_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\css\custom-theme\images\UploadPDF.jfif" />
+    <Content Include="Content\css\custom-theme\images\validating-icon-new.png" />
+    <Content Include="Content\css\custom-theme\images\validating-icon.png" />
+    <Content Include="Content\css\custom-theme\images\wb-foreign-key.png" />
+    <Content Include="Content\css\custom-theme\images\WellCare_logo.png" />
+    <Content Include="Content\css\custom-theme\images\word.png" />
+    <Content Include="Content\css\custom-theme\images\word_icon.png" />
+    <Content Include="Content\css\custom-theme\jquery-ui-1.10.0.custom.css" />
+    <Content Include="Content\css\custom-theme\jquery-ui-1.9.2.custom.css" />
+    <Content Include="Content\css\custom-theme\jquery.ui.1.10.0.ie.css" />
+    <Content Include="Content\css\custom-theme\jquery.ui.1.9.2.ie.css" />
+    <Content Include="Content\css\custom-theme\skin-blue.min.css" />
+    <Content Include="Content\css\DatabaseUI\kendo.common.min.css" />
+    <Content Include="Content\css\DatabaseUI\kendo.dataviz.min.css" />
+    <Content Include="Content\css\DatabaseUI\kendo.default.min.css" />
+    <Content Include="Content\css\DatabaseUI\kendo.mobile.all.min.css" />
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\fullscreen.css" />
+    <Content Include="Content\css\handsontable.full.css" />
+    <Content Include="Content\css\images\ac-plan.png" />
+    <Content Include="Content\css\images\ac-plan.svg" />
+    <Content Include="Content\css\images\activity.png" />
+    <Content Include="Content\css\images\audit.png" />
+    <Content Include="Content\css\images\audit.svg" />
+    <Content Include="Content\css\images\bell.png" />
+    <Content Include="Content\css\images\documents.png" />
+    <Content Include="Content\css\images\documents.svg" />
+    <Content Include="Content\css\images\filter.png" />
+    <Content Include="Content\css\images\list.png" />
+    <Content Include="Content\css\images\list.svg" />
+    <Content Include="Content\css\images\refresh.png" />
+    <Content Include="Content\css\images\refresh.svg" />
+    <Content Include="Content\css\images\rule.svg" />
+    <Content Include="Content\css\images\settings.svg" />
+    <Content Include="Content\css\images\success.svg" />
+    <Content Include="Content\css\images\trash.svg" />
+    <Content Include="Content\css\images\user-bright.png" />
+    <Content Include="Content\css\images\user.png" />
+    <Content Include="Content\css\images\users.svg" />
+    <Content Include="Content\css\images\watchList.png" />
+    <Content Include="Content\css\images\workflow.svg" />
+    <Content Include="Content\css\images\workqueue.png" />
+    <Content Include="Content\css\query-builder.default.css" />
+    <Content Include="Content\css\response.custom-org.css" />
+    <Content Include="Content\css\response.custom.css" />
+    <Content Include="Content\css\roboto.css" />
+    <Content Include="Content\css\show-hint.css" />
+    <Content Include="Content\css\skin-blue.min.css" />
+    <Content Include="Content\css\stylesheet-new.css" />
+    <Content Include="Content\css\tmaannotation.css" />
+    <Content Include="Content\css\tmg-layout.min.css" />
+    <Content Include="Content\css\tmg.equinox.custom-old.css" />
+    <Content Include="Content\css\tmg.equinox.custom-org.css" />
+    <Content Include="Content\css\tmg.equinox.custom.css" />
+    <Content Include="Content\css\tmg.equinox.custom.print.css" />
+    <Content Include="Content\css\tmg.equinox.login-org.css" />
+    <Content Include="Content\css\tmg.equinox.login.css" />
+    <Content Include="Content\css\ui.jqgrid-org.css" />
+    <Content Include="Content\css\ui.jqgrid.css" />
+    <Content Include="Content\css\yantramanav.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\material-icons\MaterialIcons-Regular.svg" />
+    <Content Include="Content\fonts\material-icons\stylesheet-new.css" />
+    <Content Include="Content\PqGrid\images\horiz-bg.png" />
+    <Content Include="Content\PqGrid\images\vert-bg.png" />
+    <Content Include="Content\PqGrid\pqgrid.bootstrap.min.css" />
+    <Content Include="Content\PqGrid\pqgrid.min.css" />
+    <Content Include="Content\PqGrid\pqgrid.ui.min.css" />
+    <Content Include="Content\PqGrid\pqselect.bootstrap.min.css" />
+    <Content Include="Content\PqGrid\pqselect.min.css" />
+    <Content Include="Content\PqGrid\themes\bootstrap\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\brown\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\chocolate\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\cocoa\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\crimson\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\gray\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\indigo\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\office\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\purple\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\red\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\rosybrown\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\sandybrown\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\steelblue\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\tan\pqgrid.css" />
+    <Content Include="Content\PqGrid\themes\violet\pqgrid.css" />
+    <Content Include="Content\SVG Images\ac-plan.svg" />
+    <Content Include="Content\SVG Images\audit.svg" />
+    <Content Include="Content\SVG Images\documents.svg" />
+    <Content Include="Content\SVG Images\list.svg" />
+    <Content Include="Content\SVG Images\refresh.svg" />
+    <Content Include="Content\SVG Images\rule.svg" />
+    <Content Include="Content\SVG Images\settings.svg" />
+    <Content Include="Content\SVG Images\users.svg" />
+    <Content Include="Content\SVG Images\workflow.svg" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\tinyMce\Apple.png" />
+    <Content Include="Content\tinyMce\Back Membership Card.png" />
+    <Content Include="Content\tinyMce\ID Card No Rx - Back.png" />
+    <Content Include="Content\tinyMce\ID Card No Rx - Front.png" />
+    <Content Include="Content\tinyMce\Medicare Rx Membership Card.png" />
+    <Content Include="Content\tinyMce\Question Mark.png" />
+    <Content Include="Content\tinyMce\Square Bullet.png" />
+    <Content Include="Content\tinyMce\Tick Bullets.png" />
+    <Content Include="Content\tinyMce\Tick Mark.png" />
+    <Content Include="Content\tinyMce\Tick Not Valid.png" />
+    <Content Include="Content\tinyMce\Tick [Large].png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\CCRIntegration\provisionDetails.js" />
+    <Content Include="Scripts\CCRIntegration\tableDetails.js" />
+    <Content Include="Scripts\CCRIntegration\translatedPlan.js" />
+    <Content Include="Scripts\CCRIntegration\translationQueue.js" />
+    <Content Include="Scripts\Consortium\consortium.js" />
+    <Content Include="Scripts\ConsumerAccount\accountsearch.js" />
+    <Content Include="Scripts\ConsumerAccount\folderdialog.js" />
+    <Content Include="Scripts\ConsumerAccount\manageaccount.js" />
+    <Content Include="Scripts\DocumentCollateral\generatedocument.js" />
+    <Content Include="Scripts\DocumentCollateral\parametersDialog.js" />
+    <Content Include="Scripts\DocumentCollateral\reportConfigurationGrid.js" />
+    <Content Include="Scripts\DocumentCollateral\reportdesign.js" />
+    <Content Include="Scripts\DocumentCollateral\useractivity.js" />
+    <Content Include="Scripts\DocumentSync\compareDocuments.js" />
+    <Content Include="Scripts\DocumentSync\documentSync.js" />
+    <Content Include="Scripts\DocumentSync\selectSourceDocument.js" />
+    <Content Include="Scripts\DocumentSync\selectTargetDocuments.js" />
+    <Content Include="Scripts\DocumentSync\setRepeaterCriteria.js" />
+    <Content Include="Scripts\DocumentSync\setupCompare.js" />
+    <Content Include="Scripts\DocumentSync\syncDocuments.js" />
+    <Content Include="Scripts\ErrorLog\errorhandler.js" />
+    <Content Include="Scripts\FolderVersion\annotationManager.js" />
+    <Content Include="Scripts\FolderVersion\autoSave.js" />
+    <Content Include="Scripts\FolderVersion\childPopupManager.js" />
+    <Content Include="Scripts\FolderVersion\customruleHandler.js" />
+    <Content Include="Scripts\FolderVersion\customrulePQ.js" />
+    <Content Include="Scripts\FolderVersion\datasourcemanualmappingAG.js" />
+    <Content Include="Scripts\FolderVersion\ebrules.js" />
+    <Content Include="Scripts\FolderVersion\elementeventextensionsAG.js" />
+    <Content Include="Scripts\FolderVersion\exitValidate.js" />
+    <Content Include="Scripts\FolderVersion\expressionBuilder.js" />
+    <Content Include="Scripts\FolderVersion\createformdialog.js" />
+    <Content Include="Scripts\FolderVersion\datasourcemanualmappingPQ.js" />
+    <Content Include="Scripts\FolderVersion\datasourcesync.js" />
+    <Content Include="Scripts\FolderVersion\expressionBuilderExtension-eBS.js" />
+    <Content Include="Scripts\FolderVersion\expressionBuilderExtension-eMS.js" />
+    <Content Include="Scripts\FolderVersion\fieldMaskValidator.js" />
+    <Content Include="Scripts\FolderVersion\folderLock.js" />
+    <Content Include="Scripts\FolderVersion\formDesignVersionPreLoader.js" />
+    <Content Include="Scripts\FolderVersion\folderMember.js" />
+    <Content Include="Scripts\FolderVersion\formInstanceBuilder.sot.js" />
+    <Content Include="Scripts\FolderVersion\majorMinorVersionML.js" />
+    <Content Include="Scripts\FolderVersion\keybuilder.js" />
+    <Content Include="Scripts\FolderVersion\mlimport.js" />
+    <Content Include="Scripts\FolderVersion\elementeventextensions.js" />
+    <Content Include="Scripts\FolderVersion\opendocumentdialog.js" />
+    <Content Include="Scripts\FolderVersion\repeaterBuilderMedical.js" />
+    <Content Include="Scripts\FolderVersion\repeaterBuilderPQ.js" />
+    <Content Include="Scripts\FolderVersion\repeaterBuilderAG.js" />
+    <Content Include="Scripts\FolderVersion\journalEntry.js" />
+    <Content Include="Scripts\FolderVersion\journalEntryDialog.js" />
+    <Content Include="Scripts\FolderVersion\journalManager.js" />
+    <Content Include="Scripts\FolderVersion\journalReport.js" />
+    <Content Include="Scripts\FolderVersion\journalNotify.js" />
+    <Content Include="Scripts\FolderVersion\prefixReuse.js" />
+    <Content Include="Scripts\FolderVersion\productShareReport.js" />
+    <Content Include="Scripts\FolderVersion\repeaterCellDialog.js" />
+    <Content Include="Scripts\FolderVersion\repeaterdialogAG.js" />
+    <Content Include="Scripts\FolderVersion\repeaterdialog.js" />
+    <Content Include="Scripts\FolderVersion\repeaterRuleProcessor.js" />
+    <Content Include="Scripts\FolderVersion\ruleProcessor.js" />
+    <Content Include="Scripts\FolderVersion\printPreview.js" />
+    <Content Include="Scripts\FolderVersion\retroaccountdialog.js" />
+    <Content Include="Scripts\DashBoard\globalClaims.js" />
+    <Content Include="Scripts\FolderVersion\formvalidationmanager.js" />
+    <Content Include="Scripts\FolderVersion\masterlist.js" />
+    <Content Include="Scripts\FolderVersion\sotmanager.js" />
+    <Content Include="Scripts\FolderVersion\tabmanager.js" />
+    <Content Include="Scripts\FolderVersion\userSettingDialog.js" />
+    <Content Include="Scripts\FolderVersion\versionHistoryML.js" />
+    <Content Include="Scripts\FolderVersion\viewImpactReport.js" />
+    <Content Include="Scripts\FolderVersion\workFlowSetting.js" />
+    <Content Include="Scripts\FormDesign\duplicationCheckDialog.js" />
+    <Content Include="Scripts\FormDesign\customregexdialog.js" />
+    <Content Include="Scripts\FormDesign\expressionbuilder.js" />
+    <Content Include="Scripts\FormDesign\expressionRulesDialog.js" />
+    <Content Include="Scripts\FormDesign\expressionRulesDialogNew.js" />
+    <Content Include="Scripts\FormDesign\expressionRuleTester.js" />
+    <Content Include="Scripts\FormDesign\formDesignActivityLogger.js" />
+    <Content Include="Scripts\FormDesign\formdesignview.config.js" />
+    <Content Include="Scripts\FormDesign\formdesignview.default.js" />
+    <Content Include="Scripts\FormDesign\formUtilities.js" />
+    <Content Include="Scripts\FormDesign\paramadvancedconfigurationdialog.js" />
+    <Content Include="Scripts\FormDesign\query-builder.standalone.js" />
+    <Content Include="Scripts\FormDesign\rulesTesterDialog.js" />
+    <Content Include="Scripts\FormDesign\rulesTesterProcessor.js" />
+    <Content Include="Scripts\Framework\External\beautify\beautify.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\closebrackets.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\codemirror.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\fullscreen.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\javascript-hint.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\javascript.js" />
+    <Content Include="Scripts\Framework\External\codemirror\lib\show-hint.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\FolderVersion\vbid.extension.js" />
+    <None Include="Scripts\Framework\External\Notification\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.validate.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.validate.min.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\Framework\External\Notification\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Framework\External\Notification\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Framework\External\Notification\Notify.js" />
+    <Content Include="Scripts\Framework\External\Notification\respond.js" />
+    <Content Include="Scripts\Framework\External\Notification\respond.min.js" />
+    <None Include="Scripts\Framework\External\Notification\_references.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\annotate\css\style.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\annotate\img\annotation.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\annotate\img\delete-annotation.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\annotate\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\annotate\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\model_language\ms-icon-70x70.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\css\blueplus12.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\css\flite.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\css\opentip.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\css\redx12.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-acceptall.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-acceptone.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-rejectall.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-rejectone.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-toggleshow.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\flite-toggletracking.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-acceptall.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-acceptone.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-rejectall.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-rejectone.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-toggleshow.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\icons\hidpi\flite-toggletracking.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\js\flite-interface.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\js\jquery.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\js\opentip-adapter.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\js\opentip-adapter.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\langs\de.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\langs\en.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\langs\fr.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\flite\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\css\searchreplace.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\js\searchreplace.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\langs\en_dlg.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\icesearchreplace\searchreplace.htm" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\css\ice.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\accept.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-accept-change.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-accept.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-reject-change.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-reject.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-showchanges.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\ice-togglechanges.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\img\reject.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\js\ice.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\ice\pluginmin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\annotate.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\comments-ui.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\images\marker3-s.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\images\marker3.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\images\marker3tb.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\icons\lance.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\js\annotationsui.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\js\app.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\js\jquery.autogrow.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\langs\de.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\langs\en.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\langs\fr.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\fonts\remark.svg" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\img\tiny-watermark.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\tinycomments.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\version.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\css\style.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\img\annotation-delete.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\img\annotation-hide.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\img\annotation.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\readme.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\src\bookmark.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\dom.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\ice.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\icePlugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\icePluginManager.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\plugins\IceAddTitlePlugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\plugins\IceCopyPastePlugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\plugins\IceEmdashPlugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\plugins\IceSmartQuotesPlugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\polyfills.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\rangy-core.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\rangy-core-new.js" />
+    <Content Include="Scripts\Framework\External\tinymce\src\selection.js" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\mobile\theme.js" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\tiny_mce.js" />
+    <Content Include="Scripts\Framework\Internal\locktimer.js" />
+    <Content Include="Scripts\Framework\Internal\query-builder.standalone.js" />
+    <Content Include="Scripts\FormDesign\rulesdialog.js" />
+    <Content Include="Scripts\FormDesign\previewformdesign.js" />
+    <Content Include="Scripts\FormDesign\roleaccesspermission.js" />
+    <Content Include="Scripts\FormDesign\repeaterTemplateDialog.js" />
+    <Content Include="Scripts\Framework\External\ag-grid-enterprise.min.js" />
+    <Content Include="Scripts\Framework\External\ag-grid.min.js" />
+    <Content Include="Scripts\Framework\External\ag-grid.noStyle.js" />
+    <Content Include="Scripts\Framework\External\bootstrap-multiselect.0.9.13.js" />
+    <Content Include="Scripts\Framework\External\handsontable.full.js" />
+    <Content Include="Scripts\Framework\External\jquery.bootstrap.wizard.js" />
+    <Content Include="Scripts\Framework\External\jquery.inputmask.js" />
+    <Content Include="Scripts\Framework\External\jquery.inputmask.extensions.js" />
+    <Content Include="Scripts\Framework\External\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\Framework\External\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Scripts\Framework\External\jquery.autocomplete.extensions.js" />
+    <Content Include="Scripts\Framework\External\jquery.steps.js" />
+    <Content Include="Scripts\Framework\External\PQGrid\jszip.min.js" />
+    <Content Include="Scripts\Framework\External\PQGrid\pqgrid.min.js" />
+    <Content Include="Scripts\Framework\External\PQGrid\pqselect.min.js" />
+    <Content Include="Scripts\Framework\External\PQGrid\touch-punch.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\license.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\bbcode\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\code\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\colorpicker\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\css\dialog.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\buttons.png" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\icons.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\items.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\menu_arrow.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\menu_check.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\progress.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\img\tabs.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\tiny_mce_popup.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\utils\editable_selects.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\utils\form_utils.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\utils\mctabs.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\compat3x\utils\validate.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\contextmenu\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\model_language\dialog.html" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\model_language\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\model_language\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\example_dependency\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\fullpage\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\hr\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\imagetools\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\image\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\legacyoutput\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\link\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lists\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\media\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\noneditable\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\paste\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\changelog.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\css\editorcss.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\flash\textboxpaste.swf" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\img\spinner_96.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\js\wordimport.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ar.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ca.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\cs.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\da.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\de.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\el.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\es.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\fa.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\fi.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\fr_FR.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\he_IL.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\hr.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\hu_HU.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\it.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ja.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\kk.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ko_KR.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\nb_NO.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\nl.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\pl.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\pt_BR.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\pt_PT.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ro.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\ru.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\sk.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\sl_SI.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\sv_SE.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\th_TH.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\tr.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\uk.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\zh_CN.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\langs\zh_TW.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\license.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\powerpaste\version.txt" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\preview\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\print\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\save\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\spellchecker\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tabfocus\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\table\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\template\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\textcolor\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\textpattern\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\toc\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\address.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\article.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\aside.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\blockquote.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\div.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\dl.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\figure.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h1.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h2.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h3.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h4.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h5.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\h6.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\hgroup.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\ol.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\p.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\pre.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\section.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\img\ul.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\inlite\theme.js" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\modern\theme.js" />
+    <Content Include="Scripts\Framework\External\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\Framework\External\tinymce\tinymce.js" />
+    <Content Include="Scripts\Framework\External\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\Framework\Internal\ajaxnotifier.js" />
+    <Content Include="Scripts\Framework\External\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\Framework\External\bootstrap.js" />
+    <Content Include="Scripts\Framework\Internal\activitylogger.js" />
+    <Content Include="Scripts\Framework\Internal\floatingsectionheaders.js" />
+    <Content Include="Scripts\Framework\Internal\agGridtoCsv.js" />
+    <Content Include="Scripts\Framework\Internal\gridutilities.js" />
+    <Content Include="Scripts\Framework\Internal\jqGridtoCsv.js" />
+    <Content Include="Scripts\Framework\Internal\ruleExecutionLogger.js" />
+    <Content Include="Scripts\Framework\Internal\uiblocker.js" />
+    <Content Include="Scripts\Framework\Internal\dialogs.js" />
+    <Content Include="Scripts\Framework\External\jsrender.extension.js" />
+    <Content Include="Scripts\FolderVersion\errorManager.js" />
+    <Content Include="Scripts\FolderVersion\majorMinorVersion.js" />
+    <Content Include="Scripts\FolderVersion\repeaterBuilder.js" />
+    <Content Include="Scripts\FolderVersion\folderstatus.js" />
+    <Content Include="Scripts\FolderVersion\folderVersion.js" />
+    <Content Include="Scripts\FolderVersion\folderVersionWorkflow.js" />
+    <Content Include="Scripts\FolderVersion\folderManager.js" />
+    <Content Include="Scripts\FolderVersion\formInstanceBuilder.js" />
+    <Content Include="Scripts\FolderVersion\validationManager.js" />
+    <Content Include="Scripts\FolderVersion\versionHistory.js" />
+    <Content Include="Scripts\FormDesign\dataSourcedialog.js" />
+    <Content Include="Scripts\FormDesign\dropdownitemsdialog.js" />
+    <Content Include="Scripts\FormDesign\fieldlistdialog.js" />
+    <Content Include="Scripts\FormGroupDesign\formdesigngroup.js" />
+    <Content Include="Scripts\Framework\External\grid.locale-en.js" />
+    <Content Include="Scripts\Framework\External\jquery.jqGrid.js" />
+    <Content Include="Scripts\Framework\External\jsrender.js" />
+    <Content Include="Scripts\Framework\External\linq.js" />
+    <Content Include="Scripts\Framework\Internal\ajaxwrapper.js" />
+    <Content Include="Scripts\FormDesign\sectionlistdialog.js" />
+    <Content Include="Scripts\FormDesign\uielementpropertygrid.js" />
+    <Content Include="Scripts\FormDesign\formdesign.js" />
+    <Content Include="Scripts\FormDesign\formdesignversion.js" />
+    <Content Include="Scripts\Framework\Internal\globalutilities.js" />
+    <Content Include="Scripts\DashBoard\dashboard.js" />
+    <Content Include="Scripts\Framework\Internal\globalvariables.js" />
+    <Content Include="Scripts\Framework\External\jquery-1.11.0.js" />
+    <Content Include="Scripts\Framework\External\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\GlobalUpdate\generateIAS.js" />
+    <Content Include="Scripts\GlobalUpdate\rulesdialoggu.js" />
+    <Content Include="Scripts\GlobalUpdate\uiguelementpropertygrid.js" />
+    <Content Include="Scripts\Layout\fontresizer.js" />
+    <Content Include="Scripts\Layout\layout.js" />
+    <Content Include="Scripts\Layout\tmg-layout.js" />
+    <Content Include="Scripts\LogOff\logoff.js" />
+    <Content Include="Scripts\Framework\Internal\messages.js" />
+    <Content Include="Scripts\ConsumerAccount\portfoliosearch.js" />
+    <Content Include="Scripts\FolderVersionReport\folderVersionReport.js" />
+    <Content Include="Scripts\MasterList\cascademasterlist.js" />
+    <Content Include="Scripts\MasterList\masterList.js" />
+    <Content Include="Scripts\NotificationStatus\Notification.js" />
+    <Content Include="Scripts\PBPImport\exitValidateExport.js" />
+    <Content Include="Scripts\PBPImport\mdbComparer.js" />
+    <Content Include="Scripts\PBPImport\PBPDatabase.js" />
+    <Content Include="Scripts\PBPImport\PBPExport.js" />
+    <Content Include="Scripts\PBPImport\odm.js" />
+    <Content Include="Scripts\PBPImport\pbpimport.js" />
+    <Content Include="Scripts\QHPExport\selectTargetDocuments.js" />
+    <Content Include="Scripts\QueryManager\QueryManager.js" />
+    <Content Include="Scripts\ReportingCenter\DatabaseUI\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\ReportingCenter\DatabaseUI\kendo.all.min.js" />
+    <Content Include="Scripts\ReportingCenter\reportingcenter.js" />
+    <Content Include="Scripts\Report\AuditChecklistReport.js" />
+    <Content Include="Scripts\PrintTemplate\pdfConfigurationDesign.js" />
+    <Content Include="Scripts\RoutingTask\routingTaskDialog.js" />
+    <Content Include="Scripts\SectionLockPopUp\SectionLockPopUp.js" />
+    <Content Include="Scripts\ServiceDesign\searchparameterdialog.js" />
+    <Content Include="Scripts\ServiceDesign\servicedefinitionpropertygrid.js" />
+    <Content Include="Scripts\ServiceDesign\servicedesign.js" />
+    <Content Include="Scripts\ServiceDesign\servicedesignversion.js" />
+    <Content Include="Scripts\ServiceDesign\servicedesignversionoutput.js" />
+    <Content Include="Scripts\Settings\customWorkflowSettings.js" />
+    <Content Include="Scripts\Settings\masterWorkflowSettings.js" />
+    <Content Include="Scripts\Settings\settings.js" />
+    <Content Include="Scripts\Settings\Tasklist.js" />
+    <Content Include="Scripts\Settings\userManagementSettings.js" />
+    <Content Include="Scripts\Settings\WorkflowTaskMapping.js" />
+    <Content Include="Views\FolderVersion\ExitValidate.cshtml" />
+    <Content Include="Views\RulesManager\Analyzer.cshtml" />
+    <Content Include="Views\RulesManager\AssignTargets.cshtml" />
+    <Content Include="Views\RulesManager\Comparer.cshtml" />
+    <Content Include="Views\RulesManager\Designer.cshtml" />
+    <Content Include="Views\RulesManager\Index.cshtml" />
+    <Content Include="Views\RulesManager\Tester.cshtml" />
+    <Content Include="Views\Shared\RulesManagerLayout.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\HangfireConfig.cs" />
+    <Compile Include="App_Start\QhpConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SalesforceHandler.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\StartupHelper.cs" />
+    <Compile Include="Controllers\ConsortiumController.cs" />
+    <Compile Include="Controllers\CustomRuleController.cs" />
+    <Compile Include="Controllers\DocumentCollateralController.cs" />
+    <Compile Include="Controllers\DocumentSyncController.cs" />
+    <Compile Include="Controllers\ExitValidateController.cs" />
+    <Compile Include="Controllers\ExpressionBuilderController.cs" />
+    <Compile Include="Controllers\CCRIntegrationController.cs" />
+    <Compile Include="Controllers\RulesManagerController.cs" />
+    <Compile Include="Controllers\VBIDController.cs" />
+    <Compile Include="Controllers\FolderVersionWorkFlowController.cs" />
+    <Compile Include="Controllers\FormInstanceRuleExecutionLogController.cs" />
+    <Compile Include="Controllers\GlobalUpdateController.cs" />
+    <Compile Include="Controllers\MDBComparerController.cs" />
+    <Compile Include="Controllers\PBPExportController.cs" />
+    <Compile Include="Controllers\ODMController.cs" />
+    <Compile Include="Controllers\PBPImportController.cs" />
+    <Compile Include="Controllers\PBPViewActionController.cs" />
+    <Compile Include="Controllers\PlanTaskUserMappingController.cs" />
+    <Compile Include="Controllers\PrintTemplateController.cs" />
+    <Compile Include="Controllers\QHPExportController.cs" />
+    <Compile Include="Controllers\QueryManagerController.cs" />
+    <Compile Include="Controllers\ReportingCenterController.cs" />
+    <Compile Include="Controllers\ReportingController.cs" />
+    <Compile Include="Controllers\ServiceDefinitionController.cs" />
+    <Compile Include="Controllers\ServiceDesignController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\UnAuthenticatedController.cs" />
+    <Compile Include="Controllers\AuthenticatedController.cs" />
+    <Compile Include="Controllers\ConsumerAccountController.cs" />
+    <Compile Include="Controllers\JournalReportController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FolderVersionController.cs" />
+    <Compile Include="Controllers\FormDesignPreviewController.cs" />
+    <Compile Include="Controllers\FormInstanceController.cs" />
+    <Compile Include="Controllers\MasterListController.cs" />
+    <Compile Include="Controllers\FormDesignController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\FormDesignGroupController.cs" />
+    <Compile Include="Controllers\FormGroupController.cs" />
+    <Compile Include="Controllers\PortfolioController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\FolderVersionReportController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UIElementController.cs" />
+    <Compile Include="Controllers\WorkFlowController.cs" />
+    <Compile Include="Controllers\WorkFlowTaskMappingController.cs" />
+    <Compile Include="Framework\BaseController.cs" />
+    <Compile Include="Framework\ControllerHelper.cs" />
+    <Compile Include="Framework\DownloadResult.cs" />
+    <Compile Include="Framework\RulesManager\RulesManagerTreeDataBuilder.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ReportQueueInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Shared\FormDesignLayout.cshtml" />
+    <Content Include="Views\FormDesign\Index.cshtml" />
+    <Content Include="Config\LoggingConfiguration.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\ExceptionHandling.config" />
+    <Content Include="Config\Cache.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Security.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\StubIdp.cer" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\stylesheet-new.-orgcss" />
+    <Content Include="Content\css\tmg-layout.min.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\lato-regular-webfont.woff" />
+    <Content Include="Content\fonts\lato-regular-webfont.woff2" />
+    <Content Include="Content\fonts\Lato-Regular.ttf" />
+    <Content Include="Content\fonts\material-icons\MaterialIcons-Regular.eot" />
+    <Content Include="Content\fonts\material-icons\MaterialIcons-Regular.ttf" />
+    <Content Include="Content\fonts\material-icons\MaterialIcons-Regular.woff" />
+    <Content Include="Content\fonts\material-icons\MaterialIcons-Regular.woff2" />
+    <Content Include="Content\fonts\roboto-light-webfont.woff" />
+    <Content Include="Content\fonts\roboto-light-webfont.woff2" />
+    <Content Include="Content\fonts\Roboto-Light.ttf" />
+    <Content Include="Content\fonts\roboto-regular-webfont.woff" />
+    <Content Include="Content\fonts\roboto-regular-webfont.woff2" />
+    <Content Include="Content\fonts\Roboto-Regular.ttf" />
+    <None Include="Properties\PublishProfiles\SCM.pubxml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <Content Include="Views\Shared\FormDesignGroupLayout.cshtml" />
+    <Content Include="Views\Shared\LoginLayout.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\FormRenderLayout.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Shared\FontResizer.cshtml" />
+    <Content Include="Views\FormDesignPreview\Preview.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\FolderVersion\Index.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\ConsumerAccount\AccountSearch.cshtml" />
+    <Content Include="Views\ConsumerAccount\ManageAccount.cshtml" />
+    <Content Include="Views\Shared\ConsumerAccountLayout.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\FolderVersion\Templates.cshtml" />
+    <Content Include="Views\Shared\ErrorLayout.cshtml" />
+    <Content Include="Views\FormDesignGroup\Index.cshtml" />
+    <Content Include="Views\Shared\DashBoardLayout.cshtml" />
+    <Content Include="Views\Shared\AjaxNotifier.cshtml" />
+    <Content Include="Views\Shared\Dialogs.cshtml" />
+    <Content Include="Views\ConsumerAccount\PortfolioSearch.cshtml" />
+    <Content Include="Views\ConsumerAccount\FolderDialog.cshtml" />
+    <Content Include="Views\FolderVersion\RetroAccountDialog.cshtml" />
+    <Content Include="Views\Shared\FormDesignPreviewLayout.cshtml" />
+    <Content Include="Views\Menu\Footer.cshtml" />
+    <Content Include="Views\Menu\Menus.cshtml" />
+    <Content Include="Views\FolderVersion\Preview.cshtml" />
+    <Content Include="Views\Shared\FormPreviewRenderLayout.cshtml" />
+    <Content Include="Views\FolderVersionReport\ChangeSummaryReport.cshtml" />
+    <Content Include="Views\Shared\FolderVersionReportLayout.cshtml" />
+    <Content Include="Views\JournalReport\JournalEntryReport.cshtml" />
+    <Content Include="Views\Shared\JournalReportLayout.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\SettingsLayout.cshtml" />
+    <Content Include="Views\Shared\ChangePasswordLayout.cshtml" />
+    <Content Include="Views\UnAuthenticated\ChangePassword.cshtml" />
+    <Content Include="Views\UnAuthenticated\LogOn.cshtml" />
+    <Content Include="Views\PrintTemplate\Index.cshtml" />
+    <Content Include="Views\Shared\PrintTemplateLayout.cshtml" />
+    <Content Include="Views\Settings\WorkFlowSettings.cshtml" />
+    <Content Include="Views\Consortium\Index.cshtml" />
+    <Content Include="Views\Shared\ConsortiumLayout.cshtml" />
+    <Content Include="Views\JournalReport\ProductShareReport.cshtml" />
+    <Content Include="Views\FolderVersion\CreateForm.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Settings\UserManagementSettings.cshtml" />
+    <Content Include="Views\Report\AuditChecklistReport.cshtml" />
+    <Content Include="Views\Shared\PQFormRenderLayout.cshtml" />
+    <Content Include="Views\DocumentSync\CompareCriteria.cshtml" />
+    <Content Include="Views\DocumentSync\CompareDocuments.cshtml" />
+    <Content Include="Views\DocumentSync\Index.cshtml" />
+    <Content Include="Views\DocumentSync\SetupCompare.cshtml" />
+    <Content Include="Views\DocumentSync\SourceDocuments.cshtml" />
+    <Content Include="Views\DocumentSync\SyncDocuments.cshtml" />
+    <Content Include="Views\DocumentSync\TargetDocuments.cshtml" />
+    <Content Include="Views\Shared\DocumentSyncLayout.cshtml" />
+    <Content Include="Views\QueryManager\Index.cshtml" />
+    <Content Include="Views\Shared\QueryEditorLayout.cshtml" />
+    <Content Include="Views\ServiceDesign\Index.cshtml" />
+    <Content Include="Views\Shared\ServiceVersionLayout.cshtml" />
+    <Content Include="Views\Shared\ReportDesignLayout.cshtml" />
+    <Content Include="Views\DocumentCollateral\DownloadFormDesignVersionXML.cshtml" />
+    <Content Include="Views\DocumentCollateral\GenerateReports.cshtml" />
+    <Content Include="Views\DocumentCollateral\Index.cshtml" />
+    <Content Include="Views\DocumentCollateral\Index1.cshtml" />
+    <Content Include="Views\DocumentCollateral\ReportSettings.cshtml" />
+    <Content Include="Views\DocumentCollateral\UploadReportTemplate.cshtml" />
+    <Content Include="Views\DocumentCollateral\ViewReportTemplate.cshtml" />
+    <Content Include="Views\GlobalUpdate\BatchExecution.cshtml" />
+    <Content Include="Views\GlobalUpdate\BatchExecutionStatus.cshtml" />
+    <Content Include="Views\GlobalUpdate\ExistsingGUGrid.cshtml" />
+    <Content Include="Views\GlobalUpdate\Index.cshtml" />
+    <Content Include="Views\Shared\GlobalUpdateLayout.cshtml" />
+    <Content Include="Views\MasterList\Index.cshtml" />
+    <Content Include="Views\FolderVersion\IndexML.cshtml" />
+    <Content Include="Views\DocumentCollateral\UserActivity.cshtml" />
+    <Content Include="Views\Shared\SchedulerLayout.cshtml" />
+    <Content Include="Scripts\Framework\External\tinymce\langs\readme.md" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Views\DocumentCollateral\ViewQueuedCollaterals.cshtml" />
+    <Content Include="Views\PBPImport\Index.cshtml" />
+    <Content Include="Views\Shared\PBPImportLayout.cshtml" />
+    <Content Include="Views\UnAuthenticated\LogOff.cshtml" />
+    <Content Include="Views\Error\LoginFailPage.cshtml" />
+    <Content Include="Views\Error\RoleNotFoundPage.cshtml" />
+    <Content Include="Views\PBPImport\IndexExport.cshtml" />
+    <Content Include="Views\PBPImport\PBPDataBase.cshtml" />
+    <Content Include="Views\ReportingCenter\Index.cshtml" />
+    <Content Include="Views\Shared\ReportingCenterLayout.cshtml" />
+    <Content Include="Views\FolderVersion\DesignTemplates.cshtml" />
+    <Content Include="Views\FolderVersion\SOTTemplates.cshtml" />
+    <Content Include="Views\Reporting\Index.cshtml" />
+    <Content Include="Views\FolderVersion\SOTView.cshtml" />
+    <Content Include="Scripts\Framework\Internal\table.hilight.js" />
+    <Content Include="Views\ReportingCenter\Schema.cshtml" />
+    <Content Include="Views\Shared\DatabaseUILayout.cshtml" />
+    <Content Include="Views\MasterList\CascadeMasterList.cshtml" />
+    <Content Include="Views\ReportingCenter\ReportQueue.cshtml" />
+    <Content Include="Views\PBPImport\ODM.cshtml" />
+    <Content Include="Views\PBPImport\MDBComparer.cshtml" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\languages\tinymce-annotate-ca_ES.mo" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\languages\tinymce-annotate-ca_ES.po" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\languages\tinymce-annotate-es_ES.mo" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\languages\tinymce-annotate-es_ES.po" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tma_annotate\plugin.php" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Views\RoutingTask\RoutingTaskView.cshtml" />
+    <Content Include="Views\QHPExport\Index.cshtml" />
+    <Content Include="Views\QHPExport\TargetDocuments.cshtml" />
+    <Content Include="Views\Shared\QHPExportLayout.cshtml" />
+    <Content Include="Scripts\Framework\External\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\lance\css\comments-ui.scss" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\fonts\remark.eot" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\fonts\remark.ttf" />
+    <Content Include="Scripts\Framework\External\tinymce\plugins\tinycomments\css\fonts\remark.woff" />
+    <Content Include="Views\DocumentCollateral\CollateralImages.cshtml" />
+    <Content Include="Views\ReportingCenter\ReportingSync.cshtml" />
+    <Content Include="Views\CCRIntegration\TranslationQueue.cshtml" />
+    <Content Include="Views\Shared\CCRIntegrationLayout.cshtml" />
+    <Content Include="Views\CCRIntegration\TranslatedPlan.cshtml" />
+    <Content Include="Views\CCRIntegration\TableDetails.cshtml" />
+    <Content Include="Views\CCRIntegration\ProvisionDetails.cshtml" />
+    <Content Include="Views\DocumentCollateral\ViewUploadedCollaterals.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.anocchart\tmg.equinox.anocchart.csproj">
+      <Project>{6c6ef458-fa00-4944-82bd-3824bed41c66}</Project>
+      <Name>tmg.equinox.anocchart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.applicationservices\tmg.equinox.applicationservices.csproj">
+      <Project>{354c2e89-a4f7-4503-af2b-9e0f65724ebe}</Project>
+      <Name>tmg.equinox.applicationservices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.comparesync\tmg.equinox.comparesync.csproj">
+      <Project>{e547705f-22fe-4c73-a551-034993b376ab}</Project>
+      <Name>tmg.equinox.comparesync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.core.masterlistcascade\tmg.equinox.core.masterlistcascade.csproj">
+      <Project>{eac1812a-f6a8-4772-9d07-fd306a497428}</Project>
+      <Name>tmg.equinox.core.masterlistcascade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.dependencyresolution\tmg.equinox.dependencyresolution.csproj">
+      <Project>{35a42720-7465-4f1e-b233-f2ca2e7dc349}</Project>
+      <Name>tmg.equinox.dependencyresolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.generatecollateral\tmg.equinox.generatecollateral.csproj">
+      <Project>{61680a5b-860c-4582-9559-13c64219a8c6}</Project>
+      <Name>tmg.equinox.generatecollateral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.hangfire.dependencies\tmg.equinox.hangfire.dependencies.csproj">
+      <Project>{aeebb00c-2ce9-48cb-8c5b-e5e2f50b49bc}</Project>
+      <Name>tmg.equinox.hangfire.dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.identitymanagement\tmg.equinox.identitymanagement.csproj">
+      <Project>{4C365FC5-94CF-44D3-94E0-5C2D44D1C320}</Project>
+      <Name>tmg.equinox.identitymanagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration\tmg.equinox.integration.csproj">
+      <Project>{9f1b7627-0be1-411a-8058-dd85f49bb31b}</Project>
+      <Name>tmg.equinox.integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.mapper\tmg.equinox.mapper.csproj">
+      <Project>{27466C48-7D68-4A5D-BB4F-820A120B2EA3}</Project>
+      <Name>tmg.equinox.mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.notification\tmg.equinox.notification.csproj">
+      <Project>{73e0eb2d-b032-457a-a9fe-8286e1fe1c12}</Project>
+      <Name>tmg.equinox.notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.pbpimport\tmg.equinox.pbp.import.csproj">
+      <Project>{1b9b2ac8-3128-4e9e-a81c-b9a0f90b1e86}</Project>
+      <Name>tmg.equinox.pbp.import</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.queueprocess\tmg.equinox.queueprocess.csproj">
+      <Project>{b6fda782-716c-4f30-adb4-3b2f9367ec21}</Project>
+      <Name>tmg.equinox.queueprocess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.repository\tmg.equinox.repository.csproj">
+      <Project>{20055d5e-22db-4de3-a164-7a743e0f0205}</Project>
+      <Name>tmg.equinox.repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter.collateral\tmg.equinox.ruleinterpretercollateral.csproj">
+      <Project>{d1521d11-4394-4420-82ed-499376e44b09}</Project>
+      <Name>tmg.equinox.ruleinterpretercollateral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter\tmg.equinox.ruleinterpreter.csproj">
+      <Project>{40B5C019-8FFA-4776-8DD8-B3AC1DA99CA7}</Project>
+      <Name>tmg.equinox.ruleinterpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.schema.base\tmg.equinox.schema.Base.csproj">
+      <Project>{57E3FA96-9364-4E32-BD4A-2E8D72EB9958}</Project>
+      <Name>tmg.equinox.schema.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19f18c6a-c503-41fd-8e63-e4bb2022d03f}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.web.extensions\tmg.equinox.web.extensions.csproj">
+      <Project>{6d481f2d-a6c4-4924-96c1-6c8036fbc2d8}</Project>
+      <Name>tmg.equinox.web.extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Qhp\" />
+    <Folder Include="Scripts\MDBComparer\" />
+    <Folder Include="Views\PBPViewAction\" />
+    <Folder Include="Views\WorkFlowSettings\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3819</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3820/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

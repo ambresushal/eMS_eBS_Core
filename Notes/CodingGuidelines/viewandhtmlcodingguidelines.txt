@@ -1,0 +1,33 @@
+For Views:
+1. NO partial views to be used (unless unavoidable, and can be discussed on a case to case basis)
+2. DO NOT return html for an AJAX call, only JSON should be returned for AJAX calls
+3. NO html should be generated using server-side controls / extensions
+4. Add html placeholders only on the main view page, whenever required, else use javascript to generate html elements
+	- html can be generated using javascript and the html tags provided 
+5. For Views, include a Layout screen which will be the container for the View
+6. NO script or css tags to be used in the Views(cshtml files), these should be included only in the Layout cshtml
+
+For html:
+1. NO inline styles for elements except for width/height
+2. DO NOT use css style or script blocks in a cshtml file
+3. DO NOT use any images for buttons or other elements without prior approval
+
+Third-Party controls:
+1. DO NOT include any code/files from third party controls without prior approval
+	- also DO NOT evaluate thrid-party controls or jquery plugins without first consulting your Lead/Manager
+
+For css:
+1. NEW css classes should be added to the Content\css\tmg.equinox.custom.css file ONLY
+2. DO NOT add entries for element IDs, use classes ONLY(exceptions can be made on rare occasions)
+3. Reuse existing css classes, unless unavoidable
+4. If changes needs to be done in an already existing css class of pre-defined plugins we use (for example, bootstrap, jqgrid, etc), 
+	override the css class by defining it into tmg.equinox.custom.css.
+5. No changes to be made to the core css files like bootstrap.css, ui.jqgrid.css, bootstrap-datetimepicker.min.css, jquery-ui-1.10.0.custom.css, etc.
+
+
+General:
+1. DO NOT leave commented out code in any file
+2. Ensure that the css and html is formatted properly before checkin.
+3. all text fields should be left align, numbers should be right aligned, dates & icons center should be center aligned
+
+

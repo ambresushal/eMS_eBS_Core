@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Reporting Center";
+    Layout = "~/Views/Shared/ReportingCenterLayout.cshtml";
+}
+<style>
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+</style>
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Reporting Center</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/ReportingCenter/Index">Reporting Center</a>
+        </li>
+    </ul>
+</div>
+
+<div id="reportingCentTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="/ReportingCenter/Index">Generate Report</a></li>
+        <li class="active"><a href="/ReportingCenter/ReportQueue" class="WFCATLIST">Queued Report</a></li>
+        <li><a href="/ReportingCenter/ReportingSync">Reporting Sync Logs</a></li>
+    </ul>
+    <div role="tabpanel" class="tab-content">
+        <div id="reportingCentTab-2" class="tab-pane active">
+            <div class="panel-body">
+                <div class="col-sm-12 col-xs-12 col-lg-12">
+                    <div class="timer"><span><b>Auto-Refresh in </b></span><span id="spnTimer"><b>60 seconds.</b></span></div>
+                    <div class="grid-wrapper">
+                        <table id="reportQueue"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+<div style="display: none;">
+    <div id="errorLogDialog" style="margin: 10px;word-wrap: break-word;">
+        <div>
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="queueDetailDialog">
+        <div class="grid-wrapper">
+            <table id="queueDetails"></table>
+        </div>
+    </div>
+</div>

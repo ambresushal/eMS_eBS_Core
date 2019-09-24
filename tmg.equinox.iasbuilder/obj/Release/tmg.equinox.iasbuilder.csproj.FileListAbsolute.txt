@@ -1,0 +1,10 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\tmg.equinox.iasbuilder.dll.config
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\tmg.equinox.iasbuilder.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\tmg.equinox.iasbuilder.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\tmg.equinox.applicationservices.viewmodels.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\Newtonsoft.Json.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\tmg.equinox.applicationservices.viewmodels.pdb
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\bin\Release\Newtonsoft.Json.xml
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\obj\Release\tmg.equinox.iasbuilder.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\obj\Release\tmg.equinox.iasbuilder.dll
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\tmg.equinox.iasbuilder\obj\Release\tmg.equinox.iasbuilder.pdb

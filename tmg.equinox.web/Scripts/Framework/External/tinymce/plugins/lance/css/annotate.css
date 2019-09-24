@@ -1,0 +1,36 @@
+annotation {
+	display:inline-block;
+	width: 16px !important;
+	height: 21px !important;
+	background-image: url(images/marker3.png);
+	background-size: cover;
+	text-decoration:none;
+	overflow:hidden;
+	color:transparent;
+	cursor: pointer;
+}
+annotation[data-selected='true'] {
+	background-image: url(images/marker3-s.png);
+}
+
+img.cke_annotation {
+	width: 16px !important;
+	height: 21px !important;
+	background-image: url(images/marker3.png);
+	background-size: cover;
+	cursor: pointer;
+	resize:none;
+	 -moz-resize: none;
+}
+
+img.cke_annotation[data-selected='true'], annotation.cke_annotation[data-selected='true'] {
+	background-image: url(images/marker3-s.png);
+}
+
+img.cke_annotation::selection, annotation.cke_annotation::selection {
+	background-color:transparent;	
+}
+
+img.cke_annotation::-moz-selection, annotation.cke_annotation::-moz-selection {
+	background-color:transparent;	
+}

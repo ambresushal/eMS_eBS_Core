@@ -1,0 +1,118 @@
+CSharp and Server-Side Coding guidelines:
+
+General:
+1. For every method, add comments using the standard commenting block available in VS.
+   Example :         
+		/// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <returns></returns>
+        public JsonResult FormDesignList(int tenantId)
+
+   Comments must be added wherever code is not obvious(non-standard) or some critical business logic is implemented
+	- comments should be reviewed as part of code review
+
+2. Use Pascal Case for Class/Interface/Function/Property names.
+	Examples: 
+		For class : public class FormGroupController : BaseController
+		For function :  public RepeaterElementModel GetRepeater(.....)
+	Use Pascal Case for File Names too.
+
+3. Use CamelCase for parameters, local variables of a function and member variables of a class.
+	 - public RepeaterElementModel GetRepeater(int tenantId, int formDesignVersionId, int uiElementId) // see parameters
+	 - bool isFormDesignVersionFinzalized; //for variable
+
+4. DO NOT use static classes or static variables(in any class) without prior approval.
+
+5. DO NOT include third-party libraries in the project without prior approval.
+   These libraries should be included in the project using NUGET.
+   Exceptions can be made only if the library is not available through NUGET.
+
+6. Limit the number of namespaces included at the top of a file to only those required for compiling the file.
+   - DO NOT copy/paste using statements which are not required
+
+7. Maintain separate regions in a class using #region for:
+	- private variables
+	- properties
+	- public methods/functions
+	- private methods/functions
+	- others, if required
+
+
+Controllers:
+1. All Controllers should inherit from the BaseController class(except LoginController/ErrorController).
+
+2. Every Controller which needs to use a Service/s will have the Service interfaces passed in as parameters to 
+   an overloaded constructor. These will be initialized through dependency injection automatically by Unity DI.
+   Example:
+        public FormDesignController(IFormDesignService service, IUIElementService uiElementService)
+        {
+			.....
+        }
+
+   No Service class will be instantiated directly on the Controllers.
+   
+3. Controller Files and Classes should end with "Controller".
+
+
+Services Layer:
+1. DO NOT create a new Service Interface/Class without consulting your lead/manager.
+   Some pointers for creating a Service Interface:
+   - DO NOT create one Service Interface/Class for each entity.
+   - The Interfaces are to be designed so that the functions exposed by the Interface address the requirements of 
+	 a module/sub-module.
+	 Example:
+		IFormDesignService :  exposes the functions required by the Form Design module
+		IUIElementService : exposes  the functions required for UI Element design.
+
+2. Implement an overloaded constructor to get an instance of the Services or UnitOfWork implementation. These be initialized through dependency 
+   injection automatically by Unity DI.
+   Example:
+        public FormDesignService(IUnitOfWork unitOfWork, ILoggingService loggingService, IDomainModelService domainModelService)
+        {
+			....
+		}
+	Entities and ViewModels to be instantiated directly in the code within the functions.
+	See FormDesignService.cs for examples.
+
+3. Add logging for Exceptions.
+   For exceptions, return ServiceResultStatus code for Updates/Inserts/Deletes and add messages for each exception/innerexception.
+
+4. MUST return ServiceResultStatus for any functions that Add/Update/Delete records in the database.
+   - See FormDesignService.cs for examples.
+
+5. For Collections - return null if no records are returned from the function.
+
+6. Add Validation for imput parameters to service functions as required.
+    - use the Contract class from System.Diagnostics
+	- see FormDesignService.cs for examples.
+	- SHOULD be checked as part of code review
+
+7. TransactionScope MUST be used when committing multiple records in CRUD operations.
+
+Repository and Database:
+1. Access Repository Layer through the IUnitOfWork Interface in the Service Layer(using DI).
+
+2. Use Extensions(Extended Methods) ONLY if the Generic Repository is not providing the required functionality.
+   These should be added to the tmg.equinox.repository.extensions project ONLY.
+   Specifically add comments specifying why this extebnded method is being added. 
+   SHOULD be checked as part of code review.
+
+3. If a schema change is required to the database to one or more tables, request your lead/manager for the change.
+   DO NOT update the Entities in the project or change Entity Framework mappings if there is an issue. 
+   Report the issue to your lead/manager.
+
+4. DO NOT add Views / Stored Procedures to the database without prior approval from your Manager.
+
+5. DO NOT use too many Includes in the LINQ queries(ideally on or two ONLY) to fetch data from related tables.
+   Using the join clause would be a better alternative in such cases.
+
+6. If complex LINQ queries are implemented, add Comments to explain the logic.
+
+   
+   
+
+
+
+

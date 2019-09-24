@@ -1,0 +1,2337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://equinox.tmg.com/services/vProductFacetsQHP20/ProductFacetsQHP" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="ProductFacetsQHPService" targetNamespace="http://equinox.tmg.com/services/vProductFacetsQHP20/ProductFacetsQHP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:ns1="http://equinox.tmg.com/services/base" xmlns:ns2="Plugin" elementFormDefault="unqualified" targetNamespace="http://equinox.tmg.com/services/vProductFacetsQHP20/ProductFacetsQHP" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://equinox.tmg.com/services/base" />
+      <xs:import namespace="Plugin" />
+      <xs:element name="BenefitReview" type="tns:BenefitReview" />
+      <xs:element name="BenefitReviewGrid" type="tns:BenefitReviewGrid" />
+      <xs:element name="BenefitReviewGridAltRulesData" type="tns:BenefitReviewGridAltRulesData" />
+      <xs:element name="BenefitReviewGridTierData" type="tns:BenefitReviewGridTierData" />
+      <xs:element name="CDHInformation" type="tns:CDHInformation" />
+      <xs:element name="Coinsurance" type="tns:Coinsurance" />
+      <xs:element name="CoinsuranceAmount" type="tns:CoinsuranceAmount" />
+      <xs:element name="CoinsuranceAmountDS" type="tns:CoinsuranceAmountDS" />
+      <xs:element name="Copay" type="tns:Copay" />
+      <xs:element name="CopayAmountDS" type="tns:CopayAmountDS" />
+      <xs:element name="CopayRules" type="tns:CopayRules" />
+      <xs:element name="CostShare" type="tns:CostShare" />
+      <xs:element name="Deductible" type="tns:Deductible" />
+      <xs:element name="DeductibleAmount" type="tns:DeductibleAmount" />
+      <xs:element name="DeductibleAmountDS" type="tns:DeductibleAmountDS" />
+      <xs:element name="DeductibleCarryOverAmount" type="tns:DeductibleCarryOverAmount" />
+      <xs:element name="DeductibleCarryOverAmountforFacets" type="tns:DeductibleCarryOverAmountforFacets" />
+      <xs:element name="DeductibleRules" type="tns:DeductibleRules" />
+      <xs:element name="DiseaseManagementProgramsOffered" type="tns:DiseaseManagementProgramsOffered" />
+      <xs:element name="DrugCoinsuranceAmount" type="tns:DrugCoinsuranceAmount" />
+      <xs:element name="DrugDeductibleAmount" type="tns:DrugDeductibleAmount" />
+      <xs:element name="DrugOutofPocketMaxAmountDS" type="tns:DrugOutofPocketMaxAmountDS" />
+      <xs:element name="FacetProductComponentsPDBC" type="tns:FacetProductComponentsPDBC" />
+      <xs:element name="FacetProductVariableComponent" type="tns:FacetProductVariableComponent" />
+      <xs:element name="FacetServiceSpecificDeductible" type="tns:FacetServiceSpecificDeductible" />
+      <xs:element name="FacetServiceSpecificDeductibleList" type="tns:FacetServiceSpecificDeductibleList" />
+      <xs:element name="FacetsLimits" type="tns:FacetsLimits" />
+      <xs:element name="FacetsProductInformation" type="tns:FacetsProductInformation" />
+      <xs:element name="GeneralDetails" type="tns:GeneralDetails" />
+      <xs:element name="GeneralInformation" type="tns:GeneralInformation" />
+      <xs:element name="GetAllProductFacetsQHPIDs" type="tns:GetAllProductFacetsQHPIDs" />
+      <xs:element name="GetAllProductFacetsQHPIDsResponse" type="tns:GetAllProductFacetsQHPIDsResponse" />
+      <xs:element name="GetBenefitReviewData" type="tns:GetBenefitReviewData" />
+      <xs:element name="GetBenefitReviewDataResponse" type="tns:GetBenefitReviewDataResponse" />
+      <xs:element name="GetCDHInformationData" type="tns:GetCDHInformationData" />
+      <xs:element name="GetCDHInformationDataResponse" type="tns:GetCDHInformationDataResponse" />
+      <xs:element name="GetCoinsuranceAmountDSData" type="tns:GetCoinsuranceAmountDSData" />
+      <xs:element name="GetCoinsuranceAmountDSDataResponse" type="tns:GetCoinsuranceAmountDSDataResponse" />
+      <xs:element name="GetCoinsuranceData" type="tns:GetCoinsuranceData" />
+      <xs:element name="GetCoinsuranceDataResponse" type="tns:GetCoinsuranceDataResponse" />
+      <xs:element name="GetCopayData" type="tns:GetCopayData" />
+      <xs:element name="GetCopayDataResponse" type="tns:GetCopayDataResponse" />
+      <xs:element name="GetCopayRulesData" type="tns:GetCopayRulesData" />
+      <xs:element name="GetCopayRulesDataResponse" type="tns:GetCopayRulesDataResponse" />
+      <xs:element name="GetCostShareData" type="tns:GetCostShareData" />
+      <xs:element name="GetCostShareDataResponse" type="tns:GetCostShareDataResponse" />
+      <xs:element name="GetDeductibleAmountDSData" type="tns:GetDeductibleAmountDSData" />
+      <xs:element name="GetDeductibleAmountDSDataResponse" type="tns:GetDeductibleAmountDSDataResponse" />
+      <xs:element name="GetDeductibleCarryOverAmountforFacetsData" type="tns:GetDeductibleCarryOverAmountforFacetsData" />
+      <xs:element name="GetDeductibleCarryOverAmountforFacetsDataResponse" type="tns:GetDeductibleCarryOverAmountforFacetsDataResponse" />
+      <xs:element name="GetDeductibleData" type="tns:GetDeductibleData" />
+      <xs:element name="GetDeductibleDataResponse" type="tns:GetDeductibleDataResponse" />
+      <xs:element name="GetDeductibleRulesData" type="tns:GetDeductibleRulesData" />
+      <xs:element name="GetDeductibleRulesDataResponse" type="tns:GetDeductibleRulesDataResponse" />
+      <xs:element name="GetDiseaseManagementProgramsOfferedData" type="tns:GetDiseaseManagementProgramsOfferedData" />
+      <xs:element name="GetDiseaseManagementProgramsOfferedDataResponse" type="tns:GetDiseaseManagementProgramsOfferedDataResponse" />
+      <xs:element name="GetFacetProductComponentsPDBCData" type="tns:GetFacetProductComponentsPDBCData" />
+      <xs:element name="GetFacetProductComponentsPDBCDataResponse" type="tns:GetFacetProductComponentsPDBCDataResponse" />
+      <xs:element name="GetFacetServiceSpecificDeductibleData" type="tns:GetFacetServiceSpecificDeductibleData" />
+      <xs:element name="GetFacetServiceSpecificDeductibleDataResponse" type="tns:GetFacetServiceSpecificDeductibleDataResponse" />
+      <xs:element name="GetFacetsLimitsData" type="tns:GetFacetsLimitsData" />
+      <xs:element name="GetFacetsLimitsDataResponse" type="tns:GetFacetsLimitsDataResponse" />
+      <xs:element name="GetFacetsProductInformationData" type="tns:GetFacetsProductInformationData" />
+      <xs:element name="GetFacetsProductInformationDataResponse" type="tns:GetFacetsProductInformationDataResponse" />
+      <xs:element name="GetGeneralDetailsData" type="tns:GetGeneralDetailsData" />
+      <xs:element name="GetGeneralDetailsDataResponse" type="tns:GetGeneralDetailsDataResponse" />
+      <xs:element name="GetGeneralInformationData" type="tns:GetGeneralInformationData" />
+      <xs:element name="GetGeneralInformationDataResponse" type="tns:GetGeneralInformationDataResponse" />
+      <xs:element name="GetGlobalProductRulesData" type="tns:GetGlobalProductRulesData" />
+      <xs:element name="GetGlobalProductRulesDataResponse" type="tns:GetGlobalProductRulesDataResponse" />
+      <xs:element name="GetLimitsData" type="tns:GetLimitsData" />
+      <xs:element name="GetLimitsDataResponse" type="tns:GetLimitsDataResponse" />
+      <xs:element name="GetLinksData" type="tns:GetLinksData" />
+      <xs:element name="GetLinksDataResponse" type="tns:GetLinksDataResponse" />
+      <xs:element name="GetMandatesData" type="tns:GetMandatesData" />
+      <xs:element name="GetMandatesDataResponse" type="tns:GetMandatesDataResponse" />
+      <xs:element name="GetMessagesData" type="tns:GetMessagesData" />
+      <xs:element name="GetMessagesDataResponse" type="tns:GetMessagesDataResponse" />
+      <xs:element name="GetNetworkDSData" type="tns:GetNetworkDSData" />
+      <xs:element name="GetNetworkDSDataResponse" type="tns:GetNetworkDSDataResponse" />
+      <xs:element name="GetNonMandateServiceData" type="tns:GetNonMandateServiceData" />
+      <xs:element name="GetNonMandateServiceDataResponse" type="tns:GetNonMandateServiceDataResponse" />
+      <xs:element name="GetOutofPocketMaxAccumulationRulesData" type="tns:GetOutofPocketMaxAccumulationRulesData" />
+      <xs:element name="GetOutofPocketMaxAccumulationRulesDataResponse" type="tns:GetOutofPocketMaxAccumulationRulesDataResponse" />
+      <xs:element name="GetOutofPocketMaximumData" type="tns:GetOutofPocketMaximumData" />
+      <xs:element name="GetOutofPocketMaximumDataResponse" type="tns:GetOutofPocketMaximumDataResponse" />
+      <xs:element name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" type="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" />
+      <xs:element name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse" type="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse" />
+      <xs:element name="GetProductFacetsQHP" type="tns:GetProductFacetsQHP" />
+      <xs:element name="GetProductFacetsQHPResponse" type="tns:GetProductFacetsQHPResponse" />
+      <xs:element name="GetProductRulesData" type="tns:GetProductRulesData" />
+      <xs:element name="GetProductRulesDataResponse" type="tns:GetProductRulesDataResponse" />
+      <xs:element name="GetQHPCoinsuranceInformationData" type="tns:GetQHPCoinsuranceInformationData" />
+      <xs:element name="GetQHPCoinsuranceInformationDataResponse" type="tns:GetQHPCoinsuranceInformationDataResponse" />
+      <xs:element name="GetQHPCopayInformationData" type="tns:GetQHPCopayInformationData" />
+      <xs:element name="GetQHPCopayInformationDataResponse" type="tns:GetQHPCopayInformationDataResponse" />
+      <xs:element name="GetQHPDeductibleInformationData" type="tns:GetQHPDeductibleInformationData" />
+      <xs:element name="GetQHPDeductibleInformationDataResponse" type="tns:GetQHPDeductibleInformationDataResponse" />
+      <xs:element name="GetQHPNetworkInformationData" type="tns:GetQHPNetworkInformationData" />
+      <xs:element name="GetQHPNetworkInformationDataResponse" type="tns:GetQHPNetworkInformationDataResponse" />
+      <xs:element name="GetQHPProductInformationData" type="tns:GetQHPProductInformationData" />
+      <xs:element name="GetQHPProductInformationDataResponse" type="tns:GetQHPProductInformationDataResponse" />
+      <xs:element name="GetSBCScenarioData" type="tns:GetSBCScenarioData" />
+      <xs:element name="GetSBCScenarioDataResponse" type="tns:GetSBCScenarioDataResponse" />
+      <xs:element name="GetServiceSpecificDeductibleData" type="tns:GetServiceSpecificDeductibleData" />
+      <xs:element name="GetServiceSpecificDeductibleDataResponse" type="tns:GetServiceSpecificDeductibleDataResponse" />
+      <xs:element name="GetStandAloneDentalData" type="tns:GetStandAloneDentalData" />
+      <xs:element name="GetStandAloneDentalDataResponse" type="tns:GetStandAloneDentalDataResponse" />
+      <xs:element name="GlobalProductRules" type="tns:GlobalProductRules" />
+      <xs:element name="LimitDiagnosisTableLTID" type="tns:LimitDiagnosisTableLTID" />
+      <xs:element name="LimitProcedureTableLTIP" type="tns:LimitProcedureTableLTIP" />
+      <xs:element name="LimitProviderTableLTPR" type="tns:LimitProviderTableLTPR" />
+      <xs:element name="LimitRulesLTLT" type="tns:LimitRulesLTLT" />
+      <xs:element name="Limits" type="tns:Limits" />
+      <xs:element name="LimitsList" type="tns:LimitsList" />
+      <xs:element name="Links" type="tns:Links" />
+      <xs:element name="MandateList" type="tns:MandateList" />
+      <xs:element name="Mandates" type="tns:Mandates" />
+      <xs:element name="MasterListServices" type="tns:MasterListServices" />
+      <xs:element name="MessageServiceList" type="tns:MessageServiceList" />
+      <xs:element name="Messages" type="tns:Messages" />
+      <xs:element name="NetworkDS" type="tns:NetworkDS" />
+      <xs:element name="NetworkList" type="tns:NetworkList" />
+      <xs:element name="NonMandateService" type="tns:NonMandateService" />
+      <xs:element name="NonMandateServices" type="tns:NonMandateServices" />
+      <xs:element name="OutofPocketMaxAccumulationRules" type="tns:OutofPocketMaxAccumulationRules" />
+      <xs:element name="OutofPocketMaxAmountDS" type="tns:OutofPocketMaxAmountDS" />
+      <xs:element name="OutofPocketMaximum" type="tns:OutofPocketMaximum" />
+      <xs:element name="PCPPhysicianseligibleforPCPOfficeVisitCopay" type="tns:PCPPhysicianseligibleforPCPOfficeVisitCopay" />
+      <xs:element name="PDBCPrefixList" type="tns:PDBCPrefixList" />
+      <xs:element name="ProductFacetsQHP" type="tns:ProductFacetsQHP" />
+      <xs:element name="ProductMandatesMasterList_MandateList" type="tns:ProductMandatesMasterList_MandateList" />
+      <xs:element name="ProductRules" type="tns:ProductRules" />
+      <xs:element name="QHPCoinsuranceInformation" type="tns:QHPCoinsuranceInformation" />
+      <xs:element name="QHPCopayInformation" type="tns:QHPCopayInformation" />
+      <xs:element name="QHPDeductibleInformation" type="tns:QHPDeductibleInformation" />
+      <xs:element name="QHPFACETSNetworkDS_BenefitReviewGrid" type="tns:QHPFACETSNetworkDS_BenefitReviewGrid" />
+      <xs:element name="QHPFACETSNetworkDS_CopayAmountDS" type="tns:QHPFACETSNetworkDS_CopayAmountDS" />
+      <xs:element name="QHPFACETSNetworkDS_DeductibleAmount" type="tns:QHPFACETSNetworkDS_DeductibleAmount" />
+      <xs:element name="QHPFACETSNetworkDS_DrugDeductibleAmount" type="tns:QHPFACETSNetworkDS_DrugDeductibleAmount" />
+      <xs:element name="QHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS" type="tns:QHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS" />
+      <xs:element name="QHPFACETSNetworkDS_MessageServiceList" type="tns:QHPFACETSNetworkDS_MessageServiceList" />
+      <xs:element name="QHPFACETSNetworkDS_OutofPocketMaxAmountDS" type="tns:QHPFACETSNetworkDS_OutofPocketMaxAmountDS" />
+      <xs:element name="QHPNetworkInformation" type="tns:QHPNetworkInformation" />
+      <xs:element name="QHPProductInformation" type="tns:QHPProductInformation" />
+      <xs:element name="SBCScenario" type="tns:SBCScenario" />
+      <xs:element name="SBCScenarioCostSharing" type="tns:SBCScenarioCostSharing" />
+      <xs:element name="SaveProductFacetsQHP" type="tns:SaveProductFacetsQHP" />
+      <xs:element name="SaveProductFacetsQHPResponse" type="tns:SaveProductFacetsQHPResponse" />
+      <xs:element name="ServiceSpecificDeductible" type="tns:ServiceSpecificDeductible" />
+      <xs:element name="StandAloneDental" type="tns:StandAloneDental" />
+      <xs:complexType name="GetStandAloneDentalData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StandAloneDentalID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetStandAloneDentalDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:StandAloneDental" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StandAloneDental">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="EHBApportionmentforPediatricDental" type="xs:string" />
+              <xs:element minOccurs="0" name="GuaranteedvsEstimatedRate" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxAccumulationRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OutofPocketMaxAccumulationRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaxAccumulationRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:OutofPocketMaxAccumulationRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OutofPocketMaxAccumulationRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectAllThatApply" type="xs:long" />
+              <xs:element minOccurs="0" name="CopayscontributestoOOPM" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DeductiblecontributestoOOPM" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CoinsurancecontributestoOOPM" type="xs:boolean" />
+              <xs:element minOccurs="0" name="RxdeductiblecontributestoOOPM" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLinksData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LinksID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLinksDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Links" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Links">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="URLforSummaryofBenefitsCoverage" type="xs:string" />
+              <xs:element minOccurs="0" name="URLforEnrollmentPayment" type="xs:string" />
+              <xs:element minOccurs="0" name="PlanBrochure" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceAmountDSData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoinsuranceAmountDSID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceAmountDSDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CoinsuranceAmountDS" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CoinsuranceAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DrugCoinsuranceAmountData" type="tns:DrugCoinsuranceAmount" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CoinsuranceAmountData" type="tns:CoinsuranceAmount" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DrugCoinsuranceAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CoinsuranceAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetQHPCopayInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QHPCopayInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPCopayInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:QHPCopayInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QHPCopayInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MaximumNumberofDaysforCharginganInpatientCopay" type="xs:string" />
+              <xs:element minOccurs="0" name="BeginPrimaryCareCostSharingAfteraSetNumberofVisits" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetProductRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ProductRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="GeneralInformationData" type="tns:GeneralInformation" />
+              <xs:element minOccurs="0" name="CDHInformationData" type="tns:CDHInformation" />
+              <xs:element minOccurs="0" name="GlobalProductRulesData" type="tns:GlobalProductRules" />
+              <xs:element minOccurs="0" name="FacetsProductInformationData" type="tns:FacetsProductInformation" />
+              <xs:element minOccurs="0" name="QHPProductInformationData" type="tns:QHPProductInformation" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GeneralInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ProductName" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductType" type="xs:string" />
+              <xs:element minOccurs="0" name="ApplicationType" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductSegment" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductContact" type="xs:string" />
+              <xs:element minOccurs="0" name="SalesEffectiveDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ClaimsEffectiveDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="ClaimsCancelDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="PlanMarketingName" type="xs:string" />
+              <xs:element minOccurs="0" name="PlanExpirationDate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CDHInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ProductincludesCDH" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CDHType" type="xs:string" />
+              <xs:element minOccurs="0" name="CDHAdministrator" type="xs:string" />
+              <xs:element minOccurs="0" name="CDHContribution" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GlobalProductRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Pleasecheckallthatapply" type="xs:string" />
+              <xs:element minOccurs="0" name="Applya9monthwaitingperiodforpreexistingconditionsadultonly" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Preexistingconditionwaitingperiodsdonotapplytomembersuptoage19" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Physicianofficeservicesmustbemedicallynecessary" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WaiveOutofNetworkcostshareformedicalemergencyandaccidentalinjuryservices" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WaiveOutofNetworkcostsharewhenamemberreceivesservicesfromanOutofNetworkphysicianinalocationthatisdee" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WaiveOutofNetworkcostshareifamemberreceivesservicesfromaproviderforwhichthereisnonetwork" type="xs:boolean" />
+              <xs:element minOccurs="0" name="WaiveOutofNetworkcostshareifthememberhasbeenreferredtoanOutofNetworkphysicianbyanInNetworkphysician" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DonotcoverservicesrenderedforWorkMansComp" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DonotcoverservicesrenderedforAutoAccidents" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetsProductInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ProductID" type="xs:string" />
+              <xs:element minOccurs="0" name="LineofBusinessSwitchIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductLineofBusiness" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductAlternateLineofBusiness" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductAccumulatorSuffix" type="xs:string" />
+              <xs:element minOccurs="0" name="CapitationPercentofPremiumLevel" type="xs:string" />
+              <xs:element minOccurs="0" name="CapitationNewPayeeRetroactivityLimit" type="xs:long" />
+              <xs:element minOccurs="0" name="ReferralsPreauthorizations" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PrePricing" type="xs:boolean" />
+              <xs:element minOccurs="0" name="MedicalClaimsProcessing" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DentalPreDeterminations" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DentalClaimsProcessing" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ClinicalEdits" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CapitationRiskAllocation" type="xs:boolean" />
+              <xs:element minOccurs="0" name="DOFR" type="xs:boolean" />
+              <xs:element minOccurs="0" name="POSOptout" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PremiumIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="StateDeterminationforClaimsInterest" type="xs:string" />
+              <xs:element minOccurs="0" name="CapitationCategory" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductBusinessCategory" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductValueCode1" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductValueCode2" type="xs:string" />
+              <xs:element minOccurs="0" name="Plugin" type="xs:string" />
+              <xs:element minOccurs="0" name="Version" type="xs:string" />
+              <xs:element minOccurs="0" name="FacetProductComponentsPDBCData" type="tns:FacetProductComponentsPDBC" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetProductComponentsPDBC">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="PDBCPrefixListData" type="tns:PDBCPrefixList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PDBCPrefixList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PDBCType" type="xs:string" />
+              <xs:element minOccurs="0" name="PDBCPrefix" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectPrefix" type="xs:boolean" />
+              <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="CancelDate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPProductInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="GeneralDetailsData" type="tns:GeneralDetails" />
+              <xs:element minOccurs="0" name="LinksData" type="tns:Links" />
+              <xs:element minOccurs="0" name="SBCScenarioData" type="tns:SBCScenario" />
+              <xs:element minOccurs="0" name="StandAloneDentalData" type="tns:StandAloneDental" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GeneralDetails">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PlanMarketingName" type="xs:string" />
+              <xs:element minOccurs="0" name="HIOSPlanID" type="xs:string" />
+              <xs:element minOccurs="0" name="HIOSProductID" type="xs:string" />
+              <xs:element minOccurs="0" name="HPID" type="xs:string" />
+              <xs:element minOccurs="0" name="NewExistingPlan" type="xs:string" />
+              <xs:element minOccurs="0" name="QHPNonQHP" type="xs:string" />
+              <xs:element minOccurs="0" name="FormularyID" type="xs:string" />
+              <xs:element minOccurs="0" name="LevelofCoverage" type="xs:string" />
+              <xs:element minOccurs="0" name="CSRVariationType" type="xs:string" />
+              <xs:element minOccurs="0" name="UniquePlanDesign" type="xs:string" />
+              <xs:element minOccurs="0" name="ChildOnlyOffering" type="xs:string" />
+              <xs:element minOccurs="0" name="ChildOnlyPlanID" type="xs:string" />
+              <xs:element minOccurs="0" name="TobaccoWellnessProgramOffered" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IssuerActuarialValue" type="xs:string" />
+              <xs:element minOccurs="0" name="NoticeRequiredforPregnancy" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IsaReferralRequiredforSpecialist" type="xs:boolean" />
+              <xs:element minOccurs="0" name="SpecialistsRequiringaReferral" type="xs:string" />
+              <xs:element minOccurs="0" name="PlanLevelExclusions" type="xs:string" />
+              <xs:element minOccurs="0" name="AVCalculatorOutputNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="DiseaseManagementProgramsOfferedData" type="tns:DiseaseManagementProgramsOffered" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DiseaseManagementProgramsOffered">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Asthma" type="xs:boolean" />
+              <xs:element minOccurs="0" name="HeartDisease" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Depression" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Diabetes" type="xs:boolean" />
+              <xs:element minOccurs="0" name="HighBloodPressureHighCholesterol" type="xs:boolean" />
+              <xs:element minOccurs="0" name="LowBackPain" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PainManagement" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Pregnancy" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SBCScenario">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="SBCScenarioCostSharingData" type="tns:SBCScenarioCostSharing" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SBCScenarioCostSharing">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Scenario" type="xs:string" />
+              <xs:element minOccurs="0" name="CostSharingType" type="xs:string" />
+              <xs:element minOccurs="0" name="CostSharingAmount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetNonMandateServiceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NonMandateServiceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNonMandateServiceDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:NonMandateService" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NonMandateService">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="NonMandateServicesData" type="tns:NonMandateServices" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NonMandateServices">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectService" type="xs:boolean" />
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier1" type="xs:boolean" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier2" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromInNetworkMOOP" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromOutofNetworkMOOP" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetLimitsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LimitsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetLimitsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Limits" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Limits">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="FacetsLimitsData" type="tns:FacetsLimits" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitsListData" type="tns:LimitsList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetsLimits">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitRulesLTLTData" type="tns:LimitRulesLTLT" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitProcedureTableLTIPData" type="tns:LimitProcedureTableLTIP" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitDiagnosisTableLTIDData" type="tns:LimitDiagnosisTableLTID" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="LimitProviderTableLTPRData" type="tns:LimitProviderTableLTPR" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LimitRulesLTLT">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LimitDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="AccumulatorNo" type="xs:string" />
+              <xs:element minOccurs="0" name="Description" type="xs:string" />
+              <xs:element minOccurs="0" name="Category" type="xs:string" />
+              <xs:element minOccurs="0" name="Level" type="xs:string" />
+              <xs:element minOccurs="0" name="Period" type="xs:string" />
+              <xs:element minOccurs="0" name="Rule" type="xs:string" />
+              <xs:element minOccurs="0" name="Relations" type="xs:string" />
+              <xs:element minOccurs="0" name="Subsection" type="xs:string" />
+              <xs:element minOccurs="0" name="ExplanationCode" type="xs:string" />
+              <xs:element minOccurs="0" name="LimitAmountSalaryPct" type="xs:string" />
+              <xs:element minOccurs="0" name="AlternateAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="SalaryBased" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Days" type="xs:string" />
+              <xs:element minOccurs="0" name="UserMessage" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LimitProcedureTableLTIP">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LimitDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="RelatedProcedureCodeHigh" type="xs:string" />
+              <xs:element minOccurs="0" name="RelatedProcedureCodeLow" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LimitDiagnosisTableLTID">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LimitDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="RelatedDiagnosisCode" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LimitProviderTableLTPR">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="LimitDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="ProviderType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LimitsList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectLimit" type="xs:boolean" />
+              <xs:element minOccurs="0" name="LimitDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="Value" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetProductFacetsQHP">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductFacetsQHPID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetProductFacetsQHPResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ProductFacetsQHP" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProductFacetsQHP">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ProductRulesData" type="tns:ProductRules" />
+              <xs:element minOccurs="0" name="CostShareData" type="tns:CostShare" />
+              <xs:element minOccurs="0" name="BenefitReviewData" type="tns:BenefitReview" />
+              <xs:element minOccurs="0" name="NetworkDSData" type="tns:NetworkDS" />
+              <xs:element minOccurs="0" name="MandatesData" type="tns:Mandates" />
+              <xs:element minOccurs="0" name="NonMandateServiceData" type="tns:NonMandateService" />
+              <xs:element minOccurs="0" name="LimitsData" type="tns:Limits" />
+              <xs:element minOccurs="0" name="MessagesData" type="tns:Messages" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CostShare">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CopayData" type="tns:Copay" />
+              <xs:element minOccurs="0" name="DeductibleData" type="tns:Deductible" />
+              <xs:element minOccurs="0" name="CoinsuranceData" type="tns:Coinsurance" />
+              <xs:element minOccurs="0" name="OutofPocketMaximumData" type="tns:OutofPocketMaximum" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Copay">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Isthereacopay" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ArethereotherCopayTypes" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IfyesenterService" type="xs:string" />
+              <xs:element minOccurs="0" name="IfyesenterCopayAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="PCPPhysicianseligibleforPCPOfficeVisitCopayData" type="tns:PCPPhysicianseligibleforPCPOfficeVisitCopay" />
+              <xs:element minOccurs="0" name="CopayRulesData" type="tns:CopayRules" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="CopayAmountDSData" type="tns:CopayAmountDS" />
+              <xs:element minOccurs="0" name="QHPCopayInformationData" type="tns:QHPCopayInformation" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PCPPhysicianseligibleforPCPOfficeVisitCopay">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectAllThatApply" type="xs:long" />
+              <xs:element minOccurs="0" name="GeneralPractice" type="xs:boolean" />
+              <xs:element minOccurs="0" name="FamilyPractice" type="xs:boolean" />
+              <xs:element minOccurs="0" name="OBGYN" type="xs:boolean" />
+              <xs:element minOccurs="0" name="InternalMedicine" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Pediatrician" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Geratrics" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IfOtherListHere" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CopayRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectAllThatApply" type="xs:string" />
+              <xs:element minOccurs="0" name="Ifservicetakesacopaydeductibleandcoinsurancethenalwaysapplythecopayfirst" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CopaydoesnotcontributetoOutofPocketMax" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CopaydoescontributetoOutofPocketMax" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Ifservicetakesacopaydeductibleandcoinsurancethenalwaysapplythedeductiblefirst" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CopayAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CopayType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_CopayAmountDSData" type="tns:QHPFACETSNetworkDS_CopayAmountDS" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_CopayAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_CopayAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_CopayAmountDS" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Deductible">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ServiceSpecificDeductibleData" type="tns:ServiceSpecificDeductible" />
+              <xs:element minOccurs="0" name="DeductibleCarryOverAmountforFacetsData" type="tns:DeductibleCarryOverAmountforFacets" />
+              <xs:element minOccurs="0" name="DeductibleRulesData" type="tns:DeductibleRules" />
+              <xs:element minOccurs="0" name="DeductibleAmountDSData" type="tns:DeductibleAmountDS" />
+              <xs:element minOccurs="0" name="QHPDeductibleInformationData" type="tns:QHPDeductibleInformation" />
+              <xs:element minOccurs="0" name="FacetServiceSpecificDeductibleData" type="tns:FacetServiceSpecificDeductible" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ServiceSpecificDeductible">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Aretheredeductiblesforspecificservices" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IfYesListService" type="xs:long" />
+              <xs:element minOccurs="0" name="SingleAmount" type="xs:long" />
+              <xs:element minOccurs="0" name="FamilyAmount" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeductibleCarryOverAmountforFacets">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DeductibleCarryOverAmountData" type="tns:DeductibleCarryOverAmount" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeductibleCarryOverAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeductibleRules">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PlanYearorCalendarYear" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleNetworkAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleFamilyAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleStoplossAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleRule" type="xs:string" />
+              <xs:element minOccurs="0" name="COBMedicareOutofPocketIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectAllThatApply" type="xs:long" />
+              <xs:element minOccurs="0" name="MemberDeductibleisSalaryBased" type="xs:boolean" />
+              <xs:element minOccurs="0" name="FamilyDeductibleisSalaryBased" type="xs:boolean" />
+              <xs:element minOccurs="0" name="RxandMedicaldeductibleisintegrated" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Alwaysapplydeductiblebeforecoinsurance" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Apply4thQuarterCarryOver" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AllowPriorDeductibleCreditPDCs" type="xs:boolean" />
+              <xs:element minOccurs="0" name="IfOtherSpecify" type="xs:long" />
+              <xs:element minOccurs="0" name="DeductibleRulesAccumulatorNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleRulesDescription" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeductibleAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DeductibleAmountData" type="tns:DeductibleAmount" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DrugDeductibleAmountData" type="tns:DrugDeductibleAmount" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeductibleAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="DeductibleType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_DeductibleAmountData" type="tns:QHPFACETSNetworkDS_DeductibleAmount" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_DeductibleAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_DeductibleAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_DeductibleAmount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DrugDeductibleAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleType" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_DrugDeductibleAmountData" type="tns:QHPFACETSNetworkDS_DrugDeductibleAmount" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_DrugDeductibleAmount">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_DrugDeductibleAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_DrugDeductibleAmount" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPDeductibleInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BeginPrimaryCareDeductibleCoinsuranceAfteraSetNumberofCopays" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetServiceSpecificDeductible">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetServiceSpecificDeductibleListData" type="tns:FacetServiceSpecificDeductibleList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetServiceSpecificDeductibleList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="Include" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Single" type="xs:string" />
+              <xs:element minOccurs="0" name="Family" type="xs:string" />
+              <xs:element minOccurs="0" name="SingleCarryOver" type="xs:string" />
+              <xs:element minOccurs="0" name="FamilyCarryOver" type="xs:string" />
+              <xs:element minOccurs="0" name="PlanYearorCalendarYear" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleNetworkAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleFamilyAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleStoplossAccumulation" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleRule" type="xs:string" />
+              <xs:element minOccurs="0" name="COBMedicareOutofPocketIndicator" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleRulesAccumulatorNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleRulesDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="MemberDeductibleisSalaryBased" type="xs:boolean" />
+              <xs:element minOccurs="0" name="FamilyDeductibleisSalaryBased" type="xs:boolean" />
+              <xs:element minOccurs="0" name="RxandMedicaldeductibleisintegrated" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Alwaysapplydeductiblebeforecoinsurance" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Apply4thQuarterCarryOver" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AllowPriorDeductibleCreditPDCs" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Coinsurance">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SelectAllThatApply" type="xs:long" />
+              <xs:element minOccurs="0" name="CoinsuranceisalwaystakenafterthedeductibleissatisfieduntiltheOutofPocketMaxiumismet" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Coinsurancewillnotapplytoservicessubjecttoaflatdollarcopay" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CoinsuranceAmountDSData" type="tns:CoinsuranceAmountDS" />
+              <xs:element minOccurs="0" name="QHPCoinsuranceInformationData" type="tns:QHPCoinsuranceInformation" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPCoinsuranceInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MaximumCoinsuranceforSpecialtyDrugs" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OutofPocketMaximum">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="OutofPocketMaxAccumulationRulesData" type="tns:OutofPocketMaxAccumulationRules" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="OutofPocketMaxAmountDSData" type="tns:OutofPocketMaxAmountDS" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DrugOutofPocketMaxAmountDSData" type="tns:DrugOutofPocketMaxAmountDS" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="OutofPocketMaxAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="OutofPocketMaxType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_OutofPocketMaxAmountDSData" type="tns:QHPFACETSNetworkDS_OutofPocketMaxAmountDS" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_OutofPocketMaxAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_OutofPocketMaxAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_OutofPocketMaxAmountDS" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DrugOutofPocketMaxAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="DrugOutofPocketMaxType" type="xs:string" />
+              <xs:element minOccurs="0" name="Amount" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_DrugOutofPocketMaxAmountDSData" type="tns:QHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_DrugOutofPocketMaxAmountDS" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitReview">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ShowDeductiblesinGrid" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ShowCopayinGrid" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ShowOutOfPocketinGrid" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ShowCoinsuranceinGrid" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ShowLimitsandMessages" type="xs:boolean" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitReviewGridData" type="tns:BenefitReviewGrid" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitReviewGridTierDataData" type="tns:BenefitReviewGridTierData" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="BenefitReviewGridAltRulesDataData" type="tns:BenefitReviewGridAltRulesData" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitReviewGrid">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCat1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCat2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCat3" type="xs:string" />
+              <xs:element minOccurs="0" name="POS" type="xs:string" />
+              <xs:element minOccurs="0" name="Treatas100" type="xs:boolean" />
+              <xs:element minOccurs="0" name="Limits" type="xs:string" />
+              <xs:element minOccurs="0" name="SingleDeductible" type="xs:string" />
+              <xs:element minOccurs="0" name="SingleOutofPocketMax" type="xs:string" />
+              <xs:element minOccurs="0" name="FamilyOutofPocketMax" type="xs:string" />
+              <xs:element minOccurs="0" name="ApplyCopayType" type="xs:string" />
+              <xs:element minOccurs="0" name="ApplyCopay" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ApplyDedCoin" type="xs:boolean" />
+              <xs:element minOccurs="0" name="EHBVarianceReason" type="xs:string" />
+              <xs:element minOccurs="0" name="Copay" type="xs:string" />
+              <xs:element minOccurs="0" name="Coinsurance" type="xs:string" />
+              <xs:element minOccurs="0" name="FamilyDeductible" type="xs:string" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier1" type="xs:boolean" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier2" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromInNetworkMOOP" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromOutofNetworkMOOP" type="xs:boolean" />
+              <xs:element minOccurs="0" name="QHPBenefitMapping" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedCounter" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_BenefitReviewGridData" type="tns:QHPFACETSNetworkDS_BenefitReviewGrid" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_BenefitReviewGrid">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="MessageQHPFACETSNetworkDS_BenefitReviewGrid" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_BenefitReviewGrid" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_BenefitReviewGrid" type="xs:string" />
+              <xs:element minOccurs="0" name="AltRuleQHPFACETSNetworkDS_BenefitReviewGrid" type="xs:string" />
+              <xs:element minOccurs="0" name="TierQHPFACETSNetworkDS_BenefitReviewGrid" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitReviewGridTierData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="Copay" type="xs:string" />
+              <xs:element minOccurs="0" name="Coinsurance" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedCounter" type="xs:string" />
+              <xs:element minOccurs="0" name="TierNo" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="BenefitReviewGridAltRulesData">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="TierNo" type="xs:string" />
+              <xs:element minOccurs="0" name="Copay" type="xs:string" />
+              <xs:element minOccurs="0" name="Coinsurance" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedCounter" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NetworkDS">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="NetworkListData" type="tns:NetworkList" />
+              <xs:element minOccurs="0" name="QHPNetworkInformationData" type="tns:QHPNetworkInformation" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetProductVariableComponentData" type="tns:FacetProductVariableComponent" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NetworkList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkName" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="CopayAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="DeductibleAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="CoinsuranceAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="OutofPocketMaxAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="Limit" type="xs:string" />
+              <xs:element minOccurs="0" name="Message" type="xs:string" />
+              <xs:element minOccurs="0" name="FamilyDeductibleAmountDS" type="xs:string" />
+              <xs:element minOccurs="0" name="FamilyOutofPocketMaxAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="DrugOOPDeductible" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedAmount" type="xs:string" />
+              <xs:element minOccurs="0" name="AllowedCounter" type="xs:string" />
+              <xs:element minOccurs="0" name="Tier" type="xs:string" />
+              <xs:element minOccurs="0" name="AltRule" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPNetworkInformation">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkID" type="xs:string" />
+              <xs:element minOccurs="0" name="FirstTierUtilization" type="xs:string" />
+              <xs:element minOccurs="0" name="SecondTierUtilization" type="xs:string" />
+              <xs:element minOccurs="0" name="ServiceAreaID" type="xs:string" />
+              <xs:element minOccurs="0" name="OutofCountryCoverage" type="xs:boolean" />
+              <xs:element minOccurs="0" name="OutofCountryCoverageDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="OutofServiceAreaCoverage" type="xs:boolean" />
+              <xs:element minOccurs="0" name="OutofServiceAreaCoverageDescription" type="xs:string" />
+              <xs:element minOccurs="0" name="NationalNetwork" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FacetProductVariableComponent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkType" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductVariableComponentTier" type="xs:string" />
+              <xs:element minOccurs="0" name="ProductVariableComponentType" type="xs:string" />
+              <xs:element minOccurs="0" name="EffectiveDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="SequenceNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="TerminationDate" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="PrimaryCareProvider" type="xs:boolean" />
+              <xs:element minOccurs="0" name="InNetworkProvider" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ParticipatingProvider" type="xs:boolean" />
+              <xs:element minOccurs="0" name="NonParticipatingProvider" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PreauthorizationNotRequired" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PreauthorizationObtained" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PreauthorizationViolation" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ReferralNotRequired" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ReferralObtained" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ReferralViolation" type="xs:boolean" />
+              <xs:element minOccurs="0" name="LineofBusinessIndicator" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Mandates">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MandateListData" type="tns:MandateList" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MasterListServicesData" type="tns:MasterListServices" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MandateList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Region" type="xs:string" />
+              <xs:element minOccurs="0" name="Segment" type="xs:string" />
+              <xs:element minOccurs="0" name="MandateName" type="xs:string" />
+              <xs:element minOccurs="0" name="SelectMandate" type="xs:boolean" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductMandatesMasterList_MandateListData" type="tns:ProductMandatesMasterList_MandateList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ProductMandatesMasterList_MandateList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory1ProductMandatesMasterList_MandateList" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2ProductMandatesMasterList_MandateList" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3ProductMandatesMasterList_MandateList" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofServiceProductMandatesMasterList_MandateList" type="xs:string" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier1ProductMandatesMasterList_MandateList" type="xs:boolean" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier2ProductMandatesMasterList_MandateList" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromInNetworkMOOPProductMandatesMasterList_MandateList" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromOutofNetworkMOOPProductMandatesMasterList_MandateList" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MasterListServices">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier1" type="xs:boolean" />
+              <xs:element minOccurs="0" name="SubjecttoDeductibleTier2" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromInNetworkMOOP" type="xs:boolean" />
+              <xs:element minOccurs="0" name="ExcludedfromOutofNetworkMOOP" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Messages">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageServiceListData" type="tns:MessageServiceList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MessageServiceList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Include" type="xs:boolean" />
+              <xs:element minOccurs="0" name="BenefitCategory1" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory2" type="xs:string" />
+              <xs:element minOccurs="0" name="BenefitCategory3" type="xs:string" />
+              <xs:element minOccurs="0" name="PlaceofService" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QHPFACETSNetworkDS_MessageServiceListData" type="tns:QHPFACETSNetworkDS_MessageServiceList" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QHPFACETSNetworkDS_MessageServiceList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ns1:BaseData">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="NetworkNameQHPFACETSNetworkDS_MessageServiceList" type="xs:string" />
+              <xs:element minOccurs="0" name="NetworkTypeQHPFACETSNetworkDS_MessageServiceList" type="xs:string" />
+              <xs:element minOccurs="0" name="MessageSERLQHPFACETSNetworkDS_MessageServiceList" type="xs:string" />
+              <xs:element minOccurs="0" name="DisallowedMessageQHPFACETSNetworkDS_MessageServiceList" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaximumData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OutofPocketMaximumID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOutofPocketMaximumDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:OutofPocketMaximum" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGlobalProductRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GlobalProductRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGlobalProductRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:GlobalProductRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGeneralInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeneralInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGeneralInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:GeneralInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandatesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MandatesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMandatesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Mandates" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGeneralDetailsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeneralDetailsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetGeneralDetailsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:GeneralDetails" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCostShareData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CostShareID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCostShareDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CostShare" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCDHInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CDHInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCDHInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CDHInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllProductFacetsQHPIDs">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Plugin" type="xs:string" />
+          <xs:element minOccurs="0" name="Version" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetAllProductFacetsQHPIDsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Instance" type="ns2:Plugin" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoinsuranceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCoinsuranceDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Coinsurance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetServiceSpecificDeductibleData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FacetServiceSpecificDeductibleID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetServiceSpecificDeductibleDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:FacetServiceSpecificDeductible" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveProductFacetsQHP">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ProductFacetsQHP" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveProductFacetsQHPResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ProductFacetsQHP" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSBCScenarioData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SBCScenarioID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetSBCScenarioDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:SBCScenario" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Copay" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetsLimitsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FacetsLimitsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetsLimitsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:FacetsLimits" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPNetworkInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QHPNetworkInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPNetworkInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:QHPNetworkInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNetworkDSData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NetworkDSID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetNetworkDSDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:NetworkDS" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetServiceSpecificDeductibleData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceSpecificDeductibleID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetServiceSpecificDeductibleDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:ServiceSpecificDeductible" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Deductible" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPProductInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QHPProductInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPProductInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:QHPProductInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PCPPhysicianseligibleforPCPOfficeVisitCopayID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:PCPPhysicianseligibleforPCPOfficeVisitCopay" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DeductibleRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitReviewData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BenefitReviewID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetBenefitReviewDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:BenefitReview" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPCoinsuranceInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QHPCoinsuranceInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPCoinsuranceInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:QHPCoinsuranceInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDiseaseManagementProgramsOfferedData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DiseaseManagementProgramsOfferedID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDiseaseManagementProgramsOfferedDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DiseaseManagementProgramsOffered" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayRulesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CopayRulesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetCopayRulesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:CopayRules" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleCarryOverAmountforFacetsData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleCarryOverAmountforFacetsID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleCarryOverAmountforFacetsDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DeductibleCarryOverAmountforFacets" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPDeductibleInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QHPDeductibleInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQHPDeductibleInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:QHPDeductibleInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetsProductInformationData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FacetsProductInformationID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetsProductInformationDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:FacetsProductInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMessagesData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MessagesID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetMessagesDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Messages" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetProductComponentsPDBCData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FacetProductComponentsPDBCID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFacetProductComponentsPDBCDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:FacetProductComponentsPDBC" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleAmountDSData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeductibleAmountDSID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetDeductibleAmountDSDataResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:DeductibleAmountDS" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://equinox.tmg.com/services/base" targetNamespace="http://equinox.tmg.com/services/base" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="BaseData" type="tns:BaseData" />
+      <xs:complexType name="BaseData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InstanceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="Plugin" targetNamespace="Plugin" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Plugin" type="tns:Plugin" />
+      <xs:complexType name="Plugin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProductID" type="xs:string" />
+          <xs:element minOccurs="0" name="Plugin" type="xs:string" />
+          <xs:element minOccurs="0" name="Version" type="xs:string" />
+          <xs:element minOccurs="0" name="InstanceID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetProductFacetsQHP">
+    <wsdl:part name="parameters" element="tns:GetProductFacetsQHP" />
+  </wsdl:message>
+  <wsdl:message name="GetGeneralInformationData">
+    <wsdl:part name="parameters" element="tns:GetGeneralInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetLimitsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLimitsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNonMandateServiceDataResponse">
+    <wsdl:part name="parameters" element="tns:GetNonMandateServiceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPCopayInformationData">
+    <wsdl:part name="parameters" element="tns:GetQHPCopayInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxAccumulationRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxAccumulationRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGeneralDetailsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetGeneralDetailsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetProductRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandatesData">
+    <wsdl:part name="parameters" element="tns:GetMandatesData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductFacetsQHPIDsResponse">
+    <wsdl:part name="parameters" element="tns:GetAllProductFacetsQHPIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceSpecificDeductibleData">
+    <wsdl:part name="parameters" element="tns:GetServiceSpecificDeductibleData" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceAmountDSData">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceAmountDSData" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMessagesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayRulesData">
+    <wsdl:part name="parameters" element="tns:GetCopayRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkDSData">
+    <wsdl:part name="parameters" element="tns:GetNetworkDSData" />
+  </wsdl:message>
+  <wsdl:message name="GetProductFacetsQHPResponse">
+    <wsdl:part name="parameters" element="tns:GetProductFacetsQHPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPNetworkInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetQHPNetworkInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData">
+    <wsdl:part name="parameters" element="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalProductRulesData">
+    <wsdl:part name="parameters" element="tns:GetGlobalProductRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaxAccumulationRulesData">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaxAccumulationRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetLimitsData">
+    <wsdl:part name="parameters" element="tns:GetLimitsData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetServiceSpecificDeductibleDataResponse">
+    <wsdl:part name="parameters" element="tns:GetFacetServiceSpecificDeductibleDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSBCScenarioDataResponse">
+    <wsdl:part name="parameters" element="tns:GetSBCScenarioDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayData">
+    <wsdl:part name="parameters" element="tns:GetCopayData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPProductInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetQHPProductInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCDHInformationData">
+    <wsdl:part name="parameters" element="tns:GetCDHInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceSpecificDeductibleDataResponse">
+    <wsdl:part name="parameters" element="tns:GetServiceSpecificDeductibleDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllProductFacetsQHPIDs">
+    <wsdl:part name="parameters" element="tns:GetAllProductFacetsQHPIDs" />
+  </wsdl:message>
+  <wsdl:message name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse">
+    <wsdl:part name="parameters" element="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSBCScenarioData">
+    <wsdl:part name="parameters" element="tns:GetSBCScenarioData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPDeductibleInformationData">
+    <wsdl:part name="parameters" element="tns:GetQHPDeductibleInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceData">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceData" />
+  </wsdl:message>
+  <wsdl:message name="GetStandAloneDentalData">
+    <wsdl:part name="parameters" element="tns:GetStandAloneDentalData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetProductComponentsPDBCData">
+    <wsdl:part name="parameters" element="tns:GetFacetProductComponentsPDBCData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaximumData">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaximumData" />
+  </wsdl:message>
+  <wsdl:message name="GetNonMandateServiceData">
+    <wsdl:part name="parameters" element="tns:GetNonMandateServiceData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPDeductibleInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetQHPDeductibleInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGeneralInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetGeneralInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveProductFacetsQHPResponse">
+    <wsdl:part name="parameters" element="tns:SaveProductFacetsQHPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetProductComponentsPDBCDataResponse">
+    <wsdl:part name="parameters" element="tns:GetFacetProductComponentsPDBCDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleRulesData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPCoinsuranceInformationData">
+    <wsdl:part name="parameters" element="tns:GetQHPCoinsuranceInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetsLimitsData">
+    <wsdl:part name="parameters" element="tns:GetFacetsLimitsData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleAmountDSData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleAmountDSData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetsProductInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetFacetsProductInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkDSDataResponse">
+    <wsdl:part name="parameters" element="tns:GetNetworkDSDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinsuranceAmountDSDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCoinsuranceAmountDSDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveProductFacetsQHP">
+    <wsdl:part name="parameters" element="tns:SaveProductFacetsQHP" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleCarryOverAmountforFacetsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleCarryOverAmountforFacetsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetServiceSpecificDeductibleData">
+    <wsdl:part name="parameters" element="tns:GetFacetServiceSpecificDeductibleData" />
+  </wsdl:message>
+  <wsdl:message name="GetStandAloneDentalDataResponse">
+    <wsdl:part name="parameters" element="tns:GetStandAloneDentalDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCopayDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCopayDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPCoinsuranceInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetQHPCoinsuranceInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetsLimitsDataResponse">
+    <wsdl:part name="parameters" element="tns:GetFacetsLimitsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesData">
+    <wsdl:part name="parameters" element="tns:GetMessagesData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPProductInformationData">
+    <wsdl:part name="parameters" element="tns:GetQHPProductInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetGlobalProductRulesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetGlobalProductRulesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCDHInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCDHInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOutofPocketMaximumDataResponse">
+    <wsdl:part name="parameters" element="tns:GetOutofPocketMaximumDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMandatesDataResponse">
+    <wsdl:part name="parameters" element="tns:GetMandatesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductRulesData">
+    <wsdl:part name="parameters" element="tns:GetProductRulesData" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleCarryOverAmountforFacetsData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleCarryOverAmountforFacetsData" />
+  </wsdl:message>
+  <wsdl:message name="GetFacetsProductInformationData">
+    <wsdl:part name="parameters" element="tns:GetFacetsProductInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetCostShareData">
+    <wsdl:part name="parameters" element="tns:GetCostShareData" />
+  </wsdl:message>
+  <wsdl:message name="GetDiseaseManagementProgramsOfferedData">
+    <wsdl:part name="parameters" element="tns:GetDiseaseManagementProgramsOfferedData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPCopayInformationDataResponse">
+    <wsdl:part name="parameters" element="tns:GetQHPCopayInformationDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinksDataResponse">
+    <wsdl:part name="parameters" element="tns:GetLinksDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitReviewData">
+    <wsdl:part name="parameters" element="tns:GetBenefitReviewData" />
+  </wsdl:message>
+  <wsdl:message name="GetLinksData">
+    <wsdl:part name="parameters" element="tns:GetLinksData" />
+  </wsdl:message>
+  <wsdl:message name="GetGeneralDetailsData">
+    <wsdl:part name="parameters" element="tns:GetGeneralDetailsData" />
+  </wsdl:message>
+  <wsdl:message name="GetBenefitReviewDataResponse">
+    <wsdl:part name="parameters" element="tns:GetBenefitReviewDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCostShareDataResponse">
+    <wsdl:part name="parameters" element="tns:GetCostShareDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleData">
+    <wsdl:part name="parameters" element="tns:GetDeductibleData" />
+  </wsdl:message>
+  <wsdl:message name="GetQHPNetworkInformationData">
+    <wsdl:part name="parameters" element="tns:GetQHPNetworkInformationData" />
+  </wsdl:message>
+  <wsdl:message name="GetDiseaseManagementProgramsOfferedDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDiseaseManagementProgramsOfferedDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeductibleAmountDSDataResponse">
+    <wsdl:part name="parameters" element="tns:GetDeductibleAmountDSDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProductFacetsQHPService">
+    <wsdl:operation name="GetStandAloneDentalData">
+      <wsdl:input name="GetStandAloneDentalData" message="tns:GetStandAloneDentalData" />
+      <wsdl:output name="GetStandAloneDentalDataResponse" message="tns:GetStandAloneDentalDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxAccumulationRulesData">
+      <wsdl:input name="GetOutofPocketMaxAccumulationRulesData" message="tns:GetOutofPocketMaxAccumulationRulesData" />
+      <wsdl:output name="GetOutofPocketMaxAccumulationRulesDataResponse" message="tns:GetOutofPocketMaxAccumulationRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinksData">
+      <wsdl:input name="GetLinksData" message="tns:GetLinksData" />
+      <wsdl:output name="GetLinksDataResponse" message="tns:GetLinksDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceAmountDSData">
+      <wsdl:input name="GetCoinsuranceAmountDSData" message="tns:GetCoinsuranceAmountDSData" />
+      <wsdl:output name="GetCoinsuranceAmountDSDataResponse" message="tns:GetCoinsuranceAmountDSDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPCopayInformationData">
+      <wsdl:input name="GetQHPCopayInformationData" message="tns:GetQHPCopayInformationData" />
+      <wsdl:output name="GetQHPCopayInformationDataResponse" message="tns:GetQHPCopayInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductRulesData">
+      <wsdl:input name="GetProductRulesData" message="tns:GetProductRulesData" />
+      <wsdl:output name="GetProductRulesDataResponse" message="tns:GetProductRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonMandateServiceData">
+      <wsdl:input name="GetNonMandateServiceData" message="tns:GetNonMandateServiceData" />
+      <wsdl:output name="GetNonMandateServiceDataResponse" message="tns:GetNonMandateServiceDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitsData">
+      <wsdl:input name="GetLimitsData" message="tns:GetLimitsData" />
+      <wsdl:output name="GetLimitsDataResponse" message="tns:GetLimitsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductFacetsQHP">
+      <wsdl:input name="GetProductFacetsQHP" message="tns:GetProductFacetsQHP" />
+      <wsdl:output name="GetProductFacetsQHPResponse" message="tns:GetProductFacetsQHPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaximumData">
+      <wsdl:input name="GetOutofPocketMaximumData" message="tns:GetOutofPocketMaximumData" />
+      <wsdl:output name="GetOutofPocketMaximumDataResponse" message="tns:GetOutofPocketMaximumDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalProductRulesData">
+      <wsdl:input name="GetGlobalProductRulesData" message="tns:GetGlobalProductRulesData" />
+      <wsdl:output name="GetGlobalProductRulesDataResponse" message="tns:GetGlobalProductRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeneralInformationData">
+      <wsdl:input name="GetGeneralInformationData" message="tns:GetGeneralInformationData" />
+      <wsdl:output name="GetGeneralInformationDataResponse" message="tns:GetGeneralInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandatesData">
+      <wsdl:input name="GetMandatesData" message="tns:GetMandatesData" />
+      <wsdl:output name="GetMandatesDataResponse" message="tns:GetMandatesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeneralDetailsData">
+      <wsdl:input name="GetGeneralDetailsData" message="tns:GetGeneralDetailsData" />
+      <wsdl:output name="GetGeneralDetailsDataResponse" message="tns:GetGeneralDetailsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCostShareData">
+      <wsdl:input name="GetCostShareData" message="tns:GetCostShareData" />
+      <wsdl:output name="GetCostShareDataResponse" message="tns:GetCostShareDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCDHInformationData">
+      <wsdl:input name="GetCDHInformationData" message="tns:GetCDHInformationData" />
+      <wsdl:output name="GetCDHInformationDataResponse" message="tns:GetCDHInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductFacetsQHPIDs">
+      <wsdl:input name="GetAllProductFacetsQHPIDs" message="tns:GetAllProductFacetsQHPIDs" />
+      <wsdl:output name="GetAllProductFacetsQHPIDsResponse" message="tns:GetAllProductFacetsQHPIDsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceData">
+      <wsdl:input name="GetCoinsuranceData" message="tns:GetCoinsuranceData" />
+      <wsdl:output name="GetCoinsuranceDataResponse" message="tns:GetCoinsuranceDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetServiceSpecificDeductibleData">
+      <wsdl:input name="GetFacetServiceSpecificDeductibleData" message="tns:GetFacetServiceSpecificDeductibleData" />
+      <wsdl:output name="GetFacetServiceSpecificDeductibleDataResponse" message="tns:GetFacetServiceSpecificDeductibleDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProductFacetsQHP">
+      <wsdl:input name="SaveProductFacetsQHP" message="tns:SaveProductFacetsQHP" />
+      <wsdl:output name="SaveProductFacetsQHPResponse" message="tns:SaveProductFacetsQHPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSBCScenarioData">
+      <wsdl:input name="GetSBCScenarioData" message="tns:GetSBCScenarioData" />
+      <wsdl:output name="GetSBCScenarioDataResponse" message="tns:GetSBCScenarioDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayData">
+      <wsdl:input name="GetCopayData" message="tns:GetCopayData" />
+      <wsdl:output name="GetCopayDataResponse" message="tns:GetCopayDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetsLimitsData">
+      <wsdl:input name="GetFacetsLimitsData" message="tns:GetFacetsLimitsData" />
+      <wsdl:output name="GetFacetsLimitsDataResponse" message="tns:GetFacetsLimitsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPNetworkInformationData">
+      <wsdl:input name="GetQHPNetworkInformationData" message="tns:GetQHPNetworkInformationData" />
+      <wsdl:output name="GetQHPNetworkInformationDataResponse" message="tns:GetQHPNetworkInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkDSData">
+      <wsdl:input name="GetNetworkDSData" message="tns:GetNetworkDSData" />
+      <wsdl:output name="GetNetworkDSDataResponse" message="tns:GetNetworkDSDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceSpecificDeductibleData">
+      <wsdl:input name="GetServiceSpecificDeductibleData" message="tns:GetServiceSpecificDeductibleData" />
+      <wsdl:output name="GetServiceSpecificDeductibleDataResponse" message="tns:GetServiceSpecificDeductibleDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleData">
+      <wsdl:input name="GetDeductibleData" message="tns:GetDeductibleData" />
+      <wsdl:output name="GetDeductibleDataResponse" message="tns:GetDeductibleDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPProductInformationData">
+      <wsdl:input name="GetQHPProductInformationData" message="tns:GetQHPProductInformationData" />
+      <wsdl:output name="GetQHPProductInformationDataResponse" message="tns:GetQHPProductInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData">
+      <wsdl:input name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" message="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" />
+      <wsdl:output name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse" message="tns:GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleRulesData">
+      <wsdl:input name="GetDeductibleRulesData" message="tns:GetDeductibleRulesData" />
+      <wsdl:output name="GetDeductibleRulesDataResponse" message="tns:GetDeductibleRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitReviewData">
+      <wsdl:input name="GetBenefitReviewData" message="tns:GetBenefitReviewData" />
+      <wsdl:output name="GetBenefitReviewDataResponse" message="tns:GetBenefitReviewDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPCoinsuranceInformationData">
+      <wsdl:input name="GetQHPCoinsuranceInformationData" message="tns:GetQHPCoinsuranceInformationData" />
+      <wsdl:output name="GetQHPCoinsuranceInformationDataResponse" message="tns:GetQHPCoinsuranceInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDiseaseManagementProgramsOfferedData">
+      <wsdl:input name="GetDiseaseManagementProgramsOfferedData" message="tns:GetDiseaseManagementProgramsOfferedData" />
+      <wsdl:output name="GetDiseaseManagementProgramsOfferedDataResponse" message="tns:GetDiseaseManagementProgramsOfferedDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayRulesData">
+      <wsdl:input name="GetCopayRulesData" message="tns:GetCopayRulesData" />
+      <wsdl:output name="GetCopayRulesDataResponse" message="tns:GetCopayRulesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleCarryOverAmountforFacetsData">
+      <wsdl:input name="GetDeductibleCarryOverAmountforFacetsData" message="tns:GetDeductibleCarryOverAmountforFacetsData" />
+      <wsdl:output name="GetDeductibleCarryOverAmountforFacetsDataResponse" message="tns:GetDeductibleCarryOverAmountforFacetsDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPDeductibleInformationData">
+      <wsdl:input name="GetQHPDeductibleInformationData" message="tns:GetQHPDeductibleInformationData" />
+      <wsdl:output name="GetQHPDeductibleInformationDataResponse" message="tns:GetQHPDeductibleInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetsProductInformationData">
+      <wsdl:input name="GetFacetsProductInformationData" message="tns:GetFacetsProductInformationData" />
+      <wsdl:output name="GetFacetsProductInformationDataResponse" message="tns:GetFacetsProductInformationDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesData">
+      <wsdl:input name="GetMessagesData" message="tns:GetMessagesData" />
+      <wsdl:output name="GetMessagesDataResponse" message="tns:GetMessagesDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetProductComponentsPDBCData">
+      <wsdl:input name="GetFacetProductComponentsPDBCData" message="tns:GetFacetProductComponentsPDBCData" />
+      <wsdl:output name="GetFacetProductComponentsPDBCDataResponse" message="tns:GetFacetProductComponentsPDBCDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleAmountDSData">
+      <wsdl:input name="GetDeductibleAmountDSData" message="tns:GetDeductibleAmountDSData" />
+      <wsdl:output name="GetDeductibleAmountDSDataResponse" message="tns:GetDeductibleAmountDSDataResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductFacetsQHPServiceSoapBinding" type="tns:ProductFacetsQHPService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetStandAloneDentalData">
+      <soap12:operation soapAction="GetStandAloneDentalData" style="document" />
+      <wsdl:input name="GetStandAloneDentalData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetStandAloneDentalDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaxAccumulationRulesData">
+      <soap12:operation soapAction="GetOutofPocketMaxAccumulationRulesData" style="document" />
+      <wsdl:input name="GetOutofPocketMaxAccumulationRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetOutofPocketMaxAccumulationRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceAmountDSData">
+      <soap12:operation soapAction="GetCoinsuranceAmountDSData" style="document" />
+      <wsdl:input name="GetCoinsuranceAmountDSData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinsuranceAmountDSDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinksData">
+      <soap12:operation soapAction="GetLinksData" style="document" />
+      <wsdl:input name="GetLinksData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLinksDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPCopayInformationData">
+      <soap12:operation soapAction="GetQHPCopayInformationData" style="document" />
+      <wsdl:input name="GetQHPCopayInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQHPCopayInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductRulesData">
+      <soap12:operation soapAction="GetProductRulesData" style="document" />
+      <wsdl:input name="GetProductRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProductRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonMandateServiceData">
+      <soap12:operation soapAction="GetNonMandateServiceData" style="document" />
+      <wsdl:input name="GetNonMandateServiceData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetNonMandateServiceDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitsData">
+      <soap12:operation soapAction="GetLimitsData" style="document" />
+      <wsdl:input name="GetLimitsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLimitsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeneralInformationData">
+      <soap12:operation soapAction="GetGeneralInformationData" style="document" />
+      <wsdl:input name="GetGeneralInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetGeneralInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalProductRulesData">
+      <soap12:operation soapAction="GetGlobalProductRulesData" style="document" />
+      <wsdl:input name="GetGlobalProductRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetGlobalProductRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutofPocketMaximumData">
+      <soap12:operation soapAction="GetOutofPocketMaximumData" style="document" />
+      <wsdl:input name="GetOutofPocketMaximumData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetOutofPocketMaximumDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductFacetsQHP">
+      <soap12:operation soapAction="GetProductFacetsQHP" style="document" />
+      <wsdl:input name="GetProductFacetsQHP">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProductFacetsQHPResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeneralDetailsData">
+      <soap12:operation soapAction="GetGeneralDetailsData" style="document" />
+      <wsdl:input name="GetGeneralDetailsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetGeneralDetailsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMandatesData">
+      <soap12:operation soapAction="GetMandatesData" style="document" />
+      <wsdl:input name="GetMandatesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMandatesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCostShareData">
+      <soap12:operation soapAction="GetCostShareData" style="document" />
+      <wsdl:input name="GetCostShareData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCostShareDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCDHInformationData">
+      <soap12:operation soapAction="GetCDHInformationData" style="document" />
+      <wsdl:input name="GetCDHInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCDHInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProductFacetsQHPIDs">
+      <soap12:operation soapAction="GetAllProductFacetsQHPIDs" style="document" />
+      <wsdl:input name="GetAllProductFacetsQHPIDs">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllProductFacetsQHPIDsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinsuranceData">
+      <soap12:operation soapAction="GetCoinsuranceData" style="document" />
+      <wsdl:input name="GetCoinsuranceData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinsuranceDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetServiceSpecificDeductibleData">
+      <soap12:operation soapAction="GetFacetServiceSpecificDeductibleData" style="document" />
+      <wsdl:input name="GetFacetServiceSpecificDeductibleData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFacetServiceSpecificDeductibleDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProductFacetsQHP">
+      <soap12:operation soapAction="SaveProductFacetsQHP" style="document" />
+      <wsdl:input name="SaveProductFacetsQHP">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SaveProductFacetsQHPResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSBCScenarioData">
+      <soap12:operation soapAction="GetSBCScenarioData" style="document" />
+      <wsdl:input name="GetSBCScenarioData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetSBCScenarioDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayData">
+      <soap12:operation soapAction="GetCopayData" style="document" />
+      <wsdl:input name="GetCopayData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetsLimitsData">
+      <soap12:operation soapAction="GetFacetsLimitsData" style="document" />
+      <wsdl:input name="GetFacetsLimitsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFacetsLimitsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkDSData">
+      <soap12:operation soapAction="GetNetworkDSData" style="document" />
+      <wsdl:input name="GetNetworkDSData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetNetworkDSDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPNetworkInformationData">
+      <soap12:operation soapAction="GetQHPNetworkInformationData" style="document" />
+      <wsdl:input name="GetQHPNetworkInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQHPNetworkInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceSpecificDeductibleData">
+      <soap12:operation soapAction="GetServiceSpecificDeductibleData" style="document" />
+      <wsdl:input name="GetServiceSpecificDeductibleData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetServiceSpecificDeductibleDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleData">
+      <soap12:operation soapAction="GetDeductibleData" style="document" />
+      <wsdl:input name="GetDeductibleData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPProductInformationData">
+      <soap12:operation soapAction="GetQHPProductInformationData" style="document" />
+      <wsdl:input name="GetQHPProductInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQHPProductInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData">
+      <soap12:operation soapAction="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData" style="document" />
+      <wsdl:input name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleRulesData">
+      <soap12:operation soapAction="GetDeductibleRulesData" style="document" />
+      <wsdl:input name="GetDeductibleRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenefitReviewData">
+      <soap12:operation soapAction="GetBenefitReviewData" style="document" />
+      <wsdl:input name="GetBenefitReviewData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBenefitReviewDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPCoinsuranceInformationData">
+      <soap12:operation soapAction="GetQHPCoinsuranceInformationData" style="document" />
+      <wsdl:input name="GetQHPCoinsuranceInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQHPCoinsuranceInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDiseaseManagementProgramsOfferedData">
+      <soap12:operation soapAction="GetDiseaseManagementProgramsOfferedData" style="document" />
+      <wsdl:input name="GetDiseaseManagementProgramsOfferedData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDiseaseManagementProgramsOfferedDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCopayRulesData">
+      <soap12:operation soapAction="GetCopayRulesData" style="document" />
+      <wsdl:input name="GetCopayRulesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCopayRulesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleCarryOverAmountforFacetsData">
+      <soap12:operation soapAction="GetDeductibleCarryOverAmountforFacetsData" style="document" />
+      <wsdl:input name="GetDeductibleCarryOverAmountforFacetsData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleCarryOverAmountforFacetsDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQHPDeductibleInformationData">
+      <soap12:operation soapAction="GetQHPDeductibleInformationData" style="document" />
+      <wsdl:input name="GetQHPDeductibleInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQHPDeductibleInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetsProductInformationData">
+      <soap12:operation soapAction="GetFacetsProductInformationData" style="document" />
+      <wsdl:input name="GetFacetsProductInformationData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFacetsProductInformationDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesData">
+      <soap12:operation soapAction="GetMessagesData" style="document" />
+      <wsdl:input name="GetMessagesData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMessagesDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeductibleAmountDSData">
+      <soap12:operation soapAction="GetDeductibleAmountDSData" style="document" />
+      <wsdl:input name="GetDeductibleAmountDSData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeductibleAmountDSDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetProductComponentsPDBCData">
+      <soap12:operation soapAction="GetFacetProductComponentsPDBCData" style="document" />
+      <wsdl:input name="GetFacetProductComponentsPDBCData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetFacetProductComponentsPDBCDataResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductFacetsQHPService">
+    <wsdl:port name="ProductFacetsQHPServicePort" binding="tns:ProductFacetsQHPServiceSoapBinding">
+      <soap12:address location="http://192.168.100.4:5777/ServiceEngine/services/ProductFacetsQHP20Service" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

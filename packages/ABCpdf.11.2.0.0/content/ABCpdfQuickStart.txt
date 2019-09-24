@@ -1,0 +1,103 @@
+*** Test Code ***
+
+Quite often when creating a new project you want some simple test code to ensure your installation is correct.
+
+First you need to ensure you are using the correct namespace. Insert the following at the top of your C# module.
+
+	using WebSupergoo.ABCpdf11;
+
+If you are in a forms or console application, the following Hello World code may be useful.
+
+	using (Doc doc = new Doc()) {
+		doc.FontSize = 96;
+		doc.AddText("Hello World!");
+		doc.Save(@"C:\_output.pdf"); // adjust path for your needs
+	}
+
+Alternatively if you are running under ASP.NET, you may want a Page_Load function something like this.
+
+	byte[] theData = null;
+	using (Doc doc = new Doc()) {
+		doc.FontSize = 96;
+		doc.AddText("Hello World!");
+		theData = doc.GetData();
+	}
+	Response.Clear();
+	Response.ContentType = "application/pdf";
+	Response.AddHeader("content-disposition", "inline; filename=MyPDF.PDF");
+	Response.AddHeader("content-length", theData.Length.ToString());
+	Response.BinaryWrite(theData);
+	Response.End();
+
+For more example projects, please download the installer bundle from the ABCpdf download site.
+
+
+
+
+
+*** Installation ***
+
+ABCpdf is an Xcopy deployment. All that is needed is that the DLLs and associated files be copied to your bin directory. 
+
+This should happen automatically because it is what is specified in the NuGet installer. However not all platforms and not all project types do this reliably. 
+
+For example if you select the Visual Studio "Create Web Site" option and then select an "ASP.NET Web Forms Site" you will get a web site without a project file. NuGet requires a project file for certain types of installations so it will leave some DLLs out. However if you instead select "Create Project" and select an "ASP.NET Web Application" then this will work fine.
+
+Here we explain the installation process in case you need to do anything yourself.
+
+At minimum you only need ABCpdf.dll and either ABCpdf11-32.dll or ABCpdf11-64.dll (for x86 or x64 respectively). If you are not sure then just copy all of them to your bin directory.
+
+The extra DLLs and files which come with ABCpdf provide extra functionality like HTML import, 3D rendering and AcroForm JavaScript. They are not required for all deployments but we copy them to the bin directory as standard in case you need them.
+
+For more details please see the Manual Installation section of the documentation.
+
+
+
+
+
+*** License ***
+
+When you run the installer a trial license is created for you. If you do not have a valid license - either full or trial - then an exception will be raised when you use methods like Doc.Save.
+
+Most notably, if you Xcopy deploy to another machine, the license is not copied. So if you push your bin directory up to a machine in the cloud, you need to ensure that it gets a copy of your license.
+
+To do this you can use code of the following form to be called before any ABCpdf objects are created.
+
+	if (!XSettings.InstallLicense(" **** insert your license key here *** ")) {
+		Response.Write("Could not install trial license. ");
+		Response.Write("You have: " + XSettings.LicenseDescription);
+		return;
+	}
+
+The license key you need to insert will typically be a trial key which looks something like this.
+
+	"XeJREBodo/8B4SFWbfuBP42jLr5NPdtypry10sywB1pg4nufPib5NccZcUJK72QFBw=="
+
+You can get your trial key from PDFSettings.exe - part of the ABCpdf installation. Alternatively you can run the following ASP.NET code to report your trial license.
+
+	Response.Write("Code for installation of trial license:</br>");
+	string key = System.Web.HttpUtility.HtmlEncode(XSettings.Key);
+	Response.Write("if (!XSettings.InstallLicense(\"" + key + "\")) {..</br>");
+
+
+
+
+
+*** Azure ***
+
+It is important to understand that Azure is not one thing - it is a set of varied types of virtual machines and devices. Some are simpler, cheaper and more restrictive. Some are more sophisticated.
+
+Azure is also a rapidly moving target. What is current and default now, may not be in the future. With a growth of almost 100% every year, you have to expect a certain amount of change and perhaps even some rough edges.
+
+ABCpdf will run on the default Azure instances. However the simpler default Azure instances do not have the features required for functionality like HTML import. For those you need a slightly different model. See our Azure deployment guide for details.
+
+http://www.websupergoo.com/support-azure-abcpdf.htm
+
+As of late 2017, the default ASP.NET Azure deployments are 32 bit. The platform itself is x64 but it runs code, by default, in a 32 bit space. You may wish to change this in your Azure settings.
+
+
+
+
+
+
+

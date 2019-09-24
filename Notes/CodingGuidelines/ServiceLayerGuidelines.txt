@@ -1,0 +1,10 @@
+1. Add validation for Arguments wherever required - throw InvalidArgumentException with appropriate messages
+2. Add comments wherever code is not obvious(non-standard) or some critical business logic is implemented
+  - comments should be reviewed as part of peer review
+3. For collections - return null if no records are returned - same for other ViewModels returned
+4. For exceptions, return ServiceResultStatus code for Updates/Inserts/Deletes and add messages for each exception/innerexception
+5. Add logging of exceptions - db and flat file
+6. Use TransactionScope when committing multiple records in CRUD operations 
+7. Deletes/inserts - add functions to the repository for cascading deletes/inserts of multiple records in related tables
+8. Add page number and page record count for paging functions
+9. Add tenant id to every table

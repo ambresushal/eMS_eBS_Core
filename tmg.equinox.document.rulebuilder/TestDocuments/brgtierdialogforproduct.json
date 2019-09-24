@@ -1,0 +1,45 @@
+{
+    "documentrule": {
+        "type": "datasource",
+        "executemode": "editdialog",
+        "ruleactions": "columndialog",
+        "scope": "row",
+        "targetelement": "Product[BenefitReview.BenefitReviewGrid][MasterListServices]",
+        "targettype": "column",
+        "keys": "",
+        "triggers": [
+            {
+                "source": "Product[BenefitReview.BenefitReviewGrid][MasterListServices]",
+                "event": "editdialog"
+            }
+        ],
+        "actions": [
+            { 
+                "action" :  "editdialog"
+            }
+        ],
+        "sourcemapping": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Product[BenefitReview.BenefitReviewGridTierData]",
+                    "mappings": {
+                        "sourcefields": "",
+                        "targetfields": ""
+                    },
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "source  = target[parent]"
+                            }
+                        ],
+                        "filtermergeaction": ""
+                    }
+                }
+            ],
+            "sourcemergeaction": ""
+        }
+    }
+}

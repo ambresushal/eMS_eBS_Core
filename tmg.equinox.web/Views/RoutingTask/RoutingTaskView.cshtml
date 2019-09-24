@@ -1,0 +1,585 @@
+﻿@*@{
+        Layout = null;
+    }*@
+@using System.Security.Claims;
+@{
+    var identity = (User.Identity as System.Security.Claims.ClaimsIdentity);
+    var claims = identity.Claims;
+}
+<!DOCTYPE html>
+
+
+<div class="tablelist-wrapper" id="dashTaskDetails">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="#workQueueTab">Work Queue</a>
+        </li>
+        <li>
+            <a href="#watchListTab">Watch List</a>
+        </li>
+        @*<li>
+                <a href="#notificationTab">Notifications</a>
+            </li>*@
+        <li class="pull-right" id="pagination">
+            <div id="pworkQueue"></div>
+            <div id="pformUpdates"></div>
+            <div id="pwatch"></div>
+        </li>
+    </ul>
+
+    <div class="tab-content clearfix">
+        <div style="font-size:12px; padding-top: 8px !important;">
+            <input type="radio" id="chkOpenTasks" name="viewTasks" value='Open' checked="checked">Open Tasks
+            <input type="radio" id="chkCompletedTasks" name="viewTasks" value='Completed' style="margin-left: 24px;">Completed Tasks
+        </div>
+        <div class="tab-pane fade in active" id="workQueueTab">
+
+            <div class="table-responsive grid-wrapper hide-divider">
+                <table class="table" id="workQueue"></table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="watchListTab">
+
+            <div class="table-responsive grid-wrapper hide-divider">
+                <table class="table" id="watch"></table>
+            </div>
+        </div>
+        @*<div class="tab-pane fade" id="notificationTab">
+                <div class="table-responsive grid-wrapper">
+                    <table class="table" id="formUpdates"></table>
+                </div>
+            </div>*@
+
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="taskAssignmentWatchlist" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group grid-wrapper">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label><input type="radio" name="optradioWatchFolderType" id="optradioWatchPortfolio" checked>Portfolio</label>
+                    </div>
+                    @if (claims != null)
+                    {
+                        if (claims.Any(c => c.Value.Trim().ToUpper() == "ACCOUNT"))
+                        {
+                            <div class="col-sm-3">
+                                <label><input type="radio" name="optradioWatchFolderType" id="optradioWatchAccount">Account</label>
+                            </div>
+                        }
+                    }
+                    <div class="col-sm-2" style="display:none" id="taskAssigWatchAccountListLabelDiv">
+                        <label>Account</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4" style="display:none" id="taskAssigWatchAccountListDiv">
+                        <select id="taskAssigWatchAccountList"></select>
+                        <span class="help-block" id="taskAssigWatchAccountListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Folder</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchFolderList"></select>
+                        <span class="help-block" id="taskAssigWatchFolderListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Versions</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchVersionList"></select>
+                        <span class="help-block" id="taskAssigWatchVersionListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Workflow Status</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchWorkFlowStatusList"></select>
+                        <span class="help-block" id="taskAssigWatchWorkFlowStatusListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Tasks</label><em>*</em>
+                    </div>
+                    <div class="col-sm-3" style="padding-right: 0px;">
+                        <select id="taskAssigWatchTasksList"></select>
+                        <span class="help-block" id="taskAssigWatchTasksListSpan"></span>
+                    </div>
+                    <div class="col-sm-1">
+                        <button id="createNewTasksBtn" type="button" class="btn pull-right">+</button>
+                        <span class="help-block" id="createNewTasksBtnSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Plans</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchPlansList" multiple></select>
+                        <span class="help-block" id="taskAssigWatchPlansListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Assign User</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchAssignUserList" multiple></select>
+                        <span class="help-block" id="taskAssigWatchAssignUserListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>View</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchViewList" multiple></select>
+                        <span class="help-block" id="taskAssigWatchViewListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Section</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchSectionList" multiple></select>
+                        <span class="help-block" id="taskAssigWatchSectionListSpan"></span>
+                    </div>
+                </div>
+
+                @*<div class="row" id="taskAssigWatchTaskStatusRow">
+                        <div class="col-sm-2">
+                            <label id="taskAssigWatchTaskStatusLabel">Task Status</label><em>*</em>
+                        </div>
+                        <div class="col-sm-10">
+                            <select id="taskAssigWatchTaskStatus"></select>
+                            <span class="help-block" id="taskAssigWatchTaskStatusSpan"></span>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label id="date ">Start date</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" id="taskAssigWatchStartdate" style="padding-bottom: 4px;" maxlength="10" />
+                        <span class="help-block" id="taskAssigWatchStartdateSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label id="date ">Due date</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" id="taskAssigWatchDuedate" style="padding-bottom: 4px;" maxlength="10" />
+                        <span class="help-block" id="taskAssigWatchDuedateSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Priority</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWatchOrder"></select>
+                        <span class="help-block" id="taskAssigWatchOrderSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Duration (in days)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWatchDuration" style="width: 100%;" maxlength="2" />
+                        <span class="help-block" id="taskAssigWatchDurationSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label id="date ">Estimated Time (hrs)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWatchEstTime" style="padding-bottom: 4px;width:252px" maxlength="10" value="0" />
+                        <span class="help-block" id="taskAssigWatchEstTimeSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label id="date ">Actual Time (hrs)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWatchActualTime" style="padding-bottom: 4px;width:252px" maxlength="10" value="0" />
+                        <span class="help-block" id="taskAssigWatchActualTimeSpan"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-2">
+                            <label id="taskAssigWatchTaskStatusLabel">Task Status</label><em>*</em>
+                        </div>
+                        <div class="col-sm-10">
+                            <select id="taskAssigWatchTaskStatus"></select>
+                            <span class="help-block" id="taskAssigWatchTaskStatusSpan"></span>
+                        </div>
+                        @*<div class="col-sm-2">
+                <label>Attachments</label>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-6" id="taskAssigWatchAttachmentChangeDiv">
+                        <label id="watchAttachmentName" aria-label="Documentname" title="Documentname">Document name</label>
+                    </div>
+                    <div class="col-sm-5">
+                        <button id="uploadWatchAttachmentBtn">Change</button>
+                    </div>
+                    <div class="col-sm-12" id="taskAssigWatchAttachmentUploadDiv">
+                        <input id="uploadWatchAttachment" name="uploadTemplateFile" type="file" />
+                    </div>
+                </div>
+            </div>*@
+                    </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Comments</label>
+                    </div>
+                    <div div class="col-sm-4 grid-wrapper" style="width:100%; margin-top: 20px;">
+                        <table id="taskAssigWatchComments"></table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <input type="text" class="hide" id="editflag" style="padding-bottom: 4px;" maxlength="10" />
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" class="hide" id="cancelWatchDflag" style="padding-bottom: 4px;" maxlength="10" />
+                    <input type="text" class="hide" id="IsTaskInfoModifed" style="padding-bottom: 4px;" maxlength="10" />
+                    <input type="text" class="hide" id="MappingRowIDForTaskHDVal" style="padding-bottom: 4px;" maxlength="10" />
+                    <input type="text" class="hide" id="ChangeEventTriggerByCode" style="padding-bottom: 4px;" maxlength="10" />
+                    <input type="text" class="hide" id="IsTaskLateStatus" style="padding-bottom: 4px;" maxlength="10" />
+                    <input type="text" class="hide" id="FolderVersionsListHDVal" style="padding-bottom: 4px;" />
+                </div>
+            </div>
+            <div style="width: auto;float: right">
+                <button id="taskAssigWatchCancelBtn" type="button" class="btn pull-right" style="margin-left: 18px">Cancel</button>
+                <button id="taskAssigWatchSaveBtn" type="button" class="btn pull-right">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="folderViewDialog" style="margin: 12px;">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group row" style="text-align:center">
+                    <div class="col-xs-12">
+                        <label>Please select the Folder View you want to open.</label>
+                    </div>
+                </div>
+                <div class="form-group row" style="text-align:center">
+                    <button id="btnClassicFolderView1" type="button" class="btn btn-sm but-align">Classic Folder View</button>
+                    <button id="btnSOTView1" type="button" class="btn btn-sm but-align">SOT View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="newTaskCreationDialog" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group grid-wrapper">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label>Task Description</label><em>*</em>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="text" id="newTaskDescription" maxlength="500" />
+                        <span class="help-block" id="newTaskDescriptionSpan"></span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="hide" id="NewTaskSaved" style="padding-bottom: 4px;" maxlength="10" />
+                    </div>
+                </div>
+                <div style="width: auto;float: right">
+                    <button id="newTaskCreationCancelBtn" type="button" class="btn pull-right" style="margin-left: 18px">Cancel</button>
+                    <button id="newTaskCreationSaveBtn" type="button" class="btn pull-right">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="taskAssignmentWorkQueue" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group grid-wrapper">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label><input type="radio" name="optradioWorkQueueFolderType" id="optradioWorkQueuePortfolio" value="Portfolio" disabled>Portfolio</label>
+                        <span class="help-block" id="optradioWorkQueuePortfolioSpan"></span>
+                    </div>
+                    @if (claims != null)
+                    {
+                        if (claims.Any(c => c.Value.Trim().ToUpper() == "ACCOUNT"))
+                        {
+                            <div class="col-sm-3">
+                                <label><input type="radio" name="optradioWorkQueueFolderType" id="optradioWorkQueueAccount" value="Account" disabled>Account</label>
+                                <span class="help-block" id="optradioWorkQueueAccountSpan"></span>
+                            </div>
+                        }
+                    }
+                    <div class="col-sm-2" style="display:none" id="taskAssigWorkQueueAccountListLabelDiv">
+                        <label>Account</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4" style="display:none" id="taskAssigWorkQueueAccountListDiv">
+                        <select id="taskAssigWorkQueueAccountList"></select>
+                        <span class="help-block" id="taskAssigWorkQueueAccountListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Folder</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueFolderList"></select>
+                        <span class="help-block" id="taskAssigWorkQueueFolderListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Versions</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueVersionList"></select>
+                        <span class="help-block" id="taskAssigWorkQueueVersionListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Workflow Status</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueWorkFlowStatusList"></select>
+                        <span class="help-block" id="taskAssigWorkQueueWorkFlowStatusListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Tasks</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueTasksList"></select>
+                        <span class="help-block" id="taskAssigWorkQueueTasksListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Plans</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueuePlansList" multiple></select>
+                        <span class="help-block" id="taskAssigWorkQueuePlansListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Assign User</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueAssignUserList" multiple></select>
+                        <span class="help-block" id="taskAssigWorkQueueAssignUserListSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>View</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueViewList" multiple></select>
+                        <span class="help-block" id="taskAssigWorkQueueViewListSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Section</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueSectionList" multiple></select>
+                        <span class="help-block" id="taskAssigWorkQueueSectionListSpan"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label id="date ">Start date</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" id="taskAssigWorkQueueStartdate" style="padding-bottom: 4px;" maxlength="10" />
+                        <span class="help-block" id="taskAssigWorkQueueStartdateSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label id="date ">Due date</label><em>*</em>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" id="taskAssigWorkQueueDuedate" style="padding-bottom: 4px;" maxlength="10" />
+                        <span class="help-block" id="taskAssigWorkQueueDuedateSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Priority</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="taskAssigWorkQueueOrder"></select>
+                        <span class="help-block" id="taskAssigWorkQueueOrderSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Duration (in days)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWorkQueueDuration" style="padding-bottom: 4px;" maxlength="2" />
+                        <span class="help-block" id="taskAssigWorkQueuehDurationSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label id="date ">Estimated Time (hrs)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWorkQueueEstTime" style="padding-bottom: 4px;width:252px" value="0" />
+                        <span class="help-block" id="taskAssigWorkQueueEstTimeSpan"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label id="date ">Actual Time (hrs)</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" id="taskAssigWorkQueueActualTime" style="padding-bottom: 4px;width:252px" value="0" />
+                        <span class="help-block" id="taskAssigWorkQueueActualTimeSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="col-sm-2">
+                            <label>Order</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" id="taskAssigWorkQueueOrder" style="padding-bottom: 4px;" maxlength="10" />
+                            <span class="help-block" id="taskAssigWorkQueueOrderSpan"></span>
+                        </div>*@
+                    <div class="col-sm-2">
+                        <label>Task Status</label><em>*</em>
+                    </div>
+                    <div class="col-sm-10">
+                        <select id="taskAssigWorkQueueTaskStatus"></select>
+                        <span class="help-block" id="taskAssigWorkQueueTaskStatusSpan"></span>
+                    </div>
+                    @*<div class="col-sm-2">
+                            <label>Attachments</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="Documentname" aria-label="Documentname" title="Documentname" style="font-weight:bold;vertical-align:middle;max-width:250px;float:left;margin-top:4px;border-style:solid;border-width:1px;border-radius:3px;padding:2px;padding-left:4px;padding-right:4px;cursor:pointer;">Document name</label>
+                            <button id="uploadWorkQueueAttachment">Change</button>
+                            <input id="uploadAttachmentFile" name="uploadTemplateFile" type="file" />
+                        </div>*@
+                </div>
+                @*<div class="row">
+                        <div class="col-sm-2">
+                            <label>Task Status</label><em>*</em>
+                        </div>
+                        <div class="col-sm-10">
+                            <select id="taskAssigWorkQueueTaskStatus"></select>
+                            <span class="help-block" id="taskAssigWorkQueueTaskStatusSpan"></span>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Comments</label>
+                    </div>
+                    <div class="col-sm-4 grid-wrapper" style="width:700px;margin-bottom:5px; margin-top: 20px;">
+                        <table id="taskAssigWorkQueuehComments"></table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="hide" id="HiddenParameter" style="padding-bottom: 4px;" maxlength="10" />
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="hide" id="PlanTaskMode" style="padding-bottom: 4px;" maxlength="10" />
+                        <input type="text" class="hide" id="MappingRowIDForTaskHDValQ" style="padding-bottom: 4px;" maxlength="10" />
+                    </div>
+                </div>
+                <div style="width: auto;float: right">
+                    <button id="taskAssigWorkQueueCancelBtn" type="button" class="btn pull-right" style="margin-left: 18px">Cancel</button>
+                    <button id="taskAssigWorkQueueSaveBtn" type="button" class="btn pull-right">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newcommentDialog" style="width: auto; height: auto; display: none;">
+    <div class="row">
+        <div class="col-xs-4">
+            <label>Comment</label><em>*</em>
+        </div>
+        <div class="col-xs-8">
+            <textarea rows="3" id="newcomment"></textarea>
+            <span class="help-block" id="newcommentSpan"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Attachments</label>
+        </div>
+        <div class="col-sm-8">
+            <input id="uploadWorkCommentAttachment" name="uploadWorkCommentAttachment" class="form-control uploadTmplFile" type="file" />
+        </div>
+    </div>
+    <div style="width: auto;float: right">
+        <button id="btnsavecomment" type="submit" class="btn pull-right">Save</button>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="newWatchcommentDialog" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group grid-wrapper">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label>Comment</label><em>*</em>
+                    </div>
+                    <div class="col-xs-8">
+                        <textarea rows="3" id="newWatchcomment"></textarea>
+                        @*<input type="text" id="newWatchcomment" maxlength="500" />*@
+                        <span class="help-block" id="newWatchcommentSpan"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Attachments</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="uploadWatchCommentAttachment" name="uploadCommentAttachmentFile" type="file" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="hide" id="NewTaskSaved" style="padding-bottom: 4px;" maxlength="10" />
+                    </div>
+                </div>
+                <div style="width: auto;float: right">
+                    <button id="btnsaveWatchcomment" type="button" class="btn pull-right">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="taskCommentsDailog" style="width: auto; height: auto;">
+        <div class="form-group grid-wrapper">
+            <div class="row">
+                <div class="col-sm-12 grid-wrapper" style="margin-bottom:5px;">
+                    <table id="taskCommentsGrid"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+    setMenu("dashTaskDetails");
+</script>

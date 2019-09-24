@@ -1,0 +1,211 @@
+{
+    "documentrule": {
+        "targetelement": "Admin[Fees.FeeTotals.SelectedFees]",
+        "ruletype": "datasource",
+        "targetelementtype": "repeater",
+        "triggers": [
+            {
+                "source": "",
+                "event": ""
+            }
+        ],
+        "actions": [
+            {
+                "action": ""
+            }
+        ],
+        "ruleconditions": {
+            "sources": [
+                {
+                    "sourcename": "A",
+                    "sourceelement": "Admin[Fees.FeeInformation.ClaimsAdministrationFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@A.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Claims Administration Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "B",
+                    "sourceelement": "Admin[Fees.FeeInformation.ClaimInterventionFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@B.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Claim Intervention Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "C",
+                    "sourceelement": "Admin[Fees.FeeInformation.SupplementalServiceFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@C.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Supplemental Service Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "D",
+                    "sourceelement": "Admin[Fees.FeeInformation.IDCardServiceFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@D.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : ID Card Service Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "E",
+                    "sourceelement": "Admin[Fees.FeeInformation.MedicalManagementFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@E.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Medical Management Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "F",
+                    "sourceelement": "Admin[Fees.FeeInformation.WebServiceFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@F.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Web Service Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "G",
+                    "sourceelement": "Admin[Fees.FeeInformation.ComplianceServiceFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@G.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Compliance Service Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "H",
+                    "sourceelement": "Admin[Fees.FeeInformation.FinancialServiceFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@H.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Financial Service Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "I",
+                    "sourceelement": "Admin[Fees.FeeInformation.OtherFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@I.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Other Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                },
+                {
+                    "sourcename": "J",
+                    "sourceelement": "Admin[Fees.FeeInformation.NetworkFees]",
+                    "filter": {
+                        "filterlist": [
+                            {
+                                "filtertype": "expr",
+                                "filtername": "A",
+                                "filterexpression": "@J.IncludeFee = Yes"
+                            }
+                        ],
+                        "filtermergeexpression": "",
+                        "filtermergetype": "none",
+                        "keycolumns": ""
+                    },
+                    "outputcolumns": "@.FeeType : Network Fees,@A.ServiceDetail,@A.Rate,@A.RateType,@A.IsthereanExternalVendor,@A.ExternalVendorFee,@A.AdditionalNotes,@A.VendorName,@A.Service"
+                }
+            ],
+
+            "sourcemergelist": {
+                "outputcolumns": {
+                    "columns": "",
+                    "children": ""
+                },
+                "sourcemergeactions": [
+                    {
+                        "sourcemergeexpression": "((((((((A union B) union C) union D) union E) union F ) union G) union H) union I) union J",
+                        "sourcemergetype": "expr",
+                        "keycolumns": "FeeType,ServiceDetail",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        }
+                    }
+                ]
+            }
+
+        }
+    }
+}

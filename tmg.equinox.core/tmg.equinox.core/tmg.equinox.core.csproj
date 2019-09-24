@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{775420B2-93D1-4057-9A24-7953EE905D4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.core</RootNamespace>
+    <AssemblyName>tmg.equinox.core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LIBLOG_PUBLIC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\packages\EPPlus.4.5.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Glav.CacheAdapter.4.0\lib\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.6.21\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.6.21\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ServerAppFabric.Client.1.1.2106\lib\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ServerAppFabric.Client.1.1.2106\lib\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.6.1.0\lib\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Example-CacheAdapterUsage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Caching.cs" />
+    <Compile Include="Properties\Caching.Designer.cs">
+      <DependentUpon>Caching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tmg.equinox.backgroundjob\BackgroundWorkerManager.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\BackgroundJob.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\BackgroundJobConfiguration.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\BackgroundWorkerBase.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\BaseJobInfo.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\JobActivatorNotImplemented.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Base\RunnableBase.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\CustomQueueMangement.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundJob.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundJobConfiguration.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundJobManager.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundJobServerFactory.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundWorker.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IBackgroundWorkerManager.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IConfiguration.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\ICustomQueue.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IJobActivator.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\ILogProviderFactory.cs" />
+    <Compile Include="tmg.equinox.backgroundjob\Interface\IRunnable.cs" />
+    <Compile Include="tmg.equinox.caching.client\CacheConfig.cs" />
+    <Compile Include="tmg.equinox.caching.client\CachingManager.cs" />
+    <Compile Include="tmg.equinox.caching\Adapters\GlavCacheAdapter.cs" />
+    <Compile Include="tmg.equinox.caching\Adapters\HttpCacheAdapter.cs" />
+    <Compile Include="tmg.equinox.caching\Adapters\MemoryCacheAdapter.cs" />
+    <Compile Include="tmg.equinox.caching\Core\CacheItemMetadata.cs" />
+    <Compile Include="tmg.equinox.caching\Core\CacheStoreSettings.cs" />
+    <Compile Include="tmg.equinox.caching\Core\CachingSetting.cs" />
+    <Compile Include="tmg.equinox.caching\Core\CachingStoreType.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Factories\AppFabricCachingStoreFactory.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Factories\HttpCachingStoreFactory.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Factories\ICachingStoreFactory.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Factories\MemoryCachingStoreFactory.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\IAppFabricCachingStore.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICacheMetadataProvider.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICacheService.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICacheServiceFactory.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICachingObjectSerializer.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICachingStore.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\ICachingStoreAsync.cs" />
+    <Compile Include="tmg.equinox.caching\Core\Interfaces\IHttpCahingStore.cs" />
+    <Compile Include="tmg.equinox.caching\Helpers\CachingHelper.cs" />
+    <Compile Include="tmg.equinox.caching\Helpers\TaskHelpers.cs" />
+    <Compile Include="tmg.equinox.caching\Helpers\TaskHelpersExtensions.cs" />
+    <Compile Include="tmg.equinox.caching\Stores\AppFabricCachingStore.cs" />
+    <Compile Include="tmg.equinox.caching\Stores\CachingObjectSerializer.cs" />
+    <Compile Include="tmg.equinox.caching\Stores\HttpCahingStore.cs" />
+    <Compile Include="tmg.equinox.caching\Stores\MemoryCachingStore.cs" />
+    <Compile Include="tmg.equinox.config\Config.cs" />
+    <Compile Include="tmg.equinox.core.logging\App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="tmg.equinox.domain.entities.base\Entity.cs" />
+    <Compile Include="tmg.equinox.domain.entities.base\Enums\ReportType.cs" />
+    <Compile Include="tmg.equinox.domain.entities.base\IObjectState.cs" />
+    <Compile Include="tmg.equinox.domain.entities.base\ObjectState.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IFormDesignRepository.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IRepository.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IRepositoryAsync.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IRptUnitOfWorkAsync.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IUnitOfWork.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\IUnitOfWorkAsync.cs" />
+    <Compile Include="tmg.equinox.domain.interfaces\RepositoryQuery.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Context\EmailContext.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\EmailNotificationQueue.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\EmailNotificationQueueHistory.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\EmailTemplate.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\EmailTemplatePlaceHolder.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\EmailTemplatePlaceHolderMapping.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\Mapping\EmailNotificationQueueHistoryMap.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\Mapping\EmailNotificationQueueMap.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\Mapping\EmailTemplateMap.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\Mapping\EmailTemplatePlaceHolderMap.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Domain\Mapping\EmailTemplatePlaceHolderMappingMap.cs" />
+    <Compile Include="tmg.equinox.emailnotification\EmailAcknowledgement\EmailAcknowledge.cs" />
+    <Compile Include="tmg.equinox.emailnotification\EmailNotificationManager.cs" />
+    <Compile Include="tmg.equinox.emailnotification\EmailNotificationRepository.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Interface\IEmailNotificationManager.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Interface\IEmailNotificationRepository.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Model\EmailNotification.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Model\EmailResponseData.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Model\EmailSetting.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Model\EmailTemplateInfo.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Model\EmailTemplatePlaceHolderInfo.cs" />
+    <Compile Include="tmg.equinox.emailnotification\Repository\EmailUnitOfWork.cs" />
+    <Compile Include="tmg.equinox.emailnotification\SendGridEmailNotification.cs" />
+    <Compile Include="tmg.equinox.emailnotification\SmtpEmailNotification.cs" />
+    <Compile Include="tmg.equinox.hangfire\BaseBackgroundJob.cs" />
+    <Compile Include="tmg.equinox.hangfire\Configuration\HangfireBackgroundJobServer.cs" />
+    <Compile Include="tmg.equinox.hangfire\Configuration\HangfireConfiguration.cs" />
+    <Compile Include="tmg.equinox.hangfire\Configuration\HangfireLogProviderFactory.cs" />
+    <Compile Include="tmg.equinox.hangfire\Data\DBHelper.cs" />
+    <Compile Include="tmg.equinox.hangfire\HangfireBackgroundJobManager.cs" />
+    <Compile Include="tmg.equinox.hangfire\HangFireService.cs" />
+    <Compile Include="tmg.equinox.hangfire\Jobfilters\BaseJobAuthorizationFilter.cs" />
+    <Compile Include="tmg.equinox.hangfire\Jobfilters\DashboardOwinJobAuthorizationFilter.cs" />
+    <Compile Include="tmg.equinox.hangfire\Jobfilters\HangfireStateFilter.cs" />
+    <Compile Include="tmg.equinox.hangfire\Logger\CustomHangfireLogger.cs" />
+    <Compile Include="tmg.equinox.hangfire\Logger\CustomHangfireLogProvider.cs" />
+    <Compile Include="tmg.equinox.infrastructure.exceptionhandling\ExceptionLoggerWrapper.cs" />
+    <Compile Include="tmg.equinox.infrastructure.exceptionhandling\ExceptionPolicies.cs" />
+    <Compile Include="tmg.equinox.infrastructure.exceptionhandling\ExceptionPolicyWrapper.cs" />
+    <Compile Include="tmg.equinox.infrastructure.exceptionhandling\JavaScriptException.cs" />
+    <Compile Include="tmg.equinox.infrastructure.logging\CustomTextFormatter.cs" />
+    <Compile Include="tmg.equinox.infrastructure.logging\ILog.cs" />
+    <Compile Include="tmg.equinox.infrastructure.logging\Logger.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\CompressionBase.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\CompressionFactory.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\CompressionType.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\FileCompression.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\JsonCompression.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Compression\MemoryCompression.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\DocumentUtility\ClaimsSchema.designer.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\DocumentUtility\XmlDocumentManager.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\JSON\JTokenListEqualityComparer.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Optimizer\HashGenerator.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Optimizer\ISectionSaveRuleOptimizer.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Optimizer\SectionSaveHashCheckOptimizer.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Util\ConvertToDataTable.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Util\DataCompress.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Util\HtmlContentHelper.cs" />
+    <Compile Include="tmg.equinox.infrastructure.util\Util\StringExtension.cs" />
+    <Compile Include="tmg.equinox.net\EmailSenderBase.cs" />
+    <Compile Include="tmg.equinox.net\EmailSenderConfiguration.cs" />
+    <Compile Include="tmg.equinox.net\EmailSettingNames.cs" />
+    <Compile Include="tmg.equinox.net\IEmailSender.cs" />
+    <Compile Include="tmg.equinox.net\IEmailSenderConfiguration.cs" />
+    <Compile Include="tmg.equinox.net\smtp\ISmtpEmailSender.cs" />
+    <Compile Include="tmg.equinox.net\smtp\ISmtpEmailSenderConfiguration.cs" />
+    <Compile Include="tmg.equinox.net\smtp\SmtpEmailSender.cs" />
+    <Compile Include="tmg.equinox.net\smtp\SmtpEmailSenderConfiguration.cs" />
+    <Compile Include="tmg.equinox.reporting.base\BaseRule.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IDbRepostory.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IMapper.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IReportConfig.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IReportExecuter.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IReportManager.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IReportRepository.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IReportWIthMapExecuter.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IResult.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Interface\IRule.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Mapping\Mapper.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Mapping\SQLMapper.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Model\DownloadFileInfo.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Model\ReportConfig.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Model\RuleInfo.cs" />
+    <Compile Include="tmg.equinox.reporting.base\ReportConfig.cs" />
+    <Compile Include="tmg.equinox.reporting.base\ReportManager.cs" />
+    <Compile Include="tmg.equinox.reporting.base\ReportRepository.cs" />
+    <Compile Include="tmg.equinox.reporting.base\SQLDataAccess\BaseDBHelper.cs" />
+    <Compile Include="tmg.equinox.reporting.base\Utility.cs" />
+    <Compile Include="tmg.equinox.reporting\BaseExcelReportExecuter.cs" />
+    <Compile Include="tmg.equinox.reporting\EPPlus.cs" />
+    <Compile Include="tmg.equinox.reporting\EpPlusExtensionMethods.cs" />
+    <Compile Include="tmg.equinox.reporting\Extensions\RichtTextExtensions.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportDbRepository.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportFactory.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportHelper.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportQueueInfo.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportQueueManager.cs" />
+    <Compile Include="tmg.equinox.reporting\ReportRule.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\Ancillary100VendorReport.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\ANOCCampaignSOTDataForPlanInformationTransferExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\BenefitsMemberFacingPostBenchmarkExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\CCPPartDBMLsCCPPartDBMLsFINALExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\CCPPlanByCountyFinalExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\CTSPLANMASTERFINALExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\DataPlanPremiumFinalPostBMExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\DIV125PanelReport.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\DRxSBTemplateFinalExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\HighLevelBenefitsbyPlanPostBenchmarkExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\IKABenefitTemplateExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\ITCrosswalkExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\LISGridsForWebsiteFormulasExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\LOBMappingExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\MSPChartExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\PdpEocSBCopayGridFINALExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\PdpEocTablesFINALExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\PdpPlanFinalExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\PDPSOTPostBenchmarkExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\PlanInfoPlanInfoExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\Required300MaterialsReportMAMAPD.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\SampleExcelReportExecuter.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\ServiceAreaExpansionsAndExits475.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\SOTNonMemberFacingPostBenchmarkExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\State450ProductSummaryNonSNP.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\State450ProductSummarySNP.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\TIDCardExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\WellCareIKAWebsiteDataVariablesExecutor.cs" />
+    <Compile Include="tmg.equinox.reporting\Reports\WellCareWebAppBenefitPlanForIKAExecutor.cs" />
+    <Compile Include="tmg.equinox.repository.base\BaseContext.cs" />
+    <Compile Include="tmg.equinox.repository.base\BaseUnitOfWork.cs" />
+    <Compile Include="tmg.equinox.repository.base\DBContextExtension.cs" />
+    <Compile Include="tmg.equinox.repository.base\DbSetExtension.cs" />
+    <Compile Include="tmg.equinox.repository.base\IDbContext.cs" />
+    <Compile Include="tmg.equinox.repository.base\IDbContextAsync.cs" />
+    <Compile Include="tmg.equinox.repository.base\Repository.cs" />
+    <Compile Include="tmg.equinox.repository.core\Context\CoreFrameworkContext.cs" />
+    <Compile Include="tmg.equinox.repository.core\Models\Mapping\SettingDefinitionMap.cs" />
+    <Compile Include="tmg.equinox.repository.core\Repository\CoreUnitOfWork.cs" />
+    <Compile Include="tmg.equinox.repository.report\Context\ReportingCenterContext.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\ReportingTableColumnInfoMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\ReportingTableInfoMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\ReportQueueDetailMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\ReportQueueMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\ReportSettingMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\Mapping\SchemaVersionActivityLogMap.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportingTableColumnInfo.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportingTableInfo.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportMappingField.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportQueue.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportQueueDetail.cs" />
+    <Compile Include="tmg.equinox.repository.report\Models\ReportSetting.cs" />
+    <Compile Include="tmg.equinox.repository.report\Repository\RptUnitOfWork.cs" />
+    <Compile Include="tmg.equinox.setting\Common\SettingConstant.cs" />
+    <Compile Include="tmg.equinox.setting\Entities\SettingDefinition.cs" />
+    <Compile Include="tmg.equinox.setting\Interface\ISettingManager.cs" />
+    <Compile Include="tmg.equinox.setting\Interface\ISettingProvider.cs" />
+    <Compile Include="tmg.equinox.setting\Interface\ISettingRepository.cs" />
+    <Compile Include="tmg.equinox.setting\SettingManager.cs" />
+    <Compile Include="tmg.equinox.setting\SettingProvider.cs" />
+    <Compile Include="tmg.equinox.setting\SettingRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Caching.settings" />
+    <None Include="tmg.equinox.caching.client\App.config" />
+    <None Include="tmg.equinox.caching\App.config" />
+    <None Include="tmg.equinox.core.logging\NLog.config" />
+    <None Include="tmg.equinox.core.logging\NLog.xsd" />
+    <None Include="tmg.equinox.core.logging\packages.config" />
+    <None Include="tmg.equinox.infrastructure.util\DocumentUtility\ClaimsSchema.xsd" />
+    <None Include="tmg.equinox.reporting\Template\100 Ancillary Vendor Report Template.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\125 DIV - Panel Report Template.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\300 Required Materials Report MA-MAPD.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\450 State Product Summary Non-SNP.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\450 State Product Summary SNP.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\475 Service Area Expansions And Exits.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2017 2018 Benefits Member Facing_Post_Benchmark 07242017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2017_2018 PDP SOT_Post Benchmark_081117_ME.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 CCP Plans by County_Final.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 CTS_PLAN_MASTER_FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 DATA PLAN PREMIUM_FINAL_PostBM.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 Formulary Crosswalk - FINAL 06_19.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 High Level Benefits by Plan _08102017_Post Benchmark_SP.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 HMO SOT BO grid_PostBenchMark_08152017_FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 IKA Benefit Template_08182017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 LIS Grids for Website_Formulas.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 PDP EOC Tables_FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 PDP EOC_SB Copay Grid_FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018 PDP_PLAN - FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018_LOB Mapping_08182017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018_WellCare Web_App_Benefit_Plan_for_IKA_08182017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_2018_WellCare_IKA_Website_Data_Variables_08182017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_ANOC Campaign - 2018_SOT_data_grid_data_for_plan_information_tranfer_08182017.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_CCP Part D BMLs - 2017 CCP Part D BMLs_FINAL.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_Copy of IT Crosswalk 06272017_SP.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_DRX - SB2018_template_final.xlsm" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_Plan Info - 2017 Plan Info 09_05_2016.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\emptytemplate_T_ID_CARD_SUPPORT_07032017_Draft.xlsx" />
+    <None Include="tmg.equinox.reporting\Template\Template1.xls" />
+    <None Include="tmg.equinox.reporting\Template\Template1.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="CacheAdapter-ReadMe.txt" />
+    <Content Include="tmg.equinox.caching\CacheAdapter-ReadMe.txt" />
+    <Content Include="tmg.equinox.caching\lib\Microsoft.ApplicationServer.Caching.Client.dll" />
+    <Content Include="tmg.equinox.caching\lib\Microsoft.ApplicationServer.Caching.Core.dll" />
+    <Content Include="tmg.equinox.caching\lib\Microsoft.WindowsFabric.Common.dll" />
+    <Content Include="tmg.equinox.caching\lib\Microsoft.WindowsFabric.Data.Common.dll" />
+    <Content Include="tmg.equinox.infrastructure.exceptionhandling\App_Readme\Elmah.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tmg.equinox.infrastructure.util\Enums\" />
+    <Folder Include="tmg.equinox.infrastructure.util\FileOperation\" />
+    <Folder Include="tmg.equinox.reporting.base\Template\" />
+    <Folder Include="tmg.equinox.reporting\System\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

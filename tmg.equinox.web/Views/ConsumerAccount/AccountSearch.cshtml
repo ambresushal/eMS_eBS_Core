@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Account Search";
+    Layout = "~/Views/Shared/ConsumerAccountLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Account Search</h1>
+  </div>
+</div>
+<div class="form-inline">
+  <div class="form-group" style="margin-bottom: 15px;vertical-align: top;">
+      <label for="inputEmail">Document Name:</label>
+      <input type="text" id ="searchDoc" class="string form-control" placeholder="Type here" maxlength="100" style="height: 30px;width: 220px;border-radius: 3px;" />
+  </div>
+  <button class ="btn btn-sm but-align " id="btnDocSearch">Search</button>
+  <button class="btn btn-sm but-align" id="btnDocClear" style="margin-left: 2px;">Clear</button>
+  </div>
+
+<div class="tablelist-wrapper border-none">
+    <ul class="nav nav-pills border-none">
+        <li class="active">
+            <a href="~/ConsumerAccount/AccountSearch#">Account Search</a>
+        </li>
+        <li>
+            <a href="~/ConsumerAccount/ManageAccount">Manage Account</a>
+        </li>
+    </ul>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row-fluid">
+            <div class="col-xs-12">
+                <div class="grid-wrapper">
+                <table id="padg">
+                </table>
+
+            </div>
+            </div>
+        </div>
+        
+          </div>
+         <div class="row">
+            <div class="col-xs-12">
+                <div class="grid-wrapper" style="margin-top: 10px;">
+                <!--  <div class="grid-page-wrapper" style="padding-left: 30px;">
+                    List Of Items
+                  </div> -->
+                <table id="npadg">
+                </table>
+                </div>
+            </div>
+
+            </div>
+
+    <div style="display: none;">
+        <div id="accountfolderdialog">
+            <form>
+                <div id="divAccountDetails" class="form-group">
+                    <label for="accountname_d">Account Name</label>
+                    <input type="text" class="form-control" id="accountfoldername_d" maxlength="100" placeholder="Enter Account Name" />
+                    <span class="help-block"></span>
+                    <button id="btnNext" type="button" class="btn btn-default">Next</button>
+                </div>
+                <div id="divFolderDetails" class="form-group" style="margin: 5px; display: none;">
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <label>Folder Name</label><em>*</em>
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" id="folderName_d" maxlength="50" />
+                            <span class="help-block" id="folderNameSpan_d"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="folder_d">
+                        <div>
+                            <div class="col-xs-6">
+                                <label id="date ">Folder Effective Date</label><em>*</em>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" id="effectiveDate_d" style="padding-bottom: 5px;" maxlength="10" />
+                                <span class="help-block" id="effectiveDateSpan"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="folderDialogSelectAccount_d">
+                        <div class="col-xs-6">
+                            <label>Select Account</label><em>*</em>
+                        </div>
+                        <div class="col-xs-6">
+                            <select id="accountNames_d" class="form-control"></select>
+                            <span class="help-block " id="accountNamesSpan_d"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <label>Select Category</label><em>*</em>
+                        </div>
+                        <div class="col-xs-6">
+                            <select id="categoryDDL_d"></select>
+                            <span class="help-block " id="categorySpan_d"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" style="display: none;">
+                        <div class="col-xs-6">
+                            <label>Market Segment</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <select id="marketSegment_d"></select>
+                            <span class="help-block" id="marketSegmentSpan_d"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="folderDialogApplicableTeams_d">
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <label>Select the Applicable Teams</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <label>Check All</label>
+                                <input type="checkbox" id="checkAll_d" checked="checked" disabled="disabled" />
+        </div>
+    </div>
+
+                        <div class="col-xs-4">
+                            <input type="checkbox" id="1" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Product Build</label>
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="checkbox" id="2" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Audit</label>
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="checkbox" id="3" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">WF Specialist</label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="folderId_d" name="folderId" />
+                    <input type="hidden" id="folderVersion_d" name="folderVersion" />
+                    <button id="btnSave" type="button" class="btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+<div style="display: none;">
+    @Html.Partial("FolderDialog")
+</div>
+
+@*<div style="display: none;">
+  @Html.Partial("RetroAccountDialog")
+    </div>*@
+
+<script type="text/javascript">
+    var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId)); 
+    setMenu("account");
+</script>
+
+
+
+
+

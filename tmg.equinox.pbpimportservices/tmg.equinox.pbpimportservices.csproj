@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1872C1C6-9152-477A-9A62-1C9904055C11}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.pbpimportservices</RootNamespace>
+    <AssemblyName>tmg.equinox.pbpimportservices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HelperUtility.cs" />
+    <Compile Include="ImportDatatoFolder.cs" />
+    <Compile Include="MapPBPData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OleDBOperation\AccessDbContext.cs" />
+    <Compile Include="PBPImportOperationService.cs" />
+    <Compile Include="PBPImportOperation\PBPImportOperation.cs" />
+    <Compile Include="OleDBOperation\OleDbHelperClass.cs" />
+    <Compile Include="PBPMappingConstants.cs" />
+    <Compile Include="PBPMappingsBuilder\BenefitReviewBuilder.cs" />
+    <Compile Include="PBPMappingsBuilder\CostShareBuilder.cs" />
+    <Compile Include="PBPMappingsBuilder\NetworkBuilder.cs" />
+    <Compile Include="PBPMappingsBuilder\PlanInformationBuilder.cs" />
+    <Compile Include="PBPMappingsBuilder\PrescriptionBuilder.cs" />
+    <Compile Include="PBPObjectJson.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlOperation\SqlHelperClass.cs" />
+    <Compile Include="SqlOperation\SqlImportOperations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.applicationservices\tmg.equinox.applicationservices.csproj">
+      <Project>{354c2e89-a4f7-4503-af2b-9e0f65724ebe}</Project>
+      <Name>tmg.equinox.applicationservices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.dependencyresolution\tmg.equinox.dependencyresolution.csproj">
+      <Project>{35a42720-7465-4f1e-b233-f2ca2e7dc349}</Project>
+      <Name>tmg.equinox.dependencyresolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.interfaces\tmg.equinox.repository.interfaces.csproj">
+      <Project>{38ba809b-3adf-42bc-97e2-b02fb85a0e22}</Project>
+      <Name>tmg.equinox.repository.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.infrastructure.interfaces\tmg.equinox.infrastructure.interfaces.csproj">
+      <Project>{04e0b7b2-2d66-403c-a3b5-ce22729dd4d9}</Project>
+      <Name>tmg.equinox.infrastructure.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.infrastructure.util\tmg.equinox.infrastructure.util.csproj">
+      <Project>{534a310b-2581-4b71-b1cd-aa344328cf9d}</Project>
+      <Name>tmg.equinox.infrastructure.util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19f18c6a-c503-41fd-8e63-e4bb2022d03f}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.web.extensions\tmg.equinox.web.extensions.csproj">
+      <Project>{6d481f2d-a6c4-4924-96c1-6c8036fbc2d8}</Project>
+      <Name>tmg.equinox.web.extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

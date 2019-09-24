@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B240D82-28A1-447D-A67F-12CDFFBF2109}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.integration.domain.services</RootNamespace>
+    <AssemblyName>tmg.equinox.integration.domain.services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Win32.TaskScheduler">
+      <HintPath>..\tmg.equinox.integration.Scheduler\Lib\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\MasterListServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.interfaces\tmg.equinox.repository.interfaces.csproj">
+      <Project>{38ba809b-3adf-42bc-97e2-b02fb85a0e22}</Project>
+      <Name>tmg.equinox.repository.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.domain\tmg.equinox.integration.domain.csproj">
+      <Project>{d2b3ebc6-ff27-4e40-8599-96ba6ffe8793}</Project>
+      <Name>tmg.equinox.integration.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.infrastructure\tmg.equinox.integration.infrastructure.csproj">
+      <Project>{0034e90d-9ab7-4ef8-86b0-dd8d9a951dcc}</Project>
+      <Name>tmg.equinox.integration.infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.Scheduler\tmg.equinox.integration.scheduler.csproj">
+      <Project>{320e06d3-f242-4c7a-8b1f-602404c934d6}</Project>
+      <Name>tmg.equinox.integration.scheduler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.integration.data\tmg.equinox.integration.data.csproj">
+      <Project>{80ad1a4a-50c5-4583-b70f-e5f51e3541ab}</Project>
+      <Name>tmg.equinox.integration.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.repository\tmg.equinox.repository.csproj">
+      <Project>{20055d5e-22db-4de3-a164-7a743e0f0205}</Project>
+      <Name>tmg.equinox.repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\MasterListServiceReference\MasterListService.wsdl" />
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.AccumulatorList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Accumulators.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.AllowedAmount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.AllowedAmountList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.AllowedCounter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.AllowedCounterList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory1List.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory2List.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.BenefitCategory3List.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Coinsurance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CoinsuranceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Copay.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CopayList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CopayType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CopayTypeList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CoverageLevel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.CoverageLevelList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Deductible.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.DeductibleList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.DisallowedMessageList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.ErouterRateTypes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAccumulatorListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAccumulatorsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAllMasterListIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAllowedAmountDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAllowedAmountListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAllowedCounterDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetAllowedCounterListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory1DataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory1ListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory2DataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory2ListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory3DataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetBenefitCategory3ListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCoinsuranceDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCoinsuranceListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCopayDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCopayListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCopayTypeDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCopayTypeListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCoverageLevelDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetCoverageLevelListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetDeductibleDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetDeductibleListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetDisallowedMessageListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetErouterRateTypesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLimitsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLTIDListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLTIPListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLTLTListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLTPRListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetLTSEListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateAssociationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateAssociationListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateDetailDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateDetailListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateRegionDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateRegionListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateSegmentDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateSegmentListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateSummaryDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMandateSummaryListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMasterListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetMessagesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetOutofPocketMaxDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetOutofPocketMaxListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPDBCPrefixDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPDBCPrefixListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPDBCTypeDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPDBCTypeListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPDVCRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPlaceofServiceDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetPlaceofServiceListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetRateTypeDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetSERLMessageListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetServiceListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.GetServicesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Limits.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.LTIDList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.LTIPList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.LTLTList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.LTPRList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.LTSEList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateAssociation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateAssociationList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateDetailList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateRegion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateRegionList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateSegment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateSegmentList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateSummary.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MandateSummaryList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.MasterList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Messages.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.OutofPocketMax.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.OutofPocketMaxList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PDBCPrefix.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PDBCPrefixList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PDBCType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PDBCTypeList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PDVCRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PlaceofService.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.PlaceofServiceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.RateType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.SaveMasterListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.SERLMessageList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.ServiceList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MasterListServiceReference\tmg.equinox.integration.domain.services.MasterListServiceReference.Services.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\ProductFacetsQHPService.wsdl" />
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.BenefitReview.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.BenefitReviewGrid.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.CDHInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Coinsurance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.CoinsuranceAmountDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Copay.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.CopayAmountDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.CopayRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.CostShare.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Deductible.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DeductibleAmount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DeductibleAmountDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DeductibleCarryOverAmount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DeductibleCarryOverAmountforFacets.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DeductibleRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DiseaseManagementProgramsOffered.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DrugDeductibleAmount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.DrugOutofPocketMaxAmountDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.FacetProductComponentsPDBC.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.FacetServiceSpecificDeductible.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.FacetsLimits.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.FacetsProductInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GeneralDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GeneralInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetAllProductFacetsQHPIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetAllProductIDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetBenefitReviewDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetBenefitReviewGridDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCDHInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCoinsuranceAmountDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCoinsuranceDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCopayAmountDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCopayDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCopayRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetCostShareDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleAmountDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleAmountDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleCarryOverAmountDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleCarryOverAmountforFacetsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDeductibleRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDiseaseManagementProgramsOfferedDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDrugDeductibleAmountDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetDrugOutofPocketMaxAmountDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetFacetProductComponentsPDBCDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetFacetServiceSpecificDeductibleDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetFacetsLimitsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetFacetsProductInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetGeneralDetailsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetGeneralInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetGlobalProductRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetLimitsDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetLinksDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetMandateListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetMandatesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetMasterListServicesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetNetworkCoverageDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetNetworkDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetNetworkListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetNonMandateServiceDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetNonMandateServicesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetOutofPocketMaxAccumulationRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetOutofPocketMaxAmountDSDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetOutofPocketMaximumDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetPCPPhysicianseligibleforPCPOfficeVisitCopayDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetPDBCPrefixListDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetProductFacetsQHPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetProductRulesDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetQHPCopayInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetQHPNetworkInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetQHPProductInformationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetSBCScenarioCostSharingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetSBCScenarioDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetSecurityAdministrationDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetServiceSpecificDeductibleDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GetStandAloneDentalDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.GlobalProductRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Limits.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Links.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.MandateList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Mandates.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.MasterListServices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Messages.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.NetworkCoverage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.NetworkDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.NetworkList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.NonMandateService.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.NonMandateServices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.OutofPocketMaxAccumulationRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.OutofPocketMaxAmountDS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.OutofPocketMaximum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.PCPPhysicianseligibleforPCPOfficeVisitCopay.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.PDBCPrefixList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Plugin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.ProductFacetsQHP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.ProductRules.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.QHPCoinsuranceInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.QHPCopayInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.QHPDeductibleInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.QHPNetworkInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.QHPProductInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.SaveProductFacetsQHPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.SaveProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.SBCScenario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.SBCScenarioCostSharing.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.SecurityAdministration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.ServiceSpecificDeductible.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProductServiceReference\tmg.equinox.integration.domain.services.ProductServiceReference.StandAloneDental.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ProductServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ProductServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\MasterListServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MasterListServiceReference\configuration.svcinfo" />
+    <None Include="Service References\MasterListServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MasterListServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ProductServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="FileOperation\" />
+    <Folder Include="Impl\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,622 @@
+﻿<script id="SectionMenuTemplate" type="text/x-jsrender">
+    <div class="select-wrapper block">
+        <select class="section-menu">
+            {{for Sections}}
+            <option id="{{>Name}}" data-name='{{>Name}}' role="tab"
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if #index === 0}}
+                    {{if #index % 2 === 0}}
+                    area-selected="true" class="section-menu-item-alternate menu-item-active nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{else}}
+                    area-selected="true" class="section-menu-item menu-item-active nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{/if}}
+                    {{else}}
+                    {{if #index % 2 === 0}}
+                    class="section-menu-item-alternate nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{else}}
+                    class="section-menu-item nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{/if}}
+                    {{/if}}>
+                <a class="{{if Enabled === false}} disabled {{/if}} menu-link " data-toggle="tab" href="#{{>Name}}">
+                    <span class="span-text-margin">{{>Label}}</span>
+                </a>
+            </option>
+            {{/for}}
+        </select>
+    </div>
+</script>
+
+<script id="MLDocumentMenuTemplate" type="text/x-jsrender">
+    <div class="select-wrapper block">
+        <select class="ml-document-menu">
+            {{for Sections}}
+            <option id="{{>Name}}" data-name='{{>Name}}' role="tab"
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if #index === 0}}
+                    {{if #index % 2 === 0}}
+                    area-selected="true" class="section-menu-item-alternate menu-item-active nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{else}}
+                    area-selected="true" class="section-menu-item menu-item-active nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{/if}}
+                    {{else}}
+                    {{if #index % 2 === 0}}
+                    class="section-menu-item-alternate nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{else}}
+                    class="section-menu-item nav-pills {{if Enabled === false}} disabled {{/if}}"
+                    {{/if}}
+                    {{/if}}>
+                <a class="{{if Enabled === false}} disabled {{/if}} menu-link " data-toggle="tab" href="#{{>Name}}">
+                    <span class="span-text-margin">{{>Label}}</span>
+                </a>
+            </option>
+            {{/for}}
+        </select>
+    </div>
+</script>
+
+<script id="FormActionTemplate" type="text/x-jsrender">
+    <div class="tab-content">
+        {{for Sections tmpl="#SectionTemplate" /}}
+    </div>
+</script>
+
+<script id="SectionTemplate" type="text/x-jsrender">
+    {{if #index === 0}}
+    <div class="tab-pane fade in active section" id="section{{>Name}}{{:~getFormInstanceId()}}">
+        {{else}}
+        <div class="tab-pane fade section{{if Enabled === false}} disabled {{/if}}" id="section{{>Name}}{{:~getFormInstanceId()}}">
+            {{/if}}
+            <div id="mainsection" class="panel-heading-gray inner-editsection" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} data-journal='{{>FullName}}'>
+                <div class=" mainSection panel-header-default hastooltip" title="{{>HelpText}}">
+                    <h3 class="panel-title section-title">{{>Label}}</h3>
+                </div>
+                <div class="row">
+                    {{if LayoutColumn === 4}}
+                    {{:~renderCustomHtml(CustomHtml,ChildCount,SectionNameTemplate)}}
+                    {{include tmpl=SectionNameTemplate/}}
+                    {{else}}
+                    {{for Elements tmpl="#ElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn/}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+</script>
+
+<script id="ElementTemplate" type="text/x-jsrender">
+    {{if Layout !== "SOT" && Layout !== "None" && Op !== "I"}}
+    {{if Type==="calendar"}}
+    {{include tmpl="#CalendarTemplate"/}}
+    {{else Type==="section"}}
+    {{include tmpl="#ElementSectionTemplate"/}}
+    {{else Type==="repeater"}}
+    {{include tmpl="#ElementRepeaterTemplate"/}}
+    {{else Type==="select"}}
+    {{include tmpl="#SelectTemplate"/}}
+    {{else Type==="radio"}}
+    {{include tmpl="#RadioButtonTemplate"/}}
+    {{else Type==="checkbox"}}
+    {{include tmpl="#CheckboxTemplate"/}}
+    {{else IsLabel === true}}
+    {{include tmpl="#LabelTemplate"/}}
+    {{else Multiline === true}}
+    {{include tmpl="#TextAreaTemplate"/}}
+    {{else IsRichTextBox === true}}
+    {{include tmpl="#RichTextTemplate"/}}
+    {{else IsDropDownTextBox === true}}
+    {{include tmpl="#SelectInputTemplate"/}}
+    {{else}}
+    {{include tmpl="#InputElementTemplate"/}}
+
+    {{/if}}
+    {{/if}}
+    {{if (#index+1) % ~layout === 0 && #index+1 !== ~cnt}}
+    </div>
+    <div class="row">
+        {{/if}}
+
+</script>
+
+<script id="SubSectionTemplate" type="text/x-jsrender">
+    <div class="subsection panel-heading-gray {{if CustomHtml != null && CustomHtml != ""  }}custom-panel{{/if}}" id="section{{>Name}}{{:~getFormInstanceId()}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} data-journal='{{>FullName}}'>
+        <div class="subsections panel-header-default hastooltip" title="{{>HelpText}}" {{if CustomHtml != null && CustomHtml != "" }} style='display:none;' {{/if}}>
+            <h3 id="subsection" class="panel-title panel-heading-gray">{{>Label}}</h3>
+        </div>
+        <div>
+            <div class="row">
+                {{if LayoutColumn === 4}}
+                {{:~renderCustomHtml(CustomHtml,ChildCount,SectionNameTemplate)}}
+                {{include tmpl=SectionNameTemplate/}}
+                {{else}}
+                {{for Elements tmpl="#ElementTemplate" ~cnt = ChildCount ~layout = LayoutColumn/}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</script>
+<!--
+<script id="RepeaterTemplate" type="text/x-jsrender">
+    <div class="repeater-grid {{>~getCssClass(~layout)}}" id="repeater{{>Name}}{{:~getFormInstanceId()}}" style="width:100%; {{if Visible === true}} display:block;  {{else}} display:none; {{/if}}" data-journal='{{>FullName}}'>
+        <table id='{{>Name}}{{:~getFormInstanceId()}}'></table>
+        {{:~repeaterCallback(#data)}}
+    </div>
+</script>
+-->
+<script id="RepeaterTemplate" type="text/x-jsrender">
+    <div class="repeater-grid {{>~getCssClass(~layout)}}" id="repeater{{>Name}}{{:~getFormInstanceId()}}" style="width:100%;height:100%; padding-top: 35px; box-sizing: border-box; {{if Visible === true}} display:block;  {{else}} display:none; {{/if}}" data-journal='{{>FullName}}'>
+        <input type="button" class="btn btn-secondary btn-lg btn-block text-left" id='btn{{>Name}}{{:~getFormInstanceId()}}' value="Button" />
+        <div id='{{>Name}}{{:~getFormInstanceId()}}' class="ag-theme-fresh"></div>
+        {{:~repeaterCallback(#data)}}
+    </div>
+</script>
+<script id="SelectTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}">
+        <label class="radio-label-align-middle" for="{{>Name}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    {{if MultiSelect === true}}
+    <div class="{{>~getCssClass(~layout)}} multiselect-wrapper">
+        {{/if}}
+        {{if MultiSelect !== true}}
+        <div class="{{>~getCssClass(~layout)}} select-wrapper">
+            {{/if}}
+
+            {{if MultiSelect === true}}
+            <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                    class='form-control multi-select {{if Enabled === false}} disabled {{/if}}'
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if Enabled === false}} disabled="disabled" {{/if}}
+                    multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                {{else}}
+                <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                        class='form-control hastooltip {{if Enabled === false}} disabled {{/if}}'
+                        {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                        {{if Enabled === false}} disabled="disabled" {{/if}}
+                        data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                    <option value="[Select One]">[Select One]</option>
+                    {{/if}}
+
+                    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                    {{if ~defaultValue === ItemValue}}
+                    <option value="{{>ItemValue}}" selected>{{>ItemText}}</option>
+                    {{else}}
+                    <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                    {{/if}}
+                    {{/for}}
+                </select>
+                {{if HasCustomRule===true}}
+                <span class="ui-search-trigger glyphicon glyphicon-search" style="cursor:pointer;right:30px;"></span>
+                {{/if}}
+        </div>
+</script>
+
+<script id="ElementSectionTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout, Type)}}">
+        {{for [Section] tmpl="#SubSectionTemplate"/}}
+    </div>
+</script>
+
+<script id="ElementRepeaterTemplate" type="text/x-jsrender">
+    {{for #data tmpl="#RepeaterTemplate"/}}
+</script>
+
+<script id="CalendarTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}">
+        <label class="radio-label-align-middle" for="{{>Name}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <input type="text" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' maxlength='10' title='{{>HelpText}}'
+               data-toggle="tooltip" data-placement="bottom"
+               {{if Visible === true}} style='width:90%;display:block;float:left;' {{else}} style='width:90%;display:none;float:left;' {{/if}}
+               {{if Enabled === false}} disabled="disabled" {{/if}}
+               class="datepicker date ignore form-control hastooltip {{if Enabled === false}} disabled {{/if}}"
+               placeholder="MM/DD/YYYY" data-link='{{>FullName}}' data-min-date="{{>MinDate}}" data-max-date="{{>MaxDate}}" value='{{>DefaultValue}}' data-journal='{{>FullName}}'>
+    </div>
+</script>
+
+<script id="RadioButtonTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+        <label class="radio-label-align-middle" for="{{>Name}}">
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+        <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+        data-toggle="tooltip" data-placement="bottom" value="true"
+        class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+        {{if DefaultValue === "True" }} checked="checked" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'>
+        <label class="radio-text-align-middle" for="{{>OptionLabel}}">{{>OptionLabel}}</label>
+        <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+        data-toggle="tooltip" data-placement="bottom" value="false"
+        class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+        {{if DefaultValue === "False" }} checked="checked" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'>
+        <label class="radio-text-align-middle" for="{{>OptionLabelNo}}">{{>OptionLabelNo}} </label>
+    </div>
+</script>
+
+<script id="CheckboxTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+        <label class="radio-label-align-middle" for="{{>Name}}">
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <input type="checkbox" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' value="true" title='{{>HelpText}}'
+               {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}
+               data-toggle="tooltip" data-placement="bottom" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+               {{if DefaultValue === true }} checked="checked" {{/if}} {{:~setCheckBoxDataLink(FullName)}} data-journal='{{>FullName}}' />
+
+    </div>
+</script>
+
+<script id="LabelTemplate" type="text/x-jsrender">
+    {{if IsLabel === true && Label === 'Blank'}}
+    <div>
+        <div>
+            <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+                   {{if Visible === true}} style='display:block;height:5px;' {{else}} style='display:none;height:5px;' {{/if}}></label>
+        </div>
+    </div>
+    {{else IsLabel === true && Label !== null}}
+    <div>
+        <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+               {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} data-journal='{{>FullName}}'>
+            {{if ~isLabelValue(FullName) === true }}
+            {{>Label}}
+            {{else}}
+            {{>~isLabelValue(FullName)}}
+            {{/if}}
+        </label>
+    </div>
+    {{else IsLabel === true && Label === null}}
+    <div class="{{>~getCssClass(~layout)}}">
+        <label {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} data-journal='{{>FullName}}'></label>
+    </div>
+    <div class='{{>~getCssClass(~layout)}}'>
+        <label id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} data-journal='{{>FullName}}'>{{>Label}}</label>
+    </div>
+    {{/if}}
+</script>
+
+<script id="TextAreaTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}">
+        <label class="label-align-middle" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} for="{{>Name}}">
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}}">
+        <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="5" name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+                  {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                  data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+                  class='form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+                  data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            {{>DefaultValue}}
+        </textarea>
+    </div>
+</script>
+
+<script id="RichTextTemplate" type="text/x-jsrender">
+    <div class="editor-container">
+        <div class="editor-tabs">
+            <div class="editor-tab">
+                <div class="richText editor-tmpl lance-tmpl" data-loader="editorLoader">
+                    <label class="label-align-middle" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}} for="{{>Name}}">
+                        {{>Label}}
+                        {{if ~hasRequiredValidation(FullName) }}
+                        <em>*</em>
+                        {{/if}}
+                    </label>
+                    <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="10" name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+                              {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                              data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+                              class='richtext-editorformat form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+                              data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                        {{>DefaultValue}}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div id="annotations-wrapper">
+                <div class="annotations"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script id="InputElementTemplate" type="text/x-jsrender">
+    {{if ~layout !== 4 }}
+    <div class="{{>~getCssClass(~layout,null,true)}}">
+        <label class="label-align-middle" for="{{>Name}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+            {{>Label}}
+            {{/if}}
+            {{if ~hasRequiredValidation(FullName) && ~layout !== 4 }}
+            <em>*</em>
+            {{/if}}
+            {{if ~layout !== 4 }}
+        </label>
+    </div>
+    {{/if}}
+    <div class="{{>~getCssClass(~layout)}}">
+        <input type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+               data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+               {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+               class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+               value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}' {{if HasCustomRule===true}} readonly="readonly" {{/if}} />
+        {{if HasCustomRule===true}}
+        <span class="ui-search-trigger glyphicon glyphicon-search" style="cursor:pointer"></span>
+        {{/if}}
+    </div>
+</script>
+
+<script id="SelectInputTemplate" type="text/x-jsrender">
+    <div class="{{>~getCssClass(~layout,null,true)}}">
+        <label class="radio-label-align-middle" for="{{>Name}}" {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>
+            {{>Label}}
+            {{if ~hasRequiredValidation(FullName) }}
+            <em>*</em>
+            {{/if}}
+        </label>
+    </div>
+    <div class="{{>~getCssClass(~layout)}} select-wrapper new-custom-combobox">
+        {{if MultiSelect === true}}
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                class='form-control multi-select ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+                {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                {{if Enabled === false}} disabled="disabled" {{/if}}
+                multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            {{else}}
+            <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                    class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                <option value="[Select One]" class="standard-optn" selected>[Select One]</option>
+                <option value="newItem" class="standard-optn">Enter Unique Response</option>
+                {{/if}}
+
+                {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                {{if ~defaultValue === ItemValue}}
+                <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                {{else}}
+                {{if cssclass == 'non-standard-optn' }}
+                <option value="{{>ItemValue}}" class="non-standard-optn">{{>ItemValue}}</option>
+                {{else}}
+                <option value="{{>ItemValue}}" class="standard-optn">{{>ItemText}}</option>
+                {{/if}}
+                {{/if}}
+                {{/for}}
+                @*<option value="newItem" class="standard-optn">Enter Unique Response</option>*@
+            </select>
+            <input type='text' name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+                   data-toggle="tooltip" data-placement="bottom" maxlength='100' class="ddt-textbox" data-link='{{>FullName}}' data-journal='{{>FullName}}'
+                   style='display:none;' />
+    </div>
+</script>
+
+<script id="CustomElementTemplate" type="text/x-jsrender">
+    {{if (#index+1) === ~cnt && Type==="calendar"}}
+    {{include tmpl="#CustomCalendarTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="radio"}}
+    {{include tmpl="#CustomRadioButtonTemplate"/}}
+    {{else (#index+1) === ~cnt && Type==="checkbox"}}
+    {{include tmpl="#CustomCheckboxTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='select'}}
+    {{include tmpl="#CustomSelectTemplate"/}}
+    {{else (#index+1) === ~cnt && Type ==='SelectInput' && IsDropDownTextBox === true}}
+    {{include tmpl="#CustomSelectInputTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === 'label' && IsLabel === true}}
+    {{include tmpl="#CustomLabelTemplate"/}}
+    {{else (#index+1) === ~cnt && Type === "text" && Multiline === true}}
+    {{include tmpl="#CustomTextAreaTemplate"/}}
+    {{else (#index+1) === ~cnt}}
+    {{include tmpl="#CustomInputElementTemplate"/}}
+    {{/if}}
+</script>
+
+<script id="CustomInputElementTemplate" type="text/x-jsrender">
+    {{if GeneratedName==="IndicateMaximumEnrolleeOutofPocketCostamount" || GeneratedName==="IndicateMaximumEnrolleeOutofPocketCostamountforMedicarecoveredAirAmbul" || GeneratedName=== "IndicatetheMinimumCoinsurancepercentageforMedicarecoveredBenefits" || GeneratedName=== "IndicatetheMaximumCoinsurancepercentageforMedicarecoveredBenefits" || GeneratedName=== "IndicateMinimumCoinsurancepercentageforMedicarecoveredAirAmbulanceServ" || GeneratedName=== "IndicateMaximumCoinsurancepercentageforMedicarecoveredAirAmbulanceServ" || GeneratedName=== "IndicateDeductibleAmount" || GeneratedName=== "IndicateDeductibleAmountforMedicarecoveredAirAmbulanceServices" || GeneratedName=== "IndicatetheMinimumCopaymentamountforMedicarecoveredBenefits" || GeneratedName=== "IndicatetheMaximumCopaymentamountforMedicarecoveredBenefits" || GeneratedName=== "IndicatetheMinimumCopaymentamountforMedicarecoveredAirAmbulanceService" || GeneratedName==="IndicatetheMaximumCopaymentamountforMedicarecoveredAirAmbulanceService"}}
+    <input type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+           data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+           {{if Visible === true}} style='width:120px;margin-top:3px;' {{else}} style='display:none;' {{/if}}
+           class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+           value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}' />
+
+
+    {{else}}
+    <div class="inline">
+        <input type='{{>Type}}' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+               data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+               {{if Visible === true}} style='width:120px;margin-top:3px;' {{else}} style='display:none;' {{/if}}
+               class='{{>DataType}} form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+               value='{{>DefaultValue}}' data-link='{{>FullName}}' data-journal='{{>FullName}}' />
+
+    </div>
+    {{/if}}
+</script>
+
+<script id="CustomCheckboxTemplate" type="text/x-jsrender">
+    <input type="checkbox" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' value="true" title='{{>HelpText}}'
+           {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}
+           data-toggle="tooltip" data-placement="bottom" class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+           {{if DefaultValue === true }} checked="checked" {{/if}} {{:~setCheckBoxDataLink(FullName)}} data-journal='{{>FullName}}' />
+
+</script>
+
+
+<script id="CustomCalendarTemplate" type="text/x-jsrender">
+    <div style="display:inline">
+        <input type="text" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' maxlength='10' title='{{>HelpText}}'
+               data-toggle="tooltip" data-placement="bottom" style="width:90%;max-width:120px;"
+               {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+               {{if Enabled === false}} disabled="disabled" {{/if}}
+               class="datepicker date ignore form-control hastooltip {{if Enabled === false}} disabled {{/if}}"
+               style="width:90%" placeholder="MM/DD/YYYY" data-link='{{>FullName}}' data-min-date="{{>MinDate}}" data-max-date="{{>MaxDate}}" value='{{>DefaultValue}}' data-journal='{{>FullName}}'>
+    </div>
+</script>
+<script id="CustomRadioButtonTemplate" type="text/x-jsrender">
+    <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+           data-toggle="tooltip" data-placement="bottom" value="true"
+           {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}
+           class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+           {{if DefaultValue === true }} checked="checked" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'>
+    <label class="radio-text-align-middle" for="{{>OptionLabel}}" {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}>{{>OptionLabel}}</label>
+    <input type="radio" id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' group='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+           data-toggle="tooltip" data-placement="bottom" value="false"
+           {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}
+           class="hastooltip {{if Enabled === false}} disabled {{/if}}" {{if Enabled === false}} disabled="disabled" {{/if}}
+           {{if DefaultValue === false }} checked="checked" {{/if}} {{:~setRadioButtonDataLink(FullName)}} data-journal='{{>FullName}}'>
+    <label class="radio-text-align-middle" for="{{>OptionLabelNo}}" {{if Visible === true}} style='display:inline;' {{else}} style='display:none;' {{/if}}>{{>OptionLabelNo}} </label>
+</script>
+<script id="CustomLabelTemplate" type="text/x-jsrender">
+    {{if IsLabel === true && Label === 'Blank'}}
+    <div>
+        <div>
+            <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+                   {{if Visible === true}} style='display:block;height:5px;' {{else}} style='display:none;height:5px;' {{/if}}></label>
+        </div>
+    </div>
+    <div class="row">
+        {{else IsLabel === true && Label !== null}}
+        <div>
+            <label class='staticLabel' id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}'
+                   {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>{{>Label}}</label>
+        </div>
+        {{else IsLabel === true && Label === null}}
+        <div class="{{>~getCssClass(~layout)}}">
+            <label {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}></label>
+        </div>
+        <div class='{{>~getCssClass(~layout)}}'>
+            <label id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}>{{>Label}}</label>
+        </div>
+        {{/if}}
+</script>
+
+<script id="CustomSelectInputTemplate" type="text/x-jsrender">
+    <div class="inline select-wrapper new-custom-combobox">
+        {{if IsMultiline === true}}
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                class='form-control multi-select ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+                {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                {{if Enabled === false}} disabled="disabled" {{/if}}
+                multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            {{else}}
+            <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                    class='form-control hastooltip ddt-dropdown {{if Enabled === false}} disabled {{/if}}'
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if Enabled === false}} disabled="disabled" {{/if}} data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                <option value="[Select One]" class="standard-optn" selected>[Select One]</option>
+                <option value="newItem" class="standard-optn">Enter Unique Response</option>
+                {{/if}}
+
+                {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                {{if ~defaultValue === ItemValue}}
+                <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                {{else}}
+                {{if cssclass == 'non-standard-optn' }}
+                <option value="{{>ItemValue}}" class="non-standard-optn">{{>ItemValue}}</option>
+                {{else}}
+                <option value="{{>ItemValue}}" class="standard-optn">{{>ItemText}}</option>
+                {{/if}}
+                {{/if}}
+                {{/for}}
+                @*<option value="newItem" class="standard-optn">Enter Unique Response</option>*@
+            </select>
+            <input type='text' name='{{>Name}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+                   data-toggle="tooltip" data-placement="bottom" maxlength='100' class="ddt-textbox" data-link='{{>FullName}}' data-journal='{{>FullName}}'
+                   style='display:none;' />
+    </div>
+</script>
+
+<script id="CustomTextAreaTemplate" type="text/x-jsrender">
+    <div class="inline">
+        <textarea id='{{>Name}}{{:~getFormInstanceId()}}' wrap='hard' cols="25" rows="5" name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' title='{{>HelpText}}'
+                  {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                  data-toggle="tooltip" data-placement="bottom" maxlength='{{>MaxLength}}'
+                  class='form-control hastooltip {{>SpellCheck}} {{if Enabled === false}} disabled {{/if}}' {{if Enabled === false}} disabled="disabled" {{/if}}
+                  data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            {{>DefaultValue}}
+        </textarea>
+    </div>
+</script>
+
+<script id="CustomSelectTemplate" type="text/x-jsrender">
+    {{if GeneratedName==="IsthereaservicespecificMaximumEnrolleeOutofPocketCost" || GeneratedName==="SelectwhichServiceshaveaMaximumEnrolleeOutofPocketCostSelectallthatapp" || GeneratedName=== "SelectMaximumEnrolleeOutofPocketCostperiodicity" || GeneratedName=== "SelectMaximumEnrolleeOutofPocketCostperiodicityforMedicarecoveredAirAm" || GeneratedName=== "IsthereanenrolleeCoinsurance" || GeneratedName=== "SelectwhichServiceshaveaCoinsuranceSelectallthatapply" || GeneratedName=== "IsthisCoinsurancewaivedifadmittedtohospital" || GeneratedName=== "IsthereanenrolleeDeductible" || GeneratedName=== "SelectwhichServiceshaveaDeductibleSelectallthatapply" || GeneratedName=== "IsthereanenrolleeCopayment" || GeneratedName=== "SelectwhichServiceshaveaCopaymentSelectallthatapply" || GeneratedName=== "IsthisCopaymentwaivedifadmittedtohospital" || GeneratedName=== "IsauthorizationrequiredfornonemergencyMedicareservices"}}
+
+    {{if MultiSelect === true}}
+
+    <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+            class='form-control multi-select {{if Enabled === false}} disabled {{/if}}'
+            {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+            {{if Enabled === false}} disabled="disabled" {{/if}}
+            multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+
+        {{else}}
+        <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                class='form-control hastooltip {{if Enabled === false}} disabled {{/if}}'
+                {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                {{if Enabled === false}} disabled="disabled" {{/if}}
+                data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+            <option value="[Select One]">[Select One]</option>
+            {{/if}}
+
+            {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+            {{if ~defaultValue === ItemValue}}
+            <option value="{{>ItemValue}}" selected>{{>ItemText}}</option>
+            {{else}}
+            <option value="{{>ItemValue}}">{{>ItemText}}</option>
+            {{/if}}
+            {{/for}}
+        </select>
+        {{if HasCustomRule===true}}
+        <span class="ui-search-trigger glyphicon glyphicon-search"></span>
+        {{/if}}
+
+        {{else}}
+        <div class="select-wrapper">
+            {{if IsMultiline === true}}
+            <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                    class='form-control multi-select {{if Enabled === false}} disabled {{/if}}'
+                    {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                    {{if Enabled === false}} disabled="disabled" {{/if}}
+                    multiple='multiple' data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                {{else}}
+                <select id='{{>Name}}{{:~getFormInstanceId()}}' name='{{>Name}}{{:~getFormInstanceId()}}' customrule='{{>HasCustomRule}}' data-placement="bottom" data-toggle="tooltip" title='{{>HelpText}}'
+                        class='form-control hastooltip {{if Enabled === false}} disabled {{/if}}'
+                        {{if Visible === true}} style='display:block;' {{else}} style='display:none;' {{/if}}
+                        {{if Enabled === false}} disabled="disabled" {{/if}}
+                        data-link='{{>FullName}}' data-journal='{{>FullName}}'>
+                    <option value="[Select One]">[Select One]</option>
+                    {{/if}}
+
+                    {{for ~sortDropDownItems(Items,IsSortRequired) ~defaultValue=DefaultValue}}
+                    {{if ~defaultValue === ItemValue}}
+                    <option value="{{>ItemValue}}" selected>{{>ItemText}}</option>
+                    {{else}}
+                    <option value="{{>ItemValue}}">{{>ItemText}}</option>
+                    {{/if}}
+                    {{/for}}
+                </select>
+                {{if HasCustomRule===true}}
+                <span class="ui-search-trigger glyphicon glyphicon-search"></span>
+                {{/if}}
+        </div>
+        {{/if}}
+</script>

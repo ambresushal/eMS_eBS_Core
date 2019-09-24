@@ -1,0 +1,113 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.ApplicationName</title>
+    <link href='@Url.Content("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/jquery-ui-1.9.2.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/Content/css/ui.jqgrid.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/custom.css")' rel="stylesheet" type="text/css" />
+    @*Script Files*@
+
+   @* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+    @*<script src="~/Scripts/Framework/External/Notification/jquery.signalR-2.2.2.min.js"></script>*@
+
+    @Scripts.Render("~/bundles/jQueryBundle")
+    @Scripts.Render("~/bundles/JsRenderBundle")
+    @Scripts.Render("~/bundles/GridBundle")
+    @Scripts.Render("~/bundles/LayoutBundle")
+    @Scripts.Render("~/bundles/AjaxBundle")
+    @Scripts.Render("~/bundles/GlobalBundle")
+    @Scripts.Render("~/bundles/FolderVersionBundle")
+    @Scripts.Render("~/bundles/BootstrapBundle")
+    @Scripts.Render("~/bundles/LogOffBundle")
+    @Scripts.Render("~/bundles/DialogBundle")
+    @Scripts.Render("~/bundles/UtilsBundle")
+    @Scripts.Render("~/bundles/DashboardBundle")
+    @Scripts.Render("~/bundles/ActivityLoggerBundle")
+    @Scripts.Render("~/bundles/TinyMCEBundle")
+
+    @*<script src="~/Scripts/Framework/Internal/locktimer.js"></script>*@
+
+    <script type="text/javascript">
+        function setMenu(menuID) {
+            $("ul.navbar-nav > li > a").each(function (val, index) {
+                var childID = $(this).attr("ID").toLowerCase();
+                if (childID == menuID.toLowerCase()) {
+                    $(this).parent().attr("class", "active");
+                }
+                else {
+                    $(this).removeAttr("class", "active");
+                }
+            });
+        }
+
+        $(function () {
+            $("body").on('click keypress', function () {
+                SingletonLockTimer.getInstance().ResetThisSession();
+            });
+        });
+
+       if (GLOBAL.applicationName == "") {
+            var appName = '@ViewBag.ApplicationName';
+            if(appName != undefined)
+            GLOBAL.applicationName = appName;
+       }
+        if (GLOBAL.clientName == "") {
+            var clientName = '@ViewBag.clientName';
+            if (clientName != undefined)
+                GLOBAL.clientName = clientName;
+        }
+
+    </script>
+    <!-- BEGIN RESPONSE STYLES -->
+    <link href='@Url.Content("~/Content/css/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/jquery-ui-1.9.2.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/Content/css/ui.jqgrid.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/handsontable.full.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/custom-theme/custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/stylesheet-new.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/response.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/font-awesome.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/css/yantramanav.css")' rel="stylesheet" type="text/css" />
+
+    @*<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Yantramanav:400,300,500' rel='stylesheet' type='text/css'>*@
+    <!-- END RESPONSE STYLES -->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-top" role="banner">
+        <div class="header-container-fluid">
+            <div class="navbar-header">
+                <button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="~/Content/css/custom-theme/images/ebenefitsync-logo.png" title="@ViewBag.ApplicationName" alt="@ViewBag.ApplicationName" style="height: 38px" /></a>
+            </div>
+            @Html.Partial("Menu")
+        </div>
+    </div>
+
+    <div style="clear: both"></div>
+    <div class="container-fluid">
+        @RenderBody()
+        <hr />
+    </div>
+    @Html.Partial("Footer")
+    @Html.Partial("AjaxNotifier")
+    @Html.Partial("Dialogs")
+
+    @*@Html.Partial("FontResizer")*@
+</body>
+</html>

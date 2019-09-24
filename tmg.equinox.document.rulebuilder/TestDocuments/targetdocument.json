@@ -1,0 +1,8 @@
+{
+	"TargetParentParent": {
+		"TargetParent": {
+			"TestField": "AAA",
+			"TargetRepeater": []
+		}
+	}
+}

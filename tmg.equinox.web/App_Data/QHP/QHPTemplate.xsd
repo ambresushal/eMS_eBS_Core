@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="planBenefitTemplateVO" targetNamespace="http://vo.ffe.cms.hhs.gov" xmlns:mstns="http://vo.ffe.cms.hhs.gov" xmlns="http://vo.ffe.cms.hhs.gov" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="planMarketingName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+      </xs:sequence>
+      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metalLevel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+      </xs:sequence>
+      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="planBenefitTemplateVO" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="planMarketingName" />
+        <xs:element ref="metalLevel" />
+        <xs:element name="packagesList">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="packages" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="header" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="templateVersion" type="xs:string" minOccurs="0" />
+                          <xs:element name="issuerId" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                              </xs:sequence>
+                              <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="statePostalCode" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                              </xs:sequence>
+                              <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="marketCoverage" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                              </xs:sequence>
+                              <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="dentalPlanOnlyInd" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                              </xs:sequence>
+                              <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="tin" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                              </xs:sequence>
+                              <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="benefitsList" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="benefits" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="benefitTypeCode" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="isEHB" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="isStateMandate" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="isBenefitCovered" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="serviceLimit" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="quantityLimit" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="unitLimit" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="minimumStay" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="exclusion" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="explanation" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="ehbVarianceReason" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="subjectToDeductibleTier1" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="subjectToDeductibleTier2" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="excludedInNetworkMOOP" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="excludedOutOfNetworkMOOP" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                    </xs:sequence>
+                                    <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="plansList" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="plans" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="planAttributes" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="standardComponentID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element ref="planMarketingName" minOccurs="0" maxOccurs="unbounded" />
+                                      <xs:element name="hiosProductID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="hpid" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="networkID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="serviceAreaID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="formularyID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="isNewPlan" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="planType" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element ref="metalLevel" minOccurs="0" maxOccurs="unbounded" />
+                                      <xs:element name="uniquePlanDesign" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="qhpOrNonQhp" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="insurancePlanPregnancyNoticeReqInd" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="isSpecialistReferralRequired" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="healthCareSpecialistReferralType" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="insurancePlanBenefitExclusionText" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="indianPlanVariation" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="hsaEligibility" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="employerHSAHRAContributionIndicator" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="empContributionAmountForHSAOrHRA" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="childOnlyOffering" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="childOnlyPlanID" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="isWellnessProgramOffered" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="isDiseaseMgmtProgramsOffered" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="ehbApportionmentForPediatricDental" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="guaranteedVsEstimatedRate" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="maximumCoinsuranceForSpecialtyDrugs" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="maxNumDaysForChargingInpatientCopay" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="beginPrimaryCareCostSharingAfterSetNumberVisits" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="beginPrimaryCareDeductibleOrCoinsuranceAfterSetNumberCopays" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="planEffectiveDate" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="planExpirationDate" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="outOfCountryCoverage" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="outOfCountryCoverageDescription" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="outOfServiceAreaCoverage" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="outOfServiceAreaCoverageDescription" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="nationalNetwork" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="summaryBenefitAndCoverageURL" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="enrollmentPaymentURL" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="planBrochure" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                          </xs:sequence>
+                                          <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="costShareVariancesList" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="costShareVariance" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="planId" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element ref="planMarketingName" minOccurs="0" maxOccurs="unbounded" />
+                                            <xs:element ref="metalLevel" minOccurs="0" maxOccurs="unbounded" />
+                                            <xs:element name="csrVariationType" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="issuerActuarialValue" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="avCalculatorOutputNumber" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="medicalAndDrugDeductiblesIntegrated" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="medicalAndDrugMaxOutOfPocketIntegrated" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="multipleProviderTiers" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="firstTierUtilization" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="secondTierUtilization" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                </xs:sequence>
+                                                <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="sbc" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="havingBabyDeductible" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingBabyCoPayment" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingBabyCoInsurance" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingBabyLimit" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingDiabetesDeductible" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingDiabetesCopay" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingDiabetesCoInsurance" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="havingDiabetesLimit" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                      </xs:sequence>
+                                                      <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="moopList" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="moop" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="name" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier1IndividualAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier1FamilyAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier2IndividualAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier2FamilyAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="outOfNetworkIndividualAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="outOfNetworkFamilyAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="combinedInOutNetworkIndividualAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="combinedInOutNetworkFamilyAmount" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="planDeductibleList" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="planDeductible" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="deductibleType" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier1Individual" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTier1Family" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="coinsuranceInNetworkTier1" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTierTwoIndividual" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="inNetworkTierTwoFamily" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="coinsuranceInNetworkTier2" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="outOfNetworkIndividual" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="outOfNetworkFamily" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="combinedInOrOutNetworkIndividual" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="combinedInOrOutNetworkFamily" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="serviceVisitList" minOccurs="0" maxOccurs="unbounded">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="serviceVisit" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="visitType" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="copayInNetworkTier1" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="copayInNetworkTier2" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="copayOutOfNetwork" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="coInsuranceInNetworkTier1" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="coInsuranceInNetworkTier2" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="coInsuranceOutOfNetwork" minOccurs="0" maxOccurs="unbounded">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="cellValue" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+                                                            </xs:sequence>
+                                                            <xs:attribute name="cellLocation" form="unqualified" type="xs:string" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

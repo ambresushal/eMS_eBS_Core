@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook
+	xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+	xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x15 xr xr6 xr10 xr2"
+	xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"
+	xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision"
+	xmlns:xr6="http://schemas.microsoft.com/office/spreadsheetml/2016/revision6"
+	xmlns:xr10="http://schemas.microsoft.com/office/spreadsheetml/2016/revision10"
+	xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2">
+	<fileVersion appName="xl" lastEdited="7" lowestEdited="7" rupBuild="21001" codeName="{2AF44A5B-4F9A-30C1-5B58-47010ADB2D0F}"/>
+	<workbookPr codeName="ThisWorkbook" defaultThemeVersion="124226"/>
+	<mc:AlternateContent
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+		<mc:Choice Requires="x15">
+			<x15ac:absPath url="D:\PROJECTS\Independent Health\IH-Upgrade\tmg.equinox.web\App_Data\QHP\2018 Template\1 Benefit Package\"
+				xmlns:x15ac="http://schemas.microsoft.com/office/spreadsheetml/2010/11/ac"/>
+			</mc:Choice>
+		</mc:AlternateContent>
+		<xr:revisionPtr revIDLastSave="0" documentId="13_ncr:1_{D025B73D-4B15-49CD-B432-42ECB3B7C4E4}" xr6:coauthVersionLast="38" xr6:coauthVersionMax="38" xr10:uidLastSave="{00000000-0000-0000-0000-000000000000}"/>
+		<bookViews>
+			<workbookView xWindow="2160" yWindow="825" windowWidth="11490" windowHeight="11745" firstSheet="1" activeTab="1" xr2:uid="{00000000-000D-0000-FFFF-FFFF00000000}"/>
+		</bookViews>
+		<sheets>
+			<sheet name="EnableMacros" sheetId="4" state="veryHidden" r:id="rId1"/>
+			<sheet name="Benefits Package 1" sheetId="112" r:id="rId2"/>
+			<sheet name="Cost Share Variances 1" sheetId="148" r:id="rId3"/>
+			<sheet name="DefaultBP" sheetId="102" state="veryHidden" r:id="rId4"/>
+			<sheet name="DefaultCSV" sheetId="88" state="veryHidden" r:id="rId5"/>
+			<sheet name="Names" sheetId="60" state="veryHidden" r:id="rId6"/>
+		</sheets>
+		<functionGroups builtInGroupCount="19"/>
+		<definedNames>
+			<definedName name="alreadyRanAVC_Column" localSheetId="5">Names!$G$1</definedName>
+			<definedName name="Benefits">Names!$D$1:$D$75</definedName>
+			<definedName name="BP">#REF!</definedName>
+			<definedName name="BW">#REF!</definedName>
+			<definedName name="Child">Names!$A$20:$A$22</definedName>
+			<definedName name="Click">Names!$A$49</definedName>
+			<definedName name="Coinsurance">Names!$A$76:$A$80</definedName>
+			<definedName name="Copay">Names!$A$59:$A$64</definedName>
+			<definedName name="Coverage">Names!$A$4:$A$9</definedName>
+			<definedName name="Covered">Names!$A$39:$A$40</definedName>
+			<definedName name="CSR">Names!$A$42:$A$47</definedName>
+			<definedName name="CSV_codeName_Column" localSheetId="5">Names!$F$1</definedName>
+			<definedName name="dataModifiedAfterAVC_Column" localSheetId="5">Names!$H$1</definedName>
+			<definedName name="DayOrStay">Names!$A$66:$A$74</definedName>
+			<definedName name="DentalBenefits">Names!$D$77:$D$131</definedName>
+			<definedName name="DentalMetal">Names!$A$120:$A$121</definedName>
+			<definedName name="DesignType">Names!$A$136:$A$141</definedName>
+			<definedName name="Disease">Names!$A$82:$A$90</definedName>
+			<definedName name="Dollars">Names!$A$32:$A$33</definedName>
+			<definedName name="EHB">Names!$A$51:$A$57</definedName>
+			<definedName name="EstimatedRate">Names!$A$117:$A$118</definedName>
+			<definedName name="FamilyDeductible">Names!$D$135</definedName>
+			<definedName name="FamilyMOOP">Names!$D$133</definedName>
+			<definedName name="Interval">Names!$A$103:$A$115</definedName>
+			<definedName name="Market">Names!$A$1:$A$2</definedName>
+			<definedName name="MentalandSubstance">Names!$A$123:$A$134</definedName>
+			<definedName name="modifiedFields_Column" localSheetId="5">Names!$I$1</definedName>
+			<definedName name="NA">Names!$A$27:$A$29</definedName>
+			<definedName name="New">Names!$A$24:$A$25</definedName>
+			<definedName name="PlanType">Names!$A$14:$A$18</definedName>
+			<definedName name="QHP">Names!$A$35:$A$37</definedName>
+			<definedName name="ServiceAreas">Names!$G$1:$G$2</definedName>
+			<definedName name="States">Names!$B$1:$B$51</definedName>
+			<definedName name="Units">Names!$A$92:$A$101</definedName>
+			<definedName name="YesNo">Names!$A$11:$A$12</definedName>
+		</definedNames>
+		<calcPr calcId="179021"/>
+		<extLst>
+			<ext uri="{B58B0392-4F1F-4190-BB64-5DF3571DCE5F}"
+				xmlns:xcalcf="http://schemas.microsoft.com/office/spreadsheetml/2018/calcfeatures">
+				<xcalcf:calcFeatures>
+					<xcalcf:feature name="microsoft.com:RD"/>
+				</xcalcf:calcFeatures>
+			</ext>
+		</extLst>
+	</workbook>

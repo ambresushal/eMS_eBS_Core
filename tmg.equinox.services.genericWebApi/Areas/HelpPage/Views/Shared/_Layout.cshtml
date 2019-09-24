@@ -1,0 +1,52 @@
+@using tmg.equinox.services.genericWebApi
+@{
+    var environment = System.Configuration.ConfigurationManager.AppSettings["Environment"] ?? "Development";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>eBenefitSync</title>
+    <meta name="description" content="To remain competitive, Health Plans must be equipped to respond quickly to the changing needs of their customers as well as support timely compliance with state and federal mandates.  eBenefitSync provides Health Plans with a framework that enables them to more efficiently accomplish their core business functions relating to sales, benefits, and benefit data administration. " />
+    <meta name="author" content="" />
+    <link href='@Url.AreaContent("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.AreaContent("~/Content/css/tmg.equinox.custom.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.AreaContent("~/Content/css/tmg.equinox.login.css")' rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+@*<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("scripts", required: false)
+</head>*@
+<body>
+        <div>
+        @*<header class="header" style="margin: 5px;">           
+            <hr class="menu-divider" />
+                <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                </ul>
+                </div>
+        </header>*@
+        <div style="min-height: 450px;">
+        @RenderBody()
+         </div>
+
+        <div class="navbar-bottom">
+            <div class="row-fluid">
+                <div class="col-xs-12 col-sm-12 col-lg-12 copyrights" style="font-size: 11px; text-align: center;">
+                    &copy; Copyright @DateTime.Now.Year The Most Group, Inc. All Rights Reserved. 
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+  @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+</body>
+</html>

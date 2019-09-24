@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D481F2D-A6C4-4924-96C1-6C8036FBC2D8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tmg.equinox.web</RootNamespace>
+    <AssemblyName>tmg.equinox.web.extensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DeepCloner, Version=0.10.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\DeepCloner.0.10.2\lib\net40\DeepCloner.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GemBox.Document, Version=27.3.30.1250, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\newgemboxDLLForfont\GemBox.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="Glav.CacheAdapter, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Glav.CacheAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.8.5.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollateralHelper\SBConfig.cs" />
+    <Compile Include="CollateralHelper\SBDesignDataHelper.cs" />
+    <Compile Include="CollateralHelper\SBDesignSettingConstant.cs" />
+    <Compile Include="CustomRule\CustomRuleConstants.cs" />
+    <Compile Include="CustomRule\CustomRuleFactory.cs" />
+    <Compile Include="CustomRule\Handlers\ICustomRuleAssociatedSectionHandler.cs" />
+    <Compile Include="CustomRule\Handlers\ICustomRuleHandler.cs" />
+    <Compile Include="CustomRule\MasterListCacheManager.cs" />
+    <Compile Include="CustomRule\MasterListExpandoCacheManager.cs" />
+    <Compile Include="CustomRule\OONGroups\OONGroupGenerator.cs" />
+    <Compile Include="CustomRule\OONGroups\OONGroupsHelper.cs" />
+    <Compile Include="DataSource\DataSourceMapper.cs" />
+    <Compile Include="DataSource\DropDownDataSourceMapper.cs" />
+    <Compile Include="DataSource\RepeaterDataSourceMapper.cs" />
+    <Compile Include="DataSource\SectionDataSourceMapper.cs" />
+    <Compile Include="DataSource\SyncManager\ChildDSSynchronizer.cs" />
+    <Compile Include="DataSource\SyncManager\DataSourceSynchManager.cs" />
+    <Compile Include="DataSource\SyncManager\DataSourceSynchronizer.cs" />
+    <Compile Include="DataSource\SyncManager\JTokenEqualityComparer.cs" />
+    <Compile Include="DataSource\SyncManager\PrimaryDSSynchronizer.cs" />
+    <Compile Include="Export\PBPExportPreProcessor.cs" />
+    <Compile Include="Export\QHPExportPreProcessor.cs" />
+    <Compile Include="ExpresionBuilder\ExpressionBuilderConstants.cs" />
+    <Compile Include="ExpresionBuilder\ExpressionBuilderEmptyObjects.cs" />
+    <Compile Include="ExpresionBuilder\ExpressionBuilderGetSetUtilities.cs" />
+    <Compile Include="ExpresionBuilder\ExpressionBuilderRuleFactory.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\AncillarySelection.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\IAnchorRuleHandler.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\IExpressionBuilderRuleHandler.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\IQCommercialMedicalRuleHandler.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\CascadingCostShare.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\RxSelection.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\SectionARules.cs" />
+    <Compile Include="ExpresionBuilder\Handlers\SectionProductRules.cs" />
+    <Compile Include="ExpresionBuilder\HasDataChanged.cs" />
+    <Compile Include="FindnReplace\ActivityLogManager.cs" />
+    <Compile Include="FindnReplace\AnnotationProcessor.cs" />
+    <Compile Include="FindnReplace\AnnotationViewModel.cs" />
+    <Compile Include="FindnReplace\ChangeLogModel.cs" />
+    <Compile Include="FindnReplace\AnnotationExcelGenerator.cs" />
+    <Compile Include="FindnReplace\DocumentInfo.cs" />
+    <Compile Include="FindnReplace\AnnotationExtractor.cs" />
+    <Compile Include="FindnReplace\FindnReplace.cs" />
+    <Compile Include="FindnReplace\IReplaceTextProcessor.cs" />
+    <Compile Include="FindnReplace\MatchLocation.cs" />
+    <Compile Include="FindnReplace\ReplaceCriteria.cs" />
+    <Compile Include="FindnReplace\ReplaceTextLookInProcessor.cs" />
+    <Compile Include="FindnReplace\ReplaceTextProcessor.cs" />
+    <Compile Include="FindnReplace\ReplaceTextProcessorFactory.cs" />
+    <Compile Include="FormDesignManager\ConfigView\ConfigViewExcelGenerator.cs" />
+    <Compile Include="FormDesignManager\ConfigView\ConfigViewHelper.cs" />
+    <Compile Include="FormDesignManager\ConfigView\ConfigViewValidator.cs" />
+    <Compile Include="FormDesignManager\ExcelGenerator.cs" />
+    <Compile Include="FormDesignManager\FormDesignActivityLog.cs" />
+    <Compile Include="FormDesignManager\FormDesignGroupMapManager.cs" />
+    <Compile Include="FormDesignManager\FormDesignsManager.cs" />
+    <Compile Include="FormDesignManager\CompiledDocumentRuleReadOnlyObjectCache.cs" />
+    <Compile Include="FormDesignManager\FormDesignVersionDetailReadOnlyObjectCache.cs" />
+    <Compile Include="FormDesignManager\FormDesignVersionManager.cs" />
+    <Compile Include="FormInstanceManager\FormInstanceDataManager.cs" />
+    <Compile Include="FormInstanceProcessor\AncillaryProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ConfigureRuleProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\DataSourceProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilderRuleProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\CurrentRequestContext.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionBuilderEventMapReader.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionBuilderTreeReader.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\ExpressionRuleTreeProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleExecution.cs" />
+    <Compile Include="FormInstanceProcessor\ExpressionBuilder\RuleTree.cs" />
+    <Compile Include="FormInstanceProcessor\FormInstanceCompleteDataProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\FormInstanceDataProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\IDataProcessor.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\Enum\SourceType.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\IRuleSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\MasterListSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\NonMasterListSourceHandler.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleAliasResolver.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleSourceDataAdapter.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleSourceFactory.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\RuleTargetDataAdapter.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\SourceGroupingWrapper.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\SourceHandler\SourceHandlerDBManager.cs" />
+    <Compile Include="FormInstanceProcessor\SourceTargetDataManager\TargetSectionSyncManager.cs" />
+    <Compile Include="FormInstanceProcessor\VersionSyncProcessor.cs" />
+    <Compile Include="FormInstance\ChangeSummaryReportBuilder.cs" />
+    <Compile Include="FormInstance\ExcelBuilder.cs" />
+    <Compile Include="FormInstance\FormInstanceCompare.cs" />
+    <Compile Include="FormInstance\FormInstanceParser.cs" />
+    <Compile Include="Framework\ActionFilters\NoCacheAttribute.cs" />
+    <Compile Include="Framework\ActionFilters\PostAuthenticateAttribute.cs" />
+    <Compile Include="Framework\ActionFilters\UserActivityLogAttribute.cs" />
+    <Compile Include="Framework\ActivityLogEqualityComparer.cs" />
+    <Compile Include="Framework\Caching\CompiledDcoumentCacheHandler.cs" />
+    <Compile Include="Framework\Caching\DataCacheHandlerFactory.cs" />
+    <Compile Include="Framework\Caching\ErrorGridCacheHandler.cs" />
+    <Compile Include="Framework\Caching\ExpressionBuilderEventMapCacheHandler.cs" />
+    <Compile Include="Framework\Caching\ODMCacheHandler.cs" />
+    <Compile Include="Framework\Caching\ExpressionBuilderTreeCacheHandler.cs" />
+    <Compile Include="Framework\Caching\FormDesignDataCacheHandler.cs" />
+    <Compile Include="Framework\Caching\FormInstanceCompressedDataCacheHandler.cs" />
+    <Compile Include="Framework\Caching\FormInstanceDataCacheHandler.cs" />
+    <Compile Include="Framework\Caching\FormInstanceSectionDataCacheHandler.cs" />
+    <Compile Include="Framework\Caching\IDataCacheHandler.cs" />
+    <Compile Include="Framework\Caching\MasterListSectionDataCacheHandler.cs" />
+    <Compile Include="Framework\JsonNetResult.cs" />
+    <Compile Include="Framework\JsonParser.cs" />
+    <Compile Include="Framework\MasterList\MasterListReader.cs" />
+    <Compile Include="Handler\FormInstanceDataHandler.cs" />
+    <Compile Include="MDBComparer\DifferValueViewModel.cs" />
+    <Compile Include="MDBComparer\MdbComparer.cs" />
+    <Compile Include="MDBComparer\MDBComparerHelper.cs" />
+    <Compile Include="ODMExecuteManager\AccessDbContext.cs" />
+    <Compile Include="ODMExecuteManager\AccessFileConstants.cs" />
+    <Compile Include="ODMExecuteManager\AccessService.cs" />
+    <Compile Include="ODMExecuteManager\AccessServiceHelper.cs" />
+    <Compile Include="ODMExecuteManager\AppSettingsManager.cs" />
+    <Compile Include="ODMExecuteManager\Interface\IAccessService.cs" />
+    <Compile Include="ODMExecuteManager\Interface\IMigrationArrayMapper.cs" />
+    <Compile Include="ODMExecuteManager\Interface\IMigrationItemMapper.cs" />
+    <Compile Include="ODMExecuteManager\Interface\IMigrationService.cs" />
+    <Compile Include="ODMExecuteManager\Interface\IOnDemandMigrationExecutionManager.cs" />
+    <Compile Include="ODMExecuteManager\MigrationArrayDefaultMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationArrayMapperFactory.cs" />
+    <Compile Include="ODMExecuteManager\MigrationItemDirectMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationItemMapperFactory.cs" />
+    <Compile Include="ODMExecuteManager\MigrationItemMultiSelectMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationItemMultiValueCSVMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationItemSingleSelectMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationMapper.cs" />
+    <Compile Include="ODMExecuteManager\MigrationService.cs" />
+    <Compile Include="ODMExecuteManager\Model\AccessFile.cs" />
+    <Compile Include="ODMExecuteManager\Model\FieldItem.cs" />
+    <Compile Include="ODMExecuteManager\Model\MigrationFieldItem.cs" />
+    <Compile Include="ODMExecuteManager\Model\MigrationPlanItem.cs" />
+    <Compile Include="ODMExecuteManager\Model\TableInfo.cs" />
+    <Compile Include="ODMExecuteManager\OnDemandMigrationExecutionManager.cs" />
+    <Compile Include="ODMExecuteManager\RuleExecutor.cs" />
+    <Compile Include="PBPView\DocumentViewImpactManager.cs" />
+    <Compile Include="PBPView\ViewImpactCacheManager.cs" />
+    <Compile Include="PBPView\ViewImpactDesignHelper.cs" />
+    <Compile Include="MasterList\AliasListGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\Enums.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\Field.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\ISqlChild.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\ISqlObject.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\Parameter.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\Procedure.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\ScalarFunction.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\SQLConnector.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\Table.cs" />
+    <Compile Include="QueryManager\DataBaseObjects\View.cs" />
+    <Compile Include="QueryManager\QueryExecutor.cs" />
+    <Compile Include="RuleEngine\ElementRuleProcessor.cs" />
+    <Compile Include="RuleEngine\ExpressionHelper.cs" />
+    <Compile Include="RuleEngine\RepeaterRowRuleProcessor.cs" />
+    <Compile Include="RuleEngine\RepeaterRuleProcessor.cs" />
+    <Compile Include="RuleEngine\RuleDescription\EnableRuleTextGenerator.cs" />
+    <Compile Include="RuleEngine\RuleDescription\RuleTextGenerator.cs" />
+    <Compile Include="RuleEngine\RuleDescription\RuleTextGeneratorFactory.cs" />
+    <Compile Include="RuleEngine\RuleDescription\RuleTextHelper.cs" />
+    <Compile Include="RuleEngine\RuleDescription\RuleTextManager.cs" />
+    <Compile Include="RuleEngine\RuleManager.cs" />
+    <Compile Include="RuleEngine\RuleProcessor.cs" />
+    <Compile Include="Salesforce\FolderManager.cs" />
+    <Compile Include="Salesforce\Notification.cs" />
+    <Compile Include="Salesforce\SFTemplateSettings.cs" />
+    <Compile Include="SOTView\DesignSyncForSOTView.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Validator\DocumentValidator.cs" />
+    <Compile Include="Validator\ElementValidator.cs" />
+    <Compile Include="Validator\ErrorRow.cs" />
+    <Compile Include="Validator\ErrorSection.cs" />
+    <Compile Include="Validator\RepeaterRowValidator.cs" />
+    <Compile Include="Validator\RepeaterValidator.cs" />
+    <Compile Include="Validator\SectionValidator.cs" />
+    <Compile Include="Validator\ValidationMessage.cs" />
+    <Compile Include="Validator\ValidationRuleProcessor.cs" />
+    <Compile Include="Validator\Validator.cs" />
+    <Compile Include="VersionManagement\DataVersionManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core">
+      <HintPath>..\packages\BundleTransformer.Core.1.9.13\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.UglifyJs">
+      <HintPath>..\packages\BundleTransformer.UglifyJs.1.9.17\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearScript">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.1.1.12\lib\net40\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching">
+      <HintPath>..\packages\MvcDonutCaching.1.2.3\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
+    </Reference>
+    <Reference Include="EFCache">
+      <HintPath>..\packages\EntityFramework.Cache.1.0.0-beta2\lib\net45\EFCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.8.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Core">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Core.1.1.3\lib\net40\JavaScriptEngineSwitcher.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.Msie">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.1.1.11\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
+    </Reference>
+    <Reference Include="JavaScriptEngineSwitcher.V8">
+      <HintPath>..\packages\JavaScriptEngineSwitcher.V8.1.1.12\lib\net40\JavaScriptEngineSwitcher.V8.dll</HintPath>
+    </Reference>
+    <Reference Include="Membase, Version=2.14.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Membase.2.14\lib\net35\Membase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MsieJavaScriptEngine">
+      <HintPath>..\packages\MsieJavaScriptEngine.1.4.4\lib\net40\MsieJavaScriptEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.0.371\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.identitymodel.services" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="tmg.equinox.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tmg.equinox.core.1.0.1\lib\net45\tmg.equinox.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TuesPechkin">
+      <HintPath>..\packages\TuesPechkin.1.0.3.0\lib\net20\TuesPechkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.1.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.Mvc5.1.1\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\microsoft.sqlserver.types.11.0.2\nativebinaries\x64\msvcr100.dll">
+      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\microsoft.sqlserver.types.11.0.2\nativebinaries\x64\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\microsoft.sqlserver.types.11.0.2\nativebinaries\x86\msvcr100.dll">
+      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\microsoft.sqlserver.types.11.0.2\nativebinaries\x86\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnDemandMigration\tmg.equinox.pbp.dataaccess\tmg.equinox.pbp.dataaccess.csproj">
+      <Project>{AF6DF7F1-93B4-4904-BF99-5655CDF68AED}</Project>
+      <Name>tmg.equinox.pbp.dataaccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.anocchart\tmg.equinox.anocchart.csproj">
+      <Project>{6c6ef458-fa00-4944-82bd-3824bed41c66}</Project>
+      <Name>tmg.equinox.anocchart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.applicationservices\tmg.equinox.applicationservices.csproj">
+      <Project>{354c2e89-a4f7-4503-af2b-9e0f65724ebe}</Project>
+      <Name>tmg.equinox.applicationservices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.comparesync\tmg.equinox.comparesync.csproj">
+      <Project>{e547705f-22fe-4c73-a551-034993b376ab}</Project>
+      <Name>tmg.equinox.comparesync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.dependencyresolution\tmg.equinox.dependencyresolution.csproj">
+      <Project>{35a42720-7465-4f1e-b233-f2ca2e7dc349}</Project>
+      <Name>tmg.equinox.dependencyresolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.domain.entities\tmg.equinox.domain.entities.csproj">
+      <Project>{59f89076-58cc-49ef-acd7-5ffcefdbe8ce}</Project>
+      <Name>tmg.equinox.domain.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.generatecollateral\tmg.equinox.generatecollateral.csproj">
+      <Project>{61680a5b-860c-4582-9559-13c64219a8c6}</Project>
+      <Name>tmg.equinox.generatecollateral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.identitymanagement\tmg.equinox.identitymanagement.csproj">
+      <Project>{4c365fc5-94cf-44d3-94e0-5c2d44d1c320}</Project>
+      <Name>tmg.equinox.identitymanagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.repository\tmg.equinox.repository.csproj">
+      <Project>{20055d5e-22db-4de3-a164-7a743e0f0205}</Project>
+      <Name>tmg.equinox.repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter.collateral\tmg.equinox.ruleinterpretercollateral.csproj">
+      <Project>{d1521d11-4394-4420-82ed-499376e44b09}</Project>
+      <Name>tmg.equinox.ruleinterpretercollateral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.ruleinterpreter\tmg.equinox.ruleinterpreter.csproj">
+      <Project>{40B5C019-8FFA-4776-8DD8-B3AC1DA99CA7}</Project>
+      <Name>tmg.equinox.ruleinterpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.schema.base\tmg.equinox.schema.Base.csproj">
+      <Project>{57E3FA96-9364-4E32-BD4A-2E8D72EB9958}</Project>
+      <Name>tmg.equinox.schema.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.interfaces\tmg.equinox.applicationservices.interfaces.csproj">
+      <Project>{19f18c6a-c503-41fd-8e63-e4bb2022d03f}</Project>
+      <Name>tmg.equinox.applicationservices.interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tmg.equinox.services.models\tmg.equinox.applicationservices.viewmodels.csproj">
+      <Project>{6532573b-06d3-411e-ad21-74915fbfed68}</Project>
+      <Name>tmg.equinox.applicationservices.viewmodels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,24 @@
+@model IList<tmg.equinox.services.webapi.Areas.Help.Model.ApiDescriptor>
+
+@{
+    ViewBag.Title = "eBenefitSync Web API Help Page";
+}
+
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading-gray">
+         <h2>@ViewBag.Title</h2>      
+    </div>
+    <div class="panel-body">           
+             <div class="col-xs-12 col-md-12">
+                <h3>Introduction</h3>
+                <h4>Provides a general description of your APIs here.</h4>
+            </div>        
+        <div class="row-fluid">
+            <div class="col-sm-12 col-xs-12 col-lg-12">
+                @Html.Partial("ApiList", Model)
+            </div>
+        </div>
+    </div>
+</div>
+</div>

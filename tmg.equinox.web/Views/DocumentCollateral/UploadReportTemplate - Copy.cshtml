@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Document Design";
+    Layout = "~/Views/Shared/ReportDesignLayout.cshtml";
+}
+
+@{
+    var fsdg = ViewBag.StatusMessage;
+
+    var dfgty = "zdfgvdx";
+            //var dgfdfgd = ViewData["StatusMessage"];
+}
+
+
+<div id="uploadTab" style="display: none;">
+    <ul>
+        <li><a href="#formdesign-1">Report Template Upload</a></li>
+    </ul>
+    <form id="uploadRptTmplt" method="post" runat="server">
+
+        <input id="jsonData" type="hidden" class="form-control" name="jsonData" />
+        <input id="uploadedFileName" type="hidden" class="form-control" name="uploadedFileName" />
+        <input id="statusMessage" type="hidden" value="@ViewData["StatusMessage"]"/>
+        <input id="reportTemplateID" type="hidden" class="form-control" name="reportTemplateID" value="@ViewData["ReportTemplateID"]"/>
+        <input id="reportTemplateName" type="hidden" class="form-control" name="reportTemplateName" value="@ViewData["ReportTemplateName"]"/>
+        @*<p id="statusMessage" style="display:none;height:0px;width:0px;">@ViewData["StatusMessage"]</p>*@
+        <div class="form-group" style="clear: both; margin-bottom: 10px;">
+            @* <div style="margin-bottom:10px;float:left;">
+                    <label aria-label="Report Name" style="font-weight:bold;margin-top:10px;margin-left:10px;">Report Name</label></div>
+                <div  style="margin-bottom:10px;float:left;">
+                    <input id="reportName" type="text" class="form-control" name="reportName" style="margin-top:5px;margin-left:10px;width:200px;margin-right:5px;" maxlength="150" placeholder="Enter Report Name"/>
+                </div>*@
+            @*                <div style="margin-bottom:10px;float:left;">
+                    <label style="font-weight:normal;margin-top:10px;margin-left:6px;">Select Report Name</label>
+                </div>*@
+
+            <table>
+                <tr>
+                    <td>
+                        <label aria-label="Effective Date">Effective Date</label></td>
+                    <td>
+                        <input id="effDate" type="text" class="form-control" name="effDate" style="margin-left: 10px; margin-right: 5px; width: 130px;" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight: bold; margin-top: 10px; margin-left: 10px;">Description</label></td>
+                    <td>
+                        <input id="desc" class="form-control" name="reportDesc" type="text" style="width: 200px; height: 80px; margin-left: 18px; margin-right: 5px; margin-top: 5px;" placeholder="Enter Description" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label aria-label="Report Name">Cancel Date</label></td>
+                    <td>
+                        <input id="canDate" type="text" name="canDate" readonly="true" class="form-control" style="margin-left: 18px; margin-right: 5px; margin-top: 5px; width: 130px;" /></td>
+                </tr>
+            </table>
+
+            @*                <div id ="eff" style="margin-bottom:10px;float:left;margin-left:150px;margin-top:10px;">
+                    <label aria-label="Effective Date">Effective Date</label>
+                </div>
+                <div style="margin-bottom:10px;float:left;margin-top:5px;">
+                    <input id="effDate" type="text" class="form-control" name="effDate" style="margin-left:10px;margin-right:5px;width:130px;" />
+                </div>*@
+
+        </div>
+
+        @*            <div style="clear:both; margin-bottom:80px;">
+                <div style="margin-bottom:10px;float:left;">
+                    <label style="font-weight:bold;margin-top:10px;margin-left:10px;">Description</label>
+                </div>
+                <div  style="margin-bottom:10px;float:left;">                    
+                    <input id="desc" class="form-control" name="reportDesc" type="text" style="width:200px;height:80px;margin-left:18px;margin-right:5px;margin-top:5px;" placeholder="Enter Description"/>
+                </div>
+                <div style="margin-bottom:10px;float:left;">
+                    <label style="font-weight:normal;margin-top:10px;margin-left:5px;">Enter Description</label>
+                </div>
+               
+                <div id ="can" style="margin-bottom:10px;float:left;margin-left:150px;margin-top:10px;">
+                    <label aria-label="Report Name">Cancel Date</label>
+                </div>
+                <div style="margin-bottom:10px;float:left;">
+                    <input id="canDate" type="text" name="canDate" readonly="true" class="form-control"  style="margin-left:18px;margin-right:5px;margin-top:5px;width:130px;"/>                    
+                </div>
+            </div> *@
+        <br />
+        <br />
+
+        <div id="tempDocMapdiv" style="display: none; margin-top: 10px; max-width: 1000px;">
+          <div class="grid-wrapper">
+            <table id="tempDocMap" style="max-width: 1000px;"></table>
+        </div>
+        </div>
+        <table style="margin-top: 20px;">
+            <tr>
+                <td>
+                    <label aria-label="Upload" style="font-weight: bold; margin-left: 10px;">Upload</label></td>
+                <td>
+                    <input id="uploadTemplate" name="uploadTemplate" class="form-control" type="file" style="margin-left: 5px; margin-right: 5px; background-color: white;" />
+                </td>
+            </tr>
+        </table>
+        @*<div style="margin-bottom:5px;margin-top:20px;">
+                <div id ="upl" style="margin-bottom:20px;margin-left:10px;float:left;">
+                    <label aria-label="Upload" style="font-weight:bold;">Upload</label>
+                </div>
+                <div style="margin-bottom:5px;float:left;">
+                    <input id="uploadTemplate" name="uploadTemplate" class="form-control" type="file" style="margin-left:5px;margin-right:5px;background-color:white;"/> 
+                </div>
+            </div>*@
+
+
+        @*            <div style="clear:both;">
+                <label style="margin-left:40px;">Select a Template to Upload</label>
+            </div>*@
+        <br />
+
+        <button id="saveTemplateButton" class="form-control" type="submit" style="margin-left: 10px; max-width: 50px;">Save</button>
+
+    </form>
+    <div id="someHiddenDiv" style="display: none;">Working...</div>
+</div>
+

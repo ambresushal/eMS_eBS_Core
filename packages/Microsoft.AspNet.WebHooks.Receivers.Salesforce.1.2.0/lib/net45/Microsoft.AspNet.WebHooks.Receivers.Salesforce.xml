@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.WebHooks.Receivers.Salesforce</name>
+    </assembly>
+    <members>
+        <member name="T:System.Web.Http.HttpConfigurationExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:System.Web.Http.HttpConfigurationExtensions.InitializeReceiveSalesforceWebHooks(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes support for receiving Salesforce SOAP-based Outbound Messages as a WebHook.
+            A sample WebHook URI is of the form '<c>https://&lt;host&gt;/api/webhooks/incoming/sfsoap/{id}</c>'.
+            For security reasons, the WebHook URI must be an <c>https</c> URI and the '<c>MS_WebHookReceiverSecret_SalesforceSoap</c>' 
+            application setting must be configured to the Salesforce Organization IDs. Organizational IDs can be found at 
+            <c>http://www.salesforce.com</c> under <c>Setup | Company Profile | Company Information</c>.
+            For details about Salesforce Outbound Messages, see <c>https://help.salesforce.com/htviewhelpdoc?id=workflow_defining_outbound_messages.htm</c>. 
+            </summary>
+            <param name="config">The current <see cref="T:System.Web.Http.HttpConfiguration"/>config.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.EmbeddedResources_Unknown">
+            <summary>
+              Looks up a localized string similar to No embedded resource found with the name &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_BadBody">
+            <summary>
+              Looks up a localized string similar to The HTTP request body did not contain a required &apos;{0}&apos; property..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_BadCode">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; query parameter provided in the HTTP request did not match the expected value..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_BadValue">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; parameter provided in the HTTP request did not match the expected value..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_BadXml">
+            <summary>
+              Looks up a localized string similar to The WebHook request must contain an entity body formatted as valid XML..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_NoBody">
+            <summary>
+              Looks up a localized string similar to The WebHook request entity body cannot be empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_NoCode">
+            <summary>
+              Looks up a localized string similar to The WebHook verification request must contain a &apos;{0}&apos; query parameter..
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.Properties.SalesforceReceiverResources.Receiver_NoXml">
+            <summary>
+              Looks up a localized string similar to The WebHook request must contain an entity body formatted as XML..
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.SalesforceNamespaces">
+            <summary>
+            Common XML namespace URIs used by Salesforce SOAP messages.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.WebHooks.SalesforceNamespaces.Soap">
+            <summary>
+            The XML namespace URI identifying a SOAP envelope.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.WebHooks.SalesforceNamespaces.Xsi">
+            <summary>
+            The XML namespace URI identifying XSI information.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.WebHooks.SalesforceNamespaces.OutboundMessage">
+            <summary>
+            The XML namespace URI identifying a Salesforce Outbound Message. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.WebHooks.SalesforceNamespaces.Objects">
+            <summary>
+            The XML namespace URI identifying Salesforce objects.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.SalesforceNotifications">
+            <summary>
+            Describes one or more event notifications received as an Outbound Message from Salesforce.
+            For details about Salesforce Outbound Messages, see <c>https://help.salesforce.com/htviewhelpdoc?id=workflow_defining_outbound_messages.htm</c>. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.SalesforceNotifications.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.WebHooks.SalesforceNotifications"/> with a given 
+            <paramref name="doc"/> representing an Outbound SOAP Message received from Salesforce.
+            </summary>
+            <param name="doc">An Outbound SOAP Message received from Salesforce.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.Document">
+            <summary>
+            Gets the complete Outbound SOAP Message received from Salesforce.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.OrganizationId">
+            <summary>
+            Gets the 18 character Organization ID originating this Outbound Message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.ActionId">
+            <summary>
+            Gets the Action ID for this Outbound Message. 
+            The Action ID indicates the workflow rule (action) that triggers the message. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.SessionId">
+            <summary>
+            Gets the optional SessionID for this Outbound Message if included in the message.
+            A Session ID can be used to make subsequent calls back to Salesforce.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.EnterpriseUrl">
+            <summary>
+            Gets the enterprise URI for this Outbound Message. This is the URI to use to make calls back to 
+            Salesforce using the enterprise WSDL. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.PartnerUrl">
+            <summary>
+            Gets the partner URI for this Outbound Message. This is the URI to use to make calls back to 
+            Salesforce using the partner WSDL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceNotifications.Notifications">
+            <summary>
+            Gets the collection of notifications included in this Outbound Message. Each notification
+            is represented as a <see cref="T:System.Collections.Generic.Dictionary`2"/> where <c>TKey</c> is a property
+            name and <c>TValue</c> is the value of that property. For each notification, the Notification ID 
+            can be found using the key <c>_NotificationId</c>. Similarly, the type of notification can be found 
+            using the key <c>_NotificationType</c>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.WebHooks.SalesforceSoapWebHookReceiver">
+            <summary>
+            Provides an <see cref="T:Microsoft.AspNet.WebHooks.IWebHookReceiver"/> implementation which supports Salesforce SOAP-based Outbound Messages as a WebHook.
+            A sample WebHook URI is of the form '<c>https://&lt;host&gt;/api/webhooks/incoming/sfsoap/{id}</c>'.
+            For security reasons, the WebHook URI must be an <c>https</c> URI and the '<c>MS_WebHookReceiverSecret_SalesforceSoap</c>' 
+            application setting must be configured to the Salesforce Organization IDs. The Organizational IDs can be found at 
+            <c>http://www.salesforce.com</c> under <c>Setup | Company Profile | Company Information</c>.
+            For details about Salesforce Outbound Messages, see <c>https://help.salesforce.com/htviewhelpdoc?id=workflow_defining_outbound_messages.htm</c>. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceSoapWebHookReceiver.ReceiverName">
+            <summary>
+            Gets the receiver name for this receiver.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebHooks.SalesforceSoapWebHookReceiver.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.WebHooks.SalesforceSoapWebHookReceiver.ReceiveAsync(System.String,System.Web.Http.Controllers.HttpRequestContext,System.Net.Http.HttpRequestMessage)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

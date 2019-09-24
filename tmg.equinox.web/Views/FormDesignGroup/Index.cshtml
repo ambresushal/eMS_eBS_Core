@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Document Group";
+    Layout = "~/Views/Shared/FormDesignGroupLayout.cshtml";
+}
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Folder</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/FormDesign/Index#">Documents</a>
+        </li>
+        <li class="active">
+            <a href="~/FormDesignGroup/Index">Folder</a>
+        </li>
+    </ul>
+</div>
+<div> <!-- class="layout-wrapper" -->
+  <div class="panel panel-default">
+    <div class="panel-body">
+          <div> <!-- class="row" -->
+              <div > <!-- formdesign-1 -->
+                <div id="formdesign-1">
+                      <div> <!--class="row" -->
+                        <div class="col-xs-3">
+                            <div class="grid-wrapper left-sidebar">
+                              <!-- <div class="grid-page-wrapper">
+                                List Of Items
+                              </div> -->
+                            <table id="fdg"></table>
+                        </div>
+                          </div>
+                        <div class="col-xs-9">
+                            <div class="grid-wrapper right-sidebar">
+                              <!-- <div class="grid-page-wrapper">
+                                List Of Items
+                              </div> -->
+                            <table id="fdvg"></table>
+                        </div>
+                    </div>
+                      </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div style="display: none;">
+<div id="formdesigngroupdialog">
+    <form>
+        <div class="form-group">
+            <label for="formdesignname">Document Folder Name</label>
+            <input type="text" class="form-control" id="formgroupname" maxlength="100" placeholder="Enter Document Folder Name" />
+            <div class="col-xs-12">
+                <table id="roleg"></table>
+            </div>
+            <span class="help-block"></span>
+        </div>
+        <button type="button" class="btn pull-right">Save</button>
+    </form>
+</div>
+    </div>
+<script type="text/ecmascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims))
+    setMenu("design");
+</script>

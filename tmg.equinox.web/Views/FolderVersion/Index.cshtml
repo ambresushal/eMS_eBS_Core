@@ -1,0 +1,2094 @@
+﻿<style>
+    .pq-grid .pq-align-right * {
+        text-align: left;
+    }
+
+    .custom-combobox {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+    }
+
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    .bucontrol textarea, select, input[type=text] {
+        width: 100%;
+    }
+
+    .trigger {
+        margin-left: 10px !important;
+    }
+
+    .mce-ico, mce-caret {
+        font-size: 11px !important;
+    }
+
+    .timer {
+        font: 200 12px/20px "Yantramanav", sans-serif !important;
+        text-align: right;
+        color: #69aa8e;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        vertical-align: text-top;
+    }
+
+    .ui-sotview textarea {
+        height: 56px !important;
+    }
+
+    .form-control[readonly] {
+        background-color: #fff !important;
+    }
+
+    #pg_p_exitValidateLogGrid .ui-pg-table {
+        margin-left: -20px !important;
+    }
+
+    #first_p_exitValidateLogGrid, #last_p_exitValidateLogGrid, #p_exitValidateLogGrid_right {
+        display: none;
+    }
+
+    #exitValidateLogGrid tbody tr:hover {
+        background-color: #c7c2c2 !important;
+    }
+    .pagination_alignment table.ag-theme-fresh .ag-scrolls {
+        margin-top:50px;
+    }
+    .ag-theme-fresh .ag-header-group-cell-with-group{
+	padding:0px;
+}
+.ag-theme-fresh .ag-header-group-cell-with-group .ag-header-group-cell-label span{
+	float: left;
+    height: 35%;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+    .ag-set-filter-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 18px;
+    }
+	.ag-set-filter-item .ag-filter-value p {
+    	margin-top:3px !important;
+	}
+    .fullscreen-grid {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+    }
+    /*.ag-layout-normal .ag-body-viewport{
+        height: 100% !important;
+    }*/
+    /*.ag-ltr .ag-pinned-left-cols-viewport {
+        height: 315px !important;
+    }
+    .ag-theme-fresh .ag-body {
+        height: 337px !important;
+    }*/
+    .ag-layout-normal .ag-body-viewport {
+        height: 337px !important;
+    }
+
+    .ag-layout-normal .ag-body-viewport-wrapper {
+        margin-left: 0px !important;
+    }
+
+    .fullscreen-grid .ag-layout-normal .ag-body-viewport {
+        height: 490px !important;
+    }
+    
+    /*.fullscreen-grid .ag-ltr .ag-pinned-left-cols-viewport {
+        height: 315px !important;
+    }*/
+    
+    .fullscreen-grid {
+        left: 0px !important;
+    }
+
+        .fullscreen-grid .ag-body-viewport {
+            height: 465px !important;
+        }
+</style>
+
+@model tmg.equinox.applicationservices.viewmodels.FolderVersion.FolderVersionViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/FormRenderLayout.cshtml";
+}
+@Html.Partial("Templates")
+@Html.Partial("DesignTemplates")
+@Html.Partial("SOTTemplates")
+@using System.Collections.Specialized
+@using System.Configuration
+@using Microsoft.AspNet.Identity;
+@using System.Security.Claims;
+@{
+    var authenticationSectionCollection = (NameValueCollection)ConfigurationManager.GetSection("authenticationSection");
+    ViewBag.UseAuthentication = Convert.ToBoolean(authenticationSectionCollection["UseAuthentication"]);
+    ViewBag.DummyAuthenticationEnabled = Convert.ToBoolean(authenticationSectionCollection["DummyAuthenticationEnabled"]);
+    var identity = (User.Identity as System.Security.Claims.ClaimsIdentity);
+    var claims = identity.Claims;
+    var claimPrinciple = (ClaimsPrincipal)User;
+    foreach (var claimIdentity in claimPrinciple.Identities)
+    {
+        if (!(claimIdentity is System.Security.Principal.WindowsIdentity))
+        {
+            if (claimIdentity is ClaimsIdentity)
+            {
+                claims = claimIdentity.Claims;
+                identity = claimIdentity;
+            }
+        }
+    }
+
+    string fullName = "";
+    if (identity != null)
+    {
+        System.Security.Claims.ClaimsIdentity claimsIdentity = (identity as System.Security.Claims.ClaimsIdentity);
+        var firstName = claimsIdentity.Claims.Where(x => x.Type.ToLower() == "firstname").FirstOrDefault();
+        var lastName = claimsIdentity.Claims.Where(x => x.Type.ToLower() == "lastname").FirstOrDefault();
+        if (firstName != null && lastName != null)
+        {
+            fullName = firstName.Value + " " + lastName.Value;
+        }
+    }
+}
+<div class="container-fluid">
+
+
+    <div class="lead-wrap details-lead-wrap clearfix">
+        <table class="responsive-table-conatiner" id="workflowContainerJQ">
+            <tr class="responsive-tr">
+                <td class="responsive-td responsive-td-width">
+                    @if (@Model.AccountId != 0)
+                    {
+                        <h6 class="form-subtitle"><b>Account:</b> @ViewBag.accountName</h6>
+                    }
+                    <!-- <h4 class="form-title"><b>@Model.FolderName</b></h4>
+                    <h6 class="form-subtitle">@Model.EffectiveDate.ToShortDateString(), Version No. @Model.FolderVersionNumber</h6> -->
+                </td>
+            </tr>
+        </table>
+        <div class="pull-left">
+            <h4 class="form-title uppercase"><b>@Model.FolderName</b> <small class="form-subtitle">(@Model.EffectiveDate.ToShortDateString(), Version No. @Model.FolderVersionNumber)</small></h4>
+        </div>
+    </div>
+    <div class="details-wizard">
+
+        <!-- <button id="previousJQ" class="btn btn-xs but-z-index-padding"><span class="glyphicon glyphicon-step-backward"></span></button> -->
+
+
+        <div id="firstJQ" class="btn btn-xs but-z-index-padding"><i class="material-icons">&#xE314;</i></div>
+        <ul id="workflowdivJQ" class="bwizard-steps list-inline"></ul>
+        <div id="lastJQ" class="btn btn-xs but-z-index-padding"><i class="material-icons">&#xE315;</i></div>
+
+
+        <!-- <button id="nextJQ" class="btn btn-xs but-z-index-padding"><span class="glyphicon glyphicon-step-forward"></span></button>
+        <button id="lastJQ" class="btn btn-xs but-z-index-padding"><span class="glyphicon glyphicon-fast-forward"></span></button>
+        <button id="downJQ" class="btn btn-xs but-z-index-padding dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button> -->
+        @*<button id="btnLock" style="display: none" class="btn btn-xs but-z-index-padding" title="This Folder is Locked for Edit By @Model.LockedByUser">
+                <i class="glyphicon glyphicon-lock"></i>
+            </button>
+            <button style="display: none" id="btnUnlockOverride" class="btn btn-xs but-z-index-padding" title="Unlock Folder">
+                <i class="glyphicon glyphicon-ok"></i>
+            </button>*@
+    </div>
+
+    <div class="panel-body">
+
+        <div class='alert alert-info retroAlert' id="retroNote" style="display:none;">
+            <span class='glyphicon glyphicon-info-sign folder-version-alert'></span>
+            <strong>Note!</strong> Retro is In Progress. Please go to Version Management for Retro Details.
+        </div>
+        <div class="parent-container clearfix" id="foldertabs" style="min-height: 500px; position: relative;">
+            <div>
+                <div id="folderVersionAlert" class="alert alert-info" style="display: none;">
+                    <span class="glyphicon glyphicon-info-sign folder-version-alert"></span>
+                    <strong>Note!</strong> New version is loaded.
+                </div>
+                <div id="documentODMDisableAlert" class="alert alert-info" style="display: none;">
+                    <span class="glyphicon glyphicon-info-sign folder-version-alert"></span>
+                    <strong>Note!</strong> This product is disabled as the product is in Migration. To Edit the product form, please refresh the document after completion of migration..
+                </div>
+                <div id="folderLockAlert" class="alert alert-warning" style="display: none;">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <span class="glyphicon glyphicon-info-sign folder-version-alert"></span>
+                    <strong>Warning!</strong> Your Edit session has been overridden. You may re-open this Folder Version to complete changes as long as it is not locked by another user.
+                </div>
+            </div>
+            <div>
+                <div id="folderAutoSaveAlert" class=" alert alert-success notificationAlert notificationAlert-bottom " style="display: none;">
+                    <h4><span class=" glyphicon auto-save-alert"></span>Document changes auto-saved.</h4>
+                </div>
+            </div>
+            <div>
+                @if (@ViewBag.IsStopScrollFloatingHeaders == "true")
+                {
+                    <div id="scrollTop" class="scroll-to-top scroll-to-top:hover " title="Scroll to top" style="display: none;">
+                        <a href="#"></a>
+                    </div>
+                }
+            </div>
+
+            <div class="clearfix">
+                <div class="white-bg clearfix">
+                    <ul id="formTabs" class="pull-left"></ul>
+                    <div class="pull-right btn-padding ptb-5">
+                        <div class="dropdown pull-right details-custom-pagination">
+                            <button class="btn btn-sm but-align" title="Open Document" id="btnOpenForm" type="button" aria-label="Left Align">
+                                <i class="material-icons">&#xE2C8;</i>
+                            </button>
+                            <button class="btn btn-sm but-align" title="New" id="btnCreateForm" type="button" aria-label="Left Align">
+                                <i class="material-icons">&#xE146;</i>
+                            </button>
+                            <button class="btn btn-sm but-align" title="Save" id="btnSaveFormData" type="button" aria-label="Left Align">
+                                <i class="material-icons">&#xE161;</i>
+                            </button>
+
+                            <button class="btn btn-sm but-align dropdown-toggle" title="Menu" id="btnMenuOptions" type="button" aria-label="Left Align" data-toggle="dropdown">
+                                <i class="material-icons">&#xE5D4;</i>
+                            </button>
+                            <div id="dropDownMenu" class="dropdown-menu pull-right folderversion-dropdown-menu child-container">
+                                <div class="folderversion-document-folder-menu">
+
+                                    <div id="document" class="folderversion-document-folder-position">
+                                        <p class="folderversion-menu-text-90deg">Document</p>
+                                    </div>
+
+                                    <div id="documentIcons" class="folderversion-menu-container">
+                                        <div class="separator">
+                                            <div id="btnReloadFormData" title="Refresh" class="button folderVersionButton">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Refresh</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        @if (@ViewBag.ApplicationName.ToLower() == "ebenefitsync")
+                                        {
+                                            <div class="separator">
+                                                <div id="btnDeleteForm" title="Delete" class="button folderVersionButton">
+                                                    <p>
+                                                        <span class="folderversion-buttons-text">Delete</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="separator">
+                                                <div id="btnShowAllProducts" title="All Products" class="button folderVersionButton">
+                                                    <p>
+                                                        <span class="folderversion-buttons-text">All Products</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+                                        <div class="separator">
+                                            <div id="btnValidate" title="Validate" class="button folderVersionButton ">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Validate</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="btnViewCollateral" title="Validate" class="button folderVersionButton ">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">View Collateral</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="btnValidateSection" title="Validate current section" class="button folderVersionButton ">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Validate Section</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        @*<div class="separator">
+                                                <div id="btnExportToPDf" title="Create Screen View" class="button folderVersionButton ">
+                                                    <p>
+                                                        <span class="folderversion-buttons-text">Create Screen View</span>
+                                                    </p>
+                                                </div>
+                                            </div>*@
+                                        <div class="separator">
+                                            <div id="btnManageVBIDPackages" title="Manage VBID Packages" class="button folderVersionButton" style="display:none">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Manage VBID Packages</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="btnJournalEntry" title="Journal Entry" class="button folderVersionButton">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Journal Entry</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="btnExitValidate" title="Exit Validate" class="button folderVersionButton" style="display:none;">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Exit Validate</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <hr class="divider" />
+                                    </div>
+
+                                    <div style="clear: both;"></div>
+                                </div>
+
+
+                                <div class="folderversion-document-folder-menu">
+
+                                    <div class="folderversion-document-folder-position">
+                                        <p class="folderversion-menu-text-90deg">Folder</p>
+                                    </div>
+
+
+                                    <div id="folderIcons" class="folderversion-menu-container">
+                                        <div class="separator">
+                                            <div id="btnValidateAll" title="Validate" class="button folderVersionButton">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Validate</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="btnBaseline" title="Baseline" class="button folderVersionButton ">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Create New Version</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div id="assignFolderMemberbutton" title="Assign Folder Member" class="button folderVersionButton">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Assign Folder Member</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        @if (Model.FoldeViewMode != "SOT")
+                                        {
+                                            <div class="separator">
+                                                <div id="statusupdatebutton" title="Status Update" class="button folderVersionButton">
+                                                    <p>
+                                                        <span class="folderversion-buttons-text">Status Update</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        <div class="separator">
+                                            <div id="versionHistoryButton" title="Version Management" class="button folderVersionButton">
+                                                <p>
+                                                    <span class="folderversion-buttons-text">Version Management</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="separator">
+                                            <div>
+                                                <div id="btnProperties" title="Properties" class="button folderVersionButton">
+                                                    <p>
+                                                        <span class="folderversion-buttons-text">Properties</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="sectionMenuContainer" class="sectionMenuFromContainer clearfix">
+                    <div class="col-xs-6">
+                        <div class="form-text">
+                            <label>View</label>
+                        </div>
+                        <div id="viewMenu" class="form-fields">
+                            <div class="select-wrapper block">
+                                <select class="view-menu" id="viewDropdown"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-text">
+                            <label><strong>Section</strong></label>
+                        </div>
+                        <div id="sectionMenu" class="form-fields">
+                            <div class="select-wrapper block">
+                                <select class="section-menu" id="viewDropdown"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("SOTView")
+            </div>
+        </div>
+        <div id="bottom-menu" class="bottom-menu navbar-fixed-bottom" style="display: none;">
+
+            <div id="bottom-menu-tabs" style="margin: 1px;">
+                <div>
+                    <ul id="bottom-menu-ul">
+                        <li><a href="#tabs-1">Errors</a></li>
+                        <li><a href="#tabs-2">Activity Log</a></li>
+                        <li><a href="#tabs-3">Journal</a></li>
+                        @if (claims != null)
+                        {
+                            if (claims.Any(c => c.Value.Trim().ToUpper() == "PBPVIEWACTIONS"))
+                            {
+                                <li><a href="#tabs-4">PBP View Actions</a></li>
+                            }
+                            if (claims.Any(c => c.Value.Trim().ToUpper() == "ANNOTATIONS"))
+                            {
+                                <li><a href="#tabs-5">Annotations</a></li>
+                            }
+                        }
+
+                        @if (claims != null)
+                        {
+                            if (claims.Any(c => c.Value.Trim().ToUpper() == "EXITVALIDATE"))
+                            {
+                                <li><a href="#tabs-6">Exit Validate</a></li>
+                                // <li><a id="exitValidateExportTab" href="FolderVersion/ExitValidate">ExitValidate</a></li>
+                            }
+                        }
+
+
+                        <li><a href="#tabs-7">Rule Execution Log</a></li>
+                        <div style="float: right; display:inline-block;margin-right:10px">
+                            <div id="sectionMenuContainerBottom" style="display:inline-block">
+                                <div style="margin-left:10px;font-size:14px;margin-top:5px;padding-top:15px">
+                                    <label><strong>Section</strong></label>
+                                </div>
+                                <div id="sectionMenuBottom"></div>
+                            </div>
+                            @if (@Model.FoldeViewMode == "SOT")
+                            {
+                                <div style="display:inline-block;padding-top: 10px;">
+                                    <div style="margin-left:5px;">
+                                        <i title="Create New Version" id="btnBottomCreateNewVersion" style="cursor: pointer;" class="material-icons">&#xE05E;</i>
+                                    </div>
+                                </div>
+                                <div style="display:inline-block;padding-top: 10px;">
+                                    <div style="margin-left:5px;">
+                                        <i title="Generate SOT File" id="btnBottomGenerateSOTFile" style="cursor: pointer;" class="material-icons">&#xE85A;</i>
+                                    </div>
+                                </div>
+                            }
+                            <div style="display:inline-block;padding-top: 10px;">
+                                <div style="margin-left:5px;">
+                                    <i title="Refresh Exit Validate" id="btnExitValidateResults" style="cursor: pointer;" class="material-icons">&#xe003;</i>
+                                </div>
+                            </div>
+                            <div style="display:inline-block;padding-top: 10px;">
+                                <div style="margin-left:5px;">
+                                    <i title="Save" id="btnBottomSaveFormData" style="cursor: pointer;" class="material-icons">&#xE161;</i>
+                                    <i class="bottom-menu-button glyphicon glyphicon-plus-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div id="tabs-1">
+                    <div class="bottom-tab-content">
+                        <div>
+                            <div class="grid-wrapper">
+                                <table id="errorGrid"></table>
+                            </div>
+                            <div id="perrorGrid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-2">
+                    <div class="bottom-tab-content">
+                        <div id="activitylog">
+                            <div class="grid-wrapper">
+                                <table id="activityLogGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-3">
+                    <div class="bottom-tab-content">
+                        <div class="grid-wrapper">
+                            <table id="journalGrid"></table>
+                        </div>
+                        <div id="pjournalGrid">
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-4">
+                    <div class="bottom-tab-content">
+                        <div class="grid-wrapper new-pagination-icons">
+                            <table id="actionGrid"></table>
+                            <div id="pactionGrid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-5">
+                    <div class="bottom-tab-content">
+                        <div class="grid-wrapper">
+                            <table id="annotationGrid"></table>
+                            <div id="pannotationGrid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-6">
+                    <div class="bottom-tab-content">
+                        <div id="exitValidateLog">
+                            <div class="grid-wrapper">
+                                <table id="exitValidateLogGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tabs-7">
+                    <div class="bottom-tab-content">
+                        <div id="ruleExecutionLog">
+                            <div class="grid-wrapper">
+                                <table id="ruleExecutionLogGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="statusUpdateDialogue" style="margin: 10px">
+        <div class="form-group">
+            <div class="label-width-120px">
+                <label>Workflow State</label>
+            </div>
+            <div id="workflowstatediv" class="select-width-200px">
+                <select id="workflowstatelist">
+                    <option>Select Workflow</option>
+                </select>
+                <span class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label-width-120px">
+                <label>Approval Status</label>
+            </div>
+            <div id="approvaldiv" class="select-width-200px">
+                <select id="approvaltypelist">
+                    <option>Select Approval Status</option>
+                </select>
+                <span class="help-block"></span>
+            </div>
+        </div>
+        @*<div class="form-group">*@
+        <div class="form-group row" style="display: none;">
+            <div class="label-width-120px">
+                <label>Assign Owner</label>
+            </div>
+            <div id="ownerdiv" class="select-width-200px">
+                <select id="ownerlist">
+                    <option>Select Owner</option>
+                </select>
+                <span class="help-block"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="label-width-120px">
+                <label>Comments</label>
+            </div>
+            <div class="select-width-200px">
+                <textarea id="comment" rows="3" cols="20" maxlength="1500"></textarea>
+                <span class="help-block" id="commentSpan"></span>
+            </div>
+        </div>
+        <button id="updatestatus" type="button" class="btn pull-right">Save</button>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="baseLineDialogue" style="margin: 10px">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="pull-left">
+                        <h4 class="form-title"><b>Folder Version List</b></h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="majorFolderVersion"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="minorFolderVersion"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="updateBaseLine" type="button" class="btn pull-right" style="margin-top: 10px;">Save</button>
+    </div>
+</div>
+
+<div id="sourceDocumentDialog" style="display:none">
+    <div class="grid-wrapper">
+        <table id="docSearch"></table>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="assignFolderDialogue" style="margin: 10px; width: auto; height: auto; overflow: hidden;">
+        <div>
+            <div class="form-group row">
+                <div class="col-xs-6" style="width: 150px">
+                    <label>Assign Folder Team Member</label>
+                </div>
+                <div class="col-xs-9" style="width: 150px">
+                    <select class="form-control" id="usersList" multiple style="height: 100px;">
+                        <option value="0">Select One</option>
+                    </select>
+                    <span class="help-block">Select Users</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <button class="btn btn-default" id="updateAssignFolderMember" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div id="createProductGrid" style="display: none;">
+        <form>
+            <div class="form-group" style="width:100%;">
+                <table id="productGrid"></table>
+            </div>
+            <div class="form-group row">
+                <span style="color:red" class="help-block"></span>
+                <button class="btn btn-default" id="saveProductList" type="button">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="createProductQueueGrid" style="display: none;">
+        <form>
+            <div class="form-group" style="width:100%;">
+                <table id="productQueueGrid"></table>
+            </div>
+            <div class="form-group row">
+                <span style="color:red" class="help-block"></span>
+                <button class="btn btn-default" id="confirmProductList" type="button">Confirm</button>
+                <button class="btn btn-default" id="cancelProductList" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>*@
+
+<div style="display: none;">
+
+    <div id="exitValidateDialog">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="grid-wrapper">
+                            <table id="exitValidationGrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="checkbox" class="pull-left" id="cbDefaultSelect" style="margin-left: 5px;" />
+        <span style="margin-left: 5px; ">Select as default</span>
+        <button id="btnTextValidate" type="button" class="btn pull-right">Validate</button>
+    </div>
+
+    <div id="manageVBIDPackagesDialog">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            <div style="padding-right: 5px;" class="col-xs-9">
+                                <label class="radio-label-align-middle">How many packages does your 19a Reduction in Cost Sharing VBID/MA Uniformity Flexibility benefit contain? (1-15)</label>
+                            </div>
+                            <div style="padding-right: 5px;" class="col-xs-3">
+                                <input type="number" value="" id="packagesCS" name="packagesCS" min="0" max="15">
+                                <input type="number" value="" id="packagesCSCurrent" name="packagesCSCurrent" style="display:none">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div style="padding-right: 5px;" class="col-xs-9">
+                                <label class="radio-label-align-middle">How many packages do your Additional Benefits contain? (1-15)</label>
+                            </div>
+                            <div style="padding-right: 5px;" class="col-xs-3">
+                                <input type="number" value="" id="packagesAB" name="packagesAB" min="0" max="15">
+                                <input type="number" value="" id="packagesABCurrent" name="packagesABCurrent" style="display:none">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div style="padding-right: 5px;" class="col-xs-9">
+                                <label class="radio-label-align-middle">How many packages does your Part D VBID contain?</label>
+                            </div>
+                            <div style="padding-right: 5px;" class="col-xs-3">
+                                <input type="number" value="" id="packagesPartD" name="packagesPartD" min="0" max="15">
+                                <input type="number" value="" id="packagesPartDCurrent" name="packagesPartDCurrent" style="display:none">
+                            </div>
+                        </div>
+                        <div class="col-xs-11" style="padding-top : 20px;">
+                            <button id="btnVBIDPackages" type="button" class="btn pull-right">Process Packages</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vesrionHistoryDialog">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <div class="pull-left">
+                        <h4 class="form-title"><b>@Model.FolderName</b></h4>
+                    </div>
+                    <div class="btn pull-right btn-padding">
+
+                        <button id="newVersionHistory" class="btn btn-xs">New Version</button>
+                        <button id="retroVersionHistory" class="btn btn-xs">Retro</button>
+                        @*<button id="changeSummary" class="btn btn-xs">Change Summary</button>*@
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="grid-wrapper">
+                            <table id="majorVersion"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="grid-wrapper">
+                            <table id="minorVersion"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*EffectiveDate Dialog For Minor Version*@
+    <div style="display: none;">
+        <div id="minoreffectivedatedialog" style="margin: 5px; overflow: hidden;">
+            <form>
+                <div class="form-group calederIcon_align">
+                    <label for="effectivedate">Effective Date</label><em>*</em>
+                    <input type="text" class="form-control" id="effectivedate" placeholder="Enter Effective Date" style="width: 90%" maxlength="10" />
+                    <span class="help-block" id="newversion_effectivedate"></span>
+                </div>
+                <div class="form-group" id="categoryDDLContainer">
+                    <label>Select Category</label><em>*</em>
+                    <select id="categoryDDL"></select>
+                    <span class="help-block" id="newversion_CategoryDDLSpan"></span>
+                </div>
+                @*<div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" id="catIDTXT" style="width: 90%; margin-right: 10%;" />
+                    </div>*@
+                <div class="form-group row" id="applicableTeamsContainer">
+                    <div class="form-group row">
+                        <div class="col-xs-4">
+                            <label>Select the Applicable Teams</label>
+                        </div>
+                        <div class="col-xs-4">
+                            <label>Check All</label>
+                            <input type="checkbox" id="checkAll" checked="checked" disabled="disabled" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <input type="checkbox" id="1" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Product Build</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="checkbox" id="2" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">Audit</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="checkbox" id="3" class="applicableTeamsCheckbox" checked="checked" disabled="disabled" /><label style="margin-left: 5px;">WF Specialist</label>
+                    </div>
+                </div>
+
+                <button type="button" id="minoreffectivebtn" class="btn pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="openDocumentDialog" class="documentDialog">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12" style="height:350px;">
+                        <div class="grid-wrapper new-grid-wrapper popup-grid" style="border: 1px solid #ccc; margin-top: 25px; padding-top: 0px;">
+                            <table id="openDocumentGrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Journal Entry Add*@
+<div style="display: none;">
+    <div id="journalEntryAddDialogueDiv" style="margin: 10px">
+
+        <div class="row">
+            <div class="col-xs-6 label-width-120px">
+                <label>Section Trail</label>
+            </div>
+
+            <div id="selecteddiv" class="col-xs-6 select-width-600px">
+                <span id="sectionTrail"></span>
+                <span class="help-block"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 label-width-120px">
+                <label>Attribute</label>
+            </div>
+
+            <div id="attributeDiv" class="col-xs-6 select-width-600px">
+                <span id="journalAttribute"></span>
+                <span class="help-block"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 label-width-120px">
+                <label>Action Required</label><em>*</em>
+            </div>
+            <div id="actionDiv" class="col-xs-6 select-width-200px">
+                <select id="actionList">
+                    <option>Select One</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 label-width-140px">
+                <label>Description</label><em>*</em>
+            </div>
+            <div id="descriptionHistoryDiv" class="col-xs-12 select-width-600px">
+                <textarea id="description" rows="5" maxlength="300"></textarea>
+                <span id="characterCounter" class="help-inline pull-right"></span>
+                <textarea id="descriptionHistory" rows="5" disabled="disabled"></textarea>
+            </div>
+        </div>
+
+        <div class="row" id="addResponseDiv" style="float: right !important;">
+            <button id="addResponse" type="button" class="btn btn-sm but-align pull-right">Add Response</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row" id="responseDiv">
+            <div class="col-xs-12 label-width-140px">
+                <label>Response</label><em>*</em>
+            </div>
+            <div class="col-xs-12">
+                <textarea id="response" rows="5" maxlength="300"></textarea>
+                <span id="responsecharacterCounter" class="help-inline pull-right"></span>
+            </div>
+        </div>
+
+        <button id="addJournalEntry" type="button" class="btn btn-sm but-align pull-right">Save</button>
+
+        <div class="row" id="responseHistoryDiv">
+            <div class="col-xs-6 label-width-140px">
+                <label>Response History</label>
+            </div>
+            <div id="responseHistorytblDiv" class="col-xs-12"></div>
+        </div>
+
+        <input type="hidden" id="formInstanceId" />
+        <input type="hidden" id="folderVersionId" />
+        <input type="hidden" id="elementSection" />
+        <input type="hidden" id="tenantId" />
+        <input type="hidden" id="journalId" />
+        <input type="hidden" id="currentFormInstanceId" />
+    </div>
+</div>
+
+@Html.Partial("CreateForm")
+
+<div style="display: none;">
+    <div id="repeaterDialog">
+        <div class="panel panel-default">
+            <div id="repeaterPreviousBtnContainer" class="panel-body" style="float: left; top: 20%; bottom: 20%; margin-left: 0; margin-right: 0;">
+                <button id="repeaterDialogPrevBtn" type="button" title="Previous" class="btn" style="height: 80px; width: 25px; padding: 2px; font-size: 22px;">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+            </div>
+            <div class="panel panel-default" style="float: left; width: 100%; margin-top: 5px;">
+                <div style="clear: both;"></div>
+                <div class="panel-body">
+                    <div id="repeaterRowData">
+                    </div>
+                </div>
+                <div class="panel-body" style="float: right;">
+                    <button id="repeaterDialogCancelBtn" type="button" class="btn pull-right">Cancel</button>
+                    <button id="repeaterDialogSaveBtn" type="button" class="btn pull-right">Save</button>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div id="repeaterNextBtnContainer" class="panel-body" style="float: left; top: 20%; bottom: 20%; margin-left: 0; margin-right: 0;">
+                <button id="repeaterDialogNextBtn" type="button" title="Next" class="btn" style="height: 80px; width: 25px; padding: 2px; font-size: 22px;">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="repeaterCellDialog">
+        <div class="panel panel-default">
+            <div class="panel panel-default" style="float: left; width: 100%; margin-top: 5px;">
+                <div style="clear: both;"></div>
+                <div class="panel-body">
+                    <div id="repeaterCell">
+                    </div>
+                </div>
+                <div class="panel-body" style="float: right;">
+                    <button id="repeaterCellDialogClearBtn" type="button" class="btn pull-right">Clear</button>
+                    <button id="repeaterCellDialogCancelBtn" type="button" class="btn pull-right">Cancel</button>
+                    <button id="repeaterCellDialogSaveBtn" type="button" class="btn pull-right">Save</button>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="gridDialog">
+        <div class="panel panel-default">
+            <div class="panel panel-default" style="float: left; width: 100%; margin-top: 5px;">
+                <div style="width:100%;height:100%; padding-top: 35px; box-sizing: border-box;">
+                    <div id="gridCellSection1" style="height: 300px;" class="ag-theme-fresh">
+                    </div>
+                </div>
+                <div style="width:100%;height:100%; padding-top: 35px; box-sizing: border-box;">
+                    <div id="gridCellSection2" style="height: 300px;" class="ag-theme-fresh">
+                    </div>
+                </div>
+                <div style="width:100%;height:100%; padding-top: 35px; box-sizing: border-box;">
+                    <div id="gridCellSection3" style="height: 300px;" class="ag-theme-fresh">
+                    </div>
+                </div>
+                <div class="panel-body" style="float: right;">
+                    <button id="gridCellDialogCancelBtn" type="button" class="btn pull-right">Cancel</button>
+                    <button id="gridCellDialogSaveBtn" type="button" class="btn pull-right">Save</button>
+                </div>
+
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    @Html.Partial("~/Views/RoutingTask/RoutingTaskView.cshtml")
+</div>
+<div style="display: none;">
+    <div id="viewTemplateDialog">
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="manualDataMappingDialog">
+        <div id="manualMessageDialog" class="hide">No Records Found.</div>
+        <div id="manualDialog" class="">
+            <div class="panel-body">
+                <div id="DataSourceData">
+                </div>
+            </div>
+            <div id="manualDialogBtn" class="panel-body" style="text-align: left;margin-top: 15px;">
+                <button id="manualDataSourceCancelBtn" type="button" class="btn  pull-right" style="margin-left: 10px;">Cancel</button>
+                <button id="manualDataSourceSaveBtn" type="button" class="btn  pull-right">Save</button>
+            </div>
+
+            <div id="divLTSEBulkUpdate" class="panel-body" style="text-align: left;margin-top: 15px;">
+                <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+                <button id="btnLimitInformationDetailBulkUpdateAdd" type="button" class="btn  pull-right" style="margin-left: 10px;">Save</button>
+                <button id="btnLimitInformationDetailBulkUpdateDelete" type="button" class="btn  pull-right">Delete</button>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div id="PlanLevelLimit" style="display: none;">
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label>Limit Description<em>*</em></label>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="text" class="form-control" id="LimitDescription" value="" />
+                                <span class="help-block" id="LimitDescriptionHelpBlock"></span>
+                            </div>
+
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label>Amount</label>
+                            </div>
+
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <select class='form-control ddt-dropdown' id="AmountDDL" ">
+                                    <option value='SelectOne'>[Select One]</option>
+                                    <option value="newItem">Enter Unique Response</option>
+                                </select>
+                                <input type='text' maxlength='100' class='ddt-textbox' style='display:none;' />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label>Frequency</label>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <select class="form-control ddt-dropdown" id="FrequencyDDL" ">
+                                    <option value='SelectOne'>[Select One]</option>
+                                    <option value="newItem">Enter Unique Response</option>
+                                </select>
+                                <input type='text' maxlength='100' class='ddt-textbox' style='display:none;' />
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <label>Limit Type</label>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <select class="form-control ddt-dropdown" id="LimitTypeDDL" ">
+                                    <option value='SelectOne'>[Select One]</option>
+                                    <option value="newItem">Enter Unique Response</option>
+                                </select>
+                                <input type='text' maxlength='100' class='ddt-textbox' style='display:none;' />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+
+                    <div id="PlanLimitBtn" class="panel-body" style="text-align: left">
+                        <button id="PlanLimitCancelBtn" type="button" class="btn pull-right">Cancel</button>
+                        <button id="PlanLimitSaveBtn" type="button" class="btn pull-right">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="childDataMappingDialog">
+        <div id="childDataMessageDialog" class="hide">No Records Found.</div>
+        <div id="childDataDialog" class="">
+            <div class="panel-body">
+                <div id="ChildDataSourceData" class="row">
+                </div>
+            </div>
+            <div id="childDataDialogBtn" class="panel-body" style="text-align: left">
+                <button id="childDataSourceSaveBtn" type="button" class="btn btn-default">Save</button>
+                <button id="childDataSourceCancelBtn" type="button" class="btn btn-default">Cancel</button>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="limitDialog" style="margin: 10px">
+        <div class="row">
+            <table id="limitGrid"></table>
+            <div id="noLimtDescriptionForService">No Limit Selected</div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display: none;">
+    <div id="messageDialog" style="margin: 10px">
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="duplicateMessageDialog" style="margin: 10px">
+    </div>
+</div>
+
+@*<div style="display: none;">
+        <div id="altRuleDialog" style="margin: 10px">
+            <div class="row">
+                <div class="row">
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 1</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesDataBenefitCategory1"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 2</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesDataBenefitCategory2"></span>
+                        </div>
+
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 3</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesDataBenefitCategory3"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Place of Service</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesDataPlaceofService"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>SESEID</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesDataSESEID"></span>
+                            <input type="hidden" id="spanAltRulesDataIndex"></input>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Set Name</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRulesBenefitSetName"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b></b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="staticLabel" id="hiddenAltRulesPopupSection_RowIDProperty" style="display:none;"></span>
+                    <div class="panel panel-default subsection">
+                        <div class="panel-heading-gray" style="background-color: rgb(221, 221, 221) !important;">
+                            <h3 class="panel-title">Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container-fluid" style="min-height: inherit !important;">
+                                <div class="row" style="display: none;">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>SERL Message</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_SERLMessage">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Disallowed Messages</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_DisallowedMessages">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Tier No</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel" id="spanAltRulesPopupSection_TierNo"></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Copay</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_Copay">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Coinsurance</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_Coinsurance">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Allowed Amount</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="sectionAltRulesPopupSection_AllowedAmount">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Allowed Counter</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="sectionAltRulesPopupSection_AllowedCounter">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Deductible Accumulator</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="sectionAltRulesPopupSection_DeductibleAccumulator">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Service Penalty Amount</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_ServicePenaltyAmount" type="text" value=""> </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Service Penalty Percent</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_ServicePenaltyPercent" type="text" value=""> </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Maximum Penalty Amount</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_MaximumPenaltyAmount" type="text" value=""> </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Penalty Explanation Code</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_PenaltyExplanationCode" type="text" value=""> </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Service Penalty Options</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_ServicePenaltyOptions" type="text" value=""> </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Excess Per Counter Indicator</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_ExcessPerCounterIndicator">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Covered</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="css-checkboxgrid" id="checkboxAltRulesPopupSection_Covered" style="margin-left: 45%;" disabled="disabled" type="checkbox"><span class="css-span"></span></div>
+                                    <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'><span class="staticLabel"><b>SERL Message</b></span></div><div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'><span class="staticLabel" id="labelAltRulesPopupSection_SERLMessage"></span></div>
+                                    <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'><span class="staticLabel"><b>Disallowed Message</b></span></div><div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'><span class="staticLabel" id="labelAltRulesPopupSection_DisallowedMessage"></span></div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Penalty Type</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_PenaltyType">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Penalty Calculation Indicator</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <select class="form-control" id="selectAltRulesPopupSection_PenaltyCalculationIndicator">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><span class="staticLabel"><b>Alternate Rule Condition</b></span></div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2"><input class="form-control" id="textboxAltRulesPopupSection_AlternateRuleCondition" type="text" value=""> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="grid-wrapper">
+                        <table id="altRuleGrid"></table>
+                    </div>
+                    <div id="paltRuleGrid"></div>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>
+
+    <div style="display: none;">
+        <div id="tierDataDialog" style="margin: 10px">
+            <div class="row">
+                <div class="row">
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 1</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierDataBenefitCategory1"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 2</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierDataBenefitCategory2"></span>
+                        </div>
+
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 3</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierDataBenefitCategory3"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Place of Service</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierDataPlaceofService"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>SESEID</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierDataSESEID"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Set Name</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanTierBenefitSetName"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b></b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="grid-wrapper">
+                        <table id="tierDataGrid"></table>
+                    </div>
+                    <div id="ptierDataGrid"></div>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>
+
+    <div style="display: none;">
+        <div id="altRuleTierDataDialog" style="margin: 10px">
+            <div class="row">
+                <div class="row">
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 1</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierDataBenefitCategory1"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 2</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierDataBenefitCategory2"></span>
+                        </div>
+
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Category 3</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierDataBenefitCategory3"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Place of Service</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierDataPlaceofService"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>SESEID</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierDataSESEID"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b>Benefit Set Name</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltRuleTierBenefitSetName"></span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel">
+                                <b></b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="grid-wrapper">
+                        <table id="altRuleTierDataGrid"></table>
+                    </div>
+                    <div id="paltRuleTierDataGrid"></div>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>*@
+
+<div style="display: none">
+    <div id="pdfGenerationDialog" class="">
+        <div id="pdfPreviewMessage" class="alert alert-success hide">Please Configure PDF Template.</div>
+        <div class="form-group">
+            <div id="pdfGeneration" class="row">
+
+                <div class='col-xs-3'>
+                    <label for="templateName">Template Name</label>
+                </div>
+                <div class='col-xs-9'>
+                    <select class="form-control" id="templateNameDDL"></select>
+                </div>
+                <div class='col-xs-12 col-md-12 col-lg-12 col-sm-21'>
+                    <label for="Description">Description</label>
+                    <textarea class="form-control" id="descriptionTemplate" style="height: 80px;" disabled="disabled"></textarea>
+                </div>
+                <div class='col-xs-12 col-md-12 col-lg-12 col-sm-21'>
+                    <div style="float: right; margin-top: 10px;margin-bottom: 10px;">
+                        <button id="genratePDFData" type="button" class="btn pull-right">Genrate PDF Data</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div style="font-size: 9px"><a href="javascript:void(0)" class="pdfPreview" id="pdfPreview"><u><b>Click here</b></u></a> to Preview the Section which will be Exported to PDF as part of this Template.</div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="pdfPreviewDailog">
+        <div>
+            <div class="grid-wrapper">
+                <table id="previewPDF"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+    <div id="subGridDialog">
+        <div class="panel panel-default">
+            <div id="subGridPreviousBtnContainer" class="panel-body" style="float: left; top: 20%; bottom: 20%; margin-left: 0; margin-right: 0;">
+                <button id="subGridDialogPrevBtn" type="button" title="Previous" class="btn btn-default" style="height: 80px; width: 25px; padding: 2px; font-size: 22px;">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+            </div>
+            <div class="panel panel-default" style="float: left; width: 91%; margin-top: 5px;">
+                <div style="clear: both;"></div>
+                <div class="panel-body">
+                    <div id="subGridDialogData" class="pagination_alignment"> 
+                    </div>
+                </div>
+            </div>
+            <div id="subGridNextBtnContainer" class="panel-body" style="float: left; top: 20%; bottom: 20%; margin-left: 0; margin-right: 0;">
+                <button id="subGridDialogNextBtn" type="button" title="Next" class="btn btn-default" style="height: 80px; width: 25px; padding: 2px; font-size: 22px;">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</div>
+
+@*<div style="display: none;">
+        <div id="ServiceConfigurationDialog" style="margin: 10px; font-size: 12px;">
+            <div>
+                <span class="help-block" id="serviceConfigurationHelpBlock"></span>
+            </div>
+            <div class="row">
+                <div id="ServiceHeader" class="row">
+                    <div>
+                        <label for="serviceGroupHeader">Service Group Header</label>
+                    </div>
+                    <div>
+                        <label for="serviceGroupHeader" id="serviceGroupHeader"></label>
+                    </div>
+                    <div>
+                        <label for="RegulerRule">SESE ID</label>
+                    </div>
+                    <div>
+                        <label for="SESEID" id="SESEID"></label>
+                    </div>
+                </div>
+            </div>
+            <div id="serviceRuleConfig" class="row">
+                <div class="panel ">
+                    <div class="row form-group" style=" border-bottom:solid 1px !important; margin-bottom: 10px;">
+                        <h5>Service Rule Configuration</h5>
+                    </div>
+                    <div class="row form-group">
+                        <div class='col-xs-5 col-md-5 col-lg-5 col-sm-5'>
+                            <div class="radio radio-text-align-middle">
+                                <label><input id="defaultRule" type="radio">Default Rule</label>
+                            </div>
+                        </div>
+                        <div class='col-xs-5 col-md-5 col-lg-5 col-sm-5'>
+                            <div class="radio radio-text-align-middle">
+                                <label><input type="radio" id="modelSESE_ID">Model SESE ID</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div id="ModleSESE_IDRuleConfig">
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <label for="ServiceSESE_ID">SESE ID</label><em>*</em>
+                            </div>
+                            <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                                <select class="form-control" id="serviceSESE_ID"></select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div id="DefaultServiceRuleConfig" class="row">
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <label for="RegulerRule">Regular Rule</label>
+                            </div>
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <select class="form-control" id="regularRule"></select>
+                            </div>
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <label for="RegulerRule">Alternate Rule</label>
+                            </div>
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <select class="form-control" id="alternateRule"></select>
+                            </div>
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <label for="RegulerRule">Alternate Rule Condition</label>
+                            </div>
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <input type="text" id="altRuleCondition" class="form-control" maxlength="1" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="LimitServiceConfig" class="row">
+                <div class="panel ">
+                    <div class="row form-group" style=" border-bottom:solid 1px !important;  margin-bottom: 10px">
+                        <h5>Limit Service Configuration</h5>
+                    </div>
+                    <div class="row form-group">
+                        <div class='col-xs-5 col-md-5 col-lg-5 col-sm-5'>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="accumulators" />Accumulators</label>
+                            </div>
+                        </div>
+                        <div class='col-xs-5 col-md-5 col-lg-5 col-sm-5'>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="LimitModelSESE_ID" />Model SESE ID</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div id="limitModelSESE_IDConfig">
+                            <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                                <label for="ServiceSESE_ID">SESE ID</label><em>*</em>
+                            </div>
+                            <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                                <select class="form-control" id="LimitServiceSESE_ID"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div id="accumulatorsRuleConfig">
+                            <div id="accumulatorsRule">
+                                <div class="grid-wrapper">
+                                    <table id="accumulatorsGrid"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="adminFeeTotalsDialog" ; style="display: none" ;>
+        <div>
+            <p></p>
+            <div class="grid-wrapper">
+                <table id="adminFeeTotalsGrid"></table>
+            </div>
+            <div class="btn pull-right btn-padding">
+                <button id="btnCalculateAdminFeeSum" class="btn btn-xs">Calculate Sum</button>
+            </div>
+        </div>
+    </div>*@
+
+@*<div style="display: none;">
+        <div id="BenefitRevwTierDialog" style="margin: 10px; font-size: 12px;">
+            <div>
+                <span class="help-block" id="BenefitRevwTierHelpBlock"></span>
+            </div>
+            <div class="row form-group">
+                <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                    <label for="BenefitSetName">Benefit Set Name</label>
+                </div>
+                <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                    <select class="form-control" id="BenefitSetName"></select>
+                </div>
+                <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                    <label for="NoOfTiers">No. of Tiers</label>
+                </div>
+                <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                    <select class="form-control" id="NoOfTiers">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="grid-wrapper">
+                    <table id="TierDetailsGrid"></table>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>
+
+    <div style="display: none;">
+        <div id="BenefitRevwAltTierDialog" style="margin: 10px; font-size: 12px;">
+            <div>
+                <span class="help-block" id="BenefitRevwAltTierHelpBlock"></span>
+            </div>
+            <div class="row form-group">
+                <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                    <label for="BenefitSetName">Benefit Set Name</label>
+                </div>
+                <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                    <select class="form-control" id="AltBenefitSetName"></select>
+                </div>
+                <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                    <label for="NoOfTiers">No. of Tiers</label>
+                </div>
+                <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                    <select class="form-control" id="AltNoOfTiers">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="grid-wrapper">
+                    <table id="TierAltDetailsGrid"></table>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>
+
+    <div style="display: none;">
+        <div id="ruleAssignmentDialog" style="margin: 10px">
+            <div class="row">
+                <div class="row">
+                    <div class="row">
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+                                <b>Select Service Rule</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanSelectServiceRule"></span>
+                        </div>
+
+                        <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                            <select class="form-control" id="selectServiceRule"><option value="">Select One</select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+                                <b>Select Benefit Set Name</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanSelectBenefitSetName"></span>
+                        </div>
+
+                        <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                            <select class="form-control" id="selectBenefitSetName"><option value="">Select One</select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>
+
+
+    <div style="display: none;">
+        <div id="altRuleAssignmentDialog" style="margin: 10px">
+            <div class="row">
+                <div class="row">
+                    <div class="row">
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+                                <b>Select Service Rule</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanSelectAltServiceRule"></span>
+                        </div>
+
+                        <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                            <select class="form-control" id="selectAltServiceRule"><option value="">Select One</select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class='col-xs-4 col-md-4 col-lg-4 col-sm-4'>
+                            <span class="staticLabel">
+                                <b>Select Benefit Set Name</b>
+                            </span>
+                        </div>
+                        <div class='col-xs-2 col-md-2 col-lg-2 col-sm-2'>
+                            <span class="staticLabel" id="spanAltSelectBenefitSetName"></span>
+                        </div>
+
+                        <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                            <select class="form-control" id="selectAltBenefitSetName"><option value="">Select One</select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <span class='help-block'>Changes will be Saved locally. They will be Saved to the system only if the Save button on the Folder Menu is clicked.</span>
+        </div>
+    </div>*@
+
+
+<div style="display: none;">
+    @Html.Partial("RetroAccountDialog")
+</div>
+
+
+<div style="display: none;">
+    <div id="UserRoleDialog" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group row">
+                <table id="userAssignmentEdit"></table>
+            </div>
+            <button type="button" id="saveUserAssignment" class="btn btn-default">Assign</button>
+        </div>
+    </div>
+    <div id="downloadCollateralDialog" style="display:none" class="modal">
+        <div>
+            <div class="form-group row">
+                <div class="timer"><span><b>Auto-Refresh in </span><span id="spnTimer">60 seconds.</b></span></div>
+                <table id="downloadQueuedCollateralsGrid"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="showAllProductsDialog" style="display: none;padding-left:0px;background-color:white;">
+            <div class="table-responsive grid-wrapper pt_0">
+                <table class="table" id="showAllProductsGrid"></table>
+            </div>
+    </div>
+</div>
+
+<div id="uploadProofingDocumentDialog" style="display: none;overflow-y:auto">
+    <form>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="round">Select Round: </label>
+                    <select id="proofingRound" name="proofingRound" class="form-control"></select>
+                    <span class="help-block" id="proofingRoundSpan" style="color:red"></span>
+                </div>
+                <div class="col-sm-5 ">
+                    <label for="roundStatus">Select Round Status:</label>
+                    <select id="proofingRoundStatus" name="proofingRoundStatus" class="form-control"></select>
+                </div>
+                <div class="col-sm-1">
+                    <label for="btnAddRow"></label>
+                </div>
+            </div>
+            <div id="divDefaultUploadDocument">
+                <div class="row" id="uploadDocumentTemplate-1">
+                    <div class="col-sm-2">
+                        <label>Document Type:</label>
+                        <select id="documentType-1" name="documentType" class="DocumentType">
+                            <option value='0'>Select  One</option>
+                            <option value='PBP Template'>PBP Template</option>
+                            <option value='SOT File'>SOT File</option>
+                            <option value='PBP Report'>PBP Report</option>
+                        </select>
+                        <span class="help-block" id="documentTypeSpan" style="color:red"></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="documentNameSection-1">
+                            <label for="documentName">Name: </label>
+                            <input id="documentName-1" type="text" class="form-control" name="description" maxlength="150" />
+                            <span class="help-block" id="documentNameHelpBlock-1" style="color:red"></span>
+                        </div>
+                        <div id="sharePointSection-1">
+                            <button id="btnpbpSharePointLink" type="button" class="btn pull-left PBPSharePointLink" style="margin-top:5.5%;margin-right:1%">View PBP Templates</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div id="uploadDocumentSection-1">
+                            <label id="ChangeUploadProofingDoc"></label>
+                            <input id="UploadProofingDoc-1" name="UploadProofingDoc" class="form-control UploadProofingDoc" type="file" />
+                            <span class="help-block" id="UploadProofingDocSpan-1" style="color:red"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div id="uploadDocumentAddSection">
+                            <label for="UploadProofingDoc"></label>
+                            <span class="help-block"></span>
+                            <span id="btnAddProofingTemplate" title="Add File Upload Template" style="font-size:large;text-align:center">+</span>
+                            @*<button id="btnAddProofingTemplate" class="btn" type="button" title="File Upload template">+</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divUploadDocumentArea">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="proofingCommments">Comment: </label>
+                    <textarea id="proofingCommments" rows="3" cols="20" maxlength="500"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <button id="btnCancelUpload" type="button" class="btn pull-right" style="margin-top: 9%;margin-right:17%">Close</button>
+                    <button id="btnUploadDoc" type="button" class="btn pull-right" style="margin-top:9%;margin-right:1%">Save</button>
+                </div>
+                @*<div class="col-sm-3">
+                    </div>*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div style="display: none;overflow-y:auto">
+    <div class="lance-tmpl annotation-ui" tabindex="0">
+        <div class="annotation-comments"></div>
+        <div class="annotation-tip"></div>
+    </div>
+</div>
+<div style="display: none;overflow-y:auto">
+    <div class="lance-tmpl comment-ui">
+        <div class="comment-top">
+            <div class="comment-avatar" style="display:inline-block;"></div>
+            <div class="comment-user-details">
+                <div class="comment-user-name"></div>
+                <div class="comment-time-stamp"></div>
+            </div>
+        </div>
+        <div class="comment-body">
+            <textarea class="comment-text autogrow-textarea" rows="1" placeholder="[[enter comment]]" readonly="readonly"></textarea>
+            <div class="comment-edit-links">
+                <button class="comment-edit">[[edit]]</button>
+                <button class="comment-delete">[[delete]]</button>
+                <button data-lance-command="resolve">[[resolve]]</button>
+            </div>
+            <div class="comment-edit-controls">
+                <button class="comment-edit-ok btn btn-small btn-info ">[[save]]</button>
+                <button class="comment-edit-cancel btn btn-small btn-info">[[cancel]]</button>
+            </div>
+        </div>
+        <textarea class="comment-reply-text autogrow-textarea" rows="1" placeholder="[[Reply to this comment]]" readonly="readonly"></textarea>
+        <div class="comment-controls">
+            <button class="btn btn-small btn-info comment-ok">[[comment]]</button>
+            <button class="btn btn-small btn-info comment-cancel">[[cancel]]</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    var isFromExitValidate = @Html.Raw(Json.Encode(ViewBag.IsFromEV));
+    var folderData = {
+        tenantId: '@Model.TenantID',
+        folderId: '@Model.FolderId',
+        folderVersionId: '@Model.FolderVersionId',
+        accountId: '@Model.AccountId',
+        effectiveDate: '@Model.EffectiveDate',
+        versionNumber: '@Model.FolderVersionNumber',
+        isPortfolio: '@Model.IsPortfolio',
+        isEditable: '@Model.IsEditable',
+        folderName: '@Model.FolderName',
+        folderType: '@Model.FolderType',
+        referenceProductFormInstanceID: '@Model.ReferenceProductFormInstanceID',
+        versionType: '@Model.VersionTypeID',
+        folderVersionState: '@Model.FolderVersionStateID',
+        isReleased: '@Model.IsReleased',
+        formDesignVersionType:'@Model.FormDesignVersionType',
+        isAutoSaveEnabled:'@Model.IsAutoSaveEnabled',
+        duration:'@Model.Duration',
+        autoSaveSettingsPropertites: '@Model.AutoSaveSettingsProperties',
+        isLocked: '@Model.IsLocked',
+        lockedBy: '@Model.LockedBy',
+        isNewVersionLoaded:'@Model.IsNewVersionLoaded',
+        isNewLoadedVersionIsMajorVersion:'@Model.IsNewLoadedVersionIsMajorVersion',
+        currentUserName:'@Model.CurrentUserName',
+        WFStateID:'@Model.WFStateID',
+        currentUserId: '@Model.CurrentUserId',
+        RoleId :'@Model.RoleId',
+        CategoryName:'@Model.CategoryName',
+        CatID:'@Model.CatID',
+        CategoryId: '@Model.CategoryID',
+        WFStateName:'@Model.WFStateName',
+        FolderViewMode:'@Model.FoldeViewMode',
+        ViewFormInstanceID: '@TempData["ViewFormInstanceID"]',
+        SectionName:'@TempData["SectionName"]',
+        SectionGeneratedName:'@TempData["SectionGeneratedName"]'
+    };
+
+    if(folderData.isPortfolio == "True" || folderData.isPortfolio == true){
+        setMenu("PortfolioSearch");
+    }
+    else if( folderData.folderType !== "MasterList"){
+        setMenu("account");
+    }else{
+        setMenu("masterList");
+    }
+
+
+
+    $(document).ready(function () {
+        var viewMode = folderData.FolderViewMode;
+        //execute the singleton object at document.ready event
+        var singleTonfolderVersionInstance = new folderVersionInstance.getInstance(folderData.accountId, folderData.folderVersionId, folderData.versionNumber, folderData.effectiveDate, folderData.folderId, folderData.referenceProductFormInstanceID, folderData.isEditable, folderData.folderType,viewMode, folderData.currentUserId,folderData.currentUserName);
+        singleTonfolderVersionInstance.load();
+        if (GLOBAL.applicationName.toLowerCase() != 'ebenefitsync') {
+            if(folderData.folderVersionState == 1) {
+                folderVersionInstance.checkIfEVCompletedForFolderversion(folderData.folderVersionId, folderData.folderId, folderData.isEditable, folderData.folderType, viewMode, folderData.currentUserId,folderData.currentUserName);
+            }
+        }
+    });
+
+    var vbIsHiddenOrDisableSections = @Html.Raw(ViewBag.IsHiddenOrDisableSections);
+    var vbIsHiddenContainer = @Html.Raw(ViewBag.IsHiddenContainer);
+    var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+    var vbIsStopScrollFloatingHeaders = @Html.Raw(ViewBag.IsStopScrollFloatingHeaders);
+    var role = @Html.Raw(ViewBag.RoleId);
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var formInstanceClaims = @Html.Raw(Json.Encode(@ViewBag.formInstanceClaims));
+    var applyMaskFlag = @Html.Raw(ViewBag.ApplyFieldMask);
+    var currentUserName = @Html.Raw(Json.Encode(ViewBag.CurrentUserName));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+    var masterListEffectiveDate = @Html.Raw(Json.Encode(ViewBag.MasterListEffectivedate));
+    var CurrentGridDisplayMode = @Html.Raw(Json.Encode(ViewBag.GridType));
+    if(CurrentGridDisplayMode != "AG" && CurrentGridDisplayMode != "PQ"){
+        CurrentGridDisplayMode = "PQ";
+    }
+</script>

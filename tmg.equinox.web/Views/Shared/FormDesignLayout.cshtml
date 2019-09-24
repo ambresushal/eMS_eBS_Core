@@ -1,0 +1,23 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Document Folder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid is-admin">
+    @RenderBody()
+</div>
+
+@* If one wants to perform debugging on JS files. One needs to add setting in App_Start/BundleConfig.cs file
+       Refer Notes/Impl-Logging-ExceptionHandling-PerformanceOptimization.txt. *@
+
+@Scripts.Render("~/bundles/JsRenderBundle")
+@Scripts.Render("~/bundles/FormDesignBundle")
+@Scripts.Render("~/bundles/UtilsBundle")
+@Scripts.Render("~/bundles/ResearchWorkstationBundle")
+
+
+
+
+
+
+

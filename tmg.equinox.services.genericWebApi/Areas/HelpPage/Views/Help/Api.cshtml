@@ -1,0 +1,164 @@
+@using System.Web.Http
+@using tmg.equinox.services.genericWebApi.Areas.HelpPage.Models
+@model HelpPageApiModel
+
+@{
+    var description = Model.ApiDescription;
+    ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+  <link type="text/css" href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Content/css/tmg.equinox.custom.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Content/css/tmg.equinox.login.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+@*<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />*@
+@*<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                @Html.ActionLink("Help Page Home", "Index")
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @Html.DisplayForModel()
+    </section>
+</div>*@
+<div class="panel-body">
+    <div class="panel-heading">
+        @Html.ActionLink("Help", "Index")
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-header-default">
+                <label>@Html.ActionLink(Model.ApiDescription.RelativePath, "Api", "Help", new { apiId = Url.Encode(Model.ApiDescription.ID) }, null)</label>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                            Path
+                        </div>
+                        <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                            <label>@Html.ActionLink(Model.ApiDescription.RelativePath, "Api", "Help", new { apiId = Url.Encode(Model.ApiDescription.ID) }, null)</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                            HttpMethod
+                        </div>
+                        <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                            @Model.ApiDescription.HttpMethod
+                        </div>
+                    </div>
+                    @*<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        @if (Model.ApiDescription.ParameterDescriptions.Count() > 0)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-header-default">
+                                    <label>Parameters</label>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                            <label>Data Type</label>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                            <label>Is Required</label>
+                                        </div>
+                                    </div>
+                                    @foreach (var item in Model.ApiDescription.ParameterDescriptions)
+                                    {
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                                @item.ParameterName
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                                @item.ParameterType
+                                            </div>
+                                            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                                                @item.IsRequired
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>*@
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                            URI Parameters
+                        </div>
+                        <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                            @Html.DisplayFor(m => m.UriParameters, "Parameters")
+                        </div>
+                    </div>
+                   <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                            Body Parameters
+                        </div>
+                        <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                            @Model.RequestDocumentation
+@if (Model.RequestModelDescription != null)
+    {
+        @Html.DisplayFor(m => m.RequestModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.RequestModelDescription })
+        if (Model.RequestBodyParameters != null)
+        {
+            @Html.DisplayFor(m => m.RequestBodyParameters, "Parameters")
+        }
+    }
+    else
+    {
+        <p>None.</p>
+    }
+
+                        </div>
+                    </div>
+                   <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                            Resource Description
+                        </div>
+                        <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                           @description.ResponseDescription.Documentation
+ @if (Model.ResourceDescription != null)
+    {
+        @Html.DisplayFor(m => m.ResourceDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ResourceDescription })
+        if (Model.ResourceProperties != null)
+        {
+            @Html.DisplayFor(m => m.ResourceProperties, "Parameters")
+        }
+    }
+    else
+    {
+        <p>None.</p>
+    }
+                        </div>
+                    </div>
+        @if (Model.SampleResponses.Count > 0)
+            {
+                  <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                      <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+                          Response Formats
+                      </div>
+                      <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9">
+                          @Html.DisplayFor(m => m.SampleResponses, "Samples")
+    
+                      </div>
+                  </div>
+                    }
+                    @*<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                        <div class="right">
+                            <button id="btncopyoutput" class="btn btn-default">Copy to Clipboard</button>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

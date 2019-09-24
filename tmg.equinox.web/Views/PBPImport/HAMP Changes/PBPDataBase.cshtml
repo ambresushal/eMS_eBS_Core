@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "PBP DataBase Name";
+    Layout = "~/Views/Shared/PBPImportLayout.cshtml";
+}
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">PBP Integration</h1>
+    </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/PBPImport/PBPDataBase">Manage PBP Database</a>
+        </li>
+        <li>
+            <a href="~/PBPImport/Index">PBP Import</a>
+        </li>
+        <li>
+            <a href="~/PBPExport/Index">PBP Export</a>
+        </li>
+        @*<li>
+            <a href="~/ODM/ODM">ODM</a>
+        </li>
+        <li>
+            <a href="~/MDBComparer/MDBComparer">MDB Comparer</a>
+        </li>*@
+    </ul>
+</div>
+<div id="pbpDataBaseTab" class="parent-container ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="nav nav-pills nav-pills-child border-none" role="tablist">
+        <li><a href="#pbpDataBaseTab-1">Manage PBP Database</a></li>
+    </ul>
+    <div role="tabpanel" class="tab-content">
+        <div id="pbpDataBaseTab-1" class="tab-pane active">
+            <div class="panel panel-default ">
+                @*<div class="panel-heading-gray">
+                        <p class="panel-title section-title">PBP Database</p>
+                    </div>*@
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid-wrapper">
+                                <table id="PBPDatabasegrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="addPBPDatabaseNameDialog" style="display: none">
+                    <form>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="Name"><b>PBP Database Name: </b></label><em>*</em>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input id="pbpDBName" type="text" class="form-control" name="Name" maxlength="100" />
+                                    <span class="help-block" id="PBPDbnameSpan" style="color:red"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="Discription"><b>DataBase Description:</b></label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <textarea id="pbpDBDescription" type="text" class="form-control" name="Description" maxlength="100"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn pull-right">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="pbpDataBaseTab-2" class="tab-pane">
+            <div id="reportList">
+                <div class="panel panel-default">
+                    <div class="panel-heading-gray">
+                        <p class="panel-title section-title">PBP Import</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12 col-xs-12 col-lg-12">
+                            <div class="timer"><span><b>Auto-Refresh in </b></span><span id="spnTimer"><b>60 seconds.</b></span></div>
+                            <div class="grid-wrapper">
+                                <table id="reportQueue"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="panel panel-default">
+        <div class="panel-body">
+    <div class="row-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span class="ui-jqgrid-title" style="font: 300 14px/25px 'Yantramanav', sans-serif !important;">Manage PBP Database</span>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-12">
+
+                            <table id="PBPDatabasegrid"></table>
+                            <div id="pager"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <div id="addPBPDatabaseNameDialog" style="display: none">
+                <form>
+                    <div class="form-group">
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="Name"><b>PBP Database Name: </b></label><em>*</em>
+
+                            </div>
+                            <div class="col-sm-8">
+                                <input id="pbpDBName" type="text" class="form-control" name="Name" maxlength="100" />
+                                <span class="help-block" id="PBPDbnameSpan" style="color:red"></span>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="Discription"><b>DataBase Description:</b></label>
+                            </div>
+                            <div class="col-sm-8">
+                                <textarea  id="pbpDBDescription" type="text" class="form-control" name="Description" maxlength="100"></textarea>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-default">Save</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    </div>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var viewPBPDatabasegrid = new viewPBPDatabase();
+    });
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+
+</script>

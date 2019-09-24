@@ -1,0 +1,850 @@
+﻿@{
+    ViewBag.Title = "Document Design";
+    Layout = "~/Views/Shared/FormDesignLayout.cshtml";
+}
+<style type="text/css">
+    .onoffswitch {
+        position: relative;
+        width: 65px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+        display: none;
+    }
+
+    .onoffswitch-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid #D4D4D4;
+        border-radius: 14px;
+    }
+
+    .onoffswitch-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        -moz-transition: margin 0.3s ease-in 0s;
+        -webkit-transition: margin 0.3s ease-in 0s;
+        -o-transition: margin 0.3s ease-in 0s;
+        transition: margin 0.3s ease-in 0s;
+    }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 16px;
+            padding: 0;
+            line-height: 16px;
+            font-size: 10px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "Config";
+            padding-left: 5px;
+            background-color: #54A2F5;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "Standard";
+            padding-right: 2px;
+            background-color: #FC3535;
+            color: #FFFFFF;
+            text-align: right;
+        }
+
+    .onoffswitch-switch {
+        display: block;
+        width: 9px;
+        margin: 3.5px;
+        background: #FFFFFF;
+        border: 1px solid #D4D4D4;
+        border-radius: 14px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 46px;
+        -moz-transition: all 0.3s ease-in 0s;
+        -webkit-transition: all 0.3s ease-in 0s;
+        -o-transition: all 0.3s ease-in 0s;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+
+    .disabled a {
+        pointer-events: none;
+        color: grey;
+    }
+
+    .divdisabled {
+        pointer-events: none !important;
+        opacity: 3.4 !important;
+    }
+    #expressionRuledialogNew .grid-wrapper .ui-jqgrid.ui-widget-content .ui-jqgrid-title, .ui-sotview .ui-sotview-title {
+        padding-bottom: 0px;
+        padding-top: 0px;
+        font-size: 14px;
+    }
+
+    #elementGridHTML .ui-jqgrid .ui-jqgrid-titlebar {
+        padding: .3em .2em .2em .3em;
+    }
+
+    #pelementGrid {
+        top: -5px !important;
+    }
+
+    #gview_elementGrid {
+        border-top: 0px !important;
+    }
+</style>
+
+<div class="lead-wrap clearfix">
+    <div class="pull-left">
+        <h1 class="title">Design</h1>
+    </div>
+</div>
+
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="~/FormDesign/Index#">Documents</a>
+        </li>
+        <li>
+            <a href="~/FormDesignGroup/Index">Folder</a>
+        </li>
+    </ul>
+</div>
+
+<div id="formdesigntabs" style="display: none;">
+    <ul id="createtabs">
+        <li><a href="#formdesign-11">Document Designs</a></li>
+    </ul>
+
+    <div id="formdesign-11" style="display:none;" aria-labelledby="ui-id-37" class="ui-tabs-panel ui-widget-content ui-corner-bottom"
+         aria-hidden="true" role="tabpanel">
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Document Design Type:</label>
+                <span class="select-wrapper">
+                    <select class="form-control" id="documentDesignTypeDDL">
+                        <option value="0">--Select--</option>
+                    </select>
+                </span>
+                <!--  <span class="help-block" id="documentDesignTypeDDLHelpBlock"></span> -->
+                <button class="btn btn-sm but-align" id="btnDocAdd" style="display:none !important;">Add</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                <div class="grid-wrapper left-sidebar">
+                    <table id="fdg"></table>
+                </div>
+            </div>
+            <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                <div class="grid-wrapper right-sidebar">
+                    <table id="fdvg"></table>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+<div id="bottom-menu" class="bottom-menu navbar-fixed-bottom" style="display: none; height: 44px;">
+    <div id="bottom-menu-tabs" style="margin: 1px;" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div>
+            <ul id="bottom-menu-ul" class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+                <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabs-1" aria-labelledby="ui-id-32" aria-selected="true">
+                    <a href="#tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-32">Activity Log</a>
+                </li>
+                <div style="float: right; display:inline-block;margin-right:10px">
+                    <div style="display:inline-block;padding-top: 10px;">
+                        <div style="margin-left:5px;">
+                            <i class="bottom-menu-button glyphicon glyphicon-plus-sign"></i>
+                        </div>
+                    </div>
+                </div>
+            </ul><div style="clear: both"></div>
+        </div>
+        <div id="tabs-1" aria-labelledby="ui-id-32" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="true" aria-hidden="false">
+            <div class="bottom-tab-content">
+                <div>
+                    <div class="grid-wrapper">
+                        <table id="designActivityLog"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span id="spnDisclaimer" class="help-block" style="font-size: 12px !important;margin-top: -9px !important;margin-left: 5px !important;color: orangered !important;"></span>
+</div>
+
+<div style="display: none;">
+    <div id="documentdesigndialog">
+        <form>
+            <div class="form-group">
+                <label for="documentdesignname" class="label-align-middle">Document Design Type Name</label>
+                <input type="text" class="form-control" id="documentdesignname" maxlength="100" placeholder="Enter Document Design Type Name" />
+                <span class="help-block"></span>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+    <div id="formdesigndialog">
+        <form>
+            <div class="form-group">
+                <div>
+                    <label for="formdesignname" class="label-align-middle">Document Design Name:</label><em>*</em>
+                    <input type="text" class="form-control" id="formdesignname" maxlength="100" placeholder="Enter Document Design Name" />
+                    <span id="formdesignnameHelpBlock" class="help-block"></span>
+                </div>
+                <div>
+                    <label for="formdesignIsAliasDesign" id="labelformdesignIsAliasDesign" class="label-align-middle">Is Design Alias: for setting aliases for Collateral</label>
+                    <input type="checkbox" id="formdesignIsAliasDesign" name="formdesignIsAliasDesign" placeholder="Is Design Alias Master List?" style="float:right" />
+                </div>
+                <div>
+                    <label for="formdesignUsesAliasDesign" id="labelformdesignUsesAliasDesign" class="label-align-middle">Uses Alias Design - for Collateral Master Lists</label>
+                    <input type="checkbox" id="formdesignUsesAliasDesign" name="formdesignUsesAliasDesign" placeholder="Uses Design Alias Master List?" style="float:right" />
+                </div>
+                <div id="sectionlockPanel">
+                    <label for="forDesigndocumentLock" id="labelforDesigndocumentLock" class="label-align-middle">Section Locking</label>
+                    <input type="checkbox" id="formdesignSectionLockcheckbox" name="formdesignSectionLockcheckbox" placeholder="Section Locking" style="float:right" />
+                </div>
+                <div id="sourceDesignDDLRow">
+                    <label for="sourcedesignname" class="label-align-middle">Anchor Design: </label>
+                    <select id="sourceDesignDDL" class="form-control">
+                        <option value="0">--Select--</option>
+                    </select><span id="sourcedesignnameHelpBlock" class="help-block"></span>
+
+                    <div class="row" id="isMasterListRow">
+                        <div class="col-xs-4" style="text-align: right">
+                            <input type="checkbox" id="ismasterlist" />
+                        </div>
+                        <div class="col-xs-8">
+                            <label for="ismasterlist" id="masterListlbl">Is Master List</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+    <div id="formdesignversiondialog">
+        <form>
+            <div class="form-group row">
+                <div class="col-xs-11">
+                    <label for="FormDesignVersionEffectivedate">Effective Date</label>
+                    <input type="text" class="form-control" id="createFormDesignVersionEffectivedate" style="width: 85%;" placeholder="Enter Effective Date" maxlength="10" />
+                    <span id="createFormDesignVersionEffectivedateHelpblock" class="help-block"></span>
+                </div>
+
+                <div class="col-xs-2">
+                </div>
+
+                <div class="col-xs-8">
+                    <label style="font-size: 14px;"><b>Optional Step</b></label><br />
+                    <br />
+                    <label>
+                        <input type="checkbox" name="CreateFormDesignVersion" id="isCreateFormDesignVersion" style="height: 13px;" />
+                        &nbsp;  Copy Document Version
+                    </label>
+                    <span id="copyFormDesignVersionCheckboxHelpblock" class="help-block"></span>
+                    <br />
+                    <label>Copy Version</label>
+                    <select class="form-control" id="copypreviousversion"></select>
+                    <span style="color: #737373;">Select a Document Design Version to Copy</span>
+                </div>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+    <div id="formdesignversionEditdialog">
+        <form>
+            <div class="form-group">
+                <label for="effectivedate">Effective Date</label>
+                <em>*</em>
+                <div class="input-wrapper">
+                    <input type="text" class="form-control" id="effectivedate" placeholder="Enter Effective Date" maxlength="10" />
+                    <i class="material-icons">&#xE8DF;</i>
+                </div>
+                <span class="help-block"></span>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+    <div id="sectionlistdialog">
+        <div class="grid-wrapper popup-grid">
+            <table id="sectionlistdialoggrid"></table>
+        </div>
+        <div id="sectionlistdialogadd">
+            <form>
+                <div class="form-group">
+                    <div>
+                        <label for="sectionname">Section Name</label>
+                    </div>
+                    <div>
+                        <textarea class="form-control" id="sectionname" maxlength="500" placeholder="" rows="5"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+    <div id="fieldlistdialog">
+        <div class="grid-wrapper popup-grid">
+            <table id="fieldlistdialoggrid"></table>
+        </div>
+        <div id="fieldlistdialogadd">
+            <form>
+                <div class="form-group">
+                    <div>
+                        <label for="fieldlist">Select Element</label>
+                        <select class="form-control" id="fieldlist">
+                            <option value="TextBox">TextBox</option>
+                            <option>Multiline TextBox</option>
+                            <option value="[Blank]">[Blank]</option>
+                            <option>Label</option>
+                            <option value="Radio Button">Radio Button</option>
+                            <option>CheckBox</option>
+                            <option>Dropdown List</option>
+                            <option>Dropdown TextBox</option>
+                            <option>Calendar</option>
+                            <option value="Repeater">Repeater</option>
+                            <option value="Section">Section</option>
+                            <option value="Rich TextBox">Rich TextBox</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="fieldname">Field Name</label>
+                        <textarea class="form-control" id="fieldname" maxlength="1000" placeholder="" rows="5"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+    <div id="dropdownitemsdialog">
+        <div class="grid-wrapper popup-grid">
+            <table id="dropdownitemsdialoggrid"></table>
+        </div>
+        <div id="dropdownitemsdialogadd">
+            <form>
+                <div class="form-group">
+                    <label for="itemnname">Item Name</label>
+                    <textarea class="form-control" id="itemname" maxlength="500" placeholder="" rows="5"></textarea>
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+            </form>
+        </div>
+        <span class="help-block">Changes will be Saved locally. They will be Saved to the system only if the Save button on the Properties Grid is clicked.</span>
+    </div>
+    <div id="columnchooserdialog">
+        <div class="grid-wrapper">
+            <table id="columnchooserdialoggrid"></table>
+        </div>
+    </div>
+    <div id="excelconfigurationdialog">
+        <div class="grid-wrapper">
+            <table id="configurationdialoggrid"></table>
+        </div>
+    </div>
+    <div id="radioButtonOptiondialog">
+        <div class="grid-wrapper">
+            <div class="form-group">
+                <label for="txtOptionYes">Option Label - Yes</label>
+                <input type="text" maxlength="50" class="form-control" id="txtOptionYes">
+            </div>
+            <div class="form-group">
+                <label for="txtOptionNo">Option Label - No</label>
+                <input type="text" maxlength="50" class="form-control" id="txtOptionNo">
+            </div>
+        </div>
+    </div>
+    <div id="rulesdialog" class="rule-grid-section"></div>
+    <div id="repeaterKeydialog" style="display:none;">
+        <div class='row-fluid'>
+            <div class='col-xs-12 col-md-12 col-lg-12 col-sm-12'>
+                <div class='grid-wrapper'><table id='repeaterkeygrid'></table></div>
+            </div>
+        </div>
+    </div>
+    <div id="dataSourcedialog">
+        <div class="panel-body">
+            <div style="height:600px;">
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <div class="grid-wrapper">
+                            <table id="dataSourcegrid"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <div class="grid-wrapper">
+                            <table id="dataSourceElementsgrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dataSourceElementsDialog">
+        <div class="panel-body">
+            <div class="row-fluid">
+                <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                    <div class="grid-wrapper">
+                        <table id="targetElementsGrid"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addDataSourceFieldDialog">
+        <div class="grid-wrapper">
+            <table id="addDataSourceFieldDialogGrid"></table>
+        </div>
+        <div id="addDataSourceFieldDialogAdd">
+            <form>
+                <div class="form-group">
+                    <label for="fieldlist">Select Element</label>
+                    <select class="form-control" id="addDataSourceFieldlist">
+                        <option>TextBox</option>
+                        <option>Multiline TextBox</option>
+                        <option>[Blank]</option>
+                        <option>Label</option>
+                        <option>Radio Button</option>
+                        <option>CheckBox</option>
+                        <option>Dropdown List</option>
+                        <option>Calendar</option>
+                        <option>Repeater</option>
+                        <option>Section</option>
+                        <option>Rich TextBox</option>
+                    </select>
+                    <label for="fieldname">Field Name</label>
+                    <textarea class="form-control" id="addDataSourceFieldName" maxlength="500" placeholder="" rows="5"></textarea>
+                    <span class="help-block"></span>
+                </div>
+                <button type="button" class="btn pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="customRulesdialog">
+        <div class="panel-body">
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <label>Custom Rule</label>
+                        <textarea class="form-control" id="customRule" maxlength="50000" placeholder="" rows="20"></textarea>
+                        <span class="help-block">Changes will be Saved locally. They will be Saved to the system only if the Save button on the Properties Grid is clicked.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customRegexDialog">
+        <div class="panel-body">
+            <div>
+                <div class="row-fluid" style="line-height: normal">
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <label>Custom Regex</label>
+                    </div>
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <textarea class="form-control" id="customRegex" maxlength="250" placeholder="" rows="5"></textarea>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <label>Apply Mask</label>
+                    </div>
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <input type="checkbox" id="maskFlag">
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <label>Custom Message</label>
+                    </div>
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <textarea class="form-control" id="validationMessage" maxlength="230" placeholder="" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <button id="btnCustomRegexDialogSave" type="button" class="btn pull-right" style="margin-top: 15px;">Save</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <span class="help-block">Changes will be Saved locally. They will be Saved to the system only if the Save button on the Properties Grid is clicked.</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;">
+
+        <div id="commentsDialog">
+            <div class="form-group row" style="margin-top: 14px">
+                <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4" style="margin-top: 14px">
+                    <label>Comments</label>
+                </div>
+                <div class="col-xs-8 col-md-8 col-lg-8 col-sm-8">
+                    <textarea class="form-control" id="comments" maxlength="5000" placeholder="" rows="5"></textarea>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="saveButton" class="btn pull-right">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="roleaccesspermission">
+        <div class="panel-body">
+            <div>
+                <div class="row-fluid">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <div class="grid-wrapper">
+                            <table id="roleaccesspermissiongrid"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="duplicationCheckDialog">
+        <div class="grid-wrapper">
+            <table id="duplicationCheckDialogGrid"></table>
+        </div>
+        <span class="help-block">Duplication check setup lists only visible & enabled fields of type "Dropdown List", "Dropdown TextBox", "Textbox", "Multiline TextBox" and "Calendar"</span>
+    </div>
+
+    <div id="advancedConfigraionDialog">
+        <h5>Configuration List</h5>
+        <div id="accordianConfigraionDialog">
+            <h3><a href="#">Repeater Level</a></h3>
+            <div>
+                <h6>Please select appropriate configration(s)</h6>
+                <div class="row" title="Display all the applicable options at the top of the repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Top</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="checkbox" id="displayTopHeader" style="float: right;">
+                    </div>
+                </div>
+                <div class="row" title="Displays the appropriate Title header of the repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Title</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="checkbox" id="displayTitle" style="float: right;">
+                    </div>
+                </div>
+                <div class="row" title="Enables or Disables paging for a repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Paging</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="checkbox" id="allowPaging" style="float: right;">
+                    </div>
+                </div>
+                <div class="row" id="rowsPerPageDiv" style="visibility: hidden;" title="Displays number of rows per page of the repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Number Of Rows Per Page </label><em>*</em>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="text" id="rowsPerPage" maxlength="3" />
+                        <span class="help-block" id="rowsPerPageSpan"></span>
+                    </div>
+                </div>
+            </div>
+            <h3><a href="#">Columns</a></h3>
+            <div>
+                <h6>Please select appropriate configration(s)</h6>
+                <div class="row" title="Allows to freeze a set number of columns in a repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Number of frozen columns</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="text" id="freezeColNo" maxlength="2" />
+                    </div>
+                </div>
+                <div class="row" title="Allows filtering of repeater data using column headers or custom fields in the toolbar with filter API or both">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Filtering Mode</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <select class="form-control" id="ddlFilterMode">
+                            <option value="Local Header Filtering">Local Header Filtering</option>
+                            <option value="Local Filtering">Local Filtering</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h3><a href="#">Rows</a></h3>
+            <div>
+                <h6>Please select appropriate configration(s)</h6>
+                <div class="row" title="Allows to freeze a set number of rows in a repeater">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Number of frozen rows</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="text" id="freezeRowNo" maxlength="2" />
+                    </div>
+                </div>
+            </div>
+            <h3><a href="#">Data</a></h3>
+            <div>
+                <h6>Please select appropriate configration(s)</h6>
+                <div class="row" title="Allows to download the repeater data in MS Excel format">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Export To Excel</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="checkbox" id="exportToExcel" style="float: right;">
+                    </div>
+                </div>
+                <div class="row" title="Allows to download the repeater data in csv format">
+                    <div class="col-xs-9 col-md-9 col-lg-9 col-sm-9">
+                        <label>Export To CSV</label>
+                    </div>
+                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                        <input type="checkbox" id="exportToCSV" style="float: right;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="templateDialog">
+        <div id="templateAccordian">
+            <h3><a href="#">Header Template</a></h3>
+            <div>
+                <div class="row" title="Header Template Design">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="headerTemplate" name="input" rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+            <h3><a href="#">Row Template</a></h3>
+            <div>
+                <div class="row" title="Row Template Design">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="rowTemplate" name="input" rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+            <h3><a href="#">Footer Template</a></h3>
+            <div>
+                <div class="row" title="Footer Template Design">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="footerTemplate" name="input" rows="20"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="changeControldialog">
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4" style="text-align: left">
+                        <label class="label-align-middle">Selected Element:</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="elementname" maxlength="100" disabled="disabled" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4" style="text-align: left">
+                        <label class="label-align-middle">Current Control: </label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="currentcontrol" maxlength="100" disabled="disabled" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4" style="text-align: left">
+                        <label class="label-align-middle">Change Control Type: </label>
+                    </div>
+                    <div class="col-xs-8">
+                        <select class="form-control" id="changeControlToDDL">
+                            <option value="0">--Select--</option>
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn pull-right">Save</button>
+        </form>
+    </div>
+
+    <div id="expressionRuledialog">
+        <div class="panel-body">
+            <div style="height:550px;">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <div class="grid-wrapper popup-grid">
+                            <table id="expressionRulegrid"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                        <textarea id="jsonData" class="form-control" rows="17" spellcheck="false" style="font-size:14px !important;"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="expressionRuledialogNew">
+        <ul id="expressionRuleDialogTabList" class="nav nav-tabs nav-pills nav-pills-child" role="tablist" style="border-style: none; margin-top: -18px;    margin-right: -13px !important;    margin-left: -13px !important;">
+            <li class="active">
+                <a href="#expressionRulePanel" role="tab" data-toggle="tab" style="border-style:none !important;">Designer</a>
+            </li>
+            <li>
+                <a href="#expressionRuleTesterPanel" role="tab" data-toggle="tab" style="border-style:none !important;">Tester</a>
+            </li>
+            <li id="libtnSaveExpresssionData" class="active" style="float:right">
+                <button class="btn btn-sm but-align" style="background-color:white !important;padding: 6px 2px !important;padding-top: 11px !important;" title="Save Expression Rule" id="btnSaveExpresssionData" type="button" aria-label="Left Align">
+                    <i class="material-icons" style="color:black">&#xE161;</i>
+                </button>
+            </li>
+            <li id="libtnDeleteExpresssionRule" class="active" style="float:right">
+                <button class="btn btn-sm but-align" style="background-color:white !important;padding: 6px 2px !important;padding-top: 11px !important;" title="Delete Expression Rule" id="btnDeleteExpresssionRule" type="button" aria-label="Left Align">
+                    <i class="material-icons" style="color:black">&#xe872;</i>
+                </button>
+            </li>
+            <li id="libtnValidateRule" class="active" style="float:right">
+                <button class="btn btn-sm but-align" style="background-color:white !important;padding: 6px 2px !important;padding-top: 11px !important;" title="Validate Expression Rule" id="btnValidateRule" type="button" aria-label="Left Align">
+                    <i class="material-icons" style="color:black">&#xe86c;</i>
+                </button>
+            </li>
+            <li id="libtnFormatRuleText" class="active" style="float:right">
+                <button class="btn btn-sm but-align" style="background-color:white !important;padding: 6px 2px !important;padding-top: 11px !important;" title="Format Expression Rule Text" id="btnFormatRuleText" type="button" aria-label="Left Align">
+                    <i class="material-icons" style="color:black">&#xe23e;</i>
+                </button>
+            </li>
+            <li id="libtnDownloadExpresssionData" class="active" style="float:right">
+                <button class="btn btn-sm but-align" style="background-color:white !important;padding: 6px 2px !important;padding-top: 11px !important;" title="Download Expression Rule" id="btnDownloadExpresssionData" type="button" aria-label="Left Align">
+                    <i class="material-icons" style="color:black">&#xe2c4;</i>
+                </button>
+            </li>
+        </ul>
+        <div role="tabpanel" class="tab-content">
+            <div id="expressionRulePanel" class="panel-body tab-pane active">
+                <div style="height:500px;">
+                    <div id="expressionRuleNewHTML" class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="popup-grid">
+                                <div class="row" style="margin-bottom:10px;">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <label>Target Element:</label>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                                        <input type="text" id="targetElementName" readonly="readonly" />
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <label>Rule Type:</label>
+                                    </div>
+                                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                                        <select id="ruleTypeDropDown"></select>
+                                    </div>
+                                    <div class="col-xs-1 col-md-1 col-lg-1 col-sm-1" style="padding-top:6px;">
+                                        <span id="ruleTypeHelp" class="glyphicon glyphicon-info-sign" title=""></span>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom:10px;">
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <label>Description:</label>
+                                    </div>
+                                    <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                                        <input type="text" id="txtDescription" maxlength="100" />
+                                    </div>
+                                    <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+                                        <label id="lbltemplateDropDown">Select Template:</label>
+                                    </div>
+                                    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3">
+                                        <select id="templateDropDown"></select>
+                                    </div>
+                                    <div class="col-xs-1 col-md-1 col-lg-1 col-sm-1" style="padding-top:6px;">
+                                        <span id="templateDropdownHelp" class="glyphicon glyphicon-info-sign" title=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="elementGridHTML" class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="grid-wrapper popup-grid" style="padding-top:10px;">
+                                <table id="elementGrid"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <textarea id="jsonDataNew" class="form-control" rows="10" spellcheck="false" style="font-size:14px !important;"></textarea>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div id="expressionRuleTesterPanel" class="panel-body tab-pane">
+                <div style="height:500px;">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                            <div class="grid-wrapper popup-grid" style="padding-top: 0px;">
+                                <table id="documentList"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12" style="padding-top: 34px;height: 286px;">
+                            <textarea id="ruleResultJSON" class="form-control" rows="15" spellcheck="false" style="font-size:14px !important;" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+    var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+
+    setMenu("design");
+
+
+    $(document).ready(function () {
+        $("#effectivedate").datepicker();
+        $('.input-wrapper .material-icons').click(function () {
+            $(this).toggleClass('active');
+            $("#effectivedate").focus();
+        });
+
+
+    });
+</script>

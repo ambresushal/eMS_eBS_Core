@@ -1,0 +1,3 @@
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\MDMSyncService\obj\Release\MDMSyncService.csprojResolveAssemblyReference.cache
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\MDMSyncService\obj\Release\MDMSyncService.ProjectInstaller.resources
+D:\Equinox_Repo\trunk\Code Merge\eMS_eBS_Core\MDMSyncService\obj\Release\MDMSyncService.csproj.GenerateResource.Cache

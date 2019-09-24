@@ -1,0 +1,56 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/ErrorLayout.cshtml"; 
+}
+
+<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" style="min-height: 400px; margin: 10px 5px 20px; text-align: center;">
+    <br/>
+    <p style="color: #55A8D5; line-height: 1.5; font-size: 18px; font-weight: bold;">
+        Sorry, an error occurred while processing your request!!
+    </p>
+    <p>
+        <a href='@Url.Content(ViewBag.currentURL.ToString())'>Back</a>&nbsp;Please try again later or contact
+        <a href='@Url.Content(ViewData["UserMailID"].ToString())'>support@themostgroup.com</a> .
+    </p>
+    <br/>
+    <div class="spacer">
+    </div>
+    <!-- Collapse functionality for stacktrace -->    
+    <div class="accordion-group">
+        @if (!string.IsNullOrEmpty(ViewBag.enableShowError) && ViewBag.enableShowError == "true")
+        {
+            <div class="accordion-heading" style="margin-left: 15px; horiz-align: left;">
+                <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+                    <b> + </b></a> &nbsp;Show Error Details
+            </div>
+        }
+        <div id="collapseTwo" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <p>
+                    @* This is needed only when session has expired and on error , session is not timed out or expired.*@
+                    @*<b>Please click here to go to @Html.ActionLink("Login", "LogOn", "Login", null, null) Page.</b>*@
+                </p>
+                @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+                {
+                    <div style="text-align:left;width:auto;">
+                        <p>
+                            <b>Exception:</b> @Model.Exception.Message<br />
+                            <b>Controller:</b> @Model.ControllerName<br />
+                            <b>Action:</b> @Model.ActionName
+                        </p>
+                        <div style="overflow:auto;">
+                            <pre>
+                                @Model.Exception.StackTrace
+                            </pre>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spacer">
+</div>
+
+    

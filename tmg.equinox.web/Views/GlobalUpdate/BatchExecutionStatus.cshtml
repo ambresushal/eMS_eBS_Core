@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "BatchExecutionStatus";
+    Layout = "~/Views/Shared/GlobalUpdateLayout.cshtml";
+}
+<div class="lead-wrap clearfix">
+  <div class="pull-left">
+    <h1 class="title">Executed Batch List</h1>
+  </div>
+</div>
+<div class="tablelist-wrapper">
+    <ul class="nav nav-pills">
+        <li>
+            <a href="~/GlobalUpdate/ExistsingGUGrid">Global Update List</a>
+        </li>
+        <li class="dropdown active">
+            <a href="~/GlobalUpdate/BatchExecution" data-toggle="dropdown">Batch</a>
+        </li>
+    </ul>
+</div>
+<ul class="nav nav-pills nav-pills-child border-none">
+     <li><a href="~/GlobalUpdate/BatchExecution">Batch Generation</a></li>
+     <li class="active"><a href="~/GlobalUpdate/BatchExecutionStatus">Batch Execution</a></li>
+</ul>
+<div>
+    @*<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <button id="baselineDummyButton" class="btn btn-default pull-right">Baseline Folders</button>
+    </div>*@
+    <div class="grid-wrapper">
+        <!--<div class="grid-page-wrapper">
+          List Of Items
+        </div> -->
+        <table id="executedBatchesGrid"></table>
+    </div>
+</div>
+<div id="rollBackDialog" style="display: none;">
+    <div>
+        <p></p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <label>Comments</label>
+            <span class="required" id="commentsHelpBlock"></span>
+            <textarea rows="4" cols="50" id="rollbackCommnts" maxlength="1000"></textarea>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 15px;">
+        <button id="saveRollBackButton" class="btn pull-right">Save</button>
+    </div>
+</div>
+<div id="confirmRollBackDialog" style="display: none;">
+    <div>
+        <p></p>
+    </div>  
+</div>
+
+<script type="text/javascript">
+    setMenu("globalupdate");
+    var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));  
+    var roleId = @Html.Raw(Json.Encode(@ViewBag.RoleId)); 
+    setMenu("globalupdate");	
+</script>
+
+<style>
+    .required {
+        /*content:"*";*/
+        color: red;
+    }
+</style>

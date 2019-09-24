@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="tmg.equinox.caching.client.CacheConfig">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABAMAAgQKAACBQAAAAAUAAEBAAABBBACACAQUAA=</HashCode>
+      <FileName>CacheConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tmg.equinox.caching.client.CachingManager">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAAAAAIAAAAAAAAAAEIASAAAACAUAAAIAAiAAAAA=</HashCode>
+      <FileName>CachingManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tmg.equinox.caching.client.Properties.Caching">
+    <Position X="6" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAAAARAAAIAAAAAABAAAAAAAAAACAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,62 @@
+    {
+        "documentrule": {
+            "targetelement": "Product[BenefitSummary.BenefitSummaryTable]",
+            "ruletype": "datasource",
+            "targetelementtype": "repeater[selectdialog]",
+            "triggers": [
+                {
+                    "source": "",
+                    "event": ""
+                }
+            ],
+            "actions": [
+                {
+                    "action": "selectdialog"
+                }
+            ],
+            "ruleconditions": {
+                "sources": [
+                    {
+                        "sourcename": "A",
+                        "sourceelement": "MasterList[BenefitSummaryDescriptions.BenefitSummaryDescriptionsTable]",
+                        "mappings": {
+                            "sourcefields": "",
+                            "targetfields": ""
+                        },
+                        "filter": {
+                            "filterlist": [
+                                {
+                                    "filtertype": "expr",
+                                    "filtername": "A",
+                                    "filterexpression": "@A.DescriptionsRecordType = BSBS"
+                                }
+                            ],
+                            "filtermergeexpression": "",
+                            "filtermergetype": "none",
+                            "keycolumns": ""
+                        }
+                    }
+                ],
+
+                "sourcemergelist": {
+                    "outputcolumns": {
+                        "columns": "@A.DescriptionsRecordType,@A.DescriptionsType,@A.Description",
+                        "children": ""
+                    },
+                    "sourcemergeactions": [
+                        {
+
+                            "sourcemergeexpression": "",
+                            "sourcemergetype": "none",
+                            "keycolumns": "",
+
+                            "mappings": {
+                                "sourcefields": "",
+                                "targetfields": ""
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+        }

@@ -1,0 +1,415 @@
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using Microsoft.AspNet.Identity;
+@using tmg.equinox.domain.entities.Models;
+@using System.Security.Claims;
+@{
+    ViewBag.Title = "Dashboard Design";
+    Layout = "~/Views/Shared/DashBoardLayout.cshtml";
+    var authenticationSectionCollection = (NameValueCollection)ConfigurationManager.GetSection("authenticationSection");
+    ViewBag.UseAuthentication = Convert.ToBoolean(authenticationSectionCollection["UseAuthentication"]);
+    ViewBag.DummyAuthenticationEnabled = Convert.ToBoolean(authenticationSectionCollection["DummyAuthenticationEnabled"]);
+    var identity = (User.Identity as System.Security.Claims.ClaimsIdentity);
+    var claims = identity.Claims;
+    var claimPrinciple = (ClaimsPrincipal)User;
+    foreach (var claimIdentity in claimPrinciple.Identities)
+    {
+        if (!(claimIdentity is System.Security.Principal.WindowsIdentity))
+        {
+            if (claimIdentity is ClaimsIdentity)
+            {
+                claims = claimIdentity.Claims;
+                identity = claimIdentity;
+            }
+        }
+    }
+}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script type="text/javascript">
+
+   var  userName =  "@User.Identity.GetUserName()"
+</script>
+
+<div class="hero-wrap clearfix">
+    <div class="pull-left">
+        <div class="hero-img img-circle pull-left">
+            <img src="~/Content/css/images/user.png" title="User Profile Picture" alt="User Profile Picture" />
+        </div>
+        <h1>
+            @if (ViewBag.UseAuthentication == true || ViewBag.DummyAuthenticationEnabled == true)
+            {
+                if (User.Identity != null)
+                {
+                    @User.Identity.GetUserName();
+                }
+                else
+                {
+                    <strong>Welcome</strong>
+                }
+            }
+        </h1>
+        @*<small>Senior Manager</small> </h1>*@
+        <h4 class="lead-text">Last activity: @ViewBag.LastActivity</h4>
+    </div>
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "SETTING"))
+        {
+            <div class="pull-right">
+                <div class="info-icon hero-settings-section">
+                    <a href="/Settings/WorkFlowSettings">
+                        <img src="~/Content/css/images/settings.svg" title="Settings" alt="Settings" width="30" height="30px" />
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- activityWrap Starts -->
+<div class="account-infowrap row grid js-masonry" style="margin-top: 25px;">
+
+    <div class=" grid-item col-sm-4 grid-item--height2">
+        <div class="infobox activityInfobox">
+            <div class="activity-wrap">
+                <div class="activity-innertop">
+                    <img src="~/Content/css/images/activity.png" title="activity" alt="activity" />
+                    <h3 class="title"> Activity</h3>
+                    <!-- <a href="#">View all</a> -->
+                </div>
+
+                <ul class="activity-timeline">
+                    @if (claims != null)
+                    {
+                        int count = 0;
+                        if (claims.Any(c => c.Value.Trim().ToUpper() == "SETTING"))
+                        {
+                            foreach (var std in ViewData["activity"] as IList<UserActivity>)
+                            {
+                                if (count < 2)
+                                {
+                                    <li>
+                                        <span>@std.Event</span>
+                                        @std.Message
+                                    </li>
+                                }
+                                count = count + 1;
+                            }
+                        }
+                        else
+                        {
+                            foreach (var std in ViewData["activity"] as IList<UserActivity>)
+                            {
+                                //if (count < 6)
+                                //{
+                                <li>
+                                    <span> @std.Event </span>
+                                    @std.Message
+                                </li>
+                                //}
+                                //count = count + 1;
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        @if (claims != null)
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "SETTING"))
+            {
+                <div class="infobox activityInfobox groupbox">
+                    <div class="info-icon">Admin Settings Manage</div>
+                    <ul class="info-content">
+                        <li><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                        @if (claims.Any(c => c.Value.Trim().ToUpper() == "WORKFLOWSETTING"))
+                        {
+                            <li>
+                                <a href="/Settings/WorkFlowSettings">
+                                    <img src="~/Content/css/images/workflow.svg" title="Manage Workflow" alt="Workflow" />
+                                    <span>Workflow Setup</span>
+                                </a>
+                            </li>
+                        }
+                        @if (claims.Any(c => c.Value.Trim().ToUpper() == "DESIGN"))
+                        {
+                            <li>
+                                <a href="/FormDesign/Index" id="formDesign">
+                                    <img src="~/Content/css/images/rule.svg" title="Manage Rules" alt="Manage" />
+                                    <span>Rules</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+    </div>
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "PORTFOLIO"))
+        {
+            <div class="grid-item col-sm-4">
+                <div onclick="location.href='/ConsumerAccount/PortfolioSearch';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <div class="info-icon">
+                            <a href="/ConsumerAccount/PortfolioSearch">
+                                <img src="~/Content/css/images/refresh.png" title="Change Portfolio Plan" alt="listImg" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">Change Portfolio Plan</h3>
+                            <p>Renew / off cycle change / Retroactive change your portfolio products </p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox1" />
+                                <label for="checkbox1"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "MASTERLIST"))
+        {
+            <div class="grid-item col-sm-4">
+                <div onclick="location.href='/FolderVersion/IndexML?tenantId=1';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <div class="info-icon">
+                            <a id="PortfolioSearch" href="/FolderVersion/IndexML?tenantId=1">
+                                <img src="~/Content/css/images/list.png" title="Master List" alt="activity" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">Master List</h3>
+                            <p>Manage all your standard data sources. Add/ Edit/ Delete data for different Master List components</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox3" />
+                                <label for="checkbox3"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "PBPINTEGRATION" && @ViewBag.ApplicationName.ToLower() != "ebenefitsync"))
+        {
+            <div class="grid-item col-sm-4">
+                <div onclick="location.href='/PBPImport/Index';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <div class="info-icon">
+                            <a href="/PBPImport/Index">
+                                <img src="~/Content/css/images/ac-plan.png" title="PBP Import" alt="activity" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">PBP Import</h3>
+                            <p>Allows you to import all the Medicare plan data from the CMS PBP software through an Access DB</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox4" />
+                                <label for="checkbox4"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item col-sm-4">
+                <div onclick="location.href='/PBPExport/Index';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <!-- <i class="material-icons">&#xE896;</i> -->
+                        <div class="info-icon">
+                            <a href="/PBPExport/Index">
+                                <img src="~/Content/css/images/ac-plan.png" title="PBP Export" alt="activity" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">PBP Export</h3>
+                            <p>Generates an Access DB file with all the eMS plan data ready to be exported to CMS PBP software</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox4" />
+                                <label for="checkbox4"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "REPORT" && @ViewBag.ApplicationName.ToLower() != "ebenefitsync"))
+        {
+            <div class="grid-item col-sm-4">
+                <div onclick="location.href='/ReportingCenter/Index';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <!-- <i class="material-icons">&#xE896;</i> -->
+                        <div class="info-icon">
+                            <a href="/ReportingCenter/Index">
+                                <img src="~/Content/css/images/audit.png" title="Reporting Center" alt="activity" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">Reporting Center</h3>
+                            <p>Generate/ Download/ View different types of plan reports</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox4" />
+                                <label for="checkbox4"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    @*<div class="grid-item col-sm-4">
+            <div onclick="location.href='#';" style="cursor:pointer;">
+                <div class="infobox">
+                    <div class="info-icon">
+                        <a href="#">
+                            <img src="~/Content/css/images/documents.png" title="Download SOT" alt="Audit Report" />
+                        </a>
+                    </div>
+                    <div class="info-content">
+                        <h3 class="title">Download SOT</h3>
+                        <p>Download the SOT report anytime for all the available Medicare plans</p>
+                        <div class="round">
+                            <input type="checkbox" id="checkbox5" />
+                            <label for="checkbox5"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "DESIGN"))
+        {
+            <div class="grid-item col-sm-4" style="display:none">
+                <div onclick="location.href='/FormDesign/Index';" style="cursor:pointer;">
+                    <div class="infobox">
+                        <!-- <i class="material-icons">&#xE896;</i> -->
+                        <div class="info-icon">
+                            <a href="/FormDesign/Index" id="formDesign">
+                                <img src="~/Content/css/images/rule.svg" title="Manage Rules" alt="Manage Rules" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">Manage Rules </h3>
+                            <p>Admin users manage business rules and data attributes</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox6" />
+                                <label for="checkbox6"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    @if (claims != null)
+    {
+        if (claims.Any(c => c.Value.Trim().ToUpper() == "SETTING"))
+        {
+            if (claims.Any(c => c.Value.Trim().ToUpper() == "WORKFLOWSETTING"))
+            {
+                <div class="grid-item col-sm-4" style="display:none">
+                    <div class="infobox">
+                        <!-- <i class="material-icons">&#xE627;</i> -->
+                        <div class="info-icon">
+                            <a href="/Settings/WorkFlowSettings">
+                                <img src="~/Content/css/images/workflow.svg" title="Manage Workflow" alt="Manage Workflow" />
+                            </a>
+                        </div>
+                        <div class="info-content">
+                            <h3 class="title">Manage Workflow </h3>
+                            <p>Admin users manage workflow and routing setup</p>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox7" />
+                                <label for="checkbox7"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            //if (claims.Any(c => c.Value.Trim().ToUpper() == "GENERALSETTING"))
+            //{
+            <div class="grid-item col-sm-4" style="display:none">
+                <div class="infobox">
+                    <!-- <i class="material-icons">&#xE627;</i> -->
+                    <div class="info-icon">
+                        <a href="/Settings/Index">
+                            <img src="~/Content/css/images/settings.svg" title="Settings" alt="Settings" />
+                        </a>
+                    </div>
+                    <div class="info-content">
+                        <h3 class="title">Settings </h3>
+                        <p> Various application settings</p>
+                        <div class="round">
+                            <input type="checkbox" id="checkbox9" />
+                            <label for="checkbox9"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            //}
+        }
+    }
+</div>
+
+<div style="margin-bottom:30px">
+    @Html.Partial("~/Views/RoutingTask/RoutingTaskView.cshtml")
+</div>
+
+
+<div style="display: none;">
+    <div id="viewAssignedUserDialog" style="width: auto; height: auto;">
+        <div>
+            <div class="form-group grid-wrapper">
+                <table id="viewAssignedUsers"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: none;">
+    <div id="UserAssignUnassignDialog">
+        <div>
+            <div class="form-group grid-wrapper">
+                <table id="userAssignmentUpdate"></table>
+            </div>
+            @* <button type="button" id="saveUserAssignment" class="btn" value="Save"></button>*@
+        </div>
+    </div>
+</div>
+<div id="NotificationDialog" style="display: none;">
+    <div class="table-responsive grid-wrapper">
+        <table class="table" id="notificationstatusGrid"></table>
+    </div>
+    <label for="View All" id='radioViewall' name="ViewAll">View All</label>
+</div>
+
+
+
+    <script type="text/javascript">
+        $('.grid').masonry({
+            itemSelector: '.grid-item'
+        });
+        setTimeout(function() {
+            $('.grid').masonry('layout');
+        }, 500);
+
+        var vbIsFolderLockEnable = @Html.Raw(ViewBag.IsFolderLockEnable);
+        var claims = @Html.Raw(Json.Encode(@ViewBag.Claims));
+        var vbRole = @Html.Raw(Json.Encode(ViewBag.RoleId));
+        setMenu("dashBoard");
+</script>
